@@ -142,6 +142,8 @@ library(classInt)
 library(RColorBrewer)
 ```
 
+*Remember: if you are using your own laptop, you will need to install the packages - see the note on the front page. Ask for help if you are unsure.*
+
 However,  this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets.  To do this,  you'll need to obtain them from somewhere. Data for maps in R can be read in from **shapefiles** - these are a well known geographical information exchange format.The first task is to obtain a shapefile set of the St. Helens neighbourhoods (or Lower layer Super Output Areas - LSOAs,  as they are more formally called).  To do this,  you will need to put some information into a working folder.  
 
 R uses working folders to store information relevant to the current project you are working on. I suggest you make a folder called **R work** in the M: drive (using Computer in the Start Menu). Then we need to tell R where this is, so click **Session > Set Working Directory > Choose Directory** and selecting the folder that you created. 
@@ -182,9 +184,7 @@ head(sthel@data[,1:7])
 You can see there is a lot of information there, but the useful bit is the `SP_ID` field. You may have spotted that these IDs match those in the `hp.data` file - we can use this to join the two data sets together, and then show the Burglary rates (from `hp.data`) on the map. The idea is that there is a field in each data set that we can use to join the two together; in this case we have the `ID` field in `sthel` and the `SP_ID` field in `hp.data`. 
 
 ```{r, comment=NA}
-#create the new variable sthel.prices
 sthel.prices <- sthel
-#merge with hp.data
 sthel.prices@data <- merge(sthel@data,hp.data,by.x="SP_ID",by.y="ID", all.x=TRUE)
 ```
  
@@ -225,7 +225,9 @@ As a final useful technique you can copy and paste maps like this into Word docu
 
 #Making a Map with Census Data
 
-Now we are going to use the same principle to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the http://www.neighbourhood.statistics.gov.uk website.
+You have seen how we can use R to make maps, and this often involves several lines of code. Using a script can help with this - they allow you to run a  series of commands in sequence, and be able to update one or two lines without having to retype all of the code. Create a new script (**File > New File > R Script**) and enter the code in there. Then you can select the lines you want to run by highlighting them, and then pressing `Ctrl+Enter`, or using the **Run** button. Use the script for all the R work you do from now on - it is much easier to correct mistakes and re-run than editing commands in the console. 
+
+Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the http://www.neighbourhood.statistics.gov.uk website.
 
 - Navigate to the site and select the “Topics” link on the bottom left hand side of the page. 
 - Click “Census” -> “2011 Census: Key Statistics”. 
@@ -236,9 +238,11 @@ Now we are going to use the same principle to create a map of some data from the
 
 This will be zipped, and once you have extracted it you will find it contains a variety of files. You are interested in the file named `“KS102EW_2596_2011SOA_NW.xls”`. Copy this to the working directory you defined earlier (probably M:/r work). 
 
-Open this file up in Excel, and you can see there are a number of different tabs, covering different geographies. We are interested in the LSOA geographies, so select the LSOA tab and look at the data it contains. You can see that there are a series of lines at the top which do not contain the data or headings for the columns. As such, we need to read this in R, skipping the unwanted lines and setting the column headings as the row containing “LSOA_CODE”. R can't directly import Excel files, but it can import CSV files, so make sure you have the LSOA tab open in Excel, and then save this as a CSV file. Excel will tell you you can only save the active sheet (i.e. the one currently open), which is fine. Follow the instructions and make sure you save the CSV file (using the default name of KS102EW_2596_2011SOA_NW.csv) in your working folder. 
+Open this file up in Excel, and you can see there are a number of different tabs, covering different geographies. We are interested in the LSOA geographies, so select the LSOA tab and look at the data it contains. You can see that there are a series of lines at the top which do not contain the data or headings for the columns. As such, we need to read this in R, skipping the unwanted lines and setting the column headings as the row containing “LSOA_CODE”. 
 
-Run the command below to read in the CSV file. The `skip = 5` bit tells R to ignore the first 5 rows, and the `header = TRUE` tells R to assign the next row as variable names. 
+R can't directly import Excel files, but it can import CSV files, so make sure you have the LSOA tab open in Excel, and then save this as a CSV file. Excel will tell you you can only save the active sheet (i.e. the one currently open), which is fine. Follow the instructions and make sure you save the CSV file (using the default name of KS102EW_2596_2011SOA_NW.csv) in your working folder. 
+
+Add the command below to your script, and run it to read in the CSV file. The `skip = 5` bit tells R to ignore the first 5 rows, and the `header = TRUE` tells R to assign the next row as variable names. 
 
 ```{r, echo=FALSE, comment=NA}
 download.file("http://www.nickbearman.me.uk/data/20150427-liv/KS102EW_2596_2011SOA_NW.csv","KS102EW_2596_2011SOA_NW.csv")
@@ -273,9 +277,12 @@ newcolnames <- c("AllUsualResidentsc","Age0to4c","Age0to4pc","Age5to7c","Age5to7
 "Age25to29pc","Age30to44c","Age30to44pc","Age45to59c","Age45to59pc","Age60to64c",
 "Age60to64pc","Age65to74c","Age65to74pc","Age75to84c","Age75to84pc","Age85to89c",
 "Age85to89pc","Age90andOverc","Age90andOverpc","MeanAge","MedianAge")
+
 #apply these to pop2011 data frame
 colnames(pop2011)[11:45] <- newcolnames
 ```
+
+The final line of code (starting `colnames`) actually updates the variable names. The square brackets are used to refer to specific elements- in this case, columns 11 to 45. *For example, `pop2011[1,]` will show the first row and `pop2011[,1]` will show the first column.*
 
 Now we have the correct column names for the data frame. It would also be good to check they have been applied to the `pop2011` dataframe correctly. 
 
@@ -320,7 +327,7 @@ head(LSOAs@data[,1:6])
 
 #Making Maps
 
-Now we have all the data setup, we can actually create the map. Run the code below, which is the same as the code we used earlier. 
+Now we have all the data setup, we can actually create the map. Run the code below, which is the same as the code we used earlier. Remember we can set up a script to run this code, like we did before. Ask for help if you are not sure. 
 
 <!-- Code for students in R Studio -->
 ```{r, eval=F,comment=NA}
@@ -353,8 +360,6 @@ legend(x = 328030, y = 387506.5, legend = leglabs(breaks$b), fill = breaks$c, bt
 ```
 
 This code draws the map, and adds a legend. Due to the way R works, we have to build up the map in stages, and each line of code adds a different element to the map. With blocks of code like this (and in fact, with all code) it is important to add comments, so we can remind ourselves what the different bit of code do. Comments in R are preceded with a #, as you can see above. 
-
-Running multiple lines of code is where R scripts are useful - they allow you to run a  series of commands in sequence, and be able to update one or two lines without having to retype all of the code. Create a new script (**File > New File > R Script**) and paste the code in there. Then you can select the lines you wan to run by highlighting them, and then pressing `Ctrl+Enter`. Experiment with this and with updating individual lines, as discussed below. 
 
 The first line tells R which variable to plot (`#select variable`). Try altering the first line to `var <- LSOAs@data[,"Age5to7pc"]` and run the code again. Try generating maps for different variables (remember you can use `colnames(LSOAs@data)` to list the variables).
 
@@ -458,6 +463,8 @@ for (i in 1:length(mapvariables)) {
 #Clustering of Crime Points 
 
 In this section we will look at a couple of different types of GIS analysis, using some crime data for Liverpool. These are just a couple of the analysis techniques that are available, and the aim is to teach you the techniques you need to know. Then you can apply these techniques to other data sets and other analytical methods in R.
+
+RStudio allows you to have projects, where it will tie together all of the different elements of a piece of R work (scripts, history, workspace etc.). Try starting a new project for this next section. It will ask you if you want to save your existing work - choose yes. It will also ask whether you want to create a new, empty project (you do) and where you want to save it (create a new working directory for this). 
 
 We need to read in the crime data, and because the crime data is just a CSV file, we need to do some processing in order to get it as spatial data in R, including some reprojecting of the data (converting the coordinate system from WGS 1984 to BNG).
 
