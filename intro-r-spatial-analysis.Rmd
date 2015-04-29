@@ -194,18 +194,17 @@ Now that we have joined the data together, we can draw a choropleth map of these
 var <- sthel.prices@data[,"Burglary"]
 breaks <- classIntervals(var, n = 6, style = "fisher")$brk
 my_colours <- brewer.pal(6, "Greens")
-plot(sthel.prices, col = my_colours[findInterval(var, breaks, all.inside = TRUE)],
+plot(sthel.prices, col = my_colours[findInterval(var, breaks$brk, all.inside = TRUE)],
      axes = FALSE, border = rgb(0.8,0.8,0.8))
 breaks <- list(b=breaks,c=my_colours)
 ```
 
 ```{r, echo=F, comment=NA}
 var <- sthel.prices@data[,"Burglary"]
-breaks <- classIntervals(var, n = 6, style = "fisher")$brk
+breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
-plot(sthel.prices, col = my_colours[findInterval(var, breaks, all.inside = TRUE)],
+plot(sthel.prices, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],
      axes = FALSE, border = rgb(0.8,0.8,0.8))
-breaks <- list(b=breaks,c=my_colours)
 ```
 
 For now, just copy and paste this into R and hit return. Don't worry about trying to interpret it!  Note that it is important to make sure the upper and lower case letters you type in are **exactly** the same as the ones above.  This is generally the case with R.  
@@ -213,7 +212,7 @@ For now, just copy and paste this into R and hit return. Don't worry about tryin
 The map shows the different burglary rates,  with dark shading indicating a higher rate. However,  this is much easier to interpret if you add a legend to the map.  For now,  just enter the following. As before,  more about how all of the commands work will be disclosed later in the course.
 
 ```{r,eval=FALSE}
-legend(x = 357000, y = 393000, legend = leglabs(breaks$b), fill = breaks$c, bty = "n", 
+legend(x = 357000, y = 393000, legend = leglabs(breaks$brks), fill = my_colours, bty = "n", 
        cex = 0.8)
 ```
 
@@ -334,14 +333,13 @@ Now we have all the data setup, we can actually create the map. Run the code bel
 #select variable
 var <- LSOAs@data[,"Age0to4pc"]
 #set colours & breaks
-breaks <- classIntervals(var, n = 6, style = "fisher")$brk
+breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
 #plot map
-plot(LSOAs, col = my_colours[findInterval(var, breaks, all.inside = TRUE)], axes = FALSE, 
+plot(LSOAs, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)], axes = FALSE, 
      border = rgb(0.8,0.8,0.8))
-#setup breaks for legend, and draw legend
-breaks <- list(b=breaks,c=my_colours)
-legend(x = 328130, y = 386506.5, legend = leglabs(breaks$b), fill = breaks$c, bty = "n")
+#draw legend
+legend(x = 328130, y = 386506.5, legend = leglabs(breaks$brks), fill = my_colours, bty = "n")
 ```
 
 <!-- Code for correct PDF rendering -->
@@ -349,14 +347,13 @@ legend(x = 328130, y = 386506.5, legend = leglabs(breaks$b), fill = breaks$c, bt
 #select variable
 var <- LSOAs@data[,"Age0to4pc"]
 #set colours & breaks
-breaks <- classIntervals(var, n = 6, style = "fisher")$brk
+breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
 #plot map
-plot(LSOAs, col = my_colours[findInterval(var, breaks, all.inside = TRUE)], axes = FALSE, 
+plot(LSOAs, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)], axes = FALSE, 
      border = rgb(0.8,0.8,0.8))
-#setup breaks for legend, and draw legend
-breaks <- list(b=breaks,c=my_colours)
-legend(x = 328030, y = 387506.5, legend = leglabs(breaks$b), fill = breaks$c, bty = "n", cex = 0.7)
+#draw legend
+legend(x = 328030, y = 387506.5, legend = leglabs(breaks$brks), fill = my_colours, bty = "n", cex = 0.7)
 ```
 
 This code draws the map, and adds a legend. Due to the way R works, we have to build up the map in stages, and each line of code adds a different element to the map. With blocks of code like this (and in fact, with all code) it is important to add comments, so we can remind ourselves what the different bit of code do. Comments in R are preceded with a #, as you can see above. 
@@ -403,12 +400,11 @@ One way of saving the map is using the Export option in the plot window. We can 
 ```{r, comment=NA, eval=FALSE}
 pdf(file="image.pdf")
   var <- LSOAs@data[,"Age0to4pc"]
-  breaks <- classIntervals(var, n = 6, style = "fisher")$brk
+  breaks <- classIntervals(var, n = 6, style = "fisher")
   my_colours <- brewer.pal(6, "Greens")
-  plot(LSOAs, col = my_colours[findInterval(var, breaks, all.inside = TRUE)],   
+  plot(LSOAs, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],   
        axes = FALSE, border = rgb(0.8,0.8,0.8))
-  breaks <- list(b=breaks,c=my_colours)
-  legend(x = 330130, y = 385506.5, legend = leglabs(breaks$b), fill = breaks$c, bty = "n")
+  legend(x = 330130, y = 385506.5, legend = leglabs(breaks$brks), fill = my_colours, bty = "n")
   title('Percentage of Population ages 0 to 4 in Liverpool')
   #Add North Arrow
   SpatialPolygonsRescale(layout.north.arrow(2), offset= c(336030,382006), scale = 2000, 
@@ -436,14 +432,13 @@ for (i in 1:length(mapvariables)) {
   #create map
   var <- LSOAs@data[,mapvariables[i]]
   #colours and breaks
-  breaks <- classIntervals(var, n = 6, style = "fisher")$brk
+  breaks <- classIntervals(var, n = 6, style = "fisher")
   my_colours <- brewer.pal(6, "Greens")
   #plot map
-  plot(LSOAs, col = my_colours[findInterval(var, breaks, all.inside = TRUE)], 
+  plot(LSOAs, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)], 
        axes = FALSE, border = rgb(0.8,0.8,0.8))
-  breaks <- list(b=breaks,c=my_colours)
   #add legend
-  legend(x = 330130, y = 384506.5, legend = leglabs(breaks$b), fill = breaks$c, bty = "n")
+  legend(x = 330130, y = 384506.5, legend = leglabs(breaks$brks), fill = my_colours, bty = "n")
   #add title
   title(colnames(LSOAs@data)[mapvariables[i]])
   #Add North Arrow
@@ -549,12 +544,11 @@ Now we have the data, we can join it on to the spatial data, and draw a map. All
   LSOAs@data$crime.count <- crime.count
 # Now draw a choropleth map - using the same method as before
   var <- LSOAs@data[,"crime.count"]
-  breaks <- classIntervals(var, n = 6, style = "fisher")$brk
+  breaks <- classIntervals(var, n = 6, style = "fisher")
   my_colours <- brewer.pal(6, "Greens")
-  plot(LSOAs, col = my_colours[findInterval(var, breaks, all.inside = TRUE)],   
+  plot(LSOAs, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],   
        axes = FALSE, border = rgb(0.8,0.8,0.8))
-  breaks <- list(b=breaks,c=my_colours)
-  legend(x = 330130, y = 385506.5, legend = leglabs(breaks$b), fill = breaks$c, bty = "n")
+  legend(x = 330130, y = 385506.5, legend = leglabs(breaks$brks), fill = my_colours, bty = "n")
   title('Count of Crimes in Liverpool')
 ```
 
