@@ -192,11 +192,10 @@ Now that we have joined the data together, we can draw a choropleth map of these
 
 ```{r, eval = F, comment=NA}
 var <- sthel.prices@data[,"Burglary"]
-breaks <- classIntervals(var, n = 6, style = "fisher")$brk
+breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
-plot(sthel.prices, col = my_colours[findInterval(var, breaks$brk, all.inside = TRUE)],
+plot(sthel.prices, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],
      axes = FALSE, border = rgb(0.8,0.8,0.8))
-breaks <- list(b=breaks,c=my_colours)
 ```
 
 ```{r, echo=F, comment=NA}
