@@ -4,17 +4,18 @@ output: pdf_document
 author: "Nick Bearman"
 ---
 
-Learning Outcomes: | R Functions & Libaries:  
+Learning Outcomes: | R Functions & Libraries:  
 -------- | --------  
 Use R to read in CSV data (pg. 4) |  `read.csv()` (pg. 4)  
 Use R to read in spatial data (pg. 5) | `readShapeSpatial()` (pg. 6)  
 Know how to plot spatial data using R (pg. 6) | `plot()` (pg. 6)  
-Join spatial data to attribute data (pg. 6) | `merge()` (pg. 6)  
-Customize colour and classification methods (pg. 10)  | `classIntervals()` (pg. 10)
-Understand how to use loops to make multiple maps (pg. 11) | `for() {}` (pg. 11)  
+Join spatial data to attribute data (pg. 7) | `merge()` (pg. 7)  
+Customize colour and classification methods (pg. 11)  | `classIntervals()` (pg. 11)
+Understand how to use loops to make multiple maps (pg. 12) | `for(){}` (pg. 12)  
 Know how to reproject spatial data (pg. 13) | `spTransform()` (pg. 13)  
 Be able to perform point in polygon operations (pg. 14) | `gContains()` (pg. 14)  
-Know how create a 'heat-map' style map using point data (pg. 16) |  `spatstat` library (pg. 16) 
+Writing Shape Files (pg. 16) | `writeOGR()` (pg. 16)
+Know how create a 'heat-map' style map using point data (pg. 17) |  `spatstat` library (pg. 17) 
 
 
 
@@ -32,9 +33,9 @@ And R's output is shown like this:
 7
 ```
 
-R has developed into a GIS as a result of user contributed packages, or libraries, as R refers to them. We will be using several libraries in this practical, and will load them as necessary. If you are not using one of the University computers, you will need to install the R libraries, as well as loading them. To do this, run `install.packages("package_name")`.
+R has developed into a GIS as a result of user contributed packages, or libraries, as R refers to them. We will be using several libraries in this practical, and will load them as necessary. If you are using your personal computer, you will need to install the R libraries, as well as loading them. To do this, run `install.packages("package_name")`.
 
-We won't spend too much time on the basics of using R - if you want to find out more, there are some good tutorials at http://www.social-statistics.org/?p=764 or http://rpubs.com/nickbearman/gettingstartedwithr. 
+We won't spend too much time on the very basics of using R - if you want to find out more, there are some good tutorials at http://www.social-statistics.org/?p=764 or http://rpubs.com/nickbearman/gettingstartedwithr. 
 
 We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio website"), which works on top of R and provides a good user interface. I'll talk a little bit about it in the presentation, but the key areas of the window are these:
 
@@ -89,7 +90,7 @@ If the house prices are in thousands of pounds,  then this tells us that the mea
 
 The Data Frame
 ------------
-While it is possible to type data into R by hand, it is laborious to say the least. R has a way of storing data in an object called a **data frame**. This is rather like an internal spreadsheet where all of the relevant data items are stored together as a set of columns.  This is similar to the data set storage in SPSS (for those of you who have used that package) where each variable corresponds to a column and each case (or observation) corresponds to a row. However,  while SPSS can only have one data set active at a time, in R you can have several of them.
+While it is possible to type data into R by hand, it is laborious to say the least. R has a way of storing data in an object called a **data frame**. This is rather like an internal spreadsheet where all of the relevant data items are stored together as a set of columns.  This is similar to the data set storage in Excel or SPSS where each variable corresponds to a column and each case (or observation) corresponds to a row. However,  while SPSS can only have one data set active at a time, in R you can have several of them.
 
 We have a CSV file of house prices and burglary rates, which we can load into R. We can use a function called `read.csv` which, as you might guess, reads CSV files. Run the line of code below, which loads the CSV file into a variable called `hp.data`. 
 
@@ -127,14 +128,25 @@ Mean    | The average of the column
 3rd. Qu.| The third quartile (the value 3/4 of the way along a sorted list of values)
 Max.    | The largest value in the column
 
-Between these numbers,  an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from £65,000 to £260,000 and that half of the prices lie between £152,500 and £210,000.  Also it can be seen that since the median measured burglary rate is zero,  then at least half of areas had no burglaries in the month when counts were compiled.
+Between these numbers,  an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from £65,000 to £260,000 and that half of the prices lie between £152,500 and £210,000.  Also it can be seen that since the median measured burglary rate is zero, then at least half of areas had no burglaries in the month when counts were compiled.
 
-Now is a good time to remind you to save your data on a regular basis. This is particularly important if you are working on coursework, and want to stop half-way through. R has a number of different elements you can save. The workspace is the most important element, as it contains any data frames or other objects you have created; i.e. everything listed in the 'Environment' tab, like the `hp.data` object we created earlier. To do this, click the save button in the Environment tab. Choose somewhere to save it (your Documents folder is a good place) and give it a name. To load these in a new session, click File > Open and select your file.
+We can use square brackets to look at specific sections of the data frame, for example `hp.data[1,]` or `hp.data[,1]`. We can also delete columns and create new columns using the code below. Remeber to use the `head()` command as we did earlier to look at the data frame. 
+
+```{r, comment=NA, eval=FALSE}
+#create a new column in hp.data dataframe call counciltax, storing the value NA
+hp.data$counciltax <- NA
+#delete a column
+hp.data$counciltax <- NULL
+#rename a column
+colnames(hp.data)[1] <- "BurglaryNumber"
+```
+
+Now is a good time to remind you to save your data on a regular basis. This is particularly important if you are working on a project, and want to stop half-way through. R has a number of different elements you can save. The workspace is the most important element, as it contains any data frames or other objects you have created; i.e. everything listed in the 'Environment' tab, like the `hp.data` object we created earlier. To do this, click the save button in the Environment tab. Choose somewhere to save it (your Documents folder is a good place) and give it a name. To load these in a new session, click File > Open File and select your file.
 
 Geographical Information
 -------------------------
 
-Until now,  although this is geographical data,  no maps have been drawn.  In this section you will do this.  Firstly,  you need to load some new *packages* into R - a package is an extra set of functionality that extends what R is capable of doing.  Here, one of the new package is called `maptools` and it extends R by allowing it to draw maps, and handle geographical information.  The packages are already installed, so all you need to do is to let R know you want to use the packages:
+Until now,  although this is geographical data, no maps have been drawn.  In this section you will do this.  Firstly,  you need to load some new *packages* into R - a package is an extra set of functionality that extends what R is capable of doing.  Here, one of the new package is called `maptools` and it extends R by allowing it to draw maps, and handle geographical information.  The packages are already installed, so all you need to do is to let R know you want to use the packages:
 
 ```{r,message=FALSE,display=FALSE}
 library(maptools)
@@ -158,12 +170,12 @@ unzip("sthel.zip")
 ```
 
 The first function actually downloads the zip file into your working folder,  the second one unzips it,  creating the shapefile set. All of the shapefile set files begin with `sthel` but then have different endings,  e.g. `sthel.shp`, `sthel.dbx` and `sthel.shx`.
-Now,  these can be read in to a `SpatialPolygons` object.
+Now, we can read these into R. 
 
 ```{r, comment=NA}
 sthel <- readShapeSpatial("sthel")
 ```
-The `readShapeSpatial` function does this,  and stores them into another type of object called a `SpatialPolygons` object.  These polygons are areas or regions,  such as the neighbourhoods (LSOA) in St. Helens.  You can use the `plot` function to draw the polygons (i.e. the map of the LSOA).
+The `readShapeSpatial` function does this,  and stores them into another type of object called a `SpatialPolygonsDataFrame` object.  These polygons are areas or regions,  such as the neighbourhoods (LSOA) in St. Helens.  You can use the `plot` function to draw the polygons (i.e. the map of the LSOA).
 
 ```{r, comment=NA}
 plot(sthel)
@@ -185,7 +197,7 @@ You can see there is a lot of information there, but the useful bit is the `SP_I
 
 ```{r, comment=NA}
 sthel.prices <- sthel
-sthel.prices@data <- merge(sthel@data,hp.data,by.x="SP_ID",by.y="ID", all.x=TRUE)
+sthel.prices@data <- merge(sthel@data,hp.data,by.x="SP_ID",by.y="BurglaryNumber", all.x=TRUE)
 ```
  
 Now that we have joined the data together, we can draw a choropleth map of these house prices.  In later exercises more will be explained as to how this works, but for now the method will simply be demonstrated.  
@@ -221,7 +233,7 @@ title('Burglary Rates per 10,000 Homes in St. Helens')
 ```
 As a final useful technique you can copy and paste maps like this into Word documents.  Click on the Export button, and then choose Copy to Clipboard.... Then choose Copy Plot. If you also have Word up and running, you can then paste the map into your document.
 
-#Making a Map with Census Data
+##Making a Map with Census Data
 
 You have seen how we can use R to make maps, and this often involves several lines of code. Using a script can help with this - they allow you to run a  series of commands in sequence, and be able to update one or two lines without having to retype all of the code. Create a new script (**File > New File > R Script**) and enter the code in there. Then you can select the lines you want to run by highlighting them, and then pressing `Ctrl+Enter`, or using the **Run** button. Use the script for all the R work you do from now on - it is much easier to correct mistakes and re-run than editing commands in the console. 
 
@@ -323,7 +335,7 @@ head(LSOA@data)
 head(LSOA@data[,1:6])
 ```
 
-#Making Maps
+##Making Maps
 
 Now we have all the data setup, we can actually create the map. Run the code below, which is the same as the code we used earlier. Remember we can set up a script to run this code, like we did before. Ask for help if you are not sure. 
 
@@ -367,11 +379,15 @@ title('Percentage of Population ages 0 to 4 in Liverpool')
 
 Remember that any line starting with a `#` is a comment, and will be ignored by R. Comments are very useful for us to note what the code is doing, particularly when you come back to it 6 months later and can't remember what it is supposed to do!
 
-#Colours and Catagories (optional exercise)
+##Colours and Categories (optional exercise)
 
-The second section of the code (`#set colours & breaks`) tells R how many categories to split the data into (`n = 6`) and which classification method to use (`style = "fisher"`). Try altering the number of categories. Type `?classIntervals` into the console to see the help file on this function, and explore the different options. See also if you can change the colours - explore the help file for details and try running `display.brewer.all()`. 
+The second section of the code (`#set colours & breaks`) tells R how many categories to split the data into (`n = 6`) and which classification method to use (`style = "fisher"`). Try altering the number of categories and classification method. Type `?classIntervals` into the console to see the help file on this function, and explore the different classification options. Remember we can use `hist(LSOA@data$Age0to4pc)` to view the histogram for a specific data set. See also if you can change the colours - explore the help file for details and try running `display.brewer.all()`. 
 
-#Scale Bar and North Arrow (optional exercise)
+If you want to set the breaks manually, this can be done using the `fixed` style: `breaks <- classIntervals(var, n = 6, style = "fixed", fixedBreaks=c(0, 3, 10, 16, 20, 28, 37))`. See the example in the help file for more details.
+
+*R can be expanded to create many different sorts of maps. Proportional Symbols are possible (see this article http://www.jstatsoft.org/v15/i05/paper and library http://cran.r-project.org/web/packages/rCarto/rCarto.pdf). Another library that you might come across is `ggplot` which develops the standard `plot` function that we have been using, both for non-spatial and spatial data.*
+
+##Scale Bar and North Arrow (optional exercise)
 
 It is also good practice to add a scale bar and a north arrow to each of the maps you produce. Running this code will add these to the map:
 
@@ -390,9 +406,9 @@ text(328030 + 5000,381006,"5km", cex=.6)
 
 Remember to adjust the position of these items if you need to. To help with this, there is the `locator()` function. In RStudio, type `locator()` into the console and press enter. When you move your mouse over the plots window (where the maps are) the mouse pointer will turn into a cross. If you click somewhere on the plot, and then click Finish, RStudio will give you the coordinates of the point you selected. You can then substitute these into the code to locate the legend / scale bar etc. wherever you wish. 
 
-It might also be good to have a 'N' under the North arrow to explain what it means. Look at the parameter `cex` in the helpsheet - it allows you to resize items. Try applying this with the `text` function to add the 'N' in the appropriate place. 
+It might also be good to have a 'N' under the North arrow to explain what it means. Look at the parameter `cex` in the helpsheet - it allows you to resize items. Try applying this with the `text` function to add the 'N' in the appropriate place in a suitable size. 
 
-#Exporting and Multiple Maps (optional exercise)
+##Exporting and Multiple Maps (optional exercise)
 
 One way of saving the map is using the Export option in the plot window. We can also do this using code, by adding two lines: `pdf(file="image.pdf")` before the map code and `dev.off()` after the map code. Try it now, and R will save the map in your working directory. 
 
@@ -454,7 +470,7 @@ for (i in 1:length(mapvariables)) {
 }
 ```
 
-#Clustering of Crime Points 
+##Clustering of Crime Points 
 
 In this section we will look at a couple of different types of GIS analysis, using some crime data for Liverpool. These are just a couple of the analysis techniques that are available, and the aim is to teach you the techniques you need to know. Then you can apply these techniques to other data sets and other analytical methods in R.
 
@@ -475,8 +491,8 @@ At the moment, the data is just in a data frame object - not any kind of spatial
 
 ```{r, comment=NA,warning=FALSE,message=FALSE}
 #setup variables for the different projection systems
-latlong = "+init=epsg:4326" #WGS1984 / latitude & longitude
-bng = "+init=epsg:27700" #BNG, British National Grid
+latlong <- "+init=epsg:4326" #WGS1984 / latitude & longitude
+bng <- "+init=epsg:27700" #BNG, British National Grid
 #create crime points as spatial data, they are currently in latlong
 coords <- cbind(Longitude = as.numeric(as.character(crimes$Longitude)), Latitude = 
                   as.numeric(as.character(crimes$Latitude)))
@@ -553,6 +569,36 @@ Now we have the data, we can join it on to the spatial data, and draw a map. All
 
 This just tells us how many crimes there were in each LSOA - nothing about the rate. Try calculating the rate of the crimes per 10,000 people and mapping these. You can calculate the rate by calculating (number of crimes / population)*10000. See the beginning of the handout for help on calculating values.
 
+*The `rgeos` library contains a range of different spatial functions, including `gContains`, `gIntersects`, `gIntsersects` and many others. These can be used to perform a spatial join, but the exact function you will need to use depends on the type of data (point, line or polygon) and the type of join you are performing. The help files and a web search will provide useful information for this. There is also a function for buffers called `gBuffer`.*
+
+*Merging shapefiles is also possible, but can be complex, depending on exaclty what you want to merge. Vignettes (short examples of code) are common with R libaries, and show how a particualar function works. For example, see http://cran.r-project.org/web/packages/maptools/vignettes/combine_maptools.pdf on Combining Spatial Data.*
+
+## Writing Shape Files
+
+We read shape files into R using `readShapeSpatial` and if you read the help file for this function (type `?readShapeSpatial`) you can see it talks about a `writeSpatialShape` function, which we can use to export shape files. Note the inconsistency in the function names - readShapeSpatial, and writeSpatialShape - R is full of these types of inconsistencies, so it's good to keep your eyes open for them. 
+
+Having created our `crime.pts` SpatialPointsDataFrame, we can save this as a shapefile. This is a useful way of exporting data for use in ArcGIS, QGIS or other GIS programs. The code we need is:
+
+```{r,message=FALSE,error=FALSE,warning=FALSE}
+#write out crime.pts as a shapefile
+writeSpatialShape(crime.pts, "crime")
+```
+
+This code should create a new shapefile in your working directory called `crime`. Note that there is no file called `crime.prj` - this is is projection element of the shapefile, which is not included. This is bad practice, and as we have seen earlier having shapefiles without a projection is not a good idea. You can see this if you load the shapefile into QGIS or ArcGIS - it will ask for the projection; or if you load the shapefile in to R and look at the `proj4string` slot. 
+
+However, there is a different way of saving data as shape files - we can use a different function, called `writeOGR` which is provided in the `rgdal` library. This situation is common in R, where different functions in different libraries perform the same functions, although with subtle differences. Try the code below:
+
+```{r,message=FALSE,error=FALSE,warning=FALSE,eval=FALSE}
+#load library (if not loaded already)
+library(rgdal)
+#write shape file
+writeOGR(crime.pts, "crime2.shp", crimes, driver = "ESRI Shapefile")
+```
+
+This will save the shapefile with a projection in your working directory. Again, you can check this by re-reading it into R. 
+
+*The `writeOGR()` function uses the OGR drivers to load and save many different formats of spatial data. The help has some information (see also http://www.inside-r.org/packages/cran/rgdal/docs/writeOGR), and you can use `ogrDrivers()` to get a list of the different formats this covers (see also http://www.gdal.org/ogr_formats.html). An overview of the different options for reading and writing shapefiles in R at https://www.nceas.ucsb.edu/scicomp/usecases/ReadWriteESRIShapeFiles.*
+
 ##'Heat-map' style map (optional exercise)
 
 In this section we will look at creating a 'heat-map' style map, using crime data for Liverpool.
@@ -579,14 +625,15 @@ proj4string(SLDF) <- proj4string(crime.pts)  # assign correct CRS - for future s
 
 <!-- not run, but used to show code -->
 ```{r, comment=NA,eval=FALSE}
-#libraries
+#load required libraries
 library(spatstat)
 library(sp)
 library(rgeos)
-#create density map
+#create density map from crime.pts variable
 sSp <- as(SpatialPoints(crime.pts), "ppp")
 Dens <- density(sSp, adjust = 0.2)
 class(Dens)
+#plot density and customise
 plot(Dens)
 contour(density(sSp, adjust = 0.2), nlevels = 4)
 #categorise density
@@ -604,7 +651,7 @@ plot(crime.pts, pch = ".", col = "darkred", add = T)
 You'll see that we have some additional data, particularly at the top right of the map. These are just contours with a value of 0, and can be removed.
 
 ```{r, comment=NA}
-#remove the entries that are 0. 
+#remove the entries that are 0
 SLDF <- SLDF[SLDF@data$level != 0,]
 #and replot
 plot(SLDF, col = terrain.colors(8))
