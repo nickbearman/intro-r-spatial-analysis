@@ -14,7 +14,7 @@ Customize colour and classification methods (pg. 11)  | `classIntervals()` (pg. 
 Understand how to use loops to make multiple maps (pg. 12) | `for(){}` (pg. 12)  
 Know how to reproject spatial data (pg. 13) | `spTransform()` (pg. 13)  
 Be able to perform point in polygon operations (pg. 14) | `gContains()` (pg. 14)  
-Writing Shape Files (pg. 16) | `writeOGR()` (pg. 16)
+Know how to write shape files (pg. 16) | `writeOGR()` (pg. 16)
 Know how create a 'heat-map' style map using point data (pg. 17) |  `spatstat` library (pg. 17) 
 
 
@@ -90,14 +90,15 @@ If the house prices are in thousands of pounds,  then this tells us that the mea
 
 The Data Frame
 ------------
-While it is possible to type data into R by hand, it is laborious to say the least. R has a way of storing data in an object called a **data frame**. This is rather like an internal spreadsheet where all of the relevant data items are stored together as a set of columns.  This is similar to the data set storage in Excel or SPSS where each variable corresponds to a column and each case (or observation) corresponds to a row. However,  while SPSS can only have one data set active at a time, in R you can have several of them.
+R has a way of storing data in an object called a **data frame**. This is rather like an internal spreadsheet where all of the relevant data items are stored together as a set of columns.  This is similar to the data set storage in Excel or SPSS where each variable corresponds to a column and each case (or observation) corresponds to a row. However, while SPSS can only have one data set active at a time, in R you can have several of them.
 
 We have a CSV file of house prices and burglary rates, which we can load into R. We can use a function called `read.csv` which, as you might guess, reads CSV files. Run the line of code below, which loads the CSV file into a variable called `hp.data`. 
 
 <!-- There are various data files used for this workshop. Ideally I would pull them in directly from GitHub with code, but I can't work out how to do this. A copy of all the data used is in the data sub-directory. Using https://raw.githubusercontent.com/nickbearman/intro-r-spatial-analysis/master/data/hpdata.csv just gives an error message. -->
+<!-- Update hp.data <- read.csv("https://raw.githubusercontent.com/nickbearman/intro-r-spatial-analysis/master/data/hpdata.csv") does work but the URL is much longer, which is annoying -->
 
 ```{r getdata}
-hp.data <- read.csv("http://nickbearman.me.uk/data/20150427-liv/hpdata.csv")
+hp.data <- read.csv("http://nickbearman.me.uk/data/20151002-liv/hpdata.csv")
 ```
 
 When we read in data, it is always a good idea to check it came in ok. To do this, we can preview the data set. The `head` command shows the first 6 rows of the data.
@@ -128,11 +129,13 @@ Mean    | The average of the column
 3rd. Qu.| The third quartile (the value 3/4 of the way along a sorted list of values)
 Max.    | The largest value in the column
 
-Between these numbers,  an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from £65,000 to £260,000 and that half of the prices lie between £152,500 and £210,000.  Also it can be seen that since the median measured burglary rate is zero, then at least half of areas had no burglaries in the month when counts were compiled.
+<!-- Ideally want to add the paragraph below into a 'Notes on SUmmary Data' box -->
+
+*Based on these numbers, an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from £65,000 to £260,000 and that half of the prices lie between £152,500 and £210,000.  Also it can be seen that since the median measured burglary rate is zero, then at least half of areas had no burglaries in the month when counts were compiled.*
 
 We can use square brackets to look at specific sections of the data frame, for example `hp.data[1,]` or `hp.data[,1]`. We can also delete columns and create new columns using the code below. Remeber to use the `head()` command as we did earlier to look at the data frame. 
 
-```{r, comment=NA, eval=FALSE}
+```{r, comment=NA}
 #create a new column in hp.data dataframe call counciltax, storing the value NA
 hp.data$counciltax <- NA
 #delete a column
@@ -156,16 +159,16 @@ library(RColorBrewer)
 
 *Remember: if you are using your own laptop, you will need to install the packages - see the note on the front page. Ask for help if you are unsure.*
 
-However,  this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets.  To do this,  you'll need to obtain them from somewhere. Data for maps in R can be read in from **shapefiles** - these are a well known geographical information exchange format.The first task is to obtain a shapefile set of the St. Helens neighbourhoods (or Lower layer Super Output Areas - LSOA,  as they are more formally called).  To do this,  you will need to put some information into a working folder.  
+However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets.  To do this,  you'll need to obtain them from somewhere. Data for maps in R can be read in from **shapefiles** - these are a well known geographical information exchange format.The first task is to obtain a shapefile set of the St. Helens neighbourhoods (or Lower layer Super Output Areas - LSOA,  as they are more formally called).  To do this,  you will need to put some information into a working folder.  
 
-R uses working folders to store information relevant to the current project you are working on. I suggest you make a folder called **R work** in the M: drive (using Computer in the Start Menu). Then we need to tell R where this is, so click **Session > Set Working Directory > Choose Directory** and selecting the folder that you created. 
+R uses working folders to store information relevant to the current project you are working on. I suggest you make a folder called **R work** in the M: drive (using Computer in the Start Menu). Then we need to tell R where this is, so click **Session > Set Working Directory > Choose Directory...** and selecting the folder that you created. 
 
 As with most programs, there are multiple ways to do things. For instance, to set the working directory we could type: `setwd("M:/R work")`. Your version might well have a longer title, depending on what you called the folder. Also note that slashes are indicated with a '*/*' not '\\'. 
 
 There is a set of shapefiles for the St. Helens neighbourhoods at the same location as the data set you read in earlier. Since several files are needed,  I have bundled these together in a single zip file.  You will now download this to your local folder and subsequently unzip it. This can all be done via R functions:
 
 ```{r, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/20150427-liv/sthel.zip","sthel.zip")
+download.file("http://www.nickbearman.me.uk/data/20151002-liv/sthel.zip","sthel.zip")
 unzip("sthel.zip")
 ```
 
@@ -255,11 +258,10 @@ R can't directly import Excel files, but it can import CSV files, so make sure y
 Add the command below to your script, and run it to read in the CSV file. The `skip = 5` bit tells R to ignore the first 5 rows, and the `header = TRUE` tells R to assign the next row as variable names. 
 
 ```{r, echo=FALSE, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/20150427-liv/KS102EW_2596_2011SOA_NW.csv","KS102EW_2596_2011SOA_NW.csv")
+download.file("http://www.nickbearman.me.uk/data/20151002-liv/KS102EW_2596_2011SOA_NW.csv","KS102EW_2596_2011SOA_NW.csv")
 ```
 
 ```{r, comment=NA}
-#read in csv file, skipping the first 5 rows
 pop2011 <- read.csv('KS102EW_2596_2011SOA_NW.csv', header = TRUE, skip = 5)
 ```
 
@@ -275,7 +277,7 @@ head(pop2011[,1:7])
 
 You can see that some of the variable names are missing. The names were in the Excel spreadsheet, but spread over the first 5 rows, so they didn't import into R correctly. 
 
-We can rename the columns, so that when we run the `head` command, R lists the correct names. This will also help us refer to the columns later on. Run the code below, which creates a new variable which contains the names (`newcolnames`) and then applies it to the `pop2011` data frame. Any column name ending in a 'c' is a count (of people in that age group in that LSOA) and any column ending in 'pc' is a percentage. *We've have to use 'pc' because R doesn't like symboles (e.g. %) in field names*.
+We can rename the columns, so that when we run the `head` command, R lists the correct names. This will also help us refer to the columns later on. Run the code below, which creates a new variable which contains the names (`newcolnames`) and then applies it to the `pop2011` data frame. Any column name ending in a 'c' is a count (of people in that age group in that LSOA) and any column ending in 'pc' is a percentage. *We've have to use 'pc' because R doesn't like symbols (e.g. %) in field names*.
 
 It's also worth noting here that any line of code that starts with a `#` is a comment - i.e. R will ignore that line and move onto the next. I've included them here so you can see what is going on, but you don't need to type them in.  
 
@@ -307,7 +309,7 @@ Now we have the attribute data (percentage of people in each age group in each L
 Extract the files, and move all the files starting with the name `england_lsoa_2011Polygon` to your working folder. There should be 5 files - make sure you move them all. Then read in the data:
 
 ```{r, echo=FALSE, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/20150427-liv/england_lsoa_2011Polygon.zip","england_lsoa_2011Polygon.zip")
+download.file("http://www.nickbearman.me.uk/data/20151002-liv/england_lsoa_2011Polygon.zip","england_lsoa_2011Polygon.zip")
 unzip("england_lsoa_2011Polygon.zip")
 ```
 
@@ -384,6 +386,19 @@ Remember that any line starting with a `#` is a comment, and will be ignored by 
 The second section of the code (`#set colours & breaks`) tells R how many categories to split the data into (`n = 6`) and which classification method to use (`style = "fisher"`). Try altering the number of categories and classification method. Type `?classIntervals` into the console to see the help file on this function, and explore the different classification options. Remember we can use `hist(LSOA@data$Age0to4pc)` to view the histogram for a specific data set. See also if you can change the colours - explore the help file for details and try running `display.brewer.all()`. 
 
 If you want to set the breaks manually, this can be done using the `fixed` style: `breaks <- classIntervals(var, n = 6, style = "fixed", fixedBreaks=c(0, 3, 10, 16, 20, 28, 37))`. See the example in the help file for more details.
+
+You can also show a histogram with the classification breaks using this code:
+
+```{r,eval=FALSE}
+#select the variable
+var <- LSOA@data[,"Age0to4pc"]
+#calculate the breaks
+breaks <- classIntervals(var, n = 6, style = "fisher")
+#draw histogram
+hist(var)
+#add breaks to histogram
+abline(v = breaks$brks, col = "red")
+```
 
 *R can be expanded to create many different sorts of maps. Proportional Symbols are possible (see this article http://www.jstatsoft.org/v15/i05/paper and library http://cran.r-project.org/web/packages/rCarto/rCarto.pdf). Another library that you might come across is `ggplot` which develops the standard `plot` function that we have been using, both for non-spatial and spatial data.*
 
@@ -482,7 +497,7 @@ We need to read in the crime data, and because the crime data is just a CSV file
 #load library
 library(maptools)
 #Read the data into a variable called crimes
-crimes <- read.csv("http://nickbearman.me.uk/data/20150123-liv/police-uk-2014-04-merseyside-street.csv")
+crimes <- read.csv("http://nickbearman.me.uk/data/20151002-liv/police-uk-2014-04-merseyside-street.csv")
 ```
 
 Now the CSV data has been read in, take a quick look at it using `head(crimes)`. You will see that the data consists of a number of columns, each with a heading. Two of these are called *Longitude* and *Latitude* – these are the column headers that give the coordinates of each incident in the data you have just downloaded. Another is headed *Crime.Type* and tells you which type of crime occurred. 
@@ -500,7 +515,7 @@ crime.pts <- SpatialPointsDataFrame(coords, crimes[, -(5:6)],
                                     proj4string = CRS(latlong))
 ```
 
-This creates a ```SpatialPointsDataFrame``` object. This fifth line (starting `coords`) prepares the coordinates into a form that the ```SpatialPointsDataFrame``` can use. The ```SpatialPointsDataFrame``` function on the sixth line takes three arguments - the first is coordinates, created in the line above. The second argument is the data frame *minus* columns 5 and 6 - this is what ```-(5:6)``` indicates.  These columns provide all the non-geographical data from the data frame.  The third is the coordinate system that the data is currently in. The resulting object ```crime.pts``` is a spatial points geographical shape object,  whose points are each recorded crime in the data set you download. Try `head(crime.pts@data)` to see the attribute table, similar to earlier. 
+This creates a ```SpatialPointsDataFrame``` object. This fifth line (starting `coords`) prepares the coordinates into a form that the ```SpatialPointsDataFrame``` can use. The ```SpatialPointsDataFrame``` function on the sixth line takes three arguments - the first is coordinates, created in the line above. The second argument is the data frame *minus* (i.e. not including) columns 5 and 6 - this is what ```-(5:6)``` indicates.  These columns provide all the non-geographical data from the data frame.  The third is the coordinate system that the data is currently in. The resulting object ```crime.pts``` is a spatial points geographical shape object,  whose points are each recorded crime in the data set you download. Try `head(crime.pts@data)` to see the attribute table, similar to earlier. 
 
 We also need to reproject the data, from Latitude Longitude, to British National Grid:
 
@@ -681,7 +696,7 @@ You could also add an outline for Merseyside. The `plot()` command with the `add
 
 ```{r, comment=NA}
 #download file
-download.file("http://www.nickbearman.me.uk/data/20150427-liv/merseyside_outline.zip",
+download.file("http://www.nickbearman.me.uk/data/20151002-liv/merseyside_outline.zip",
               "merseyside_outline.zip")
 #unzip file
 unzip("merseyside_outline.zip")

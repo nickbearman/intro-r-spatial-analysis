@@ -8,6 +8,6 @@ The material for this workshop is avaliable here:
 - [The R Glossary and Helpsheet (Word, 24 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/blob/master/materials/glossary-helpsheet-v3.docx)  
 - [The data used in the workshop (folder, total: 3.3 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/tree/master/data)  
 
-This project was project developed in RStudio Version 0.98.1102
+This project was developed in RStudio Version 0.98.1102
 
 Material will be updated periodically, usually in line with courses run by Nick Bearman. 
