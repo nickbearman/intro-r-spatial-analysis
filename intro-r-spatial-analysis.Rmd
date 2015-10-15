@@ -110,9 +110,9 @@ head(hp.data)
 You can also click on the variable listed in the Environment window, which will show the data in a new tab. You can also enter:
 
 ```
-fix(hp.data)
+View(hp.data)
 ```
-to view this data frame in a window,  and also edit values in the 'cells'.  However,  although it might be interesting to try using `fix` now,  try it, but don't actually edit anything.  To return to the RStudio command line, close the data frame window. **NOTE: it is important to do this,  otherwise you won't be able to type anything in to R**.
+to open a new tab showing the data. 
 
 You can also describe each column in the data set using the `summary` function:
 ```{r, comment=NA}
@@ -138,10 +138,18 @@ We can use square brackets to look at specific sections of the data frame, for e
 ```{r, comment=NA}
 #create a new column in hp.data dataframe call counciltax, storing the value NA
 hp.data$counciltax <- NA
+#see what has happened
+head(hp.data)
+
 #delete a column
 hp.data$counciltax <- NULL
+#see what has happened
+head(hp.data)
+
 #rename a column
 colnames(hp.data)[1] <- "BurglaryNumber"
+#see what has happened
+head(hp.data)
 ```
 
 Now is a good time to remind you to save your data on a regular basis. This is particularly important if you are working on a project, and want to stop half-way through. R has a number of different elements you can save. The workspace is the most important element, as it contains any data frames or other objects you have created; i.e. everything listed in the 'Environment' tab, like the `hp.data` object we created earlier. To do this, click the save button in the Environment tab. Choose somewhere to save it (your Documents folder is a good place) and give it a name. To load these in a new session, click File > Open File and select your file.
