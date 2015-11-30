@@ -1,0 +1,12 @@
+```{r}
+#code for gOverlaps 
+  colSums(gOverlaps(westminister, LSOA_reordered[1:10,], byid = TRUE))
+#useful plotting commands
+  plot(westminister[2:5,])
+  #plot(westminister[1,], col = "light blue", add = TRUE)
+  plot(westminister[2,], col = "light green", add = TRUE)
+  plot(westminister[3,], col = "light pink", add = TRUE)
+  plot(westminister[4,], col = "light yellow", add = TRUE)
+  plot(westminister[5,], col = "green", add = TRUE)
+  plot(LSOA_reordered[1:10,], col = "red", add = TRUE)
+```

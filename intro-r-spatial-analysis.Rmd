@@ -7,14 +7,14 @@ author: "Nick Bearman"
 Learning Outcomes: | R Functions & Libraries:  
 -------- | --------  
 Use R to read in CSV data (pg. 4) |  `read.csv()` (pg. 4)  
-Use R to read in spatial data (pg. 5) | `readShapeSpatial()` (pg. 6)  
+Use R to read in spatial data (pg. 6) | `readShapeSpatial()` (pg. 6)  
 Know how to plot spatial data using R (pg. 6) | `plot()` (pg. 6)  
 Join spatial data to attribute data (pg. 7) | `merge()` (pg. 7)  
 Customize colour and classification methods (pg. 11)  | `classIntervals()` (pg. 11)
 Understand how to use loops to make multiple maps (pg. 12) | `for(){}` (pg. 12)  
-Know how to reproject spatial data (pg. 13) | `spTransform()` (pg. 13)  
-Be able to perform point in polygon operations (pg. 14) | `gContains()` (pg. 14)  
-Know how to write shape files (pg. 16) | `writeOGR()` (pg. 16)
+Know how to reproject spatial data (pg. 14) | `spTransform()` (pg. 14)  
+Be able to perform point in polygon operations (pg. 15) | `gContains()` (pg. 15)  
+Know how to write shape files (pg. 17) | `writeOGR()` (pg. 17)
 Know how create a 'heat-map' style map using point data (pg. 17) |  `spatstat` library (pg. 17) 
 
 
@@ -98,7 +98,7 @@ We have a CSV file of house prices and burglary rates, which we can load into R.
 <!-- Update hp.data <- read.csv("https://raw.githubusercontent.com/nickbearman/intro-r-spatial-analysis/master/data/hpdata.csv") does work but the URL is much longer, which is annoying -->
 
 ```{r getdata}
-hp.data <- read.csv("http://nickbearman.me.uk/data/20151002-liv/hpdata.csv")
+hp.data <- read.csv("http://nickbearman.me.uk/data/r/hpdata.csv")
 ```
 
 When we read in data, it is always a good idea to check it came in ok. To do this, we can preview the data set. The `head` command shows the first 6 rows of the data.
@@ -115,7 +115,7 @@ View(hp.data)
 to open a new tab showing the data. 
 
 You can also describe each column in the data set using the `summary` function:
-```{r, comment=NA}
+```{r, comment=NA, eval = FALSE}
 summary(hp.data)
 ```
 For each column,  a number of values are listed:
@@ -152,12 +152,12 @@ colnames(hp.data)[1] <- "BurglaryNumber"
 head(hp.data)
 ```
 
-Now is a good time to remind you to save your data on a regular basis. This is particularly important if you are working on a project, and want to stop half-way through. R has a number of different elements you can save. The workspace is the most important element, as it contains any data frames or other objects you have created; i.e. everything listed in the 'Environment' tab, like the `hp.data` object we created earlier. To do this, click the save button in the Environment tab. Choose somewhere to save it (your Documents folder is a good place) and give it a name. To load these in a new session, click File > Open File and select your file.
+Now is a good time to remind you to save your data on a regular basis. This is particularly important if you are working on a project, and need to reload your data later on. R has a number of different elements you can save. The workspace is the most important element, as it contains any data frames or other objects you have created; i.e. everything listed in the 'Environment' tab, like the `hp.data` object we created earlier. To do this, click the save button in the Environment tab. Choose somewhere to save it (your Documents folder is a good place) and give it a name. To load these in a new session, click File > Open File and select your file.
 
 Geographical Information
 -------------------------
 
-Until now,  although this is geographical data, no maps have been drawn.  In this section you will do this.  Firstly,  you need to load some new *packages* into R - a package is an extra set of functionality that extends what R is capable of doing.  Here, one of the new package is called `maptools` and it extends R by allowing it to draw maps, and handle geographical information.  The packages are already installed, so all you need to do is to let R know you want to use the packages:
+Until now,  although this is geographical data, no maps have been drawn. Firstly, you need to load some new *packages* into R - a package is an extra set of functionality that extends what R is capable of doing.  Here, one of the new package is called `maptools` and it extends R by allowing it to draw maps, and handle geographical information.  The packages are already installed, so all you need to do is to let R know you want to use the packages:
 
 ```{r,message=FALSE,display=FALSE}
 library(maptools)
@@ -167,7 +167,7 @@ library(RColorBrewer)
 
 *Remember: if you are using your own laptop, you will need to install the packages - see the note on the front page. Ask for help if you are unsure.*
 
-However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets.  To do this,  you'll need to obtain them from somewhere. Data for maps in R can be read in from **shapefiles** - these are a well known geographical information exchange format.The first task is to obtain a shapefile set of the St. Helens neighbourhoods (or Lower layer Super Output Areas - LSOA,  as they are more formally called).  To do this,  you will need to put some information into a working folder.  
+However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets.  To do this,  you'll need to obtain them from somewhere. Data for maps in R can be read in from **shapefiles** - these are a well known GIS data format.The first task is to obtain a shapefile set of the St. Helens neighbourhoods in Merseyside (or Lower layer Super Output Areas - LSOA, as they are more formally called).  To do this,  you will need to put some information into a working folder.  
 
 R uses working folders to store information relevant to the current project you are working on. I suggest you make a folder called **R work** in the M: drive (using Computer in the Start Menu). Then we need to tell R where this is, so click **Session > Set Working Directory > Choose Directory...** and selecting the folder that you created. 
 
@@ -176,7 +176,7 @@ As with most programs, there are multiple ways to do things. For instance, to se
 There is a set of shapefiles for the St. Helens neighbourhoods at the same location as the data set you read in earlier. Since several files are needed,  I have bundled these together in a single zip file.  You will now download this to your local folder and subsequently unzip it. This can all be done via R functions:
 
 ```{r, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/20151002-liv/sthel.zip","sthel.zip")
+download.file("http://www.nickbearman.me.uk/data/r/sthel.zip","sthel.zip")
 unzip("sthel.zip")
 ```
 
@@ -229,9 +229,9 @@ plot(sthel.prices, col = my_colours[findInterval(var, breaks$brks, all.inside = 
      axes = FALSE, border = rgb(0.8,0.8,0.8))
 ```
 
-For now, just copy and paste this into R and hit return. Don't worry about trying to interpret it!  Note that it is important to make sure the upper and lower case letters you type in are **exactly** the same as the ones above.  This is generally the case with R.  
+For now, just copy and paste this into R and hit return. Don't worry about trying to interpret it, we will look at this in more detail later.  Note that it is important to make sure the upper and lower case letters you type in are **exactly** the same as the ones above.  This is generally the case with R.  
 
-The map shows the different burglary rates,  with dark shading indicating a higher rate. However,  this is much easier to interpret if you add a legend to the map.  For now,  just enter the following. As before,  more about how all of the commands work will be disclosed later in the course.
+The map shows the different burglary rates,  with dark shading indicating a higher rate. However, this is much easier to interpret if you add a legend to the map.  For now,  just enter the following code. As before,  more about how all of the commands work will be disclosed later in the course.
 
 ```{r,eval=FALSE}
 legend(x = 357000, y = 393000, legend = leglabs(breaks$brks), fill = my_colours, bty = "n", 
@@ -246,7 +246,7 @@ As a final useful technique you can copy and paste maps like this into Word docu
 
 ##Making a Map with Census Data
 
-You have seen how we can use R to make maps, and this often involves several lines of code. Using a script can help with this - they allow you to run a  series of commands in sequence, and be able to update one or two lines without having to retype all of the code. Create a new script (**File > New File > R Script**) and enter the code in there. Then you can select the lines you want to run by highlighting them, and then pressing `Ctrl+Enter`, or using the **Run** button. Use the script for all the R work you do from now on - it is much easier to correct mistakes and re-run than editing commands in the console. 
+You have seen how we can use R to make maps, and this often involves several lines of code. Using a script can help with this - they allow you to run a  series of commands in sequence, and be able to update one or two lines without having to retype all of the code. Create a new script (**File > New File > R Script**) and enter the code in there. Then you can select the lines you want to run by highlighting them, and then pressing `Ctrl+Enter`, or using the **Run** button. Use a script for all the R work you do from now on - it is much easier to correct mistakes and re-run than editing commands in the console. 
 
 Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the http://www.neighbourhood.statistics.gov.uk website.
 
@@ -257,7 +257,7 @@ Now we are going to use the same principle as we used before to create a map of 
 - Select the radio button for the 2011 Statistical Geography Hierarchy (North West). 
 - Press the “Next” button on the bottom right hand side of the page, and on the following page, download the Excel file by clicking on the “Microsoft Excel [*.xls]”. 
 
-This will be zipped, and once you have extracted it you will find it contains a variety of files. You are interested in the file named `“KS102EW_2596_2011SOA_NW.xls”`. Copy this to the working directory you defined earlier (probably M:/r work). 
+This will be zipped, and once you have extracted it you will find it contains a variety of files. You are interested in the file named `“KS102EW_2596_2011SOA_NW.xls”`. Copy this to the working directory you defined earlier (probably `M:/r work`). 
 
 Open this file up in Excel, and you can see there are a number of different tabs, covering different geographies. We are interested in the LSOA geographies, so select the LSOA tab and look at the data it contains. You can see that there are a series of lines at the top which do not contain the data or headings for the columns. As such, we need to read this in R, skipping the unwanted lines and setting the column headings as the row containing “LSOA_CODE”. 
 
@@ -266,7 +266,7 @@ R can't directly import Excel files, but it can import CSV files, so make sure y
 Add the command below to your script, and run it to read in the CSV file. The `skip = 5` bit tells R to ignore the first 5 rows, and the `header = TRUE` tells R to assign the next row as variable names. 
 
 ```{r, echo=FALSE, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/20151002-liv/KS102EW_2596_2011SOA_NW.csv","KS102EW_2596_2011SOA_NW.csv")
+download.file("http://www.nickbearman.me.uk/data/r/KS102EW_2596_2011SOA_NW.csv","KS102EW_2596_2011SOA_NW.csv")
 ```
 
 ```{r, comment=NA}
@@ -317,7 +317,7 @@ Now we have the attribute data (percentage of people in each age group in each L
 Extract the files, and move all the files starting with the name `england_lsoa_2011Polygon` to your working folder. There should be 5 files - make sure you move them all. Then read in the data:
 
 ```{r, echo=FALSE, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/20151002-liv/england_lsoa_2011Polygon.zip","england_lsoa_2011Polygon.zip")
+download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2011Polygon.zip","england_lsoa_2011Polygon.zip")
 unzip("england_lsoa_2011Polygon.zip")
 ```
 
@@ -347,7 +347,7 @@ head(LSOA@data[,1:6])
 
 ##Making Maps
 
-Now we have all the data setup, we can actually create the map. Run the code below, which is the same as the code we used earlier. Remember we can set up a script to run this code, like we did before. Ask for help if you are not sure. 
+Now we have all the data setup, we can actually create the map. Run the code below, which is the same as the code we used earlier. Remember to use a script to run this code, like we did before. Ask for help if you are not sure. 
 
 <!-- Code for students in R Studio -->
 ```{r, eval=F,comment=NA}
@@ -505,7 +505,7 @@ We need to read in the crime data, and because the crime data is just a CSV file
 #load library
 library(maptools)
 #Read the data into a variable called crimes
-crimes <- read.csv("http://nickbearman.me.uk/data/20151002-liv/police-uk-2014-04-merseyside-street.csv")
+crimes <- read.csv("http://nickbearman.me.uk/data/r/police-uk-2014-04-merseyside-street.csv")
 ```
 
 Now the CSV data has been read in, take a quick look at it using `head(crimes)`. You will see that the data consists of a number of columns, each with a heading. Two of these are called *Longitude* and *Latitude* – these are the column headers that give the coordinates of each incident in the data you have just downloaded. Another is headed *Crime.Type* and tells you which type of crime occurred. 
@@ -590,9 +590,25 @@ Now we have the data, we can join it on to the spatial data, and draw a map. All
   title('Count of Crimes in Liverpool')
 ```
 
-This just tells us how many crimes there were in each LSOA - nothing about the rate. Try calculating the rate of the crimes per 10,000 people and mapping these. You can calculate the rate by calculating (number of crimes / population)*10000. See the beginning of the handout for help on calculating values.
+###Calculating the Crime Rate (optional exercise)
 
-*The `rgeos` library contains a range of different spatial functions, including `gContains`, `gIntersects`, `gIntsersects` and many others. These can be used to perform a spatial join, but the exact function you will need to use depends on the type of data (point, line or polygon) and the type of join you are performing. The help files and a web search will provide useful information for this. There is also a function for buffers called `gBuffer`.*
+This just tells us how many crimes there were in each LSOA - nothing about the rate. Try calculating the rate of the crimes per 10,000 people and mapping these. You can calculate the rate by calculating (number of crimes / population)*10000. See the beginning of the handout for help on calculating values. Remember you will need to refer explicitally to the data frame (`LSOA@data`) each time you mention a column, i.e. `(LSOA@data$(fieldname) / LSOA@data$(fieldname)) * 10000`. 
+
+
+###How many top crime areas in each Westminister Constituancy? 
+
+Let's say we want to find out how many of the top 10 crime LSOAs in Liverpool are in each of the 5 Westminster Constituencies that cover Liverpool (the constituencies can be downloaded from [www.nickbearman.me.uk/data/r/liverpool-westminister-const.zip](www.nickbearman.me.uk/data/r/liverpool-westminister-const.zip)). To do this, we need to work out the ten LSOAs with the highest crime count (or rate), and then see how many of them fall in the different Westminster Constituencies of Liverpool. We can reorder the LSOA data frame to find the top 10, and then we can use `gOverlaps` to count how many are in each constituency. 
+
+```{r,message=FALSE,error=FALSE,eval=FALSE}
+#reorder the data frame
+  LSOA_reordered <- LSOA[order(LSOA@data$crime.count, decreasing = TRUE),]
+```
+
+Once the data are reordered, we can select out the top 10 using `LSOA_reordered[1:10,]`. `gContains(a,b)` will count the number of polygons in SpatialDataFrame `b` that are completly contained within SpatialDataframe `a` (i.e. have no bits sticking out). This is not the case for most of the LSOAs within the constituencies, so we need to use `gOverlaps` which counts both those that are completly within and those that overlap. 
+
+See if you can work out the code required. If you're having trouble, try plotting the constituencies over the LSOA to begin with. You can plot the top 10 by using `plot(LSOA_reordered[1:10,], col = "red", add = TRUE)`. *(The code is available, but try not to look at it until you really have to!).* 
+
+*The `rgeos` library contains a range of different spatial functions, including `gContains`, `gIntersects`, `gOverlaps`, `gRelate` and many others. These can be used to perform a spatial join, and other spatial analyses, but the exact function you will need to use depends on the type of data (point, line or polygon) and the type of join you are performing. The help files and a web search will provide useful information for this. There is also a function for buffers called `gBuffer`.*
 
 *Merging shapefiles is also possible, but can be complex, depending on exaclty what you want to merge. Vignettes (short examples of code) are common with R libaries, and show how a particualar function works. For example, see http://cran.r-project.org/web/packages/maptools/vignettes/combine_maptools.pdf on Combining Spatial Data.*
 
@@ -626,7 +642,7 @@ This will save the shapefile with a projection in your working directory. Again,
 
 In this section we will look at creating a 'heat-map' style map, using crime data for Liverpool.
 
-The next stage is to create the surface, based on the crime points. There are a number of different stages, which produce a number of different graphics. 
+The next stage is to create the surface, based on the crime points. There are a number of different stages, which produce a number of different graphics. There are quite a few lines of code here, with relativly few comments, but this can be quite common in code vignettes that come with packages. 
 
 <!-- version to run without producing maps -->
 ```{r, comment=NA,echo=FALSE,message=FALSE,warning=FALSE}
@@ -704,7 +720,7 @@ You could also add an outline for Merseyside. The `plot()` command with the `add
 
 ```{r, comment=NA}
 #download file
-download.file("http://www.nickbearman.me.uk/data/20151002-liv/merseyside_outline.zip",
+download.file("http://www.nickbearman.me.uk/data/r/merseyside_outline.zip",
               "merseyside_outline.zip")
 #unzip file
 unzip("merseyside_outline.zip")
@@ -712,9 +728,6 @@ unzip("merseyside_outline.zip")
 mersey.outline <- readShapeSpatial("merseyside_outline")
 ```
 
-*Clustering section based on https://github.com/Robinlovelace/Creating-maps-in-R/blob/*  
-*ca2b20ec30725d9e9ff731349fb02932140b4afe/vignettes/clusters.md*
-  
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
 
 
