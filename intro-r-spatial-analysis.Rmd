@@ -211,6 +211,12 @@ sthel.prices <- sthel
 sthel.prices@data <- merge(sthel@data,hp.data,by.x="SP_ID",by.y="BurglaryNumber", all.x=TRUE)
 ```
  
+And use the `head` function to check the data have been joined correctly. 
+
+```{r, eval=F,comment=NA}
+head(sthel.prices@data)
+```
+ 
 Now that we have joined the data together, we can draw a choropleth map of these house prices.  In later exercises more will be explained as to how this works, but for now the method will simply be demonstrated.  
 
 ```{r, eval = F, comment=NA}
@@ -229,7 +235,7 @@ plot(sthel.prices, col = my_colours[findInterval(var, breaks$brks, all.inside = 
      axes = FALSE, border = rgb(0.8,0.8,0.8))
 ```
 
-For now, just copy and paste this into R and hit return. Don't worry about trying to interpret it, we will look at this in more detail later.  Note that it is important to make sure the upper and lower case letters you type in are **exactly** the same as the ones above.  This is generally the case with R.  
+For now, just type this into R and hit return. Don't worry about trying to interpret it, we will look at this in more detail later.  Note that it is important to make sure the upper and lower case letters you type in are **exactly** the same as the ones above.  This is generally the case with R.  
 
 The map shows the different burglary rates,  with dark shading indicating a higher rate. However, this is much easier to interpret if you add a legend to the map.  For now,  just enter the following code. As before,  more about how all of the commands work will be disclosed later in the course.
 
@@ -270,7 +276,7 @@ download.file("http://www.nickbearman.me.uk/data/r/KS102EW_2596_2011SOA_NW.csv",
 ```
 
 ```{r, comment=NA}
-pop2011 <- read.csv('KS102EW_2596_2011SOA_NW.csv', header = TRUE, skip = 5)
+pop2011 <- read.csv("KS102EW_2596_2011SOA_NW.csv", header = TRUE, skip = 5)
 ```
 
 Then run `head` to see that the data has been read in correctly. *R will show all 45 variables, where as I've only shown the first 7 in the handout*. 
@@ -604,7 +610,7 @@ Let's say we want to find out how many of the top 10 crime LSOAs in Liverpool ar
   LSOA_reordered <- LSOA[order(LSOA@data$crime.count, decreasing = TRUE),]
 ```
 
-Once the data are reordered, we can select out the top 10 using `LSOA_reordered[1:10,]`. `gContains(a,b)` will count the number of polygons in SpatialDataFrame `b` that are completly contained within SpatialDataframe `a` (i.e. have no bits sticking out). This is not the case for most of the LSOAs within the constituencies, so we need to use `gOverlaps` which counts both those that are completly within and those that overlap. 
+Once the data are reordered, we can select out the top 10 using `LSOA_reordered[1:10,]`. The function `gContains(a,b)` will count the number of polygons in SpatialDataFrame `b` that are completly contained within SpatialDataframe `a` (i.e. have no bits sticking out). This is not the case for most of the LSOAs within the constituencies, so we need to use `gOverlaps` which counts both those that are completly within and those that overlap. 
 
 See if you can work out the code required. If you're having trouble, try plotting the constituencies over the LSOA to begin with. You can plot the top 10 by using `plot(LSOA_reordered[1:10,], col = "red", add = TRUE)`. *(The code is available, but try not to look at it until you really have to!).* 
 
