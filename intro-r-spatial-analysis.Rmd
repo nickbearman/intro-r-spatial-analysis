@@ -4,20 +4,18 @@ output: pdf_document
 author: "Nick Bearman"
 ---
 
-Learning Outcomes: | R Functions & Libraries:  
--------- | --------  
-Use R to read in CSV data (pg. 4) |  `read.csv()` (pg. 4)  
-Use R to read in spatial data (pg. 6) | `readShapeSpatial()` (pg. 6)  
-Know how to plot spatial data using R (pg. 6) | `plot()` (pg. 6)  
-Join spatial data to attribute data (pg. 7) | `merge()` (pg. 7)  
-Customize colour and classification methods (pg. 11)  | `classIntervals()` (pg. 11)  
-Understand how to use loops to make multiple maps (pg. 12) | `for(){}` (pg. 12)  
-Know how to reproject spatial data (pg. 14) | `spTransform()` (pg. 14)  
-Be able to perform point in polygon operations (pg. 15) | `gContains()` (pg. 15)  
-Know how to write shape files (pg. 17) | `writeOGR()` (pg. 17)  
-Know how create a 'heat-map' style map using point data (pg. 17) |  `spatstat` librar (pg. 17)  
-
-
+| Learning Outcomes:  | R Functions & Libraries: |
+| -- | -- |
+| Use R to read in CSV data (pg. 4) |  `read.csv()` (pg. 4)  | 
+| Use R to read in spatial data (pg. 6) | `readShapeSpatial()` (pg. 6)  | 
+| Know how to plot spatial data using R (pg. 6) | `plot()` (pg. 6)  | 
+| Customize colour & classifications (pg. 11)  | `classIntervals()` (pg. 11)  | 
+| Understand how to use loops for multiple maps (pg. 12) | `for(){}` (pg. 12)  | 
+| Know how to reproject spatial data (pg. 14) | `spTransform()` (pg. 14)  | 
+| Be able to perform point in polygon (pg. 15) | `gContains()` (pg. 15)  | 
+| Know how to write shape files (pg. 17) | `writeOGR()` (pg. 17)  | 
+| Know how create a 'heat-map' (pg. 17) |  `spatstat` librar (pg. 17)  | 
+<!-- Tables have a max line length, if it is too long, the table gets shrunk -->
 
 ## R Basics
 
@@ -159,7 +157,7 @@ Geographical Information
 
 Until now,  although this is geographical data, no maps have been drawn. Firstly, you need to load some new *packages* into R - a package is an extra set of functionality that extends what R is capable of doing.  Here, one of the new package is called `maptools` and it extends R by allowing it to draw maps, and handle geographical information.  The packages are already installed, so all you need to do is to let R know you want to use the packages:
 
-```{r,message=FALSE,display=FALSE}
+```{r,message=FALSE,display=FALSE, warning = FALSE}
 library(maptools)
 library(classInt)
 library(RColorBrewer)
@@ -523,8 +521,8 @@ At the moment, the data is just in a data frame object - not any kind of spatial
 latlong <- "+init=epsg:4326" #WGS1984 / latitude & longitude
 bng <- "+init=epsg:27700" #BNG, British National Grid
 #create crime points as spatial data, they are currently in latlong
-coords <- cbind(Longitude = as.numeric(as.character(crimes$Longitude)), Latitude = 
-                  as.numeric(as.character(crimes$Latitude)))
+coords <- cbind(Longitude = crimes$Longitude, Latitude = 
+                  crimes$Latitude)
 crime.pts <- SpatialPointsDataFrame(coords, crimes[, -(5:6)], 
                                     proj4string = CRS(latlong))
 ```
@@ -651,7 +649,7 @@ In this section we will look at creating a 'heat-map' style map, using crime dat
 The next stage is to create the surface, based on the crime points. There are a number of different stages, which produce a number of different graphics. There are quite a few lines of code here, with relativly few comments, but this can be quite common in code vignettes that come with packages. 
 
 <!-- version to run without producing maps -->
-```{r, comment=NA,echo=FALSE,message=FALSE,warning=FALSE}
+```{r, comment=NA,echo=FALSE,message=FALSE,warning=FALSE,error=FALSE}
 #libraries
 library(spatstat)
 library(sp)
