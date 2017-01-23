@@ -732,6 +732,8 @@ unzip("merseyside_outline.zip")
 mersey.outline <- readShapeSpatial("merseyside_outline")
 ```
 
+This practical was written using RStudio 1.0.136. 
+
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
 
 
