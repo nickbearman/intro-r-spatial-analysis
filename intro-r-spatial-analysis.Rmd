@@ -6,15 +6,15 @@ author: "Nick Bearman"
 
 | Learning Outcomes:  | R Functions & Libraries: |
 | -- | -- |
-| Use R to read in CSV data (pg. 4) |  `read.csv()` (pg. 4)  | 
-| Use R to read in spatial data (pg. 6) | `readShapeSpatial()` (pg. 6)  | 
-| Know how to plot spatial data using R (pg. 6) | `plot()` (pg. 6)  | 
-| Customize colour & classifications (pg. 11)  | `classIntervals()` (pg. 11)  | 
-| Understand how to use loops for multiple maps (pg. 12) | `for(){}` (pg. 12)  | 
-| Know how to reproject spatial data (pg. 14) | `spTransform()` (pg. 14)  | 
-| Be able to perform point in polygon (pg. 15) | `gContains()` (pg. 15)  | 
-| Know how to write shape files (pg. 17) | `writeOGR()` (pg. 17)  | 
-| Know how create a 'heat-map' (pg. 17) |  `spatstat` librar (pg. 17)  | 
+| Use R to read in CSV data |  `read.csv()` (pg. 4)  | 
+| Use R to read in spatial data | `readShapeSpatial()` (pg. 6)  | 
+| Know how to plot spatial data using R | `plot()` (pg. 6)  | 
+| Customize colour & classifications  | `classIntervals()` (pg. 11)  | 
+| Understand how to use loops for multiple maps  | `for(){}` (pg. 12)  | 
+| Know how to reproject spatial data | `spTransform()` (pg. 14)  | 
+| Be able to perform point in polygon  | `gContains()` (pg. 15)  | 
+| Know how to write shape files | `writeOGR()` (pg. 17)  | 
+| Know how create a 'heat-map'  |  `spatstat` librar (pg. 17)  | 
 <!-- Tables have a max line length, if it is too long, the table gets shrunk -->
 
 ## R Basics
