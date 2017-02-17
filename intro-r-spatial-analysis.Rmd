@@ -145,7 +145,7 @@ hp.data$counciltax <- NULL
 head(hp.data)
 
 #rename a column
-colnames(hp.data)[1] <- "BurglaryNumber"
+colnames(hp.data)[1] <- "IDNumber"
 #see what has happened
 head(hp.data)
 ```
@@ -206,12 +206,12 @@ You can see there is a lot of information there, but the useful bit is the `SP_I
 
 ```{r, comment=NA}
 sthel.prices <- sthel
-sthel.prices@data <- merge(sthel@data,hp.data,by.x="SP_ID",by.y="BurglaryNumber", all.x=TRUE)
+sthel.prices@data <- merge(sthel@data,hp.data,by.x="SP_ID",by.y="IDNumber", all.x=TRUE)
 ```
  
 And use the `head` function to check the data have been joined correctly. 
 
-```{r, eval=F,comment=NA}
+```{r,comment=NA}
 head(sthel.prices@data)
 ```
  
@@ -599,9 +599,9 @@ Now we have the data, we can join it on to the spatial data, and draw a map. All
 This just tells us how many crimes there were in each LSOA - nothing about the rate. Try calculating the rate of the crimes per 10,000 people and mapping these. You can calculate the rate by calculating (number of crimes / population)*10000. See the beginning of the handout for help on calculating values. Remember you will need to refer explicitally to the data frame (`LSOA@data`) each time you mention a column, i.e. `(LSOA@data$(fieldname) / LSOA@data$(fieldname)) * 10000`. 
 
 
-###How many top crime areas in each Westminister Constituancy? 
+###How many top crime areas in each Westminster Constituancy? 
 
-Let's say we want to find out how many of the top 10 crime LSOAs in Liverpool are in each of the 5 Westminster Constituencies that cover Liverpool (the constituencies can be downloaded from [www.nickbearman.me.uk/data/r/liverpool-westminister-const.zip](www.nickbearman.me.uk/data/r/liverpool-westminister-const.zip)). To do this, we need to work out the ten LSOAs with the highest crime count (or rate), and then see how many of them fall in the different Westminster Constituencies of Liverpool. We can reorder the LSOA data frame to find the top 10, and then we can use `gOverlaps` to count how many are in each constituency. 
+Let's say we want to find out how many of the top 10 crime LSOAs in Liverpool are in each of the 5 Westminster Constituencies that cover Liverpool (the constituencies can be downloaded from [www.nickbearman.me.uk/data/r/liverpool-westminster-const.zip](www.nickbearman.me.uk/data/r/liverpool-westminster-const.zip)). To do this, we need to work out the ten LSOAs with the highest crime count (or rate), and then see how many of them fall in the different Westminster Constituencies of Liverpool. We can reorder the LSOA data frame to find the top 10, and then we can use `gOverlaps` to count how many are in each constituency. 
 
 ```{r,message=FALSE,error=FALSE,eval=FALSE}
 #reorder the data frame
