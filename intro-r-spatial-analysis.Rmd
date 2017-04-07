@@ -7,7 +7,7 @@ author: "Nick Bearman"
 | Learning Outcomes:  | R Functions & Libraries: |
 | -- | -- |
 | Use R to read in CSV data |  `read.csv()` (pg. 4)  | 
-| Use R to read in spatial data | `readShapeSpatial()` (pg. 6)  | 
+| Use R to read in spatial data | `readOGR()` (pg. 6)  | 
 | Know how to plot spatial data using R | `plot()` (pg. 6)  | 
 | Customize colour & classifications  | `classIntervals()` (pg. 11)  | 
 | Understand how to use loops for multiple maps  | `for(){}` (pg. 12)  | 
@@ -159,6 +159,7 @@ Until now,  although this is geographical data, no maps have been drawn. Firstly
 
 ```{r,message=FALSE,display=FALSE, warning = FALSE}
 library(maptools)
+library(rgdal)
 library(classInt)
 library(RColorBrewer)
 ```
@@ -181,10 +182,10 @@ unzip("sthel.zip")
 The first function actually downloads the zip file into your working folder,  the second one unzips it,  creating the shapefile set. All of the shapefile set files begin with `sthel` but then have different endings,  e.g. `sthel.shp`, `sthel.dbx` and `sthel.shx`.
 Now, we can read these into R. 
 
-```{r, comment=NA}
-sthel <- readShapeSpatial("sthel")
+```{r, comment=NA, message=FALSE, results='hide'}
+sthel <- readOGR(".","sthel")
 ```
-The `readShapeSpatial` function does this,  and stores them into another type of object called a `SpatialPolygonsDataFrame` object.  These polygons are areas or regions,  such as the neighbourhoods (LSOA) in St. Helens.  You can use the `plot` function to draw the polygons (i.e. the map of the LSOA).
+The `readOGR` function does this,  and stores them into another type of object called a `SpatialPolygonsDataFrame` object.  These polygons are areas or regions,  such as the neighbourhoods (LSOA) in St. Helens.  You can use the `plot` function to draw the polygons (i.e. the map of the LSOA).
 
 ```{r, comment=NA}
 plot(sthel)
@@ -325,9 +326,9 @@ download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2011.zip","engla
 unzip("england_lsoa_2011.zip")
 ```
 
-```{r, comment=NA}
+```{r, comment=NA, results='hide'}
 #read in shapefile
-LSOA <- readShapeSpatial("england_lsoa_2011")
+LSOA <- readOGR(".", "england_lsoa_2011")
 ```
 
 Like earlier, we can use the `plot` command to preview the data. Try `plot(LSOA)`. We can also apply the same technique with `head()` to the attribute table. Remember we need to use `head(LSOA@data)` because this is a spatial data frame. 
@@ -618,29 +619,23 @@ See if you can work out the code required. If you're having trouble, try plottin
 
 ## Writing Shape Files
 
-We read shape files into R using `readShapeSpatial` and if you read the help file for this function (type `?readShapeSpatial`) you can see it talks about a `writeSpatialShape` function, which we can use to export shape files. Note the inconsistency in the function names - readShapeSpatial, and writeSpatialShape - R is full of these types of inconsistencies, so it's good to keep your eyes open for them. 
+We read shape files into R using `readOGR` and if you read the help file for this function (type `?readOGR`) you can see it talks about a `writeOGR` function, which we can use to export shape files. 
 
 Having created our `crime.pts` SpatialPointsDataFrame, we can save this as a shapefile. This is a useful way of exporting data for use in ArcGIS, QGIS or other GIS programs. The code we need is:
 
-```{r,message=FALSE,error=FALSE,warning=FALSE}
+```{r,eval=FALSE,message=FALSE,error=FALSE,warning=FALSE}
 #write out crime.pts as a shapefile
-writeSpatialShape(crime.pts, "crime")
+writeOGR(obj=crime.pts, dsn=".", layer="crime", driver="ESRI Shapefile")
+
 ```
 
-This code should create a new shapefile in your working directory called `crime`. Note that there is no file called `crime.prj` - this is is projection element of the shapefile, which is not included. This is bad practice, and as we have seen earlier having shapefiles without a projection is not a good idea. You can see this if you load the shapefile into QGIS or ArcGIS - it will ask for the projection; or if you load the shapefile in to R and look at the `proj4string` slot. 
+```{r,echo=FALSE,message=FALSE,error=FALSE,warning=FALSE}
+#alternate code to above to overwrite shapefile layer, as specified at https://www.rdocumentation.org/packages/rgdal/versions/1.2-5/topics/writeOGR using overwrite_layer = TRUE, check_exists = TRUE
+writeOGR(obj=crime.pts, dsn=".", layer="crime", driver="ESRI Shapefile", overwrite_layer = TRUE, check_exists = TRUE)
 
-However, there is a different way of saving data as shape files - we can use a different function, called `writeOGR` which is provided in the `rgdal` library. This situation is common in R, where different functions in different libraries perform the same functions, although with subtle differences. Try the code below:
-
-```{r,message=FALSE,error=FALSE,warning=FALSE,eval=FALSE}
-#load library (if not loaded already)
-library(rgdal)
-#write shape file
-writeOGR(crime.pts, "crime2.shp", crimes, driver = "ESRI Shapefile")
 ```
 
-This will save the shapefile with a projection in your working directory. Again, you can check this by re-reading it into R. 
-
-The `writeOGR()` function uses the OGR drivers to load and save many different formats of spatial data. The help has some information (see also http://www.inside-r.org/packages/cran/rgdal/docs/writeOGR), and you can use `ogrDrivers()` to get a list of the different formats this covers (see also http://www.gdal.org/ogr_formats.html). An overview of the different options for reading and writing shapefiles in R at https://www.nceas.ucsb.edu/scicomp/usecases/ReadWriteESRIShapeFiles.
+This code should create a new shapefile in your working directory called `crime`. The `writeOGR()` function uses the OGR drivers to load and save many different formats of spatial data. The help has some information (see also http://www.inside-r.org/packages/cran/rgdal/docs/writeOGR), and you can use `ogrDrivers()` to get a list of the different formats this covers (see also http://www.gdal.org/ogr_formats.html). An overview of the different options for reading and writing shapefiles in R at https://www.nceas.ucsb.edu/scicomp/usecases/ReadWriteESRIShapeFiles.
 
 ##'Heat-map' style map (optional exercise)
 
@@ -722,17 +717,17 @@ You can see from the code that we are using data from April 2014 for the police 
 
 You could also add an outline for Merseyside. The `plot()` command with the `add = TRUE` parameter will add the data to the existing plot. Try exploring the help, and looking at the previous code for details. 
 
-```{r, comment=NA}
+```{r, comment=NA, results='hide'}
 #download file
 download.file("http://www.nickbearman.me.uk/data/r/merseyside_outline.zip",
               "merseyside_outline.zip")
 #unzip file
 unzip("merseyside_outline.zip")
 #read in shapefile
-mersey.outline <- readShapeSpatial("merseyside_outline")
+mersey.outline <- readOGR(".","merseyside_outline")
 ```
 
-This practical was written using RStudio 1.0.136. 
+This practical was written using R 3.3.3 (2017-03-06) and RStudio 1.0.136. 
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
 
