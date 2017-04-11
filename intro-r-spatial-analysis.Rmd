@@ -37,7 +37,7 @@ We won't spend too much time on the very basics of using R - if you want to find
 
 We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio website"), which works on top of R and provides a good user interface. I'll talk a little bit about it in the presentation, but the key areas of the window are these:
 
-![Screenshot of R Studio](materials/images/r-studio-labelled.png)
+![Screenshot of RStudio](materials/images/rstudio-labelled.png)
 
 Open up R Studio (click **Start > All Programs > RStudio > RStudio** or double-click the icon on the desktop). 
 
@@ -190,7 +190,6 @@ The `readOGR` function does this,  and stores them into another type of object c
 ```{r, comment=NA}
 plot(sthel)
 ```
-
 We can also look at the data for each LSOA (in R this is known as the `data` slot, and is the same as the attribute table in programs like ArcGIS, QGIS or MapInfo.)
 
 ```{r, eval=F,comment=NA}
@@ -262,6 +261,8 @@ Now we are going to use the same principle as we used before to create a map of 
 - Select the radio button for the 2011 Statistical Geography Hierarchy (North West). 
 - Press the “Next” button on the bottom right hand side of the page, and on the following page, download the Excel file by clicking on the “Microsoft Excel [*.xls]”. 
 
+<!-- Last checked 20170411 -->
+
 This will be zipped, and once you have extracted it you will find it contains a variety of files. You are interested in the file named `“KS102EW_2596_2011SOA_NW.xls”`. Copy this to the working directory you defined earlier (probably `M:/r work`). 
 
 Open this file up in Excel, and you can see there are a number of different tabs, covering different geographies. We are interested in the LSOA geographies, so select the LSOA tab and look at the data it contains. You can see that there are a series of lines at the top which do not contain the data or headings for the columns. As such, we need to read this in R, skipping the unwanted lines and setting the column headings as the row containing “LSOA_CODE”. 
@@ -318,6 +319,8 @@ Now we have the attribute data (percentage of people in each age group in each L
 - Select 'English Lower Layer Super Output Areas, 2011' and click 'List Areas'. 
 - Select 'Liverpool' from the list and click 'Extract Boundary Data'. 
 - Click 'Go to Bookmark Facility' and you should be able to download the data after a 10 to 30 second wait. 
+
+<!-- Last checked 20170411 -->
 
 Extract the files, and move all the files starting with the name `england_lsoa_2011Polygon` to your working folder. Then read in the data:
 
@@ -498,6 +501,25 @@ for (i in 1:length(mapvariables)) {
 }
 ```
 
+##Creating a Tidy Map Title (optional exercise)
+
+As you may have spotted, the map title isn't great. Just using the fieldname does give us the information we require, but it doesn't make a good looking map. 
+
+We can construct the title in R, based on the field name. Using a function called `substr()` we can extract the years we need from the field name, and print a more sensible title. 
+
+We want a title like **Percentage population Aged 0 to 4** with the numbers replaced according to the current variable. We can use the `substr()` function for this. For example:
+
+```{r, comment=NA}
+#setup example text string which is the column name
+  textstring <- "Age0to4pc"
+#use substr to extract the 4th and 7th characters
+  firstyear <- substr(textstring, 4, 4)
+  lastyear <- substr(textstring, 7, 7)
+#create title
+  paste0("Percentage population Aged ", firstyear, " to ", lastyear)
+```
+Try incorporating this into your map script. There is a complete version (script-multiple-maps-title.R) but try not to look at it straight away!
+
 ##Clustering of Crime Points 
 
 In this section we will look at a couple of different types of GIS analysis, using some crime data for Liverpool. These are just a couple of the analysis techniques that are available, and the aim is to teach you the techniques you need to know. Then you can apply these techniques to other data sets and other analytical methods in R.
@@ -510,7 +532,7 @@ We need to read in the crime data, and because the crime data is just a CSV file
 #load library
 library(maptools)
 #Read the data into a variable called crimes
-crimes <- read.csv("http://nickbearman.me.uk/data/r/police-uk-2014-04-merseyside-street.csv")
+crimes <- read.csv("http://nickbearman.me.uk/data/r/police-uk-2017-01-merseyside-street.csv")
 ```
 
 Now the CSV data has been read in, take a quick look at it using `head(crimes)`. You will see that the data consists of a number of columns, each with a heading. Two of these are called *Longitude* and *Latitude* – these are the column headers that give the coordinates of each incident in the data you have just downloaded. Another is headed *Crime.Type* and tells you which type of crime occurred. 
