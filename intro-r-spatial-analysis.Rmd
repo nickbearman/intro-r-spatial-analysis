@@ -503,7 +503,7 @@ for (i in 1:length(mapvariables)) {
 
 ##Creating a Tidy Map Title (optional exercise)
 
-As you may have spotted, the map title isn't great. Just using the fieldname does give us the information we require, but it doesn't make a good looking map. 
+As you may have spotted, the map title isn't great. Just using the field name does give us the information we require, but it doesn't make a good looking map. 
 
 We can construct the title in R, based on the field name. Using a function called `substr()` we can extract the years we need from the field name, and print a more sensible title. 
 
@@ -519,6 +519,8 @@ We want a title like **Percentage population Aged 0 to 4** with the numbers repl
   paste0("Percentage population Aged ", firstyear, " to ", lastyear)
 ```
 Try incorporating this into your map script. There is a complete version (script-multiple-maps-title.R) but try not to look at it straight away!
+
+An additional point - what happens when the years are two digits? How could we alter the code (or field names) to take this into account?
 
 ##Clustering of Crime Points 
 
