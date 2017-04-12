@@ -1,0 +1,35 @@
+Introduction to Using R as a GIS course on Tue 8th Nov 2016
+
+Hi,
+
+Thank you for signing up to attend the Introduction to Using R as a GIS course on Tue 8th Nov. This email includes details of the times and locations of the course, as well as instructions for entering the Sydney Jones Library. If you have any questions, please contact me (nick@clearmapping.co.uk) or Management Services (soesms@liverpool.ac.uk).
+
+Registration will take place from 9:30am in the Staff Room on the second floor, Sydney Jones Library, University of Liverpool. Details of how to get here are online at: http://www.liv.ac.uk/maps/visiting/, and a campus map at http://www.liv.ac.uk/files/docs/maps/liverpool-university-campus-map.pdf (Sydney Jones Library is building number 423 in grid F3 on the map). When you enter the Library, go up to the second floor, and follow the signs. 
+
+The session will start officially at 9:45am. If you are going to be later than this, please let me know. (A full schedule is included at the end of this email). In the afternoon, there is an opportunity to spend some time working on your own data. If you have any data you are working on, please send me a sample (so I know what type of data to expect) and bring it along and I can have some time with you on a one-to-one basis. 
+
+If you are not from the University of Liverpool, please bring photo ID to access the library. Reception will have a list of participants, and they will be able to issue you with a day pass. Please also have proof of student or staff status to show me when I register you (campus card or similar is fine). 
+
+I would like to share the name, email address and organisation of everyone attending the course with the rest of the participants. The course is a great networking opportunity, and I would like you all to be able to make the most of it. If you do not wish your name and email to be shared in this way, please let me know. I would also like to take some photos during the day (for publicity) so if you do not wish to be in the photos, please let me know (via email or on the day). 
+
+If you have any learning requirements or dietary preferences you have not already mentioned, please let myself or Management Services know ASAP. 
+
+If you have any problems on the day, or can't find the room, my mobile number is 07717745715. 
+
+I'm looking forward to seeing you on Tuesday.
+
+Best wishes,
+Nick.
+
+Schedule:
+•       9:30am – 9:45am – Registration & Refreshments
+•       9:45am – 10:15am – What is GIS & R?
+•       10:15am – 11:00am – Practical 1 Intro to GIS & R 
+•       11:00am - 11:30am – Classification
+•       11:45am - 12:30pm – Practical 1 Intro to GIS & R ctd.
+•       12:30pm – 1:30pm – Lunch
+•       1:30pm – 1:45pm – Recap and Making Maps
+•       1:45pm - 3:00pm – Practical 2 Analysis
+•       3:00pm - 3:15pm – Coffee
+•       3:15pm - 4pm/4:30pm – Practical 2 Bring your own data
+

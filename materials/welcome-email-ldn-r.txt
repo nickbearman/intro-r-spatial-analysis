@@ -1,0 +1,34 @@
+Introduction to Spatial Data & Using R as a GIS on Tues 14th Feb 2017
+
+Hi,
+
+Thank you for signing up to attend the Introduction to Spatial Data & Using R as a GIS course on Tues 14th Feb. This email includes details of the times and locations of the course. If you have any questions, please contact me (nick@clearmapping.co.uk) or Christina (adrce@soton.ac.uk).
+
+Registration will take place from 10am in the Room 110A, Pearson Building, UCL, Gower Street, London WC1E 6BT. Details of how to get here are online at: http://www.ucl.ac.uk/maps/pearson-lt. The lunch and other refreshments will be in room 116, and I will explain where this is on the day. 
+
+The session will start officially at 10:00am. If you are going to be later than this, please let me know. (A full schedule is included at the end of this email). In the afternoon, there is an opportunity to spend some time working on your own data. If you have any data you are working on, please send me a sample (so I know what type of data to expect) and bring it along and I can have some time with you on a one-to-one basis. 
+
+I would like to share the name, email address and organisation of everyone attending the course with the rest of the participants. The course is a great networking opportunity, and I would like you all to be able to make the most of it. If you do not wish your name and email to be shared in this way, please let me know. I would also like to take some photos during the day (for publicity) so if you do not wish to be in the photos, please let me know (via email or on the day). 
+
+If you have any learning requirements or dietary preferences you have not already mentioned, please let myself or Christina know ASAP. 
+
+If you have any problems on the day, or can't find the room, my mobile number is 07717745715.
+
+For anyone who is attending both courses, or is around on Tuesday evening, I am open to organising a meal. If you're interested, please let me know so I know numbers. Also, if you have any suggestions of places to go, do let me know! 
+
+I'm looking forward to seeing you on Tuesday 14th February.
+
+Best wishes,
+Nick.
+
+Schedule:
+•	10:00am – 10:15am – Registration & Refreshments
+•	10:15am – 11:00am – What is GIS & R?
+•	11:00am – 11:30am – Practical 1 Intro to GIS & R 
+•	11:30am – 12:00pm – Classification
+•	12:00pm – 12:30pm – Practical 1 Intro to GIS & R ctd.
+•	12:30pm – 1:30pm – Lunch
+•	1:30pm – 1:45pm – Recap and Making Maps
+•	1:45pm – 3:00pm – Practical 2 Analysis
+•	3:00pm – 3:15pm – Coffee
+•	3:15pm – 4pm/4:30pm – Practical 2 Bring your own data
