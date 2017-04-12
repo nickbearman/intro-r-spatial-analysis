@@ -1,7 +1,7 @@
 ---
 title: "Introduction to using R for Spatial Analysis"
 output: pdf_document
-author: "Nick Bearman"
+author: "Nick Bearman - Clear Mapping Co"
 ---
 
 | Learning Outcomes:  | R Functions & Libraries: |
@@ -423,13 +423,13 @@ abline(v = breaks$brks, col = "red")
 It is also good practice to add a scale bar and a north arrow to each of the maps you produce. Running this code will add these to the map:
 
 ```{r,eval=FALSE}
-#Add North Arrow
+#add north arrow
 SpatialPolygonsRescale(layout.north.arrow(2), offset= c(336030,382006), scale = 2000, 
                        plot.grid=F)
-#Add Scale Bar
+#add scale bar
 SpatialPolygonsRescale(layout.scale.bar(), offset= c(328030,381506), scale= 5000, 
                        fill= c("white", "black"), plot.grid= F)
-#Add text to scale bar 
+#add text to scale bar 
 text(328030,381006,"0km", cex=.6)
 text(328030 + 2500,381006,"2.5km", cex=.6)
 text(328030 + 5000,381006,"5km", cex=.6)
@@ -444,6 +444,7 @@ It might also be good to have a 'N' under the North arrow to explain what it mea
 One way of saving the map is using the Export option in the plot window. We can also do this using code, by adding two lines: `pdf(file="image.pdf")` before the map code and `dev.off()` after the map code. Try it now, and R will save the map in your working directory. 
 
 ```{r, comment=NA, eval=FALSE}
+#output to PDF
 pdf(file="image.pdf")
   var <- LSOA@data[,"Age0to4pc"]
   breaks <- classIntervals(var, n = 6, style = "fisher")
@@ -452,16 +453,17 @@ pdf(file="image.pdf")
        axes = FALSE, border = rgb(0.8,0.8,0.8))
   legend(x = 330130, y = 385506.5, legend = leglabs(breaks$brks), fill = my_colours, bty = "n")
   title('Percentage of Population ages 0 to 4 in Liverpool')
-  #Add North Arrow
+  #add north arrow
   SpatialPolygonsRescale(layout.north.arrow(2), offset= c(336030,382006), scale = 2000, 
                          plot.grid=F)
-  #Add Scale Bar
+  #add scale bar
   SpatialPolygonsRescale(layout.scale.bar(), offset= c(328030,381506), scale= 5000, 
                        fill= c("white", "black"), plot.grid= F)
-  #Add text to scale bar 
+  #add text to scale bar 
   text(331030,379206,"0km", cex=.6)
   text(331030 + 2500,379206,"2.5km", cex=.6)
   text(331030 + 5000,379206,"5km", cex=.6)
+#stop PDF outout
 dev.off()
 ```
 
@@ -474,6 +476,7 @@ mapvariables <- c(13,15,17)
 for (i in 1:length(mapvariables)) {
   #setup file name
   filename <- paste0("map",colnames(LSOA@data)[mapvariables[i]],".pdf")
+  #output to PDF
   pdf(file=filename)
   #create map
   var <- LSOA@data[,mapvariables[i]]
@@ -490,13 +493,14 @@ for (i in 1:length(mapvariables)) {
   #Add North Arrow
   SpatialPolygonsRescale(layout.north.arrow(2), offset= c(336030,382006), scale = 2000, 
                          plot.grid=F)
-  #Add Scale Bar
+  #add Scale Bar
   SpatialPolygonsRescale(layout.scale.bar(), offset= c(328030,381506), scale= 5000, 
                        fill= c("white", "black"), plot.grid= F)
-  #Add text to scale bar 
+  #add text to scale bar 
   text(331030,379206,"0km", cex=.6)
   text(331030 + 2500,379206,"2.5km", cex=.6)
   text(331030 + 5000,379206,"5km", cex=.6)
+  #stop PDF output
   dev.off()
 }
 ```
@@ -509,7 +513,7 @@ We can construct the title in R, based on the field name. Using a function calle
 
 We want a title like **Percentage population Aged 0 to 4** with the numbers replaced according to the current variable. We can use the `substr()` function for this. For example:
 
-```{r, comment=NA}
+```{r, comment=NA, eval = FALSE}
 #setup example text string which is the column name
   textstring <- "Age0to4pc"
 #use substr to extract the 4th and 7th characters
@@ -619,12 +623,12 @@ Now we have the data, we can join it on to the spatial data, and draw a map. All
   title('Count of Crimes in Liverpool')
 ```
 
-###Calculating the Crime Rate (optional exercise)
+## Calculating the Crime Rate (optional exercise)
 
 This just tells us how many crimes there were in each LSOA - nothing about the rate. Try calculating the rate of the crimes per 10,000 people and mapping these. You can calculate the rate by calculating (number of crimes / population)*10000. See the beginning of the handout for help on calculating values. Remember you will need to refer explicitally to the data frame (`LSOA@data`) each time you mention a column, i.e. `(LSOA@data$(fieldname) / LSOA@data$(fieldname)) * 10000`. 
 
 
-###How many top crime areas in each Westminster Constituancy? 
+## How many top crime areas in each Westminster Constituancy? 
 
 Let's say we want to find out how many of the top 10 crime LSOAs in Liverpool are in each of the 5 Westminster Constituencies that cover Liverpool (the constituencies can be downloaded from [www.nickbearman.me.uk/data/r/liverpool-westminster-const.zip](www.nickbearman.me.uk/data/r/liverpool-westminster-const.zip)). To do this, we need to work out the ten LSOAs with the highest crime count (or rate), and then see how many of them fall in the different Westminster Constituencies of Liverpool. We can reorder the LSOA data frame to find the top 10, and then we can use `gOverlaps` to count how many are in each constituency. 
 
@@ -751,7 +755,7 @@ unzip("merseyside_outline.zip")
 mersey.outline <- readOGR(".","merseyside_outline")
 ```
 
-This practical was written using R 3.3.3 (2017-03-06) and RStudio 1.0.136. 
+This practical was written using R 3.3.3 (2017-03-06) and RStudio 1.0.136 by Nick Bearman (nick@clearmapping.co.uk). 
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
 
