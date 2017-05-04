@@ -254,7 +254,8 @@ You have seen how we can use R to make maps, and this often involves several lin
 
 Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the http://www.neighbourhood.statistics.gov.uk website.
 
-- Navigate to the site and select the “Topics” link on the bottom left hand side of the page. 
+- Navigate to http://www.neighbourhood.statistics.gov.uk. 
+- Select the “Topics” link on the bottom left hand side of the page. 
 - Click “Census” -> “2011 Census: Key Statistics”. 
 - Then click the radio button that corresponds to “Age Structure, 2011 (KS102EW)” and press the “Next” button at the bottom right hand side of the page.
 - Then click the related radio button for “Download” and press the “Next” button on the bottom right hand side of the page. 
@@ -343,13 +344,13 @@ The next stage is to join the attribute data to the spatial data, like we did in
 LSOA@data <- merge(pop2011,LSOA@data,by.x="LSOA_CODE",by.y="code")
 ```
 
-And use the `head` command to check it has joined correctly...
+And use the `head` command to check it has joined correctly. Your data should contain the LSOA_CODE in the first column, and correctly labelled Age data in the 11th to 45th columns. 
 
 ```{r, eval=F}
 head(LSOA@data)
 ```
 
-```{r, echo=F,comment=NA}
+```{r, eval=F,echo=F,comment=NA}
 head(LSOA@data[,1:6])
 ```
 
