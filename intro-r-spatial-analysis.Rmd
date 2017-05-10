@@ -295,11 +295,11 @@ You can see that some of the variable names are missing. The names were in the E
 We can rename the columns, so that when we run the `head` command, R lists the correct names. This will also help us refer to the columns later on. Run the code below, which creates a new variable which contains the names (`newcolnames`) and then applies it to the `pop2011` data frame. Any column name ending in a 'c' is a count (of people in that age group in that LSOA) and any column ending in 'pc' is a percentage. *We've have to use 'pc' because R doesn't like symbols (e.g. %) in field names*.
 
 It's also worth noting here that any line of code that starts with a `#` is a comment - i.e. R will ignore that line and move onto the next. I've included them here so you can see what is going on, but you don't need to type them in.  
-
+  
 ```{r, comment=NA}
 #create a new variable which contains the new variable names
-newcolnames <- c("AllUsualResidentsc","Age0to4c","Age0to4pc","Age5to7c","Age5to7pc",
-"Age8to9c","Age8to9pc","Age10to14c","Age10to14pc","Age15c","Age15pc","Age16to17c",
+newcolnames <- c("AllUsualResidentsc","Age00to04c","Age00to04pc","Age05to07c","Age05to07pc",
+"Age08to09c","Age08to09pc","Age10to14c","Age10to14pc","Age15c","Age15pc","Age16to17c",
 "Age16to17pc","Age18to19c","Age18to19pc","Age20to24c","Age20to24pc","Age25to29c",
 "Age25to29pc","Age30to44c","Age30to44pc","Age45to59c","Age45to59pc","Age60to64c",
 "Age60to64pc","Age65to74c","Age65to74pc","Age75to84c","Age75to84pc","Age85to89c",
@@ -516,10 +516,10 @@ We want a title like **Percentage population Aged 0 to 4** with the numbers repl
 
 ```{r, comment=NA, eval = FALSE}
 #setup example text string which is the column name
-  textstring <- "Age0to4pc"
-#use substr to extract the 4th and 7th characters
-  firstyear <- substr(textstring, 4, 4)
-  lastyear <- substr(textstring, 7, 7)
+  textstring <- "Age00to04pc"
+#use substr to extract the 4th to 5th and 8th to 9th characters
+  firstyear <- substr(textstring, 4, 5)
+  lastyear <- substr(textstring, 8, 9)
 #create title
   paste0("Percentage population Aged ", firstyear, " to ", lastyear)
 ```

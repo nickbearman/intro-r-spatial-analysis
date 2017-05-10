@@ -8,12 +8,12 @@
 #read in csv file to pop2011
   pop2011 <- read.csv("KS102EW_2596_2011SOA_NW.csv", header = TRUE, skip = 5)
 #create a new variable which contains the new variable names
-  newcolnames <- c("AllUsualResidentsc","Age0to4c","Age0to4pc","Age5to7c","Age5to7pc",
-                 "Age8to9c","Age8to9pc","Age10to14c","Age10to14pc","Age15c","Age15pc","Age16to17c",
-                 "Age16to17pc","Age18to19c","Age18to19pc","Age20to24c","Age20to24pc","Age25to29c",
-                 "Age25to29pc","Age30to44c","Age30to44pc","Age45to59c","Age45to59pc","Age60to64c",
-                 "Age60to64pc","Age65to74c","Age65to74pc","Age75to84c","Age75to84pc","Age85to89c",
-                 "Age85to89pc","Age90andOverc","Age90andOverpc","MeanAge","MedianAge")
+  newcolnames <- c("AllUsualResidentsc","Age00to04c","Age00to04pc","Age05to07c","Age05to07pc",
+                   "Age08to09c","Age08to09pc","Age10to14c","Age10to14pc","Age15c","Age15pc","Age16to17c",
+                   "Age16to17pc","Age18to19c","Age18to19pc","Age20to24c","Age20to24pc","Age25to29c",
+                   "Age25to29pc","Age30to44c","Age30to44pc","Age45to59c","Age45to59pc","Age60to64c",
+                   "Age60to64pc","Age65to74c","Age65to74pc","Age75to84c","Age75to84pc","Age85to89c",
+                   "Age85to89pc","Age90andOverc","Age90andOverpc","MeanAge","MedianAge")
 #apply these to pop2011 data frame
   colnames(pop2011)[11:45] <- newcolnames
 #download shapefile
