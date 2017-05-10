@@ -1,5 +1,5 @@
 ---
-title: "Introduction to using R for Spatial Analysis"
+title: "Introduction to Spatial Data & Using R as a GIS"
 output: pdf_document
 author: "Nick Bearman - Clear Mapping Co"
 ---
@@ -107,7 +107,7 @@ head(hp.data)
 
 You can also click on the variable listed in the Environment window, which will show the data in a new tab. You can also enter:
 
-```
+```{r, comment=NA}
 View(hp.data)
 ```
 to open a new tab showing the data. 
@@ -127,8 +127,7 @@ Mean    | The average of the column
 3rd. Qu.| The third quartile (the value 3/4 of the way along a sorted list of values)
 Max.    | The largest value in the column
 
-<!-- Ideally want to add the paragraph below into a 'Notes on SUmmary Data' box -->
-
+<!-- Ideally want to add the paragraph below into a 'Notes on Summary Data' box -->
 *Based on these numbers, an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from £65,000 to £260,000 and that half of the prices lie between £152,500 and £210,000.  Also it can be seen that since the median measured burglary rate is zero, then at least half of areas had no burglaries in the month when counts were compiled.*
 
 We can use square brackets to look at specific sections of the data frame, for example `hp.data[1,]` or `hp.data[,1]`. We can also delete columns and create new columns using the code below. Remember to use the `head()` command as we did earlier to look at the data frame. 
@@ -175,61 +174,61 @@ As with most programs, there are multiple ways to do things. For instance, to se
 There is a set of shapefiles for the St. Helens neighbourhoods at the same location as the data set you read in earlier. Since several files are needed,  I have bundled these together in a single zip file.  You will now download this to your local folder and subsequently unzip it. This can all be done via R functions:
 
 ```{r, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/r/sthel.zip","sthel.zip")
-unzip("sthel.zip")
+download.file("http://www.nickbearman.me.uk/data/r/sthelens.zip","sthelens.zip")
+unzip("sthelens.zip")
 ```
 
-The first function actually downloads the zip file into your working folder,  the second one unzips it,  creating the shapefile set. All of the shapefile set files begin with `sthel` but then have different endings,  e.g. `sthel.shp`, `sthel.dbx` and `sthel.shx`.
+The first function actually downloads the zip file into your working folder,  the second one unzips it,  creating the shapefile set. All of the shapefile set files begin with `sthelens` but then have different endings,  e.g. `sthelens.shp`, `sthelens.dbx` and `sthelens.shx`.
 Now, we can read these into R. 
 
 ```{r, comment=NA, message=FALSE, results='hide'}
-sthel <- readOGR(".","sthel")
+sthelens <- readOGR(".","sthelens")
 ```
 The `readOGR` function does this,  and stores them into another type of object called a `SpatialPolygonsDataFrame` object.  These polygons are areas or regions,  such as the neighbourhoods (LSOA) in St. Helens.  You can use the `plot` function to draw the polygons (i.e. the map of the LSOA).
 
 ```{r, comment=NA}
-plot(sthel)
+plot(sthelens)
 ```
-We can also look at the data for each LSOA (in R this is known as the `data` slot, and is the same as the attribute table in programs like ArcGIS, QGIS or MapInfo.)
+We can also look at the data for each LSOA (in R this is known as the `data` slot, and is the same as the attribute table in programs like ArcGIS, QGIS or MapInfo. If you want to open the shapefile in QGIS or ArcGIS to have a look, feel free to).
 
 ```{r, eval=F,comment=NA}
-head(sthel@data)
+head(sthelens@data)
 ```
   
   
   
 ```{r, echo=F,comment=NA}
-head(sthel@data[,1:7])
+head(sthelens@data[,1:7])
 ```
 
-You can see there is a lot of information there, but the useful bit is the `SP_ID` field. You may have spotted that these IDs match those in the `hp.data` file - we can use this to join the two data sets together, and then show the Burglary rates (from `hp.data`) on the map. The idea is that there is a field in each data set that we can use to join the two together; in this case we have the `ID` field in `sthel` and the `SP_ID` field in `hp.data`. 
+You can see there is a lot of information there, but the useful bit is the `SP_ID` field. You may have spotted that these IDs match those in the `hp.data` file - we can use this to join the two data sets together, and then show the Burglary rates (from `hp.data`) on the map. The idea is that there is a field in each data set that we can use to join the two together; in this case we have the `ID` field in `sthelens` and the `SP_ID` field in `hp.data`. 
 
 ```{r, comment=NA}
-sthel.prices <- sthel
-sthel.prices@data <- merge(sthel@data,hp.data,by.x="SP_ID",by.y="IDNumber", all.x=TRUE)
+sthelens.prices <- sthelens
+sthelens.prices@data <- merge(sthelens@data,hp.data,by.x="SP_ID",by.y="IDNumber", all.x=TRUE)
 ```
  
 And use the `head` function to check the data have been joined correctly. 
 
 ```{r,comment=NA}
-head(sthel.prices@data)
+head(sthelens.prices@data)
 ```
  
 Now that we have joined the data together, we can draw a choropleth map of these house prices.  In later exercises more will be explained as to how this works, but for now the method will simply be demonstrated.  
 
 ```{r, eval = F, comment=NA}
-var <- sthel.prices@data[,"Burglary"]
+var <- sthelens.prices@data[,"Burglary"]
 breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
-plot(sthel.prices, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],
+plot(sthelens.prices, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],
      axes = FALSE, border = rgb(0.8,0.8,0.8))
 ```
 
 ```{r, echo=F, comment=NA}
-var <- sthel.prices@data[,"Burglary"]
+var <- sthelens.prices@data[,"Burglary"]
 breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
-plot(sthel.prices, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],
+plot(sthelens.prices, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],
      axes = FALSE, border = rgb(0.8,0.8,0.8))
 ```
 
@@ -361,7 +360,7 @@ Now we have all the data setup, we can actually create the map. Run the code bel
 <!-- Code for students in R Studio -->
 ```{r, eval=F,comment=NA}
 #select variable
-var <- LSOA@data[,"Age0to4pc"]
+var <- LSOA@data[,"Age00to04pc"]
 #set colours & breaks
 breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
@@ -375,7 +374,7 @@ legend(x = 328130, y = 386506.5, legend = leglabs(breaks$brks), fill = my_colour
 <!-- Code for correct PDF rendering -->
 ```{r, echo=F,comment=NA}
 #select variable
-var <- LSOA@data[,"Age0to4pc"]
+var <- LSOA@data[,"Age00to04pc"]
 #set colours & breaks
 breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
@@ -400,7 +399,7 @@ Remember that any line starting with a `#` is a comment, and will be ignored by 
 
 ##Colours and Categories (optional exercise)
 
-The second section of the code (`#set colours & breaks`) tells R how many categories to split the data into (`n = 6`) and which classification method to use (`style = "fisher"`). Try altering the number of categories and classification method. Type `?classIntervals` into the console to see the help file on this function, and explore the different classification options. Remember we can use `hist(LSOA@data$Age0to4pc)` to view the histogram for a specific data set. See also if you can change the colours - explore the help file for details and try running `display.brewer.all()`. 
+The second section of the code (`#set colours & breaks`) tells R how many categories to split the data into (`n = 6`) and which classification method to use (`style = "fisher"`). Try altering the number of categories and classification method. Type `?classIntervals` into the console to see the help file on this function, and explore the different classification options. Remember we can use `hist(LSOA@data$Age00to04pc)` to view the histogram for a specific data set. See also if you can change the colours - explore the help file for details and try running `display.brewer.all()`. 
 
 If you want to set the breaks manually, this can be done using the `fixed` style: `breaks <- classIntervals(var, n = 6, style = "fixed", fixedBreaks=c(0, 3, 10, 16, 20, 28, 37))`. See the example in the help file for more details.
 
@@ -408,7 +407,7 @@ You can also show a histogram with the classification breaks using this code:
 
 ```{r,eval=FALSE}
 #select the variable
-var <- LSOA@data[,"Age0to4pc"]
+var <- LSOA@data[,"Age00to04pc"]
 #calculate the breaks
 breaks <- classIntervals(var, n = 6, style = "fisher")
 #draw histogram
@@ -447,7 +446,7 @@ One way of saving the map is using the Export option in the plot window. We can 
 ```{r, comment=NA, eval=FALSE}
 #output to PDF
 pdf(file="image.pdf")
-  var <- LSOA@data[,"Age0to4pc"]
+  var <- LSOA@data[,"Age00to04pc"]
   breaks <- classIntervals(var, n = 6, style = "fisher")
   my_colours <- brewer.pal(6, "Greens")
   plot(LSOA, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],   
@@ -525,7 +524,7 @@ We want a title like **Percentage population Aged 0 to 4** with the numbers repl
 ```
 Try incorporating this into your map script. There is a complete version (script-multiple-maps-title.R) but try not to look at it straight away!
 
-An additional point - what happens when the years are two digits? How could we alter the code (or field names) to take this into account?
+An additional point - what happens for Age 15? How could we alter the code (or field names) to take this into account? And how could we handle ages with only one digit in a better way?
 
 ##Clustering of Crime Points 
 
@@ -756,7 +755,7 @@ unzip("merseyside_outline.zip")
 mersey.outline <- readOGR(".","merseyside_outline")
 ```
 
-This practical was written using R 3.3.3 (2017-03-06) and RStudio 1.0.136 by Nick Bearman (nick@clearmapping.co.uk). 
+This practical was written using R 3.4.0 (2017-04-21) and RStudio 1.0.143 by Nick Bearman (nick@clearmapping.co.uk). 
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
 
