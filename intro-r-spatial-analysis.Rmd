@@ -10,11 +10,11 @@ author: "Nick Bearman - Clear Mapping Co"
 | Use R to read in spatial data | `readOGR()` (pg. 6)  | 
 | Know how to plot spatial data using R | `plot()` (pg. 6)  | 
 | Customize colour & classifications  | `classIntervals()` (pg. 11)  | 
-| Understand how to use loops for multiple maps  | `for(){}` (pg. 12)  | 
-| Know how to reproject spatial data | `spTransform()` (pg. 14)  | 
-| Be able to perform point in polygon  | `gContains()` (pg. 15)  | 
-| Know how to write shape files | `writeOGR()` (pg. 17)  | 
-| Know how create a 'heat-map'  |  `spatstat` librar (pg. 17)  | 
+| Understand how to use loops for multiple maps  | `for(){}` (pg. 13)  | 
+| Know how to reproject spatial data | `spTransform()` (pg. 15)  | 
+| Be able to perform point in polygon  | `gContains()` (pg. 17)  | 
+| Know how to write shape files | `writeOGR()` (pg. 18)  | 
+| Know how create a 'heat-map'  |  `spatstat` librar (pg. 19)  | 
 <!-- Tables have a max line length, if it is too long, the table gets shrunk -->
 
 ## R Basics
@@ -41,7 +41,7 @@ We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio
 
 Open up R Studio (click **Start > All Programs > RStudio > RStudio** or double-click the icon on the desktop). 
 
-R can initially be used as a calculator - enter the following into the left hand side of the window - the section labeled **Console**:
+R can initially be used as a calculator - enter the following into the left hand side of the window - the section labelled **Console**:
 ```{r,eval=FALSE}
 6 + 8
 ```
@@ -61,7 +61,7 @@ You can also assign the answers of the calculations to variables,  and use them 
 ```{r, comment=NA}
 price <- 300
 ```
-Here,  the value `300` is stored in the variable `price`.  The `<-` symbol means put the value on the right into the variable on the left, it is typed with a `<` followed by a `-`. The variables are shown in the window labeled 'Environment', in the top right. Variables can be used in subsequent calculations.  For example, to apply a 20% discount to this price,  you could enter the following:
+Here,  the value `300` is stored in the variable `price`.  The `<-` symbol means put the value on the right into the variable on the left, it is typed with a `<` followed by a `-`. The variables are shown in the window labelled 'Environment', in the top right. Variables can be used in subsequent calculations.  For example, to apply a 20% discount to this price,  you could enter the following:
 ```{r, comment=NA}
 price - price * 0.2 
 ```
@@ -165,7 +165,7 @@ library(RColorBrewer)
 
 *Remember: if you are using your own laptop, you will need to install the packages - see the note on the front page. Ask for help if you are unsure.*
 
-However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets.  To do this,  you'll need to obtain them from somewhere. Data for maps in R can be read in from **shapefiles** - these are a well known GIS data format.The first task is to obtain a shapefile set of the St. Helens neighbourhoods in Merseyside (or Lower layer Super Output Areas - LSOA, as they are more formally called).  To do this,  you will need to put some information into a working folder.  
+However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets.  To do this,  you'll need to obtain them from somewhere. Data for maps in R can be read in from **shapefiles** - these are a well known GIS data format. The first task is to obtain a shapefile set of the St. Helens neighbourhoods in Merseyside (or Lower layer Super Output Areas - LSOA, as they are more formally called).  To do this,  you will need to put some information into a working folder.  
 
 R uses working folders to store information relevant to the current project you are working on. I suggest you make a folder called **R work** in the M: drive (using Computer in the Start Menu). Then we need to tell R where this is, so click **Session > Set Working Directory > Choose Directory...** and selecting the folder that you created. 
 
@@ -251,32 +251,32 @@ As a final useful technique you can copy and paste maps like this into Word docu
 
 You have seen how we can use R to make maps, and this often involves several lines of code. Using a script can help with this - they allow you to run a  series of commands in sequence, and be able to update one or two lines without having to retype all of the code. Create a new script (**File > New File > R Script**) and enter the code in there. Then you can select the lines you want to run by highlighting them, and then pressing `Ctrl+Enter`, or using the **Run** button. Use a script for all the R work you do from now on - it is much easier to correct mistakes and re-run than editing commands in the console. 
 
-Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the http://www.neighbourhood.statistics.gov.uk website.
+Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the https://www.nomisweb.co.uk/ website.
 
-- Navigate to http://www.neighbourhood.statistics.gov.uk. 
-- Select the “Topics” link on the bottom left hand side of the page. 
-- Click “Census” -> “2011 Census: Key Statistics”. 
-- Then click the radio button that corresponds to “Age Structure, 2011 (KS102EW)” and press the “Next” button at the bottom right hand side of the page.
-- Then click the related radio button for “Download” and press the “Next” button on the bottom right hand side of the page. 
-- Select the radio button for the 2011 Statistical Geography Hierarchy (North West). 
-- Press the “Next” button on the bottom right hand side of the page, and on the following page, download the Excel file by clicking on the “Microsoft Excel [*.xls]”. 
+- Navigate to https://www.nomisweb.co.uk/. 
+- Under Census Statistics > 2011 Census click "Data catalogue". 
+- Select "Key Statistics (KS)". 
+- Choose "KS102EW" (Age Structure). 
+- There are various different ways of downloading the data - explore the different options. We are going to download the table as a CSV file. 
+- Under Download (.csv) choose "super output areas - lower layer 2011" from the drop down list. 
+- Click "Download". 
+- A file called "bulk.csv" will be downloaded - save this in your working directory.  
 
-<!-- Last checked 20170411 -->
+<!-- Last checked 20170622 -->
 
-This will be zipped, and once you have extracted it you will find it contains a variety of files. You are interested in the file named `“KS102EW_2596_2011SOA_NW.xls”`. Copy this to the working directory you defined earlier (probably `M:/r work`). 
+Open this file up in Excel, and you can see there are a number of different columns, covering different data. We are interested in the age data - scroll across and see the different values we have. 
 
-Open this file up in Excel, and you can see there are a number of different tabs, covering different geographies. We are interested in the LSOA geographies, so select the LSOA tab and look at the data it contains. You can see that there are a series of lines at the top which do not contain the data or headings for the columns. As such, we need to read this in R, skipping the unwanted lines and setting the column headings as the row containing “LSOA_CODE”. 
-
-R can't directly import Excel files, but it can import CSV files, so make sure you have the LSOA tab open in Excel, and then save this as a CSV file. Excel will tell you you can only save the active sheet (i.e. the one currently open), which is fine. Follow the instructions and make sure you save the CSV file (using the default name of KS102EW_2596_2011SOA_NW.csv) in your working folder. 
-
-Add the command below to your script, and run it to read in the CSV file. The `skip = 5` bit tells R to ignore the first 5 rows, and the `header = TRUE` tells R to assign the next row as variable names. 
+Add the command below to your script, and run it to read in the CSV file. The `header = TRUE` tells R to assign the first row as variable names. 
 
 ```{r, echo=FALSE, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/r/KS102EW_2596_2011SOA_NW.csv","KS102EW_2596_2011SOA_NW.csv")
+#download csv file
+  download.file("http://www.nickbearman.me.uk/data/r/nomis-2011-age-data.zip","nomis-2011-age-data.zip")
+#unzip csv file
+  unzip("nomis-2011-age-data.zip")
 ```
 
 ```{r, comment=NA}
-pop2011 <- read.csv("KS102EW_2596_2011SOA_NW.csv", header = TRUE, skip = 5)
+pop2011 <- read.csv("bulk.csv", header = TRUE)
 ```
 
 Then run `head` to see that the data has been read in correctly. *R will show all 45 variables, where as I've only shown the first 7 in the handout*. 
@@ -289,30 +289,28 @@ head(pop2011)
 head(pop2011[,1:7])
 ```
 
-You can see that some of the variable names are missing. The names were in the Excel spreadsheet, but spread over the first 5 rows, so they didn't import into R correctly. 
-
-We can rename the columns, so that when we run the `head` command, R lists the correct names. This will also help us refer to the columns later on. Run the code below, which creates a new variable which contains the names (`newcolnames`) and then applies it to the `pop2011` data frame. Any column name ending in a 'c' is a count (of people in that age group in that LSOA) and any column ending in 'pc' is a percentage. *We've have to use 'pc' because R doesn't like symbols (e.g. %) in field names*.
+You can see that some of the variable names are not displayed very clearly. We can rename the columns, so that when we run the `head` command, R lists the correct names. This will also help us refer to the columns later on. Run the code below, which creates a new variable which contains the names (`newcolnames`) and then applies it to the `pop2011` data frame. 
 
 It's also worth noting here that any line of code that starts with a `#` is a comment - i.e. R will ignore that line and move onto the next. I've included them here so you can see what is going on, but you don't need to type them in.  
   
 ```{r, comment=NA}
 #create a new variable which contains the new variable names
-newcolnames <- c("AllUsualResidentsc","Age00to04c","Age00to04pc","Age05to07c","Age05to07pc",
-"Age08to09c","Age08to09pc","Age10to14c","Age10to14pc","Age15c","Age15pc","Age16to17c",
-"Age16to17pc","Age18to19c","Age18to19pc","Age20to24c","Age20to24pc","Age25to29c",
-"Age25to29pc","Age30to44c","Age30to44pc","Age45to59c","Age45to59pc","Age60to64c",
-"Age60to64pc","Age65to74c","Age65to74pc","Age75to84c","Age75to84pc","Age85to89c",
-"Age85to89pc","Age90andOverc","Age90andOverpc","MeanAge","MedianAge")
+  newcolnames <- c("AllUsualResidentsc","Age00to04","Age05to07",
+                   "Age08to09","Age10to14","Age15","Age16to17",
+                   "Age18to19","Age20to24","Age25to29",
+                   "Age30to44","Age45to59","Age60to64",
+                   "Age65to74","Age75to84","Age85to89",
+                   "Age90andOver","MeanAge","MedianAge")
 
 #apply these to pop2011 data frame
-colnames(pop2011)[11:45] <- newcolnames
+  colnames(pop2011)[5:23] <- newcolnames
 ```
 
-The final line of code (starting `colnames`) actually updates the variable names. The square brackets are used to refer to specific elements- in this case, columns 11 to 45. *For example, `pop2011[1,]` will show the first row and `pop2011[,1]` will show the first column.*
+The final line of code (starting `colnames`) actually updates the variable names. The square brackets are used to refer to specific elements- in this case, columns 5 to 23. *For example, `pop2011[1,]` will show the first row and `pop2011[,1]` will show the first column.*
 
 Now we have the correct column names for the data frame. It would also be good to check they have been applied to the `pop2011` dataframe correctly. 
 
-Now we have the attribute data (percentage of people in each age group in each LSOA in this case) we need to join this attribute data to the spatial data. Therefore, first, we need to download the spatial data. 
+Now we have the attribute data (the number of people in each age group in each LSOA in this case) we need to join this attribute data to the spatial data. Therefore, first, we need to download the spatial data. 
 
 - Go to http://census.edina.ac.uk/ and select Boundary Data Selector. 
 - Then set Country to England, Geography to Statistical Building Block, dates to 2011 and later, and click 'Find'.
@@ -340,7 +338,7 @@ The next stage is to join the attribute data to the spatial data, like we did in
 
 ```{r, comment=NA}
 #join attribute data to LSOA
-LSOA@data <- merge(pop2011,LSOA@data,by.x="LSOA_CODE",by.y="code")
+LSOA@data <- merge(pop2011,LSOA@data,by.x="geography.code",by.y="code")
 ```
 
 And use the `head` command to check it has joined correctly. Your data should contain the LSOA_CODE in the first column, and correctly labelled Age data in the 11th to 45th columns. 
@@ -360,7 +358,7 @@ Now we have all the data setup, we can actually create the map. Run the code bel
 <!-- Code for students in R Studio -->
 ```{r, eval=F,comment=NA}
 #select variable
-var <- LSOA@data[,"Age00to04pc"]
+var <- LSOA@data[,"Age00to04"]
 #set colours & breaks
 breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
@@ -374,7 +372,7 @@ legend(x = 328130, y = 386506.5, legend = leglabs(breaks$brks), fill = my_colour
 <!-- Code for correct PDF rendering -->
 ```{r, echo=F,comment=NA}
 #select variable
-var <- LSOA@data[,"Age00to04pc"]
+var <- LSOA@data[,"Age00to04"]
 #set colours & breaks
 breaks <- classIntervals(var, n = 6, style = "fisher")
 my_colours <- brewer.pal(6, "Greens")
@@ -387,12 +385,12 @@ legend(x = 328030, y = 387506.5, legend = leglabs(breaks$brks), fill = my_colour
 
 This code draws the map, and adds a legend. Due to the way R works, we have to build up the map in stages, and each line of code adds a different element to the map. With blocks of code like this (and in fact, with all code) it is important to add comments, so we can remind ourselves what the different bit of code do. Comments in R are preceded with a #, as you can see above. 
 
-The first line tells R which variable to plot (`#select variable`). Try altering the first line to `var <- LSOA@data[,"Age5to7pc"]` and run the code again. Try generating maps for different variables (remember you can use `colnames(LSOA@data)` to list the variables).
+The first line tells R which variable to plot (`#select variable`). Try altering the first line to `var <- LSOA@data[,"Age05to07"]` and run the code again. Try generating maps for different variables (remember you can use `colnames(LSOA@data)` to list the variables).
 
 You can also add a title to the map, which is useful to say what variable you are mapping. Add this code to your script and run it. 
 
 ```{r,eval=FALSE}
-title('Percentage of Population ages 0 to 4 in Liverpool')
+title('Count of Population ages 0 to 4 in Liverpool')
 ```
 
 Remember that any line starting with a `#` is a comment, and will be ignored by R. Comments are very useful for us to note what the code is doing, particularly when you come back to it 6 months later and can't remember what it is supposed to do!
@@ -401,13 +399,13 @@ Remember that any line starting with a `#` is a comment, and will be ignored by 
 
 The second section of the code (`#set colours & breaks`) tells R how many categories to split the data into (`n = 6`) and which classification method to use (`style = "fisher"`). Try altering the number of categories and classification method. Type `?classIntervals` into the console to see the help file on this function, and explore the different classification options. Remember we can use `hist(LSOA@data$Age00to04pc)` to view the histogram for a specific data set. See also if you can change the colours - explore the help file for details and try running `display.brewer.all()`. 
 
-If you want to set the breaks manually, this can be done using the `fixed` style: `breaks <- classIntervals(var, n = 6, style = "fixed", fixedBreaks=c(0, 3, 10, 16, 20, 28, 37))`. See the example in the help file for more details.
+If you want to set the breaks manually, this can be done using the `fixed` style: `breaks <- classIntervals(var, n = 6, style = "fixed", fixedBreaks=c(0, 50, 100, 150, 200, 250))`. See the example in the help file for more details.
 
 You can also show a histogram with the classification breaks using this code:
 
 ```{r,eval=FALSE}
 #select the variable
-var <- LSOA@data[,"Age00to04pc"]
+var <- LSOA@data[,"Age00to04"]
 #calculate the breaks
 breaks <- classIntervals(var, n = 6, style = "fisher")
 #draw histogram
@@ -446,7 +444,7 @@ One way of saving the map is using the Export option in the plot window. We can 
 ```{r, comment=NA, eval=FALSE}
 #output to PDF
 pdf(file="image.pdf")
-  var <- LSOA@data[,"Age00to04pc"]
+  var <- LSOA@data[,"Age00to04"]
   breaks <- classIntervals(var, n = 6, style = "fisher")
   my_colours <- brewer.pal(6, "Greens")
   plot(LSOA, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],   
@@ -471,7 +469,7 @@ Saving the map using code allows us to create multiple maps very easily. A varia
 
 ```{r, comment=NA}
 #setup variable with list of maps to print
-mapvariables <- c(13,15,17)
+mapvariables <- c(6,7,8)
 #loop through for each map
 for (i in 1:length(mapvariables)) {
   #setup file name
@@ -515,7 +513,7 @@ We want a title like **Percentage population Aged 0 to 4** with the numbers repl
 
 ```{r, comment=NA, eval = FALSE}
 #setup example text string which is the column name
-  textstring <- "Age00to04pc"
+  textstring <- "Age00to04"
 #use substr to extract the 4th to 5th and 8th to 9th characters
   firstyear <- substr(textstring, 4, 5)
   lastyear <- substr(textstring, 8, 9)
@@ -628,7 +626,7 @@ Now we have the data, we can join it on to the spatial data, and draw a map. All
 This just tells us how many crimes there were in each LSOA - nothing about the rate. Try calculating the rate of the crimes per 10,000 people and mapping these. You can calculate the rate by calculating (number of crimes / population)*10000. See the beginning of the handout for help on calculating values. Remember you will need to refer explicitally to the data frame (`LSOA@data`) each time you mention a column, i.e. `(LSOA@data$(fieldname) / LSOA@data$(fieldname)) * 10000`. 
 
 
-## How many top crime areas in each Westminster Constituancy? 
+## How many top crime areas in each Westminster Constituency? 
 
 Let's say we want to find out how many of the top 10 crime LSOAs in Liverpool are in each of the 5 Westminster Constituencies that cover Liverpool (the constituencies can be downloaded from [www.nickbearman.me.uk/data/r/liverpool-westminster-const.zip](www.nickbearman.me.uk/data/r/liverpool-westminster-const.zip)). To do this, we need to work out the ten LSOAs with the highest crime count (or rate), and then see how many of them fall in the different Westminster Constituencies of Liverpool. We can reorder the LSOA data frame to find the top 10, and then we can use `gOverlaps` to count how many are in each constituency. 
 
@@ -741,7 +739,7 @@ You can change the number in the line `Polyclust <- gPolygonize(SLDF[5, ])` eith
 
 Remember, the interpretation we can do on this data is quite limited, as we are looking at crimes, not crime rate. Therefore the map tells us a lot about population centres, but little about rates. 
 
-You can see from the code that we are using data from April 2014 for the police crimes - try downloading more up to date data from www.police.uk and plotting that. If you need more help, there are some details on the Police.uk data in the second half of http://rpubs.com/nickbearman/gettingstartedwithr. 
+You can see from the code that we are using data from January 2017 for the police crimes - try downloading more up to date data from www.police.uk and plotting that. If you need more help, there are some details on the Police.uk data in the second half of http://rpubs.com/nickbearman/gettingstartedwithr. 
 
 You could also add an outline for Merseyside. The `plot()` command with the `add = TRUE` parameter will add the data to the existing plot. Try exploring the help, and looking at the previous code for details. 
 
@@ -758,5 +756,4 @@ mersey.outline <- readOGR(".","merseyside_outline")
 This practical was written using R 3.4.0 (2017-04-21) and RStudio 1.0.143 by Nick Bearman (nick@clearmapping.co.uk). 
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
-
 
