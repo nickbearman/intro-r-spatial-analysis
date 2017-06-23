@@ -450,7 +450,7 @@ pdf(file="image.pdf")
   plot(LSOA, col = my_colours[findInterval(var, breaks$brks, all.inside = TRUE)],   
        axes = FALSE, border = rgb(0.8,0.8,0.8))
   legend(x = 330130, y = 385506.5, legend = leglabs(breaks$brks), fill = my_colours, bty = "n")
-  title('Percentage of Population ages 0 to 4 in Liverpool')
+  title('Count of Population ages 0 to 4 in Liverpool')
   #add north arrow
   SpatialPolygonsRescale(layout.north.arrow(2), offset= c(336030,382006), scale = 2000, 
                          plot.grid=F)
@@ -509,7 +509,7 @@ As you may have spotted, the map title isn't great. Just using the field name do
 
 We can construct the title in R, based on the field name. Using a function called `substr()` we can extract the years we need from the field name, and print a more sensible title. 
 
-We want a title like **Percentage population Aged 0 to 4** with the numbers replaced according to the current variable. We can use the `substr()` function for this. For example:
+We want a title like **Count population Aged 0 to 4** with the numbers replaced according to the current variable. We can use the `substr()` function for this. For example:
 
 ```{r, comment=NA, eval = FALSE}
 #setup example text string which is the column name
@@ -518,7 +518,7 @@ We want a title like **Percentage population Aged 0 to 4** with the numbers repl
   firstyear <- substr(textstring, 4, 5)
   lastyear <- substr(textstring, 8, 9)
 #create title
-  paste0("Percentage population Aged ", firstyear, " to ", lastyear)
+  paste0("Count population Aged ", firstyear, " to ", lastyear)
 ```
 Try incorporating this into your map script. There is a complete version (script-multiple-maps-title.R) but try not to look at it straight away!
 

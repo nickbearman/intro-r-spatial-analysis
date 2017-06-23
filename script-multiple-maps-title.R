@@ -48,7 +48,7 @@
         fieldname <- colnames(LSOA@data)[mapvariables[i]]
         firstyear <- substr(fieldname, 4, 5)
         lastyear <- substr(fieldname, 8, 9)
-      title(paste0("Percentage population Aged ", firstyear, " to ", lastyear))
+      title(paste0("Count of population Aged ", firstyear, " to ", lastyear))
     #Add North Arrow
       SpatialPolygonsRescale(layout.north.arrow(2), offset= c(332732,385110), scale = 2000, 
                            plot.grid=F)

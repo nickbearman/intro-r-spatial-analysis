@@ -44,7 +44,7 @@
 #add legend
   legend(x = 330130, y = 385506.5, legend = leglabs(breaks$brks), fill = my_colours, bty = "n")
 #add title  
-  title('Percentage of Population ages 0 to 4 in Liverpool')
+  title('Count of Population ages 0 to 4 in Liverpool')
 #add north arrow
   SpatialPolygonsRescale(layout.north.arrow(2), offset= c(336030,382006), scale = 2000, 
                          plot.grid=F)
