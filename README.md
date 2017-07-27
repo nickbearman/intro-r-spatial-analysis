@@ -10,6 +10,6 @@ The material for this workshop is avaliable here:
 
 This practical was written using R 3.4.0 (2017-04-21) and RStudio 1.0.143 by Nick Bearman ([nick@clearmapping.co.uk](mailto:nick@clearmapping.co.uk)).
 
-*This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit [http://creativecommons.org/licenses/by-sa/4.0/deed.en.](http://creativecommons.org/licenses/by-sa/4.0/deed.en.).*
+*This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit [http://creativecommons.org/licenses/by-sa/4.0/deed.en](http://creativecommons.org/licenses/by-sa/4.0/deed.en).*
 
 Material will be updated periodically, usually in line with courses run by Nick Bearman. 
