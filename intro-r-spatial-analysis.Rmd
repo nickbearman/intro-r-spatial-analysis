@@ -178,7 +178,7 @@ download.file("http://www.nickbearman.me.uk/data/r/sthelens.zip","sthelens.zip")
 unzip("sthelens.zip")
 ```
 
-The first function actually downloads the zip file into your working folder,  the second one unzips it,  creating the shapefile set. All of the shapefile set files begin with `sthelens` but then have different endings,  e.g. `sthelens.shp`, `sthelens.dbx` and `sthelens.shx`.
+The first function actually downloads the zip file into your working folder,  the second one unzips it,  creating the shapefile set. All of the shapefile set files begin with `sthelens` but then have different endings,  e.g. `sthelens.shp`, `sthelens.dbf` and `sthelens.shx`.
 Now, we can read these into R. 
 
 ```{r, comment=NA, message=FALSE, results='hide'}
@@ -205,7 +205,7 @@ You can see there is a lot of information there, but the useful bit is the `SP_I
 
 ```{r, comment=NA}
 sthelens.prices <- sthelens
-sthelens.prices@data <- merge(sthelens@data,hp.data,by.x="SP_ID",by.y="IDNumber", all.x=TRUE)
+sthelens.prices@data <- merge(sthelens.prices@data,hp.data,by.x="SP_ID",by.y="IDNumber", all.x=TRUE)
 ```
  
 And use the `head` function to check the data have been joined correctly. 
@@ -295,7 +295,7 @@ It's also worth noting here that any line of code that starts with a `#` is a co
   
 ```{r, comment=NA}
 #create a new variable which contains the new variable names
-  newcolnames <- c("AllUsualResidentsc","Age00to04","Age05to07",
+  newcolnames <- c("AllUsualResidents","Age00to04","Age05to07",
                    "Age08to09","Age10to14","Age15","Age16to17",
                    "Age18to19","Age20to24","Age25to29",
                    "Age30to44","Age45to59","Age60to64",
