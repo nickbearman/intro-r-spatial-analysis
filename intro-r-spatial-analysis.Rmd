@@ -84,7 +84,7 @@ You can then apply functions to the lists.  For example to take the average of a
 ```{r, comment=NA}
 mean(house.prices)
 ```
-If the house prices are in thousands of pounds,  then this tells us that the mean house price is Â£176,900.  Note that on your display,  the answer may be displayed to more significant digits,  so you may have something like `r mean(house.prices)` as the mean value.
+If the house prices are in thousands of pounds,  then this tells us that the mean house price is £176,900.  Note that on your display,  the answer may be displayed to more significant digits,  so you may have something like `r mean(house.prices)` as the mean value.
 
 The Data Frame
 ------------
@@ -128,7 +128,7 @@ Mean    | The average of the column
 Max.    | The largest value in the column
 
 <!-- Ideally want to add the paragraph below into a 'Notes on Summary Data' box -->
-*Based on these numbers, an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from Â£65,000 to Â£260,000 and that half of the prices lie between Â£152,500 and Â£210,000.  Also it can be seen that since the median measured burglary rate is zero, then at least half of areas had no burglaries in the month when counts were compiled.*
+*Based on these numbers, an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from Â£65,000 to £260,000 and that half of the prices lie between £152,500 and £210,000.  Also it can be seen that since the median measured burglary rate is zero, then at least half of areas had no burglaries in the month when counts were compiled.*
 
 We can use square brackets to look at specific sections of the data frame, for example `hp.data[1,]` or `hp.data[,1]`. We can also delete columns and create new columns using the code below. Remember to use the `head()` command as we did earlier to look at the data frame. 
 
@@ -539,7 +539,7 @@ library(maptools)
 crimes <- read.csv("http://nickbearman.me.uk/data/r/police-uk-2017-01-merseyside-street.csv")
 ```
 
-Now the CSV data has been read in, take a quick look at it using `head(crimes)`. You will see that the data consists of a number of columns, each with a heading. Two of these are called *Longitude* and *Latitude* â€“ these are the column headers that give the coordinates of each incident in the data you have just downloaded. Another is headed *Crime.Type* and tells you which type of crime occurred. 
+Now the CSV data has been read in, take a quick look at it using `head(crimes)`. You will see that the data consists of a number of columns, each with a heading. Two of these are called *Longitude* and *Latitude* - these are the column headers that give the coordinates of each incident in the data you have just downloaded. Another is headed *Crime.Type* and tells you which type of crime occurred. 
 
 At the moment, the data is just in a data frame object - not any kind of spatial object.  To create the spatial object,  enter the following:
 
@@ -753,7 +753,7 @@ unzip("merseyside_outline.zip")
 mersey.outline <- readOGR(".","merseyside_outline")
 ```
 
-This practical was written using R 3.4.0 (2017-04-21) and RStudio 1.0.143 by Nick Bearman (nick@clearmapping.co.uk). 
+This practical was written using R 3.4.0 (2017-04-21) and RStudio 1.0.143 by Dr. Nick Bearman (nick@clearmapping.co.uk). 
 
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
 
