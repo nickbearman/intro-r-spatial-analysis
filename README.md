@@ -3,7 +3,7 @@ Material for 1 day Introductory Course on Introduction to Spatial Data & Using R
 
 The material for this workshop is avaliable here:  
 - [The PDF of the handout with the practical instructions (PDF, 2.29 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.0/intro-r-spatial-analysis.pdf)  
-- [The presentation given by Nick (PDF, 11 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.0/presentation-intro-r.pdf)  
+- [The presentation given by Nick (PDF, 21.3 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.0/presentation-intro-r.pdf)  
 - [The classification exercise (PDF, 93 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.0/classification-exercise-R.pdf)  
 - [The R Glossary and Helpsheet (PDF, 122 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.0/glossary-helpsheet.pdf)  
 - [The data used in the workshop (folder, total: 8.1 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/tree/master/data)  
