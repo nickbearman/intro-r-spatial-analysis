@@ -1,8 +1,8 @@
 # Introduction to Spatial Data & Using R as a GIS
 Material for 1 day Introductory Course on Introduction to Spatial Data & Using R as a GIS.
 
-The material for this workshop is avaliable here:  
-- [The PDF of the handout with the practical instructions (PDF, 2.29 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.1/intro-r-spatial-analysis.pdf)  
+The material for this workshop is available here:  
+- [The PDF of the handout with the practical instructions (PDF, 2.29 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.2/intro-r-spatial-analysis.pdf)  
 - [The presentation given by Nick (PDF, 21.3 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.1/presentation-intro-r.pdf)  
 - [The classification exercise (PDF, 93 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.1/classification-exercise-R.pdf)  
 - [The R Glossary and Helpsheet (PDF, 122 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.1/glossary-helpsheet.pdf)  

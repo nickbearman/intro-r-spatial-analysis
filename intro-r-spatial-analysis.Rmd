@@ -84,7 +84,7 @@ You can then apply functions to the lists.  For example to take the average of a
 ```{r, comment=NA}
 mean(house.prices)
 ```
-If the house prices are in thousands of pounds,  then this tells us that the mean house price is £176,900.  Note that on your display,  the answer may be displayed to more significant digits,  so you may have something like `r mean(house.prices)` as the mean value.
+If the house prices are in thousands of pounds,  then this tells us that the mean house price is ?176,900.  Note that on your display,  the answer may be displayed to more significant digits,  so you may have something like `r mean(house.prices)` as the mean value.
 
 The Data Frame
 ------------
@@ -128,7 +128,7 @@ Mean    | The average of the column
 Max.    | The largest value in the column
 
 <!-- Ideally want to add the paragraph below into a 'Notes on Summary Data' box -->
-*Based on these numbers, an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from Â£65,000 to £260,000 and that half of the prices lie between £152,500 and £210,000.  Also it can be seen that since the median measured burglary rate is zero, then at least half of areas had no burglaries in the month when counts were compiled.*
+*Based on these numbers, an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from Â£65,000 to ?260,000 and that half of the prices lie between ?152,500 and ?210,000.  Also it can be seen that since the median measured burglary rate is zero, then at least half of areas had no burglaries in the month when counts were compiled.*
 
 We can use square brackets to look at specific sections of the data frame, for example `hp.data[1,]` or `hp.data[,1]`. We can also delete columns and create new columns using the code below. Remember to use the `head()` command as we did earlier to look at the data frame. 
 
@@ -205,7 +205,8 @@ You can see there is a lot of information there, but the useful bit is the `SP_I
 
 ```{r, comment=NA}
 sthelens.prices <- sthelens
-sthelens.prices@data <- merge(sthelens.prices@data,hp.data,by.x="SP_ID",by.y="IDNumber", all.x=TRUE)
+sthelens.prices@data <- merge(sthelens.prices@data,hp.data,by.x="SP_ID",by.y="IDNumber",
+                              all.x=TRUE)
 ```
  
 And use the `head` function to check the data have been joined correctly. 
@@ -397,7 +398,7 @@ Remember that any line starting with a `#` is a comment, and will be ignored by 
 
 ##Colours and Categories (optional exercise)
 
-The second section of the code (`#set colours & breaks`) tells R how many categories to split the data into (`n = 6`) and which classification method to use (`style = "fisher"`). Try altering the number of categories and classification method. Type `?classIntervals` into the console to see the help file on this function, and explore the different classification options. Remember we can use `hist(LSOA@data$Age00to04pc)` to view the histogram for a specific data set. See also if you can change the colours - explore the help file for details and try running `display.brewer.all()`. 
+The second section of the code (`#set colours & breaks`) tells R how many categories to split the data into (`n = 6`) and which classification method to use (`style = "fisher"`). Try altering the number of categories and classification method. Type `?classIntervals` into the console to see the help file on this function, and explore the different classification options. Remember we can use `hist(LSOA@data$Age00to04)` to view the histogram for a specific data set. See also if you can change the colours - explore the help file for details and try running `display.brewer.all()`. 
 
 If you want to set the breaks manually, this can be done using the `fixed` style: `breaks <- classIntervals(var, n = 6, style = "fixed", fixedBreaks=c(0, 50, 100, 150, 200, 250))`. See the example in the help file for more details.
 
@@ -555,6 +556,8 @@ crime.pts <- SpatialPointsDataFrame(coords, crimes[, -(5:6)],
 ```
 
 This creates a ```SpatialPointsDataFrame``` object. This fifth line (starting `coords`) prepares the coordinates into a form that the ```SpatialPointsDataFrame``` can use. The ```SpatialPointsDataFrame``` function on the sixth line takes three arguments - the first is coordinates, created in the line above. The second argument is the data frame *minus* (i.e. not including) columns 5 and 6 - this is what ```-(5:6)``` indicates.  These columns provide all the non-geographical data from the data frame.  The third is the coordinate system that the data is currently in. The resulting object ```crime.pts``` is a spatial points geographical shape object,  whose points are each recorded crime in the data set you download. Try `head(crime.pts@data)` to see the attribute table, similar to earlier. 
+
+*If you get an `Error in CRS(latlong) : no system list, errno: 2` or similar, double check for typos. Typos can often sneak in to **epsg**!*
 
 We also need to reproject the data, from Latitude Longitude, to British National Grid:
 
