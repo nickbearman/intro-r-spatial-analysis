@@ -317,11 +317,11 @@ Now we have the attribute data (the number of people in each age group in each L
 - Then set Country to England, Geography to Statistical Building Block, dates to 2011 and later, and click 'Find'.
 - Select 'English Lower Layer Super Output Areas, 2011' and click 'List Areas'. 
 - Select 'Liverpool' from the list and click 'Extract Boundary Data'. 
-- Click 'Go to Bookmark Facility' and you should be able to download the data after a 10 to 30 second wait. 
+- After a 5 to 20 second wait, click `BoundaryData.zip` to download the files. 
 
 <!-- Last checked 20170411 -->
 
-Extract the files, and move all the files starting with the name `england_lsoa_2011Polygon` to your working folder. Then read in the data:
+Extract the files, and move all the files starting with the name `england_lsoa_2011` to your working folder. Then read in the data:
 
 ```{r, echo=FALSE, comment=NA}
 download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2011.zip","england_lsoa_2011.zip")
@@ -400,7 +400,11 @@ Remember that any line starting with a `#` is a comment, and will be ignored by 
 
 The second section of the code (`#set colours & breaks`) tells R how many categories to split the data into (`n = 6`) and which classification method to use (`style = "fisher"`). Try altering the number of categories and classification method. Type `?classIntervals` into the console to see the help file on this function, and explore the different classification options. Remember we can use `hist(LSOA@data$Age00to04)` to view the histogram for a specific data set. See also if you can change the colours - explore the help file for details and try running `display.brewer.all()`. 
 
-If you want to set the breaks manually, this can be done using the `fixed` style: `breaks <- classIntervals(var, n = 6, style = "fixed", fixedBreaks=c(0, 50, 100, 150, 200, 250))`. See the example in the help file for more details.
+If you want to set the breaks manually, this can be done using the `fixed` style: 
+```
+breaks <- classIntervals(var, n = 6, style = "fixed", fixedBreaks=c(0, 50, 100, 150, 200, 250))
+```
+See the example in the help file for more details.
 
 You can also show a histogram with the classification breaks using this code:
 
