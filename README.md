@@ -1,15 +1,17 @@
 # Introduction to Spatial Data & Using R as a GIS
-Material for 1 day Introductory Course on Introduction to Spatial Data & Using R as a GIS.
+This is the material for my 1 day course on **Introduction to Spatial Data & Using R as a GIS**. More details on my courses are available at http://www.geospatialtrainingsolutions.co.uk. 
+
+This course does not spend much time on the very basics of using R - if you want to find out more, there are some good tutorials at http://www.social-statistics.org/?p=764 or http://rpubs.com/nickbearman/gettingstartedwithr. 
 
 The material for this workshop is available here:  
-- [The PDF of the handout with the practical instructions (PDF, 2.29 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.3/intro-r-spatial-analysis.pdf)  
-- [The presentation given by Nick (PDF, 21.3 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.3/presentation-intro-r.pdf)  
-- [The session handout (PDF, 148KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.3/Handout-QGIS-Southampton.pdf) 
-- [The classification exercise (PDF, 93 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.3/classification-exercise-R.pdf)  
-- [The R Glossary and Helpsheet (PDF, 122 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.3/glossary-helpsheet.pdf)  
+- [The PDF of the handout with the practical instructions (PDF, 4.4 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/blob/master/workbook.pdf)  
+- [Software requirements](https://github.com/nickbearman/intro-r-spatial-analysis/blob/master/software-requirements.txt)  
+<!-- 
+- [The R Glossary and Helpsheet (PDF, 122 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.3/glossary-helpsheet.pdf)
+-->
 - [The data used in the workshop (folder, total: 8.1 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/tree/master/data)  
 
-This practical was written using R 3.4.0 (2017-04-21) and RStudio 1.0.143 by Nick Bearman ([nick@clearmapping.co.uk](mailto:nick@clearmapping.co.uk)).
+This practical was written using R 3.5.1 (2018-07-02) and RStudio 1.1.463 by Dr. Nick Bearman ([nick@geospatialtrainingsolutions.co.uk](mailto:nick@geospatialtrainingsolutions.co.uk)). 
 
 *This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit [http://creativecommons.org/licenses/by-sa/4.0/deed.en](http://creativecommons.org/licenses/by-sa/4.0/deed.en).*
 
