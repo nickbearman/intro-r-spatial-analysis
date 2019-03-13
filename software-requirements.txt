@@ -1,0 +1,17 @@
+software-requirements
+
+R (3.5 or above)
+RStudio (1.1.456 or above)
+
+Libraries:
+sf
+tmap
+rgdal
+GISTools
+maptools
+rgdal
+classInt
+RColorBrewer
+rgeos
+spatstat
+sp
