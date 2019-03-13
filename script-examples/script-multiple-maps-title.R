@@ -28,7 +28,7 @@
   #set which varaibles will be mapped
     mapvariables <- c("AllUsualResidents", "Age00to04", "Age05to07")
   #set titles
-    maptitles <- c("All Residents", "Aged 0 to 4", "Age 5 to 7")
+    maptitles <- c("All Residents", "Age 0 to 4", "Age 5 to 7")
   
   #loop through for each map
     for (i in 1:length(mapvariables)) {
@@ -39,10 +39,10 @@
         #set scale bar
         tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
         #set compass
-        tm_compass(position = c(0.3, 0.07)) + 
+        tm_compass(position = c(0.3, 0.1)) + 
         #set layout
         tm_layout(frame = F, title = maptitles[i], title.size = 2, 
-                  title.position = c(0.7, "top"))
+                  title.position = c("center", "bottom"))
       #save map
       tmap_save(m, filename = paste0("map-",mapvariables[i],".png"))
       #end loop
