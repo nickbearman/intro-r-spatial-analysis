@@ -37,12 +37,12 @@
         #set variable, colours and classes
         tm_polygons(mapvariables[i], palette = "Greens", style = "equal") +
         #set scale bar
-        tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
+        tm_scale_bar(width = 0.22, position = c(0.05, 0.19)) +
         #set compass
-        tm_compass(position = c(0.3, 0.1)) + 
+        tm_compass(position = c(0.3, 0.08)) + 
         #set layout
-        tm_layout(frame = F, title = maptitles[i], title.size = 2, 
-                  title.position = c("center", "bottom"))
+        tm_layout(frame = F, title = maptitles[i], title.size = 1.25, 
+                  title.position = c(0.65, "top"))
       #save map
       tmap_save(m, filename = paste0("map-",mapvariables[i],".png"))
       #end loop
