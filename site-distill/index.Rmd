@@ -1,0 +1,31 @@
+---
+title: "Introduction to Spatial Data & Using R as a GIS"
+description: 
+site: distill::distill_website
+---
+
+Welcome to the course!
+
+Here's what you need to do before the first session:
+
+1. You will have been invited to a Slack group for the course - please check your email, and let me know if you can't access it. 
+
+2. Please post a message in the channel in Slack for this course introducing yourself. 
+
+2. You will need to install R and RStudio, and two packages `sf` and `tmap`. Please see the instructions here https://github.com/nickbearman/installing-software/blob/master/r-rstudio.md. Post in Slack if you get stuck. 
+
+4. Looking forward to seeing you for the first session. Any questions, let me know! 
+
+----
+
+
+
+----
+
+This is the material for my 1 day course on Introduction to Spatial Data & Using R as a GIS. More details on my courses are available at http://www.geospatialtrainingsolutions.co.uk.
+
+This course does not spend much time on the very basics of using R - if you want to find out more, there are some good tutorials at http://www.social-statistics.org/?p=764 or http://rpubs.com/nickbearman/gettingstartedwithr.
+
+This practical was written using R 3.5.1 (2018-07-02) and RStudio 1.1.463 by Dr. Nick Bearman (nick@geospatialtrainingsolutions.co.uk). 
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
