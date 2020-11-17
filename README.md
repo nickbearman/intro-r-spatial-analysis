@@ -9,7 +9,7 @@ The material for this workshop is available here:
 <!-- - [The R Glossary and Helpsheet (PDF, 122 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.3/glossary-helpsheet.pdf) -->
 - [The data used in the workshop (folder, total: 8.1 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/tree/master/data)  
 
-This practical was written using R 3.5.1 (2018-07-02) and RStudio 1.1.463 by Dr. Nick Bearman ([nick@geospatialtrainingsolutions.co.uk](mailto:nick@geospatialtrainingsolutions.co.uk)). 
+This practical was written using R 4.0.2 (2020-06-22) and RStudio 1.3.1093 by  Dr. Nick Bearman ([nick@geospatialtrainingsolutions.co.uk](mailto:nick@geospatialtrainingsolutions.co.uk)). 
 
 *This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit [http://creativecommons.org/licenses/by-sa/4.0/deed.en](http://creativecommons.org/licenses/by-sa/4.0/deed.en).*
 
