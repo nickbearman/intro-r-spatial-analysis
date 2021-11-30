@@ -1,0 +1,674 @@
+---
+title: "Introduction to Spatial Data and Using R as a GIS"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged 
+date: "Tue 7th and Wed 8th December 2021"
+---
+
+```{r setup, echo=FALSE}
+#set working directory to /data-user
+knitr::opts_knit$set(root.dir = 'C:/Users/nick/Dropbox/Work/course-repos/03-intro-r-spatial-analysis/data-user')
+```
+
+| Learning Outcomes:  | R Functions & Libraries: |
+| -- | -- |
+| Be able to use R to read in CSV data |  `read.csv()` (pg. 3)  | 
+| Be able to use R to read in spatial data | `st_read()` (pg. 4)  | 
+| Know how to plot spatial data using R | `qtm()` (pg. 5) & `tm_shape()` (pg. 8)  | 
+| Know how to customize colour & classifications  | `style` (pg. 9)  | 
+| Understand how to use loops for multiple maps  | `for(){}` (pg. 12)  | 
+| Know how to re-project spatial data | `st_transform()` (pg. 15)  | 
+| Be able to perform point in polygon analysis  | `poly.counts()` (pg. 15)  | 
+| Know how to save shape files | `st_write()` (pg. 17)  | 
+<!-- Tables have a max line length, if it is too long, the table gets shrunk -->
+
+# Practical 1: Intro to R & GIS
+
+## R Basics
+
+R began as a statistics program and is still used as one by many users. We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio website"), which works on top of R and provides a good user interface. I'll talk a little bit about RStudio in the presentation, and the key areas of the window are highlighted overleaf.
+
+![Screenshot of RStudio](images/rstudio-labelled.png){ width=80% }
+
+- Open up RStudio (click **Start** and type in `RStudio` or double-click the icon on the desktop). 
+
+R can initially be used as a calculator - enter the following into the left-hand side of the window - the section labelled **Console**:
+ 
+```{r,eval=FALSE}
+6 + 8
+```
+
+Don't worry about the `[1]` for the moment - just note that R printed out `14` since this is the answer to the sum you typed in.  In these worksheets, sometimes I show the results of what you have typed in.  This is in the format shown below:
+
+```{r, comment=NA}
+5 * 4
+```
+Also note that `*` is the symbol for multiplication here - the last command asked R to perform the calculation '5 times 4'.  Other symbols are `-` for subtraction and `/` for division:
+```{r, comment=NA}
+12 - 14
+6 / 17
+```
+
+
+You can also assign the answers of the calculations to variables and use them in calculations. 
+```{r, comment=NA}
+price <- 300
+```
+Here,  the value `300` is stored in the variable `price`.  The `<-` symbol means put the value on the right into the variable on the left, it is typed with a `<` followed by a `-`. The variables are shown in the window labelled **Environment**, in the top right. Variables can be used in subsequent calculations.  For example, to apply a 20% discount to this price, you could enter the following:
+```{r, comment=NA}
+price - price * 0.2 
+```
+
+or use intermediate variables:
+```{r,tidy=FALSE, comment=NA}
+discount <- price * 0.2
+price - discount
+```
+
+R can also work with lists of numbers,  as well as individual ones. Lists are specified using the `c` function.  Suppose you have a list of house prices  specified in thousands of pounds.  You could store them in a variable called `house.prices` like this:
+
+```{r, comment=NA}
+house.prices <- c(120,150,212,99,199,299,159)
+house.prices
+```
+Note that there is no problem with full stops in the middle of variable names.
+
+You can then apply functions to the lists.
+```{r, comment=NA}
+mean(house.prices)
+```
+
+If the house prices are in thousands of pounds, then this tells us that the mean house price is 176,900 GBP.  Note that on your display, the answer may be displayed to more significant digits, so you may have something like `r mean(house.prices)` as the mean value.
+
+The Data Frame
+------------
+R has a way of storing data in an object called a **data frame**. This is rather like an internal spreadsheet where all the relevant data items are stored together as a set of columns. 
+
+We have a CSV file of house prices and burglary rates, which we can load into R. We can use a function called `read.csv` which, as you might guess, reads CSV files. Run the line of code below, which loads the CSV file into a variable called `hp.data`. 
+
+<!-- There are various data files used for this workshop. Ideally I would pull them in directly from GitHub with code, but I can't work out how to do this. A copy of all the data used is in the data sub-directory. Using https://raw.githubusercontent.com/nickbearman/intro-r-spatial-analysis/master/data/hpdata.csv just gives an error message. -->
+<!-- Update hp.data <- read.csv("https://raw.githubusercontent.com/nickbearman/intro-r-spatial-analysis/master/data/hpdata.csv") does work but the URL is much longer, which is annoying -->
+
+```{r}
+hp.data <- read.csv("http://nickbearman.me.uk/data/r/hpdata.csv")
+```
+
+When we read in data, it is always a good idea to check it came in ok. To do this, we can preview the data set. The `head` command shows the first 6 rows of the data.
+
+```{r, comment=NA}
+head(hp.data)
+```
+
+You can also click on the variable listed in the Environment window, which will show the data in a new tab. You can also enter:
+
+```{r, comment=NA}
+View(hp.data)
+```
+to open a new tab showing the data. 
+
+You can also describe each column in the data set using the `summary` function:
+```{r, comment=NA, eval = FALSE}
+summary(hp.data)
+```
+For each column,  a number of values are listed:
+
+Item    | Description
+--------|----------------------------------------------------------------------------
+Min.    | The smallest value in the column
+1st. Qu.| The first quartile (the value 1/4 of the way along a sorted list of values)
+Median  | The median (the value 1/2 of the way along a sorted list of values)
+Mean    | The average of the column
+3rd. Qu.| The third quartile (the value 3/4 of the way along a sorted list of values)
+Max.    | The largest value in the column
+
+<!-- Ideally want to add the paragraph below into a 'Notes on Summary Data' box -->
+*Based on these numbers, an impression of the spread of values of each variable can be obtained. In particular it is possible to see that the median house price in St. Helens by neighbourhood ranges from 65,000 GBP to 260,000 GBP and that half of the prices lie between 152,500 GBP and 210,000 GBP. Also it can be seen that since the median measured burglary rate is zero, then at least half of areas had no burglaries in the month when counts were compiled.*
+
+We can use square brackets to look at specific sections of the data frame, for example `hp.data[1,]` or `hp.data[,1]`. We can also delete columns and create new columns using the code below. Remember to use the `head()` command as we did earlier to look at the data frame. 
+
+```{r, eval=FALSE}
+#create a new column in hp.data dataframe call counciltax, storing the value NA
+hp.data$counciltax <- NA
+#see what has happened
+head(hp.data)
+
+#delete a column
+hp.data$counciltax <- NULL
+#see what has happened
+head(hp.data)
+```
+
+```{r, comment = NA}
+#rename a column
+colnames(hp.data)[3] <- "Price-thousands"
+#see what has happened
+head(hp.data)
+```
+
+## Geographical Information
+
+R has developed into a GIS as a result of user contributed packages, or libraries, as R refers to them. We will be using several libraries in this practical, and will load them as necessary. 
+
+<!-- if using own laptops -->
+If you are using your personal computer, you will need to install the R libraries, as well as loading them. To do this, run `install.packages("library_name")`.
+<!-- -->
+
+To work with spatial data, we need to load some new *libraries*. 
+
+```{r,message=FALSE,display=FALSE, warning = FALSE}
+#load libraries
+library(sf)
+library(tmap)
+```
+
+However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets. To do this, we need to read in some data. We are going to use **shapefiles** - a well known GIS data format. We are going to be using LSOA (Lower layer Super Output Areas) data for St. Helens in Merseyside. 
+
+R uses working folders to store information relevant to the current project you are working on. I suggest you make a folder called **R work** somewhere sensible. Then we need to tell R where this is, so click **Session > Set Working Directory > Choose Directory...** and select the folder that you created. 
+
+<!-- change working directory -->
+```{r setwd, include=FALSE}
+setwd("C:/Users/nick/Dropbox/Work/course-repos/03-intro-r-spatial-analysis/data-user")
+```
+
+As with most programs, there are multiple ways to do things. For instance, to set the working directory we could type: `setwd("M:/R work")`. Your version might well have a longer title, depending on what you called the folder. Also note that slashes are indicated with a '*/*' not '\\'. 
+
+There is a set of shapefiles for the St. Helens neighbourhoods at the same location as the data set you read in earlier. Since several files are needed,  I have bundled these together in a single zip file.  You will now download this to your local folder and subsequently unzip it. This can all be done via R functions:
+ 
+ 
+```{r, comment=NA}
+download.file("http://www.nickbearman.me.uk/data/r/sthelens.zip","sthelens.zip")
+unzip("sthelens.zip")
+```
+
+The first function actually downloads the zip file into your working folder, the second one unzips it. Now, we can read these into R. 
+
+```{r, comment=NA, message=FALSE, results='hide'}
+sthelens <- st_read("sthelens.shp")
+```
+ 
+The `st_read` function does this and stores them as a Simple Features (or `sf`) object. You can use the `qtm` function to draw the polygons (i.e. the map of the LSOA).
+ 
+```{r, comment=NA}
+qtm(sthelens)
+```
+
+We can also use the `head()` command to show the first six rows, exactly the same as with a data frame. 
+
+```{r, comment=NA}
+head(sthelens)
+```
+
+*This is the same as the attribute table in programs like ArcGIS, QGIS or MapInfo. If you want to open the shapefile in QGIS or ArcGIS to have a look, feel free to.*
+
+You can see there is a lot of information there, including the geometry. The useful bit for us is the `ID` field, as this matched the ID field in the `hp.data` file. We can use this to join the two data sets together, and then show the Burglary rates on the map. 
+
+The idea is that there is a field in each data set that we can use to join the two together; in this case we have the `ID` field in `sthelens` and the `ID` field in `hp.data`. 
+ 
+ 
+```{r, comment=NA}
+sthelens <- merge(sthelens, hp.data)
+```
+ 
+And use the `head` function to check the data have been joined correctly. 
+
+```{r,comment=NA,eval=FALSE}
+head(sthelens)
+```
+ 
+Now that we have joined the data together, we can draw a choropleth map of the burglary data.  
+
+```{r, comment=NA, eval=FALSE}
+#qtm
+qtm(sthelens,  fill="Burglary")
+```
+
+This is a very quick way of getting a map out of R. To use the map, click on the **Export** button, and then choose **Copy to Clipboard...**. Then choose Copy Plot. If you also have Word up and running, you can then paste the map into your document. You can also save the map as an Image or PDF. 
+
+# Practical 2: Making a Map
+
+Working with R often requires several lines of code to get an output. Rather than typing code into the **Console**, we can use a **script** instead. This allows us to go back and edit the code very easily, to correct mistakes! 
+
+Create a new script (**File > New File > R Script**) and enter the code in there. Then you can select the lines you want to run by highlighting them, and then pressing `Ctrl+Enter`, or using the **Run** button. 
+
+Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the https://www.nomisweb.co.uk/ website.
+
+- Navigate to https://www.nomisweb.co.uk/. 
+- Under **Census Statistics** click **2011 Data catalogue**. 
+- Select **Key Statistics (KS)**. 
+- Choose **KS102EW - Age Structure**. 
+- There are various different ways of downloading the data - explore the different options. We are going to download the table as a CSV file. 
+- Under **Download (.csv)**, set **Type of area** to **super output areas - lower layer 2011** from the drop down list. 
+- Click **Download**. 
+- A file called `bulk.csv` will be downloaded - save this in your working directory.  
+
+<!-- Last checked 2020-11-17 -->
+  
+Open this file up in Excel, and you can see there are a number of different columns, covering different data. We are interested in the age data - scroll across and see the different values we have. 
+
+Add the command below to your script, and run it to read in the CSV file. The `header = TRUE` tells R to assign the first row as variable names. 
+
+```{r, echo=FALSE, comment=NA}
+#download csv file
+download.file("http://www.nickbearman.me.uk/data/r/nomis-2011-age-data.zip","nomis-2011-age-data.zip")
+#unzip csv file
+unzip("nomis-2011-age-data.zip")
+```
+
+```{r, comment=NA}
+pop2011 <- read.csv("bulk.csv", header = TRUE)
+```
+
+Then run `head` to see that the data has been read in correctly. *R will show all 23 variables, where as I've only shown the first 5 in the handout*. 
+
+```{r, eval=F}
+head(pop2011)
+```
+
+```{r, echo=F, comment=NA}
+head(pop2011[,1:5])
+```
+
+Some of the variable names are not displayed very clearly. We can rename the columns, so that when we run the `head` command, R lists the correct names. This will also help us refer to the columns later on. 
+
+Run the code below, which creates a new variable which contains the names (`newcolnames`) and then applies it to the `pop2011` data frame. 
+
+*It's also worth noting here that any line of code that starts with a `#` is a comment - i.e. R will ignore that line and move onto the next. I've included them here so you can see what is going on, but you don't need to type them in.* 
+
+```{r, comment=NA}
+#create a new variable which contains the new variable names
+newcolnames <- c("AllUsualResidents","Age00to04","Age05to07",
+                 "Age08to09","Age10to14","Age15","Age16to17",
+                 "Age18to19","Age20to24","Age25to29",
+                 "Age30to44","Age45to59","Age60to64",
+                 "Age65to74","Age75to84","Age85to89",
+                 "Age90andOver","MeanAge","MedianAge")
+
+#apply these to pop2011 data frame
+colnames(pop2011)[5:23] <- newcolnames
+```
+
+The final line of code (starting `colnames`) actually updates the variable names. The square brackets are used to refer to specific elements- in this case, columns 5 to 23. *For example, `pop2011[1,]` will show the first row and `pop2011[,1]` will show the first column.*
+  
+Now we have the correct column names for the data frame. It would also be good to check they have been applied to the `pop2011` dataframe correctly. **What code would you use to do this?**
+
+```{r, echo=F, comment=NA}
+head(pop2011[,1:9])
+```
+
+Now we have the attribute data (the number of people in each age group in each LSOA in this case) we need to join this attribute data to the spatial data. Therefore, first, we need to download the spatial data. 
+
+- Go to http://census.edina.ac.uk/ and select **Boundary Data Selector**. 
+- Then set **Country** to **England**, **Geography** to **Statistical Building Block**, **dates** to **2011 and later**, and click **Find**.
+- Select **English Lower Layer Super Output Areas, 2011** and click **List Areas**. 
+- Select **Liverpool** from the list and click **Extract Boundary Data**. 
+- After a 5 to 20 second wait, click `BoundaryData.zip` to download the files. 
+
+<!-- Last checked 2020-06-02 -->
+  
+Extract the files, and move all the files starting with the name `england_lsoa_2011` to your working folder. Then read in the data:
+  
+```{r, echo=FALSE, comment=NA}
+download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2011.zip","england_lsoa_2011.zip")
+unzip("england_lsoa_2011.zip")
+```
+
+```{r, comment=NA, results='hide'}
+#read in shapefile
+LSOA <- st_read("england_lsoa_2011.shp")
+```
+
+Like earlier, we can use the `qtm()` command to preview the map. We can also look at the attribute table with `head()`. Try these both now. 
+
+The next stage is to join the attribute data to the spatial data, like we did in the exercise earlier. See if you can see how and why I have changed the code from earlier. 
+
+```{r, comment=NA}
+#join attribute data to LSOA
+LSOA <- merge(LSOA, pop2011, by.x="code", by.y="geography.code")
+```
+
+And use the `head` command to check it has joined correctly. Your data should contain correctly labelled Age data in the 7th to 26th columns. 
+
+```{r, eval=F}
+head(LSOA)
+```
+
+```{r, eval=F,echo=F,comment=NA}
+head(LSOA[,1:6])
+```
+
+## Making Maps
+
+Now we have all the data setup, we can actually create the map. We can use the `qtm()` code like we did earlier. 
+
+We can use the `fill` parameter like we did earlier with the `Burglary` data. Try working out the code yourself to show the first set of age data. 
+
+![Output from `qtm(LSOA)` (left) and output with `tm_shape(LSOA) + tm_polygons("Age00to04")` (right).](images/map-example-outputs-1.png){ width=100% }
+
+This works well, and we can choose which variable to show. However we don't get many options with this. We can use a different function `tm_shape()`, which will give us more options. 
+
+```{r echo=TRUE, eval=FALSE}
+tm_shape(LSOA) +
+  tm_polygons("Age00to04")
+```
+
+```{r echo=TRUE, eval=FALSE}
+tm_shape(LSOA) +
+  tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", style = "jenks") +
+  tm_layout(legend.title.size = 0.8)
+```
+
+This allows us to change the title, colours and legend title size. Try substituting in `Blues` and adjusting the title. 
+
+## Colours and Categories 
+
+We can choose lots of different colours from ColorBrewer, and different classification methods as well. To show all of the different colour palettes we could use, run this code:
+
+```{r echo=TRUE, eval=FALSE}
+#load the R Color Brewer library
+  library(RColorBrewer)
+#display the palette
+  display.brewer.all()
+```
+
+We can also choose which classification method to use and how many classes. We can set `n = 6` to set the number of classes
+
+```{r echo=TRUE}
+tm_shape(LSOA) +
+  tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "jenks")
+```
+
+We can also set the `style` which is the classification method. Standard options are: 
+
+| **Classification Name** | **Code**   | **Details or Example** |  
+| ----                    | ----       | ----                   | 
+| Equal Interval          | `equal`    | *Regular intervals e.g. 0-5, 5-10, 10-15, 15-20* | 
+| Quantiles               | `quantile` | *Split the data into 5 equal categories, with the same                                            number of data points in each category* | 
+| Natural Breaks          | `jenks`    | *Algorithm based to create data driven categories* | 
+| Standard Deviation      | `sd`       | *Bases classes on data's standard deviation e.g. -2SD to -1SD, -1SD to 0, 0 to 1SD, 1SD to 2SD* | 
+| Fixed Breaks            | `fixed`    | *You choose the breaks - see below* | 
+
+**Fixed Breaks example:**
+
+```{r echo=TRUE}
+tm_shape(LSOA) +
+  tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "fixed",
+    breaks=c(6, 25, 50, 75, 100, 244))
+```
+
+## Classification on a Histogram (optional exercise)
+
+You can also show a histogram with the classification breaks using this code:
+
+```{r, eval=FALSE}
+#select the variable
+  var <- LSOA$Age00to04
+#calculate the breaks
+  library(classInt)
+  breaks <- classIntervals(var, n = 6, style = "fisher")
+#draw histogram
+  hist(var)
+#add breaks to histogram
+  abline(v = breaks$brks, col = "red")
+```
+
+## Histograms
+
+We can also add a histogram of the data to the map:
+
+```{r,eval=FALSE}
+tm_shape(LSOA) +
+  tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens", 
+      style = "equal", legend.hist = T)
+```
+
+## Layout Options and Margins (optional exercise)
+
+`tmap` has a huge number of options to customise the layout - have a look at https://rdrr.io/cran/tmap/man/tm_layout.html. 
+
+You may often have to adjust the margins to make your map look good. Adjusting the `inner.margins` is a good starting point. It is a vector (list) of four values specifying the bottom, left, top, and right margins, in that order. For example:
+
+```{r,eval=FALSE}
+tm_shape(LSOA) +
+  tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", style = "jenks") +
+  tm_layout(legend.title.size = 0.8, inner.margins = c(.04, .03, .02, .01))
+```
+
+## Scale Bar and North Arrow (optional exercise)
+
+It is also good practice to add a scale bar and a north arrow to each of the maps you produce. Running this code will add these to the map:
+
+```{r, eval=FALSE}
+tm_shape(LSOA) +
+  #Set colours and classification methods
+  tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens", 
+      style = "equal") +
+  #Add scale bar
+  tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
+  #Add compass
+  tm_compass(position = c(0.3, 0.07)) + 
+  #Set layout details
+  tm_layout(frame = F, title = "Liverpool", title.size = 2, 
+            title.position = c(0.7, "top"))
+```
+
+You may well need to adjust the position of the items on the map. Try Googling `"tm_scale_bar position"` for information on how to do this. 
+
+Remember that any line starting with a `#` is a comment, and will be ignored by R. Comments are very useful for us to note what the code is doing, particularly when you come back to it 6 months later and can't remember what it is supposed to do!
+
+## Interactive Maps (optional exercise)
+
+The `tmap` library has two different viewing options - `plot` which is what we have been using so far, and `view` which provides a basemap and the ability to zoom in and out. Try this code:
+
+```{r, comment=NA, eval=FALSE}
+#set tmap to view mode
+  tmap_mode("view")
+#plot using qtm
+  qtm(sthelens)
+#plot using tm_shape
+  tm_shape(LSOA) +
+  #Set colours and classification methods
+  tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens", 
+      style = "equal")
+#return tmap to plot mode
+  tmap_mode("plot")
+```
+
+*Shiny is a tool developed by RStudio we can use to create interactive maps on the web, with many different options. Have a look at https://shiny.rstudio.com/.*
+
+## Exporting and Creating Multiple Maps
+
+We can automatically save the map as a file by creating the map object as a new variable (`m`) and then save it using `tmap_save(m)`. 
+
+```{r, comment=NA, eval=FALSE}
+#create map
+m <- tm_shape(LSOA) +
+  tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens", 
+              style = "equal") +
+  tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
+  tm_compass(position = c(0.3, 0.07)) + 
+  tm_layout(frame = F, title = "Liverpool", title.size = 2, 
+            title.position = c(0.7, "top"))
+#save map
+tmap_save(m)
+```
+
+Saving the map using code allows us to create multiple maps very easily. A variable (`mapvariables`) is used to list which variables should be mapped, and then the line starting `for` starts a loop. Try running the code, and then change the variables it maps.
+ 
+  
+```{r message=FALSE, warning=FALSE, comment=NA}
+#set which variables will be mapped
+  mapvariables <- c("AllUsualResidents", "Age00to04", "Age05to07")
+
+#loop through for each map
+  for (i in 1:length(mapvariables)) {
+  #setup map
+    m <- tm_shape(LSOA) +
+      #set variable, colours and classes
+      tm_polygons(mapvariables[i], palette = "Greens", style = "equal") +
+      #set scale bar
+      tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
+      #set compass
+      tm_compass(position = c(0.3, 0.07)) + 
+      #set layout
+      tm_layout(frame = F, title = "Liverpool", title.size = 2, 
+                title.position = c(0.7, "top"))
+    #save map
+    tmap_save(m, filename = paste0("map-",mapvariables[i],".png"))
+  #end loop
+  }
+```
+
+You can replace `.png` with `.jpg` or `.pdf` for different file formats. 
+
+## Creating a Tidy Map Title (optional exercise)
+
+As you may have spotted, the map and legend titles aren't great. Just using the field name does give us the information we require, but it doesn't make a good looking map. 
+
+How can we make a better map title? 
+
+Have an experiment and see if you can work it out. There is some code available (in `script-examples/
+script-multiple-maps-title.R`) but try not to look straight away!
+
+\newpage
+
+# Practical 3: Clustering of Crime Points 
+
+In this section we will look at some point data, and how we can analyse it in R. We need to read in the crime data, and because the crime data is just a CSV file, we need to do some processing in order to get it as spatial data in R, including some re-projecting of the data (converting the coordinate system from WGS 1984 to BNG).
+
+```{r, comment=NA, warning=FALSE, message=FALSE}
+#Read the data into a variable called crimes
+crimes <- read.csv("http://nickbearman.me.uk/data/r/police-uk-2020-04-merseyside-street.csv")
+```
+
+Now the CSV data has been read in, take a quick look at it using the  `head()` function. You will see that the data consists of a number of columns, each with a heading. Two of these are called *Longitude* and *Latitude* - these are the column headers that give the coordinates of each incident in the data you have just downloaded. Another is headed *Crime.Type* and tells you which type of crime occurred. 
+
+At the moment, the data is just in a data frame object - not any kind of spatial object.  To create the spatial object,  enter the following:
+
+```{r, comment=NA, warning=FALSE, message=FALSE}
+#create crimes data 
+crimes_sf <- st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = "+init=epsg:4326")
+```
+
+We are taking the `crimes` data, telling R which columns have coordinates, and saying that they are in WGS 1984 (`+init=epsg:4326`).
+
+*If you get an `Error: invalid crs: +init=espg:4326, reason: no system list, errno: 2` or similar, double check for typos. Typos can often sneak in to **epsg**!*
+
+Use the `head()` function to check the data have been process properly. We can also use `qtm()` to plot a map. 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, comment=NA}
+qtm(crimes_sf)
+```
+
+We also need to reproject the data, from Latitude/Longitude (`4326`), to British National Grid (`27700`):
+
+```{r, comment=NA,warning=FALSE,message=FALSE}
+#reproject to British National Grid, from Latitude/Longitude
+crimes_sf_bng <- st_transform(crimes_sf, crs = "+init=epsg:27700")
+```
+
+To see the geographical pattern of these crimes, enter:
+
+```{r,eval=FALSE}
+tm_shape(crimes_sf_bng) +
+  tm_dots(size = 0.1, shape = 19, col = "darkred", alpha = 0.5)
+```
+
+We can see the rough outline of the Merseyside Police area, as well as the path of the River Mersey. 
+
+You can also examine the kinds of different crimes recorded.
+```{r, eval=FALSE,comment=NA,warning=FALSE,message=FALSE}
+table(crimes_sf_bng$Crime.type)
+```
+
+## Point in Polygon
+
+Having the spatial location of the crimes is great, but we need to combine this with other data to begin to really understand it. 
+
+To start with, we can overlay the LSOA we used earlier on the crimes. We can plot the crimes like we did earlier. What we can also do is plot the LSOA data on top. 
+
+```{r message=FALSE}
+#plot the crime data
+tm_shape(crimes_sf_bng) +
+  tm_dots(size = 0.1, shape = 19, col = "red", alpha = 0.5)+
+#add LSOA on top
+tm_shape(LSOA) +
+  tm_borders()
+```
+
+This doesn't really help much, as R sets the window to the first data set plotted. Try plotting the LSOA first, then the crimes layer.
+
+This is still just two layers overlaid, but hopefully we can see what is going on now. A common GIS function is "point-in-polygon" which will allow us to count how many crimes have been reported in each LSOA. 
+
+This is something that doesn't yet work (easily) in `SF` so we need to do it in `SP`. 
+
+```{r, error=FALSE, message=FALSE, warning=FALSE, comment=NA, results='hide'}
+#load libraries
+library(rgdal) #for readOGR()
+library(GISTools) #for poly.counts()
+#read shape file in in SP format
+  LSOA_sp <- readOGR(".", "england_lsoa_2011")
+#convert crimes SF to sp
+#(see https://cran.r-project.org/web/packages/sf/vignettes/sf2.html#
+#     conversion_to_other_formats:_wkt,_wkb,_sp for details)
+  crimes_sp_bng <- as(crimes_sf_bng, "Spatial")
+#calculate the number of crimes in each LSOA
+  crimes.count <- poly.counts(crimes_sp_bng, LSOA_sp)
+#add this as a new field to our LSOA data
+  LSOA_sp@data$crimes.count <- crimes.count
+```
+
+The `LSOA_sp` data is now in a `Large SpatialPolygonsDataFrame` (see the list in the environment) which is from the `SP` library. This means we can't use `head()` in the same way. Instead we can use `head@data()`.  
+
+```{r, comment=NA}
+#show the first 6 rows (exactly the same as head(LSOA_sp) but for SP data)
+  head(LSOA_sp@data)
+```
+
+Fortunately, `tmap` can plot `SP` or `SF` data, so we can use the same code as earlier:
+
+```{r,message=FALSE,error=FALSE,warning=FALSE,eval=FALSE}
+#tmap 
+tm_shape(crimes_sf_bng) +
+  tm_dots(size = 0.1, shape = 19, col = "red", alpha = 0.5) +
+#add LSOA on top
+tm_shape(LSOA_sp) +
+  tm_borders()
+```
+
+```{r echo=TRUE, eval=FALSE}
+tm_shape(LSOA_sp) +
+  tm_polygons("crimes.count", title = "Number of Crimes", palette = "Greens", style = "jenks")
+```
+
+## Exporting Shapefiles
+
+We used `st_read` to read in a shape file, and we can use `st_write` to export a shape file, but this only works for `SF` data, so we need to reformat it first: 
+
+```{r eval=FALSE}
+#convert SP to SF
+LSOA_sf_crime_count <- st_as_sf(LSOA_sp)
+#save as shapefile
+st_write(LSOA_sf_crime_count, "LSOA-crime-count.shp")
+```
+
+## Calculating the Crime Rate (optional exercise)
+
+This just tells us how many crimes there were in each LSOA - nothing about the rate. Try calculating the rate of the crimes per 10,000 people using the population data from earlier. 
+
+You can calculate the rate by calculating `(number of crimes / population) * 10000`. See the beginning of the handout for help on calculating values. Remember you will need to refer explicitly to the data frame and variable (`LSOA@data$crime.count`) each time you mention a column, i.e. `(LSOA@data$crime.count / LSOA$@data$AllUsualResidents) * 10000`. 
+
+*There is a "answer" script in `script-examples/script-crime-rates.R` but try not to look at it straight away!*
+
+
+# Practical 4: Bring Your Own Data
+
+This is the opportunity to use some of the techniques we have covered on your own data. If you don't have any data with you, you can download some sample data from the links in the training day handout. 
+
+----
+
+This practical was written using R 4.0.2 (2020-06-22) and RStudio 1.3.1093 by Dr. Nick Bearman (nick@geospatialtrainingsolutions.co.uk). 
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
+
