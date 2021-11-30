@@ -9,19 +9,19 @@ date: "Tue 7th and Wed 8th December 2021"
 
 ```{r setup, echo=FALSE}
 #set working directory to /data-user
-knitr::opts_knit$set(root.dir = 'C:/Users/nick/Dropbox/Work/course-repos/03-intro-r-spatial-analysis/data-user')
+knitr::opts_knit$set(root.dir = 'C:/Users/nick/Documents/work/intro-r-spatial-analysis/data-user')
 ```
 
 | Learning Outcomes:  | R Functions & Libraries: |
 | -- | -- |
 | Be able to use R to read in CSV data |  `read.csv()` (pg. 3)  | 
-| Be able to use R to read in spatial data | `st_read()` (pg. 4)  | 
-| Know how to plot spatial data using R | `qtm()` (pg. 5) & `tm_shape()` (pg. 8)  | 
+| Be able to use R to read in spatial data | `st_read()` (pg. 5)  | 
+| Know how to plot spatial data using R | `qtm()` (pg. 5) & `tm_shape()` (pg. 10)  | 
 | Know how to customize colour & classifications  | `style` (pg. 9)  | 
-| Understand how to use loops for multiple maps  | `for(){}` (pg. 12)  | 
-| Know how to re-project spatial data | `st_transform()` (pg. 15)  | 
-| Be able to perform point in polygon analysis  | `poly.counts()` (pg. 15)  | 
-| Know how to save shape files | `st_write()` (pg. 17)  | 
+| Understand how to use loops for multiple maps  | `for(){}` (pg. 14)  | 
+| Know how to re-project spatial data | `st_transform()` (pg. 18)  | 
+| Be able to perform point in polygon analysis  | `poly.counts()` (pg. 18)  | 
+| Know how to save shape files | `st_write()` (pg. 19)  | 
 <!-- Tables have a max line length, if it is too long, the table gets shrunk -->
 
 # Practical 1: Intro to R & GIS
@@ -29,6 +29,8 @@ knitr::opts_knit$set(root.dir = 'C:/Users/nick/Dropbox/Work/course-repos/03-intr
 ## R Basics
 
 R began as a statistics program and is still used as one by many users. We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio website"), which works on top of R and provides a good user interface. I'll talk a little bit about RStudio in the presentation, and the key areas of the window are highlighted overleaf.
+
+*If you need to install RStudio, please check [here](https://nickbearman.github.io/installing-software/r-rstudio) or if you can't install it, an alternative option is to use [RStudio.cloud](https://rstudio.cloud).*
 
 ![Screenshot of RStudio](images/rstudio-labelled.png){ width=80% }
 
@@ -61,7 +63,7 @@ Here,  the value `300` is stored in the variable `price`.  The `<-` symbol means
 price - price * 0.2 
 ```
 
-or use intermediate variables:
+or you could use intermediate variables:
 ```{r,tidy=FALSE, comment=NA}
 discount <- price * 0.2
 price - discount
@@ -94,6 +96,8 @@ We have a CSV file of house prices and burglary rates, which we can load into R.
 ```{r}
 hp.data <- read.csv("http://nickbearman.me.uk/data/r/hpdata.csv")
 ```
+
+*This loads in data from a website. We will look at reading in data from your own computer later on.*
 
 When we read in data, it is always a good idea to check it came in ok. To do this, we can preview the data set. The `head` command shows the first 6 rows of the data.
 
@@ -152,7 +156,7 @@ head(hp.data)
 R has developed into a GIS as a result of user contributed packages, or libraries, as R refers to them. We will be using several libraries in this practical, and will load them as necessary. 
 
 <!-- if using own laptops -->
-If you are using your personal computer, you will need to install the R libraries, as well as loading them. To do this, run `install.packages("library_name")`.
+If you are using your own computer, you will need to install the R libraries, as well as loading them. To do this, run `install.packages("library_name")`.
 <!-- -->
 
 To work with spatial data, we need to load some new *libraries*. 
@@ -163,16 +167,19 @@ library(sf)
 library(tmap)
 ```
 
-However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets. To do this, we need to read in some data. We are going to use **shapefiles** - a well known GIS data format. We are going to be using LSOA (Lower layer Super Output Areas) data for St. Helens in Merseyside. 
+However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets. To do this, we need to read in some data. We are going to use **shapefiles** - a well known GIS data format. We are going to be using LSOA (Lower layer Super Output Areas) data for St. Helens in Merseyside, Liverpool, UK. 
 
-R uses working folders to store information relevant to the current project you are working on. I suggest you make a folder called **R work** somewhere sensible. Then we need to tell R where this is, so click **Session > Set Working Directory > Choose Directory...** and select the folder that you created. 
+R uses working folders to store information relevant to the current project you are working on. 
+
+- Make a folder called **R work** somewhere on your computer you can find.  
+- Then we need to tell R where this is, so click **Session > Set Working Directory > Choose Directory...** and select the folder that you created. 
 
 <!-- change working directory -->
 ```{r setwd, include=FALSE}
-setwd("C:/Users/nick/Dropbox/Work/course-repos/03-intro-r-spatial-analysis/data-user")
+setwd("C:/Users/nick/Documents/work/intro-r-spatial-analysis/data-user")
 ```
 
-As with most programs, there are multiple ways to do things. For instance, to set the working directory we could type: `setwd("M:/R work")`. Your version might well have a longer title, depending on what you called the folder. Also note that slashes are indicated with a '*/*' not '\\'. 
+As with most programs, there are multiple ways to do things. For instance, to set the working directory we could type: `setwd("C:/Users/<username>/Documents/r-work`. Your version might well have a longer title, depending on what you called the folder. Also note that slashes are indicated with a '*/*' not '\\'. 
 
 There is a set of shapefiles for the St. Helens neighbourhoods at the same location as the data set you read in earlier. Since several files are needed,  I have bundled these together in a single zip file.  You will now download this to your local folder and subsequently unzip it. This can all be done via R functions:
  
@@ -200,7 +207,7 @@ We can also use the `head()` command to show the first six rows, exactly the sam
 head(sthelens)
 ```
 
-*This is the same as the attribute table in programs like ArcGIS, QGIS or MapInfo. If you want to open the shapefile in QGIS or ArcGIS to have a look, feel free to.*
+*This is the same as the attribute table in programs like ArcGIS, QGIS or MapInfo. If you want to, open the shapefile in QGIS or ArcGIS to have a look.*
 
 You can see there is a lot of information there, including the geometry. The useful bit for us is the `ID` field, as this matched the ID field in the `hp.data` file. We can use this to join the two data sets together, and then show the Burglary rates on the map. 
 
@@ -220,11 +227,11 @@ head(sthelens)
 Now that we have joined the data together, we can draw a choropleth map of the burglary data.  
 
 ```{r, comment=NA, eval=FALSE}
-#qtm
+#use the qtm() function for a Quick TMap
 qtm(sthelens,  fill="Burglary")
 ```
 
-This is a very quick way of getting a map out of R. To use the map, click on the **Export** button, and then choose **Copy to Clipboard...**. Then choose Copy Plot. If you also have Word up and running, you can then paste the map into your document. You can also save the map as an Image or PDF. 
+This is a very quick way of getting a map out of R. To use the map, click on the **Export** button, and then choose **Copy to Clipboard...**. Then choose **Copy Plot**. If you also have Word up and running, you can then paste the map into your document. You can also save the map as an Image or PDF. 
 
 # Practical 2: Making a Map
 
@@ -234,16 +241,16 @@ Create a new script (**File > New File > R Script**) and enter the code in there
 
 Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the https://www.nomisweb.co.uk/ website.
 
-- Navigate to https://www.nomisweb.co.uk/. 
-- Under **Census Statistics** click **2011 Data catalogue**. 
-- Select **Key Statistics (KS)**. 
-- Choose **KS102EW - Age Structure**. 
+- Navigate to **https://www.nomisweb.co.uk/**. 
+- Under **Census Statistics** (scroll down) click **2011 Data catalogue**. 
+- Select **Key Statistics**. 
+- Choose **KS102EW - Age structure**. 
 - There are various different ways of downloading the data - explore the different options. We are going to download the table as a CSV file. 
 - Under **Download (.csv)**, set **Type of area** to **super output areas - lower layer 2011** from the drop down list. 
 - Click **Download**. 
 - A file called `bulk.csv` will be downloaded - save this in your working directory.  
 
-<!-- Last checked 2020-11-17 -->
+<!-- Last checked 2021-11-30 -->
   
 Open this file up in Excel, and you can see there are a number of different columns, covering different data. We are interested in the age data - scroll across and see the different values we have. 
 
@@ -270,7 +277,7 @@ head(pop2011)
 head(pop2011[,1:5])
 ```
 
-Some of the variable names are not displayed very clearly. We can rename the columns, so that when we run the `head` command, R lists the correct names. This will also help us refer to the columns later on. 
+Some of the variable names are not displayed very clearly. We can rename the columns, so that when we run the `head()` command, R lists the correct names. This will also help us refer to the columns later on. 
 
 Run the code below, which creates a new variable which contains the names (`newcolnames`) and then applies it to the `pop2011` data frame. 
 
@@ -289,7 +296,9 @@ newcolnames <- c("AllUsualResidents","Age00to04","Age05to07",
 colnames(pop2011)[5:23] <- newcolnames
 ```
 
-The final line of code (starting `colnames`) actually updates the variable names. The square brackets are used to refer to specific elements- in this case, columns 5 to 23. *For example, `pop2011[1,]` will show the first row and `pop2011[,1]` will show the first column.*
+The final line of code (starting `colnames`) actually updates the variable names. The square brackets are used to refer to specific elements - in this case, columns 5 to 23. 
+
+*For example, `pop2011[1,]` will show the first row and `pop2011[,1]` will show the first column.*
   
 Now we have the correct column names for the data frame. It would also be good to check they have been applied to the `pop2011` dataframe correctly. **What code would you use to do this?**
 
@@ -299,13 +308,13 @@ head(pop2011[,1:9])
 
 Now we have the attribute data (the number of people in each age group in each LSOA in this case) we need to join this attribute data to the spatial data. Therefore, first, we need to download the spatial data. 
 
-- Go to http://census.edina.ac.uk/ and select **Boundary Data Selector**. 
+- Go to **http://census.edina.ac.uk/** and select **Boundary Data Selector**. 
 - Then set **Country** to **England**, **Geography** to **Statistical Building Block**, **dates** to **2011 and later**, and click **Find**.
 - Select **English Lower Layer Super Output Areas, 2011** and click **List Areas**. 
 - Select **Liverpool** from the list and click **Extract Boundary Data**. 
 - After a 5 to 20 second wait, click `BoundaryData.zip` to download the files. 
 
-<!-- Last checked 2020-06-02 -->
+<!-- Last checked 2021-11-30 -->
   
 Extract the files, and move all the files starting with the name `england_lsoa_2011` to your working folder. Then read in the data:
   
@@ -386,7 +395,7 @@ We can also set the `style` which is the classification method. Standard options
 | Equal Interval          | `equal`    | *Regular intervals e.g. 0-5, 5-10, 10-15, 15-20* | 
 | Quantiles               | `quantile` | *Split the data into 5 equal categories, with the same                                            number of data points in each category* | 
 | Natural Breaks          | `jenks`    | *Algorithm based to create data driven categories* | 
-| Standard Deviation      | `sd`       | *Bases classes on data's standard deviation e.g. -2SD to -1SD, -1SD to 0, 0 to 1SD, 1SD to 2SD* | 
+| Standard Deviation      | `sd`       | *Bases classes on data's mean and standard deviation e.g. -1SD to mean, mean to +1SD, +1SD to +2SD* | 
 | Fixed Breaks            | `fixed`    | *You choose the breaks - see below* | 
 
 **Fixed Breaks example:**
@@ -413,7 +422,7 @@ You can also show a histogram with the classification breaks using this code:
   abline(v = breaks$brks, col = "red")
 ```
 
-## Histograms
+## Histogram on the map
 
 We can also add a histogram of the data to the map:
 
@@ -425,7 +434,7 @@ tm_shape(LSOA) +
 
 ## Layout Options and Margins (optional exercise)
 
-`tmap` has a huge number of options to customise the layout - have a look at https://rdrr.io/cran/tmap/man/tm_layout.html. 
+`tmap` has a huge number of options to customise the layout - have a look at https://rdrr.io/cran/tmap/man/tm_layout.html as a starting point. 
 
 You may often have to adjust the margins to make your map look good. Adjusting the `inner.margins` is a good starting point. It is a vector (list) of four values specifying the bottom, left, top, and right margins, in that order. For example:
 
@@ -548,12 +557,10 @@ At the moment, the data is just in a data frame object - not any kind of spatial
 
 ```{r, comment=NA, warning=FALSE, message=FALSE}
 #create crimes data 
-crimes_sf <- st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = "+init=epsg:4326")
+crimes_sf <- st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = 4326)
 ```
 
-We are taking the `crimes` data, telling R which columns have coordinates, and saying that they are in WGS 1984 (`+init=epsg:4326`).
-
-*If you get an `Error: invalid crs: +init=espg:4326, reason: no system list, errno: 2` or similar, double check for typos. Typos can often sneak in to **epsg**!*
+We are taking the `crimes` data, telling R which columns have coordinates (`coords = c('Longitude', 'Latitude')`), and saying that they are in WGS 1984 (`crs = 4326`).
 
 Use the `head()` function to check the data have been process properly. We can also use `qtm()` to plot a map. 
 
@@ -565,7 +572,7 @@ We also need to reproject the data, from Latitude/Longitude (`4326`), to British
 
 ```{r, comment=NA,warning=FALSE,message=FALSE}
 #reproject to British National Grid, from Latitude/Longitude
-crimes_sf_bng <- st_transform(crimes_sf, crs = "+init=epsg:27700")
+crimes_sf_bng <- st_transform(crimes_sf, crs = 27700)
 ```
 
 To see the geographical pattern of these crimes, enter:
