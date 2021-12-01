@@ -26,7 +26,7 @@ knitr::opts_knit$set(root.dir = 'C:/Users/nick/Documents/work/intro-r-spatial-an
 
 # Practical 1: Intro to R & GIS
 
-## R Basics
+### R Basics
 
 R began as a statistics program and is still used as one by many users. We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio website"), which works on top of R and provides a good user interface. I'll talk a little bit about RStudio in the presentation, and the key areas of the window are highlighted overleaf.
 
@@ -151,7 +151,7 @@ colnames(hp.data)[3] <- "Price-thousands"
 head(hp.data)
 ```
 
-## Geographical Information
+### Geographical Information
 
 R has developed into a GIS as a result of user contributed packages, or libraries, as R refers to them. We will be using several libraries in this practical, and will load them as necessary. 
 
@@ -303,7 +303,7 @@ The final line of code (starting `colnames`) actually updates the variable names
 Now we have the correct column names for the data frame. It would also be good to check they have been applied to the `pop2011` dataframe correctly. **What code would you use to do this?**
 
 ```{r, echo=F, comment=NA}
-head(pop2011[,1:9])
+head(pop2011[,1:12])
 ```
 
 Now we have the attribute data (the number of people in each age group in each LSOA in this case) we need to join this attribute data to the spatial data. Therefore, first, we need to download the spatial data. 
@@ -347,7 +347,7 @@ head(LSOA)
 head(LSOA[,1:6])
 ```
 
-## Making Maps
+### Making Maps
 
 Now we have all the data setup, we can actually create the map. We can use the `qtm()` code like we did earlier. 
 
@@ -370,7 +370,7 @@ tm_shape(LSOA) +
 
 This allows us to change the title, colours and legend title size. Try substituting in `Blues` and adjusting the title. 
 
-## Colours and Categories 
+### Colours and Categories 
 
 We can choose lots of different colours from ColorBrewer, and different classification methods as well. To show all of the different colour palettes we could use, run this code:
 
@@ -406,7 +406,7 @@ tm_shape(LSOA) +
     breaks=c(6, 25, 50, 75, 100, 244))
 ```
 
-## Classification on a Histogram (optional exercise)
+### Classification on a Histogram (optional exercise)
 
 You can also show a histogram with the classification breaks using this code:
 
@@ -422,7 +422,7 @@ You can also show a histogram with the classification breaks using this code:
   abline(v = breaks$brks, col = "red")
 ```
 
-## Histogram on the map
+### Histogram on the map
 
 We can also add a histogram of the data to the map:
 
@@ -432,7 +432,7 @@ tm_shape(LSOA) +
       style = "equal", legend.hist = T)
 ```
 
-## Layout Options and Margins (optional exercise)
+### Layout Options and Margins (optional exercise)
 
 `tmap` has a huge number of options to customise the layout - have a look at https://rdrr.io/cran/tmap/man/tm_layout.html as a starting point. 
 
@@ -444,7 +444,7 @@ tm_shape(LSOA) +
   tm_layout(legend.title.size = 0.8, inner.margins = c(.04, .03, .02, .01))
 ```
 
-## Scale Bar and North Arrow (optional exercise)
+### Scale Bar and North Arrow (optional exercise)
 
 It is also good practice to add a scale bar and a north arrow to each of the maps you produce. Running this code will add these to the map:
 
@@ -466,7 +466,7 @@ You may well need to adjust the position of the items on the map. Try Googling `
 
 Remember that any line starting with a `#` is a comment, and will be ignored by R. Comments are very useful for us to note what the code is doing, particularly when you come back to it 6 months later and can't remember what it is supposed to do!
 
-## Interactive Maps (optional exercise)
+### Interactive Maps (optional exercise)
 
 The `tmap` library has two different viewing options - `plot` which is what we have been using so far, and `view` which provides a basemap and the ability to zoom in and out. Try this code:
 
@@ -486,7 +486,7 @@ The `tmap` library has two different viewing options - `plot` which is what we h
 
 *Shiny is a tool developed by RStudio we can use to create interactive maps on the web, with many different options. Have a look at https://shiny.rstudio.com/.*
 
-## Exporting and Creating Multiple Maps
+### Exporting and Creating Multiple Maps
 
 We can automatically save the map as a file by creating the map object as a new variable (`m`) and then save it using `tmap_save(m)`. 
 
@@ -531,16 +531,15 @@ Saving the map using code allows us to create multiple maps very easily. A varia
 
 You can replace `.png` with `.jpg` or `.pdf` for different file formats. 
 
-## Creating a Tidy Map Title (optional exercise)
+### Creating a Tidy Map Title (optional exercise)
 
 As you may have spotted, the map and legend titles aren't great. Just using the field name does give us the information we require, but it doesn't make a good looking map. 
 
 How can we make a better map title? 
 
 Have an experiment and see if you can work it out. There is some code available (in `script-examples/
-script-multiple-maps-title.R`) but try not to look straight away!
+script-p2-multiple-maps-title.R`) but try not to look straight away!
 
-\newpage
 
 # Practical 3: Clustering of Crime Points 
 
@@ -562,7 +561,7 @@ crimes_sf <- st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = 4326)
 
 We are taking the `crimes` data, telling R which columns have coordinates (`coords = c('Longitude', 'Latitude')`), and saying that they are in WGS 1984 (`crs = 4326`).
 
-Use the `head()` function to check the data have been process properly. We can also use `qtm()` to plot a map. 
+Use the `head()` function to check the data have been processed properly. We can also use `qtm()` to plot a map. 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, comment=NA}
 qtm(crimes_sf)
@@ -589,7 +588,7 @@ You can also examine the kinds of different crimes recorded.
 table(crimes_sf_bng$Crime.type)
 ```
 
-## Point in Polygon
+### Point in Polygon
 
 Having the spatial location of the crimes is great, but we need to combine this with other data to begin to really understand it. 
 
@@ -598,7 +597,7 @@ To start with, we can overlay the LSOA we used earlier on the crimes. We can plo
 ```{r message=FALSE}
 #plot the crime data
 tm_shape(crimes_sf_bng) +
-  tm_dots(size = 0.1, shape = 19, col = "red", alpha = 0.5)+
+  tm_dots(size = 0.1, shape = 19, col = "red", alpha = 0.5) +
 #add LSOA on top
 tm_shape(LSOA) +
   tm_borders()
@@ -677,5 +676,8 @@ This is the opportunity to use some of the techniques we have covered on your ow
 
 This practical was written using R 4.0.2 (2020-06-22) and RStudio 1.3.1093 by Dr. Nick Bearman (nick@geospatialtrainingsolutions.co.uk). 
 
-This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/4.0/deed.en. The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
+This work (Introduction to Spatial Data and Using R as a GIS by Nick Bearman) is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
+
+
+The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This version was created on `r format(Sys.time(), '%d %B %Y')`. 
 
