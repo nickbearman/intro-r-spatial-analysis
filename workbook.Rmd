@@ -619,11 +619,14 @@ head(LSOA_crimes)
 
 This has completed a spatial join, linking each crime point with each LSOA it is located within. This is useful, but we need to do a bit of tidying up for us to know how many crimes are in each LSOA. 
 
-So we can aggregate the data by LSOA:
+So we can aggregate the data by LSOA (this might take a few seconds to run):
 
-```{r include=FALSE}
+```{r}
 #Aggregate by LSOA
 LSOA_crimes_aggregated <- aggregate(x = LSOA_crimes, by = list(LSOA_crimes$code), FUN = length)
+```
+
+```{r include=FALSE}
 #gives us count of points in each polygon
 head(LSOA_crimes_aggregated)
 ```

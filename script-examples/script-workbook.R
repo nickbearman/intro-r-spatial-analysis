@@ -191,6 +191,11 @@
   #view output
   head(LSOA_crimes)
   
+  #Aggregate by LSOA
+  LSOA_crimes_aggregated <- aggregate(x = LSOA_crimes, by = list(LSOA_crimes$code), FUN = length)
+  #gives us count of points in each polygon
+  head(LSOA_crimes_aggregated)
+  
   #remove additional columns
   LSOA_crimes_aggregated <- LSOA_crimes_aggregated[,1:2]
   #rename columns
