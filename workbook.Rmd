@@ -1,10 +1,10 @@
 ---
 title: "Introduction to Spatial Data and Using R as a GIS"
 output:
-  pdf_document: default
   html_document:
     df_print: paged 
-date: "Tue 1st and Wed 2nd February 2022"
+  pdf_document: default
+date: "Thu 23rd June 2022"
 ---
 
 ```{r setup, echo=FALSE}
