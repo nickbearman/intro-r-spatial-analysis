@@ -167,7 +167,7 @@ library(sf)
 library(tmap)
 ```
 
-However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets. To do this, we need to read in some data. We are going to use **shapefiles** - a well known GIS data format. We are going to be using LSOA (Lower layer Super Output Areas) data for St. Helens in Merseyside, Liverpool, UK. 
+However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets. To do this, we need to read in some data. We are going to use **shapefiles** - a well known GIS data format. We are going to be using LSOA (Lower layer Super Output Areas) data for St. Helens in Merseyside (Liverpool), UK. 
 
 R uses working folders to store information relevant to the current project you are working on. 
 
@@ -227,7 +227,7 @@ head(sthelens)
 Now that we have joined the data together, we can draw a choropleth map of the burglary data.  
 
 ```{r, comment=NA, eval=FALSE}
-#use the qtm() function for a Quick TMap
+#use the qtm() function for a Quick Thematic Map
 qtm(sthelens,  fill="Burglary")
 ```
 
