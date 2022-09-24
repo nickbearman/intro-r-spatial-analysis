@@ -1,0 +1,713 @@
+---
+title: "Introduction to Spatial Data & Using R as a GIS"
+subtitle: "Tue 27th & Wed 28th Sept 2022 | 10am - 1pm"
+author: "Dr Nick Bearman"
+format: 
+  revealjs
+---
+
+------------------------------------------------------------------------
+
+![](images/Slide1.png)
+
+------------------------------------------------------------------------
+
+![](images/Slide2.png)
+
+## What are we covering?
+
+-   Background on R and RStudio
+-   Load spatial data
+-   Create a map
+-   Basic analysis
+-   Using your own data
+
+![](images/rstudio-map.png){.absolute bottom="0" right="0" width="500"}
+
+<!-- online course -->
+
+## Housekeeping
+
+-   Zoom etiquette
+-   We're a small group,
+    -   We can discuss things as we go along.
+-   Mute yourself (unless asking a question)
+-   Video on (if possible)
+-   Questions
+    -   Ask in real time, or in the chat
+-   Recording -- only our group, available for 3 months
+-   Workbook, data and presentation all in OneDrive
+
+<!-- in person source -->
+
+## Housekeeping
+
+-   Introductions
+    -   Name / background / area of interest
+    -   Have you done any GIS before? (no is fine!)
+    -   What would you like from the course? <!-- -   What you would like from the course -->
+
+## Housekeeping
+
+-   Have presentation and practical sessions
+    -   Ask questions as we go along
+    -   Think about how you could use these techniques with your own data
+
+```{=html}
+<!-- 
+-   No fire alarm planned
+-   Be aware of trailing wires
+-   Photos for social media
+-->
+```
+-   Presentations, handouts and data on OneDrive
+    -   tinyurl.com/methodsconqgis
+
+## Outline  {.smaller}
+
+-   **Day 1**:
+    -   10:00am - 10:45am -- What is GIS & R?
+    -   10:45am - 11:30am -- Practical 1: Intro to R & GIS
+    -   11:30am - 11:50am -- Classification
+    -   11:50am - 1:00pm -- Practical 2: Making a Map
+-   Day 2:
+    -   10:00am - 10:20am -- Recap and Making Maps
+    -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1pm -- Practical 4: Bring Your Own Data
+
+## Housekeeping
+
+Poll - Have you installed R & RStudio successfully?
+
+## Any Questions?
+
+-   Zoom?
+-   Matrix/Element?
+-   Schedule?
+-   ?
+
+## What is GIS?
+
+-   Geographic Information Systems
+-   Turning (spatial) data into information ![](images/turning-data-into-information.png)
+-   Using this information to answer (research) questions
+    -   *"How have housing conditions changed in the past ten years?"*
+
+## What can a GIS can answer?
+
+![](images/types-of-questions-a-gis-can-answer.jpg)\
+<font size="2">Kraak & Ormeling (2003) p.7.</font>
+
+## What is GIS?
+
+![](images/what-is-gis.png)\
+<font size="2">http://www.flickr.com/photos/dsleeter_2000/3097476532 & ESRI Course "Teaching with GIS"</font>
+
+## GIS
+
+-   Nearly all human activities & decisions involve geography
+    -   the "**where?**"
+-   Working with geographic information is **different** to working with a **CSV** file
+-   This is why we need specialized **GIS** software to:
+    -   **organize** and **store**
+    -   **access** and **retrieve**
+    -   **present** and **manage** spatial data
+-   But ultimately to apply to the solution of our **problem**
+
+## GIS can be applied to many many many different areas
+
+------------------------------------------------------------------------
+
+## Kenya Vegetation
+
+![](images/kenya-vegetation.png)
+
+<font size="2">Kenya Vegetation Figure 1 - http://pvanb.wordpress.com/2010/06/10/clickfu-in-qgis/</font>
+
+------------------------------------------------------------------------
+
+### Census 2011
+
+![](images/census-2021.png)
+
+<font size="2">http://www.alex-singleton.com/r/2014/02/05/2011-census-open-atlas-project-version-two/</font>
+
+------------------------------------------------------------------------
+
+## Poverty prevlance in Africa
+
+![](images/africa-poverty.png)
+
+<font size="2">http://pvanb.wordpress.com/2012/05/09/poverty-maps-on-harvestchoice/ </font>
+
+------------------------------------------------------------------------
+
+## GIS: Systems and Science
+
+::: fragment
+-   Geographical Information **Systems**
+    -   The methods, process and technology we use
+:::
+
+::: fragment
+-   Geographical Information **Science** <!-- .element: class="fragment" -->
+    -   The science behind the technology
+    -   Including development of new technology, <br> methods and processes
+:::
+
+::: fragment
+![](images/ijgis.png){.absolute bottom="0" right="0" width="250"}
+:::
+
+::: fragment
+-   Geographic*al* / Geographic
+:::
+
+::: fragment
+-   Geographic Data Science
+:::
+
+------------------------------------------------------------------------
+
+## R as a GIS
+
+-   Command line driven, rather than GUI
+
+-   Disadvantages
+
+    -   Remembering commands
+    -   Glossary
+    -   Steeper learning curve
+
+    ![](images/r-glossary.png){.absolute bottom="0" right="0" width="300"}
+
+## R as a GIS
+
+-   Advantages
+    -   Easy to record what you did and repeat specific pieces of work
+    -   Lots of reproducible examples on the web
+    -   Easily scriptable
+    -   134,567 maps? Easy!
+        -   *354 areas X \~392 variables*
+    -   2011 Census Open Atlas
+
+------------------------------------------------------------------------
+
+![](images/census-open-atlas-1.png)
+
+------------------------------------------------------------------------
+
+![](images/census-open-atlas-2.png)
+
+------------------------------------------------------------------------
+
+![](images/census-open-atlas-3.png)
+
+------------------------------------------------------------------------
+
+![](images/census-open-atlas-4.png)
+
+------------------------------------------------------------------------
+
+![](images/topography.png)
+
+------------------------------------------------------------------------
+
+![](images/population.png)
+
+<font size="2">https://gist.github.com/halhen/659780120accd82e043986c8b57deae0/</font>
+
+------------------------------------------------------------------------
+
+![](images/population_code.png)
+
+<font size="2">https://gist.github.com/halhen/659780120accd82e043986c8b57deae0/</font>
+
+## GIS Software
+
+![](images/gis-software.png)\
+
+-   R is very different to ArcGIS, but can do many of the same operations
+-   R is free (as is QGIS)
+-   R is increasingly popular in the academic and commercial (data-science) sector
+-   Try data in QGIS / ArcGIS if you like
+-   *All can be useful*
+
+## Projections
+
+-   Projection - going from a sphere to a flat surface
+
+![](images/globe-flat-surface.png)
+
+<font size="2">http://www.primap.com/wsen/Maps/MapCollection/WorldMaps/Globe-(Europe-centered)-Vegetation-4000x4000.html</font>
+
+------------------------------------------------------------------------
+
+## Projections
+
+-   Projection - going from a sphere to a flat surface
+
+![](images/orange.png)
+
+<font size="2">http://www.hdwallpapersos.com/orange-fruit-hd-wallpapers.html</font>
+
+------------------------------------------------------------------------
+
+![](images/mercator-1.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-peters.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-globe.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-peters.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-peters-2.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-2.png)
+
+------------------------------------------------------------------------
+
+## Why are Projections important?
+
+::: fragment
+1.  The map(s) may not be as they appear
+:::
+
+::: fragment
+2.  Data may appear in the wrong place
+:::
+
+------------------------------------------------------------------------
+
+![](images/base-map.png)
+
+------------------------------------------------------------------------
+
+![](images/base-map-uk-data.png)
+
+------------------------------------------------------------------------
+
+## Why are Projections important?
+
+1.  The map(s) may not be as they appear
+2.  Data may appear in the wrong place
+
+::: fragment
+3.  Coordinate Systems
+:::
+
+## Coordinate Systems
+
+Latitude and Longitude (WGS 1984)
+
+*52°N 37' 30.32'' (52.6250) 1°E 14' 2.05'' (1.2339)*
+
+![](images/lat-lng.png)
+
+## Coordinate Systems
+
+British National Grid
+
+*Easting: 619301 Northing: 307416*
+
+![](images/bng.png)
+
+## Coordinate Systems
+
+UTM (Universal Transverse Mercator)
+
+*621160.98, 3349893.53 meters, Zone 31 N*
+
+![](images/utm.png)
+
+## Coordinate Systems
+
+UTM (Universal Transverse Mercator)
+
+*621160.98, 3349893.53 meters, Zone 31 N*
+
+![](images/utm-europe.png)
+
+## Geographic & Projected Coordinate Systems  {.smaller}
+
+-   Geographic Coordinate Systems (e.g. WGS 84)
+    -   Where on the Earth's surface something is
+    -   52.6250° N 1.2339° E
+    -   Usually in angular units (degrees)
+-   Projected Coordinate Systems (e.g. BNG / UTM)
+    -   How we show this on a printed/flat map
+    -   Easting: 619301 Northing: 307416
+    -   621160.98, 3349893.53 meters, Zone 14 R
+    -   Usually in linear units (meters)
+
+## Coordinate Systems
+
+-   Latitude and Longitude (WGS 1984)
+    -   52°N 37' 30.32'' (52.6250) 1°E 14' 2.05'' (1.2339)
+-   British National Grid (Eastings & Northings)
+    -   Easting: 619301 Northing: 307416
+-   UTM (Universal Transverse Mercator)
+    -   621160.98, 3349893.53 meters, Zone 14 R
+
+## Coordinate Systems
+
+-   Latitude and Longitude (WGS 1984) **EPSG = 4326**
+    -   52°N 37' 30.32'' (52.6250) 1°E 14' 2.05'' (1.2339)
+-   British National Grid (Eastings & Northings) **EPSG = 27700**
+    -   Easting: 619301 Northing: 307416
+-   UTM (Universal Transverse Mercator) **EPSG = by zone**
+    -   621160.98, 3349893.53 meters, Zone 14 R
+
+## Coordinate Systems
+
+-   Why is it important?
+    -   Some data uses WGS84, some BNG, UTM
+    -   LSOA use BNG (Eastings/Northings)
+    -   Need to convert between the two
+-   Some GIS convert automatically -- **R does not**
+
+------------------------------------------------------------------------
+
+![](images/joining-1.png)
+
+------------------------------------------------------------------------
+
+![](images/joining-2.png)
+
+------------------------------------------------------------------------
+
+![](images/joining-3.png)
+
+------------------------------------------------------------------------
+
+![](images/joining-4.png)
+
+## Attribute Join
+
+-   The attribute is key
+-   It must match **exactly**
+    -   "Gambia, The" ≠ "The Gambia"
+    -   "USA" ≠ "The United States"
+    -   "UK" ≠ "Great Britain"
+    -   "UK" ≠ "UK"
+
+## Attribute Join
+
+-   Codes (ISO3) can help
+
+![](images/iso-codes.png){.absolute left="0"}
+
+::: footer
+https://twitter.com/zevross/status/1118967279864242176</font>
+:::
+
+## Attribute Join
+
+-   Is an issue in many different places
+
+![](images/irish-names.png){.absolute}
+
+------------------------------------------------------------------------
+
+![](images/rstudio.png)
+
+------------------------------------------------------------------------
+
+## Working Directory
+
+-   R uses a 'working directory' to store your files in
+-   You might have a different one for each project / piece of work
+    -   e.g. C:\\Documents\\GIS
+    -   `setwd("C:\Documents\GIS")`
+
+## Variables
+
+-   R uses variables to store information
+
+-   listed in your 'workspace' or 'environment' (top-right)
+
+-   `house.prices <- c(120,150,212, 99,199,299,159)`
+
+------------------------------------------------------------------------
+
+## Variables and Assignment
+
+`house.prices` `<-` `c(120,150,212, 99,199,299,159)`
+
+## Variables and Assignment
+
+**`house.prices`** `<-` `c(120,150,212, 99,199,299,159)`
+
+## Variables and Assignment
+
+`house.prices` **`<-`** `c(120,150,212, 99,199,299,159)`
+
+## Variables and Assignment
+
+`house.prices` `<-` **`c(120,150,212, 99,199,299,159)`**
+
+## Variables and Assignment
+
+`sthelens` `<-` `st_read("sthelens.shp")`
+
+## Variables and Assignment
+
+**`sthelens`** `<-` `st_read("sthelens.shp")`
+
+## Variables and Assignment
+
+`sthelens` **`<-`** `st_read("sthelens.shp")`
+
+## Variables and Assignment
+
+`sthelens` `<-` **`st_read("sthelens.shp")`**
+
+## Variables and Assignment
+
+`sthelens` `<-` **`st_read("sthelens.shp")`**
+
+\- See glossary for details
+
+\- Case sensitive
+
+\- StHelens ≠ sthelens ≠ STHELENS
+
+## Data Formats
+- Data frames are like a table or spreadsheet
+- `dataframe[rows,cols]`
+- `dataframe[1,]` first row
+- `dataframe[,1]` first col
+
+## Libraries
+- R uses libraries to extend what it can do
+- There are several GIS libraries
+- If you are using your own machine
+	- You will need to install the libraries
+	- `install.packages(“sf”)`
+- You will also need to load the libraries
+	- `library(sf)`
+
+---
+
+![](images/r-libraries.jpeg) 
+
+<font size="2">https://twitter.com/visnut/status/1248087845589274624</font>
+
+## Practical 1: Intro to R & GIS 
+
+### Practical Approach
+
+- (Primarily) self-led practical  
+- Good to explore the options
+- Ask questions as we go through
+- Try things
+- Use the help `?command`
+
+## Typing out the Code
+						
+- Why do I make you type out code?
+- Helps the learning process
+- Make you think about what the code does
+- *(but you can copy/paste long bits)*
+- Optional exercises
+- Ask for Help
+- Breaks
+
+## Let's start!
+
+## Outline
+
+-   **Day 1**:
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   11:30am - 11:50am -- Classification
+    -   11:50am - 1:00pm -- Practical 2: Making a Map
+-   Day 2:
+    -   10:00am - 10:20am -- Recap and Making Maps
+    -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1pm -- Practical 4: Bring Your Own Data
+
+
+<!-- offline 
+## Classification
+
+-   Colour in the map to show the Total Vaccinations per 100 data
+    -   *10 min*
+
+![](images/map.png){.absolute bottom="0" right="0" width="750"}
+
+::: footer
+Remember to show in the table which colours represent which countries!
+:::
+
+## Classification
+
+-   Colour in the map to show the Total Vaccinations per 100 data
+-   Discuss your choices
+
+## Classification
+
+-   Colour in the map to show the Total Vaccinations per 100 data
+-   Discuss your choices
+    -   Colours
+    -   Classification (how you grouped the data)
+
+-->
+
+<!-- end
+
+## Classification - Classes
+
+-   How many classes we choose is important
+    -   Max of 5-7
+-   What those classes are is important as well
+    -   Equal Interval: 0-10, 10-20, 20-30, ....
+    -   Quantiles: first 10 data points, second 10 data points, ....
+    -   Natural Breaks / Jenks / Fisher
+    -   Standard Deviation: mean-1SD to mean, mean to mean+1SD, mean+1SD to mean+2SD, ...
+    -   Unique
+
+## Classification
+
+![](images/classification-options.png)
+
+::: footer
+Figure 11 https://gistbok.ucgis.org/bok-topics/statistical-mapping-enumeration-normalization-classification
+:::
+
+## Classification
+
+![](images/data-distribution.png)
+
+## Classification
+
+![](images/covid-example.png)
+
+::: footer
+James Cheshire (UCL) wrote an article about the press conference announcing the second lockdown in the UK (31/10/2020)
+
+https://theconversation.com/next-slide-please-data-visualisation-expert-on-whats-wrong-with-the-uk-governments-coronavirus-charts-149329
+
+https://jcheshire.com/resources/different-maps-same-data/
+:::
+
+------------------------------------------------------------------------
+
+![](images/qgis-symbology-histogram.png)
+
+## Classification - Colours
+
+-   As well as classes, colours are important
+-   How do you choose the colours?
+-   Why is this important?
+-   Output
+-   User
+-   Colorbrewer.org
+
+![](images/color-brewer-screenshot.png){.absolute bottom="0" right="0" width="600"}
+
+------------------------------------------------------------------------
+
+![](images/color-brewer-in-qgis.png)
+
+## Classification
+
+-   Cartography is a Science and an Art
+-   Be creative
+-   There is no 'right' answer
+-   A bit like cookery
+-   But we have covered some 'rules of thumb'
+
+## QGIS Practical {.smaller}
+
+-   Go to [tinyurl.com/methodsconqgis](https://tinyurl.com/methodsconqgis)
+
+-   Open `login-details.pdf`
+
+-   Follow link to <https://appstream2.eu-west-1.aws.amazon.com/userpools#/signin?ref=Z0snR6oLIm>
+
+-   Log in with your username userX and password
+
+-   Wait 2:00 min for session to load
+
+::: fragment
+-   (Primarily) self-led practical\
+-   Good to explore the options
+-   Ask questions as we go through
+-   Try things
+:::
+
+## QGIS Practical
+
+## QGIS Practical
+
+QGIS follow on screen
+
+open link
+
+log in to AWS
+
+(wait 2 min)
+
+open QGIS,
+
+load `ne_admin_0_countries.shp`
+
+pan, zoom
+
+## Outline
+
+-   1345 - 1400 Introduction
+-   1400 - 1410 Colouring in exercise
+-   1410 - 1420 Visualisation discussion
+-   1420 - 1430 Presentation on GIS
+-   1430 - 1450 Practical in QGIS
+-   1450 - 1500 Coordinate Systems & Next Steps
+-   1510 Finish
+
+## Adding Delimited Text Layers
+
+-   If we have coordinates for data, we can add them to QGIS
+
+![](images/world-cities-csv-excel.png){.absolute bottom="50" left="0" width="350"}
+
+![](images/world-cities.png){.absolute .fragment bottom="150" right="0" width="700"}
+
+## Geocoding
+
+-   Can also do this with address data
+-   Postcodes -\> coordinates -\> plot on map
+
+## Next Steps
+
+-   Repeat this material in 2-3 weeks / 2-3 months
+-   Lots of free tutorials available online
+-   GIS Training Courses
+    -   [www.geospatialtrainingsolutions.co.uk](www.geospatialtrainingsolutions.co.uk)
+-   Books:
+    -   GIS: Research Methods, £13, available today
+    -   QGIS Map Design \|
+    -   An Introduction to R for Spatial Analysis and Mapping
+    -   Cartography: An Introduction
+
+## Thank you & questions
+
+-   Repeat this material in 2-3 weeks / 2-3 months
+-   GIS Training Courses
+    -   [www.geospatialtrainingsolutions.co.uk](www.geospatialtrainingsolutions.co.uk)
+-   Books:
+    -   GIS: Research Methods, £13, available today
+
+-->
