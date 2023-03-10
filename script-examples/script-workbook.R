@@ -43,27 +43,26 @@
 ## Practical 2: Making a Map
   
   #download csv file
-  download.file("http://www.nickbearman.me.uk/data/r/nomis-2011-age-data.zip","nomis-2011-age-data.zip")
+  #download.file("http://www.nickbearman.me.uk/data/r/nomis-2011-age-data.zip","nomis-2011-age-data.zip")
   #unzip csv file
-  unzip("nomis-2011-age-data.zip")
-  pop2011 <- read.csv("bulk.csv", header = TRUE)
-  head(pop2011[,1:5])
+  #unzip("nomis-2011-age-data.zip")
+  pop2021 <- read.csv("census2021-ts007a-lsoa.csv", header = TRUE)
+  head(pop2021[,1:5])
   #create a new variable which contains the new variable names
-  newcolnames <- c("AllUsualResidents","Age00to04","Age05to07",
-  "Age08to09","Age10to14","Age15","Age16to17",
-  "Age18to19","Age20to24","Age25to29",
-  "Age30to44","Age45to59","Age60to64",
-  "Age65to74","Age75to84","Age85to89",
-  "Age90andOver","MeanAge","MedianAge")
-  #apply these to pop2011 data frame
-  colnames(pop2011)[5:23] <- newcolnames
-  head(pop2011[,1:9])
-  download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2011.zip","england_lsoa_2011.zip")
-  unzip("england_lsoa_2011.zip")
+  newcolnames <- c("Total","Age00to04","Age05to09","Age10to14","Age15to19",
+                   "Age20to24","Age25to29","Age30to34","Age35to39",
+                   "Age40to44","Age45to49","Age50to54","Age55to59",
+                   "Age60to64","Age65to69","Age70to74","Age75to79",
+                   "Age80to84","Age85andOver")
+  #apply these to pop2021 data frame
+  colnames(pop2021)[4:22] <- newcolnames
+  head(pop2021[,1:9])
+  #download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2021.zip","england_lsoa_2021.zip")
+  #unzip("england_lsoa_2021.zip")
   #read in shapefile
-  LSOA <- st_read("england_lsoa_2011.shp")
+  LSOA <- st_read("england_lsoa_2021.shp")
   #join attribute data to LSOA
-  LSOA <- merge(LSOA, pop2011, by.x="code", by.y="geography.code")
+  LSOA <- merge(LSOA, pop2021, by.x="lsoa21cd", by.y="geography.code")
   
 ### Making Maps
   tm_shape(LSOA) +
@@ -83,7 +82,7 @@
     tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "jenks")
   tm_shape(LSOA) +
     tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "fixed",
-    breaks=c(6, 25, 50, 75, 100, 244))
+    breaks=c(5, 25, 50, 100, 175, 275))
   
 ### Classification on a Histogram (optional exercise)
   #select the variable
@@ -98,7 +97,7 @@
   
 ### Histogram on the map
   tm_shape(LSOA) +
-    tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens",
+    tm_polygons("Total", title = "Total Population", palette = "Greens",
                 style = "equal", legend.hist = T)
   
 ### Layout Options and Margins (optional exercise)
@@ -109,7 +108,7 @@
 ### Scale Bar and North Arrow (optional exercise)
   tm_shape(LSOA) +
     #Set colours and classification methods
-    tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens",
+    tm_polygons("Total", title = "Total Population", palette = "Greens",
                 style = "equal") +
     #Add scale bar
     tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
@@ -127,7 +126,7 @@
   #plot using tm_shape
   tm_shape(LSOA) +
     #Set colours and classification methods
-    tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens",
+    tm_polygons("Total", title = "Total Population", palette = "Greens",
                 style = "equal")
   #return tmap to plot mode
   tmap_mode("plot")
@@ -135,7 +134,7 @@
 ### Exporting and Creating Multiple Maps
   #create map
   m <- tm_shape(LSOA) +
-    tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens",
+    tm_polygons("Total", title = "Total Population", palette = "Greens",
                 style = "equal") +
     tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
     tm_compass(position = c(0.3, 0.07)) +
@@ -145,7 +144,7 @@
  tmap_save(m)
 
  #set which variables will be mapped
- mapvariables <- c("AllUsualResidents", "Age00to04", "Age05to07")
+ mapvariables <- c("Total", "Age00to04", "Age05to09")
  #loop through for each map
  for (i in 1:length(mapvariables)) {
    #setup map
@@ -192,14 +191,14 @@
   head(LSOA_crimes)
   
   #Aggregate by LSOA
-  LSOA_crimes_aggregated <- aggregate(x = LSOA_crimes, by = list(LSOA_crimes$code), FUN = length)
+  LSOA_crimes_aggregated <- aggregate(x = LSOA_crimes, by = list(LSOA_crimes$lsoa21cd), FUN = length)
   #gives us count of points in each polygon
   head(LSOA_crimes_aggregated)
   
   #remove additional columns
   LSOA_crimes_aggregated <- LSOA_crimes_aggregated[,1:2]
   #rename columns
-  colnames(LSOA_crimes_aggregated) <- c("LSOA.code", "count of crimes","geometry")
+  colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
   #map using qtm
   qtm(LSOA_crimes_aggregated, fill = "count of crimes")
   
