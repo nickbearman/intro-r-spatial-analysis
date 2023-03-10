@@ -242,15 +242,14 @@ Create a new script (**File > New File > R Script**) and enter the code in there
 Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the https://www.nomisweb.co.uk/ website.
 
 - Navigate to **https://www.nomisweb.co.uk/**. 
-- Under **Census Statistics** (scroll down) click **2011 Data catalogue**. 
-- Select **Key Statistics**. 
-- Choose **KS102EW - Age structure**. 
-- There are various different ways of downloading the data - explore the different options. We are going to download the table as a CSV file. 
-- Under **Download (.csv)**, set **Type of area** to **super output areas - lower layer 2011** from the drop down list. 
-- Click **Download**. 
-- A file called `bulk.csv` will be downloaded - save this in your working directory.  
+- Under **Census Statistics** (scroll down) click **2021 Data catalogue**. 
+- Select **Bulk Data Downloads**. 
+- Scroll down to **TS007A	Age by five-year age bands**. 
+- Download the **census2021-ts007a.zip** zip file. 
+- Open up the zip file - you will see a csv file for each geography - LSOA, MSOA, OA and various others. 
+- Extract the file `census2021-ts007a-lsoa.csv`
 
-<!-- Last checked 2021-11-30 -->
+<!-- Last checked 2023-03-10 -->
   
 Open this file up in Excel, and you can see there are a number of different columns, covering different data. We are interested in the age data - scroll across and see the different values we have. 
 
@@ -258,74 +257,76 @@ Add the command below to your script, and run it to read in the CSV file. The `h
 
 ```{r, echo=FALSE, comment=NA}
 #download csv file
-download.file("http://www.nickbearman.me.uk/data/r/nomis-2011-age-data.zip","nomis-2011-age-data.zip")
+#download.file("http://www.nickbearman.me.uk/data/r/nomis-2011-age-data.zip","nomis-2011-age-data.zip")
 #unzip csv file
-unzip("nomis-2011-age-data.zip")
+#unzip("nomis-2011-age-data.zip")
 ```
 
 ```{r, comment=NA}
-pop2011 <- read.csv("bulk.csv", header = TRUE)
+pop2021 <- read.csv("census2021-ts007a-lsoa.csv", header = TRUE)
 ```
 
-Then run `head` to see that the data has been read in correctly. *R will show all 23 variables, where as I've only shown the first 5 in the handout*. 
+Then run `head` to see that the data has been read in correctly. *R will show all 22 variables, where as I've only shown the first 6 in the handout*. 
 
 ```{r, eval=F}
-head(pop2011)
+head(pop2021)
 ```
 
 ```{r, echo=F, comment=NA}
-head(pop2011[,1:5])
+head(pop2021[,1:6])
 ```
 
 Some of the variable names are not displayed very clearly. We can rename the columns, so that when we run the `head()` command, R lists the correct names. This will also help us refer to the columns later on. 
 
-Run the code below, which creates a new variable which contains the names (`newcolnames`) and then applies it to the `pop2011` data frame. 
+Run the code below, which creates a new variable which contains the names (`newcolnames`) and then applies it to the `pop2021` data frame. 
 
 *It's also worth noting here that any line of code that starts with a `#` is a comment - i.e. R will ignore that line and move onto the next. I've included them here so you can see what is going on, but you don't need to type them in.* 
 
 ```{r, comment=NA}
 #create a new variable which contains the new variable names
-newcolnames <- c("AllUsualResidents","Age00to04","Age05to07",
-                 "Age08to09","Age10to14","Age15","Age16to17",
-                 "Age18to19","Age20to24","Age25to29",
-                 "Age30to44","Age45to59","Age60to64",
-                 "Age65to74","Age75to84","Age85to89",
-                 "Age90andOver","MeanAge","MedianAge")
+newcolnames <- c("Total","Age00to04","Age05to09","Age10to14","Age15to19",
+                 "Age20to24","Age25to29","Age30to34","Age35to39",
+                 "Age40to44","Age45to49","Age50to54","Age55to59",
+                 "Age60to64","Age65to69","Age70to74","Age75to79",
+                 "Age80to84","Age85andOver")
 
 #apply these to pop2011 data frame
-colnames(pop2011)[5:23] <- newcolnames
+colnames(pop2021)[4:22] <- newcolnames
 ```
 
-The final line of code (starting `colnames`) actually updates the variable names. The square brackets are used to refer to specific elements - in this case, columns 5 to 23. 
+The final line of code (starting `colnames`) actually updates the variable names. The square brackets are used to refer to specific elements - in this case, columns 4 to 22. 
 
-*For example, `pop2011[1,]` will show the first row and `pop2011[,1]` will show the first column.*
+*For example, `pop2021[1,]` will show the first row and `pop2021[,1]` will show the first column.*
   
-Now we have the correct column names for the data frame. It would also be good to check they have been applied to the `pop2011` dataframe correctly. **What code would you use to do this?**
+Now we have the correct column names for the data frame. It would also be good to check they have been applied to the `pop2021` dataframe correctly. **What code would you use to do this?**
 
 ```{r, echo=F, comment=NA}
-head(pop2011[,1:12])
+head(pop2021[,1:12])
 ```
 
 Now we have the attribute data (the number of people in each age group in each LSOA in this case) we need to join this attribute data to the spatial data. Therefore, first, we need to download the spatial data. 
 
 - Go to **http://census.edina.ac.uk/** and select **Boundary Data Selector**. 
 - Then set **Country** to **England**, **Geography** to **Statistical Building Block**, **dates** to **2011 and later**, and click **Find**.
-- Select **English Lower Layer Super Output Areas, 2011** and click **List Areas**. 
-- Select **Liverpool** from the list and click **Extract Boundary Data**. 
+- Select **English Lower Layer Super Output Areas, 2021** and click **List Areas**. 
+- Select **England** from the list and choose **Expand Selection**.
+- Select **North West [England]** from the list and choose **Expand Selection**.
+- Select **Liverpool [North West]** from the list and click **Extract Boundary Data**. 
 - After a 5 to 20 second wait, click `BoundaryData.zip` to download the files. 
 
-<!-- Last checked 2021-11-30 -->
+<!-- Last checked 2023-03-10 -->
   
-Extract the files, and move all the files starting with the name `england_lsoa_2011` to your working folder. Then read in the data:
+Extract the files, and move all the files starting with the name `england_lsoa_2021` to your working folder. Then read in the data:
   
 ```{r, echo=FALSE, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2011.zip","england_lsoa_2011.zip")
-unzip("england_lsoa_2011.zip")
+#download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2011.zip","england_lsoa_2011.zip")
+#unzip("england_lsoa_2011.zip")
+unzip("BoundaryData.zip")
 ```
 
 ```{r, comment=NA, results='hide'}
 #read in shapefile
-LSOA <- st_read("england_lsoa_2011.shp")
+LSOA <- st_read("england_lsoa_2021.shp")
 ```
 
 Like earlier, we can use the `qtm()` command to preview the map. We can also look at the attribute table with `head()`. Try these both now. 
@@ -334,7 +335,7 @@ The next stage is to join the attribute data to the spatial data, like we did in
 
 ```{r, comment=NA}
 #join attribute data to LSOA
-LSOA <- merge(LSOA, pop2011, by.x="code", by.y="geography.code")
+LSOA <- merge(LSOA, pop2021, by.x="lsoa21cd", by.y="geography.code")
 ```
 
 And use the `head` command to check it has joined correctly. Your data should contain correctly labelled Age data in the 7th to 26th columns. 
@@ -353,7 +354,7 @@ Now we have all the data setup, we can actually create the map. We can use the `
 
 We can use the `fill` parameter like we did earlier with the `Burglary` data. Try working out the code yourself to show the first set of age data. 
 
-![Output from `qtm(LSOA)` (left) and output with `tm_shape(LSOA) + tm_polygons("Age00to04")` (right).](images/map-example-outputs-1.png){ width=100% }
+![Output from `qtm(LSOA)` (left) and output with `tm_shape(LSOA) + tm_polygons("Age00to04")` (right).](images/map-example-outputs-1.png){ width=90% }
 
 This works well, and we can choose which variable to show. However we don't get many options with this. We can use a different function `tm_shape()`, which will give us more options. 
 
@@ -403,7 +404,7 @@ We can also set the `style` which is the classification method. Standard options
 ```{r echo=TRUE}
 tm_shape(LSOA) +
   tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "fixed",
-    breaks=c(6, 25, 50, 75, 100, 244))
+    breaks=c(5, 25, 50, 100, 175, 275))
 ```
 
 ### Classification on a Histogram (optional exercise)
@@ -428,7 +429,7 @@ We can also add a histogram of the data to the map:
 
 ```{r,eval=FALSE}
 tm_shape(LSOA) +
-  tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens", 
+  tm_polygons("Total", title = "Total", palette = "Greens", 
       style = "equal", legend.hist = T)
 ```
 
@@ -451,7 +452,7 @@ It is also good practice to add a scale bar and a north arrow to each of the map
 ```{r, eval=FALSE}
 tm_shape(LSOA) +
   #Set colours and classification methods
-  tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens", 
+  tm_polygons("Total", title = "Total Population", palette = "Greens", 
       style = "equal") +
   #Add scale bar
   tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
@@ -478,7 +479,7 @@ The `tmap` library has two different viewing options - `plot` which is what we h
 #plot using tm_shape
   tm_shape(LSOA) +
   #Set colours and classification methods
-  tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens", 
+  tm_polygons("Total", title = "Total Population", palette = "Greens", 
       style = "equal")
 #return tmap to plot mode
   tmap_mode("plot")
@@ -493,7 +494,7 @@ We can automatically save the map as a file by creating the map object as a new 
 ```{r, comment=NA, eval=FALSE}
 #create map
 m <- tm_shape(LSOA) +
-  tm_polygons("AllUsualResidents", title = "All Usual Residents", palette = "Greens", 
+  tm_polygons("Total", title = "Total Population", palette = "Greens", 
               style = "equal") +
   tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
   tm_compass(position = c(0.3, 0.07)) + 
@@ -508,7 +509,7 @@ Saving the map using code allows us to create multiple maps very easily. A varia
   
 ```{r message=FALSE, warning=FALSE, comment=NA}
 #set which variables will be mapped
-  mapvariables <- c("AllUsualResidents", "Age00to04", "Age05to07")
+  mapvariables <- c("Total", "Age00to04", "Age05to09")
 
 #loop through for each map
   for (i in 1:length(mapvariables)) {
@@ -623,7 +624,7 @@ So we can aggregate the data by LSOA (this might take a few seconds to run):
 
 ```{r}
 #Aggregate by LSOA
-LSOA_crimes_aggregated <- aggregate(x = LSOA_crimes, by = list(LSOA_crimes$code), FUN = length)
+LSOA_crimes_aggregated <- aggregate(x = LSOA_crimes, by = list(LSOA_crimes$lsoa21cd), FUN = length)
 ```
 
 ```{r include=FALSE}
@@ -640,7 +641,7 @@ The output isn't that elegent - it repeats the output (of length) across every c
 LSOA_crimes_aggregated <- LSOA_crimes_aggregated[,1:2]
 
 #rename columns
-colnames(LSOA_crimes_aggregated) <- c("LSOA.code", "count of crimes","geometry")
+colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 
 #map using qtm
 qtm(LSOA_crimes_aggregated, fill = "count of crimes")
