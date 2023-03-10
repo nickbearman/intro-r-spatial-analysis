@@ -634,7 +634,7 @@ head(LSOA_crimes_aggregated)
 
 This will group each LSOA together - and count how many crimes are in each. The count function is `length` in R. If we were combining qualitative data (e.g. value of objects stolen in each burglary) then we could calculate the mean instead - to get the mean burglary value by each LSOA. 
 
-The output isn't that elegent - it repeats the output (of length) across every column. So we can tidy this up, rename the columns and map the data.
+The output isn't that elegant - it repeats the output (of length) across every column. So we can tidy this up, rename the columns and map the data.
 
 ```{r}
 #remove additional columns
