@@ -29,7 +29,7 @@ head(LSOA_crimes)
 #remove additional columns
 LSOA_crimes_aggregated <- LSOA_crimes_aggregated[,1:2]
 #rename columns
-colnames(LSOA_crimes_aggregated) <- c("LSOA.code", "count of crimes","geometry")
+colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 #map using qtm
 qtm(LSOA_crimes_aggregated, fill = "count of crimes")
 
