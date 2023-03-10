@@ -1,10 +1,11 @@
 ---
 title: "Introduction to Spatial Data and Using R as a GIS"
+author: "Nick Bearman - Geospatial Training Solutions"
 output:
   pdf_document: default
   html_document:
     df_print: paged 
-date: "Tue 27th and Wed 28th Sept 2022"
+date: "Wed 12th April 2023"
 ---
 
 ```{r setup, echo=FALSE}
@@ -685,5 +686,5 @@ This practical was written using R 4.2.0 (2022-04-22) and RStudio 2022.07.1 by D
 This work (Introduction to Spatial Data and Using R as a GIS by Nick Bearman) is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
 
 
-The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This is v9.1 and this was created on `r format(Sys.time(), '%d %B %Y')`. 
+The latest version of the PDF is available from https://github.com/nickbearman/intro-r-spatial-analysis. This is v9.2 and this was created on `r format(Sys.time(), '%d %B %Y')`. 
 
