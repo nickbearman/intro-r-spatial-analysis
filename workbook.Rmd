@@ -308,7 +308,7 @@ head(pop2021[,1:12])
 Now we have the attribute data (the number of people in each age group in each LSOA in this case) we need to join this attribute data to the spatial data. Therefore, first, we need to download the spatial data. 
 
 - Go to **http://census.edina.ac.uk/** and select **Boundary Data Selector**. 
-- Then set **Country** to **England**, **Geography** to **Statistical Building Block**, **dates** to **2011 and later**, and click **Find**.
+- Then set **Country** to **England**, **Geography** to **Statistical Building Block**, **Dates** to **2011 and later**, and click **Find**.
 - Select **English Lower Layer Super Output Areas, 2021** and click **List Areas**. 
 - Select **England** from the list and choose **Expand Selection**.
 - Select **North West [England]** from the list and choose **Expand Selection**.
