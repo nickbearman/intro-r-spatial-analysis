@@ -1,11 +1,23 @@
 ---
 title: "Introduction to Spatial Data & Using R as a GIS"
-subtitle: "Tue 27th & Wed 28th Sept 2022 | 10am - 1pm"
+subtitle: "Day 1 | Wed 12th April 2023 | 10am - 4:30pm"
 author: "Dr Nick Bearman"
 format: 
   revealjs
 ---
 
+## Welcome - GIS Course
+
+- Day 1 - Introduction to Spatial Data & Using R as a GIS 
+- Day 2 - Confident Spatial Analysis and Statistics in R & GeoDa 
+- Day 3 - Interactive Session 
+
+--
+
+- *Lunch 12:30pm - 1:30pm* 
+- *Afternoon break 3:00pm - 3:15pm* 
+
+<!-- 
 ------------------------------------------------------------------------
 
 ![](images/Slide1.png)
@@ -13,6 +25,12 @@ format:
 ------------------------------------------------------------------------
 
 ![](images/Slide2.png)
+
+
+------------------------------------------------------------------------
+-->
+
+
 
 ## What are we covering?
 
@@ -24,7 +42,7 @@ format:
 
 ![](images/rstudio-map.png){.absolute bottom="0" right="0" width="500"}
 
-<!-- online course -->
+<!-- online course
 
 ## Housekeeping
 
@@ -37,8 +55,9 @@ format:
     -   Ask in real time, or in the chat
 -   Recording -- only our group, available for 3 months
 -   Workbook, data and presentation all in OneDrive
+-->
 
-<!-- in person source -->
+<!-- in person course -->
 
 ## Housekeeping
 
@@ -52,17 +71,21 @@ format:
 -   Have presentation and practical sessions
     -   Ask questions as we go along
     -   Think about how you could use these techniques with your own data
+-   No fire alarm planned
+-   Presentations, handouts and data on Teams
 
 ```{=html}
 <!-- 
--   No fire alarm planned
+
 -   Be aware of trailing wires
 -   Photos for social media
--->
-```
 -   Presentations, handouts and data on OneDrive
     -   tinyurl.com/methodsconqgis
+-->
+```
 
+
+<!--
 ## Outline  {.smaller}
 
 -   **Day 1**:
@@ -76,14 +99,30 @@ format:
     -   11:30am - 11:45am -- break
     -   11:45am - 1pm -- Practical 4: Bring Your Own Data
 
+-->
+
+## Outline  {.smaller}
+
+- 10:00am – 10:45am: What is GIS, Spatial Data & R?
+- 10:45am – 11:30am: Practical 1: Intro to R & GIS
+- 11:30am – 11:50am: Classification discussion
+- 11:50am – 12:30pm: Practical 2: Making a Map
+- 12:30pm - 1:30pm: Lunch
+- 1:30pm – 2:00pm: Recap & Making Maps
+- 2:00pm – 3:15pm: Practical 3: Clustering of Crime Points
+- 3:15pm – 3:30pm: break
+- 4:00pm - 4:30pm: Practical 4: Bring Your Own Data
+
 ## Housekeeping
 
 Poll - Have you installed R & RStudio successfully?
 
 ## Any Questions?
 
+<!-- 
 -   Zoom?
 -   Matrix/Element?
+-->
 -   Schedule?
 -   ?
 
