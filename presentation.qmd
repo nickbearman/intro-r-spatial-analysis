@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Spatial Data & Using R as a GIS"
-subtitle: "Day 1 | Wed 12th April 2023 | 10am - 4:30pm"
+subtitle: "Day 1 | Wed 3rd May 2023 | 10am - 4:30pm"
 author: "Dr Nick Bearman"
 format: 
   revealjs
@@ -10,12 +10,11 @@ format:
 
 - Day 1 - Introduction to Spatial Data & Using R as a GIS 
 - Day 2 - Confident Spatial Analysis and Statistics in R & GeoDa 
-- Day 3 - Interactive Session 
 
 --
 
 - *Lunch 12:30pm - 1:30pm* 
-- *Afternoon break 3:00pm - 3:15pm* 
+- *Afternoon break 3:15pm - 3:30pm* 
 
 <!-- 
 ------------------------------------------------------------------------
@@ -42,7 +41,7 @@ format:
 
 ![](images/rstudio-map.png){.absolute bottom="0" right="0" width="500"}
 
-<!-- online course
+<!-- online course -->
 
 ## Housekeeping
 
@@ -57,10 +56,11 @@ format:
 -   Workbook, data and presentation all in OneDrive
 -->
 
-<!-- in person course -->
+<!-- in person course
 
 ## Housekeeping
 
+-   No fire alarm planned
 -   Introductions
     -   Name / background / area of interest
     -   Have you done any GIS before? (no is fine!)
@@ -71,8 +71,8 @@ format:
 -   Have presentation and practical sessions
     -   Ask questions as we go along
     -   Think about how you could use these techniques with your own data
--   No fire alarm planned
--   Presentations, handouts and data on Teams
+-   Presentations, handouts and data on OneDrive
+-   Poll
 
 ```{=html}
 <!-- 
@@ -112,10 +112,6 @@ format:
 - 2:00pm – 3:15pm: Practical 3: Clustering of Crime Points
 - 3:15pm – 3:30pm: break
 - 4:00pm - 4:30pm: Practical 4: Bring Your Own Data
-
-## Housekeeping
-
-Poll - Have you installed R & RStudio successfully?
 
 ## Any Questions?
 
@@ -322,6 +318,11 @@ Poll - Have you installed R & RStudio successfully?
 ![](images/mercator-2.png)
 
 ------------------------------------------------------------------------
+
+##
+
+![](images/ch2-projections.png)
+
 
 ## Why are Projections important?
 
@@ -611,18 +612,44 @@ Remember to show in the table which colours represent which countries!
 
 -->
 
-<!-- end
+<!-- end -->
+
+## Classification
+
+![](images/classification-exercise-map.png)
+
+## Classification
+
+- Go to www.colorbrewer2.org
+
+![](images/color-brewer-screenshot.png)
+
+## Classification {.smaller}
+
+![](images/classification-exercise-map.png){.absolute bottom="0" width="1000"}
+
+- Go to [www.colorbrewer2.org](http://www.colorbrewer2.org)
+- How many classes would you use to categorise the data?
+- What are those classes?
+- What colour scheme would you use? Why?
+
+## Classification
+
+- Polls
+- How many classes?
+- What are those classes?
+- Which colour scheme?
 
 ## Classification - Classes
 
--   How many classes we choose is important
-    -   Max of 5-7
--   What those classes are is important as well
-    -   Equal Interval: 0-10, 10-20, 20-30, ....
-    -   Quantiles: first 10 data points, second 10 data points, ....
-    -   Natural Breaks / Jenks / Fisher
-    -   Standard Deviation: mean-1SD to mean, mean to mean+1SD, mean+1SD to mean+2SD, ...
-    -   Unique
+- How many classes we choose is important
+  - Max of 5-7
+- What those classes are is important as well 
+  - Equal Interval: 0-10, 10-20, 20-30, ….
+  - Quantiles: first 10 data points, second 10 data points, ….
+  - Natural Breaks / Jenks / Fisher
+  - Standard Deviation: mean-1SD to mean, mean to mean+1SD, mean+1SD to mean+2SD, …
+  - Unique
 
 ## Classification
 
@@ -665,8 +692,6 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 ------------------------------------------------------------------------
 
-![](images/color-brewer-in-qgis.png)
-
 ## Classification
 
 -   Cartography is a Science and an Art
@@ -675,42 +700,19 @@ https://jcheshire.com/resources/different-maps-same-data/
 -   A bit like cookery
 -   But we have covered some 'rules of thumb'
 
-## QGIS Practical {.smaller}
+## Outline  {.smaller}
 
--   Go to [tinyurl.com/methodsconqgis](https://tinyurl.com/methodsconqgis)
+- 10:00am – 10:45am: What is GIS, Spatial Data & R?
+- 10:45am – 11:30am: Practical 1: Intro to R & GIS
+- 11:30am – 11:50am: Classification discussion
+- 11:50am – 12:30pm: Practical 2: Making a Map
+- 12:30pm - 1:30pm: Lunch
+- 1:30pm – 2:00pm: Recap & Making Maps
+- 2:00pm – 3:15pm: Practical 3: Clustering of Crime Points
+- 3:15pm – 3:30pm: break
+- 4:00pm - 4:30pm: Practical 4: Bring Your Own Data
 
--   Open `login-details.pdf`
-
--   Follow link to <https://appstream2.eu-west-1.aws.amazon.com/userpools#/signin?ref=Z0snR6oLIm>
-
--   Log in with your username userX and password
-
--   Wait 2:00 min for session to load
-
-::: fragment
--   (Primarily) self-led practical\
--   Good to explore the options
--   Ask questions as we go through
--   Try things
-:::
-
-## QGIS Practical
-
-## QGIS Practical
-
-QGIS follow on screen
-
-open link
-
-log in to AWS
-
-(wait 2 min)
-
-open QGIS,
-
-load `ne_admin_0_countries.shp`
-
-pan, zoom
+<!-- end
 
 ## Outline
 
