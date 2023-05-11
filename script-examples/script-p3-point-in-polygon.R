@@ -26,6 +26,9 @@ LSOA_crimes <- st_join(LSOA, crimes_sf_bng)
 #view output
 head(LSOA_crimes)
 
+#Aggregate by LSOA
+LSOA_crimes_aggregated <- aggregate(x = LSOA_crimes, by = list(LSOA_crimes$lsoa21cd), FUN = length)
+
 #remove additional columns
 LSOA_crimes_aggregated <- LSOA_crimes_aggregated[,1:2]
 #rename columns
