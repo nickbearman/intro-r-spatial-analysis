@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Spatial Data & Using R as a GIS"
-subtitle: "Day 1 | Wed 3rd May 2023 | 10am - 4:30pm"
+subtitle: "Day 1 | Tue 23rd May 2023 | 10am - 4:30pm"
 author: "Dr Nick Bearman"
 format: 
   revealjs
@@ -54,7 +54,7 @@ format:
     -   Ask in real time, or in the chat
 -   Recording -- only our group, available for 3 months
 -   Workbook, data and presentation all in OneDrive
--->
+
 
 <!-- in person course
 
