@@ -10,8 +10,8 @@ date: "Wed 3rd May 2023"
 
 ```{r setup, echo=FALSE}
 #set working directory to /data-user
-#knitr::opts_knit$set(root.dir = 'C:/Users/nick/Documents/work/intro-r-spatial-analysis/data-user')
-knitr::opts_knit$set(root.dir = '/home/nickbearman/work/intro-r-spatial-analysis/data-user')
+knitr::opts_knit$set(root.dir = 'C:/Users/nick/Documents/work/intro-r-spatial-analysis/data-user')
+#knitr::opts_knit$set(root.dir = '/home/nickbearman/work/intro-r-spatial-analysis/data-user')
 ```
 
 | Learning Outcomes:  | R Functions & Libraries: |
@@ -178,8 +178,8 @@ R uses working folders to store information relevant to the current project you 
 
 <!-- change working directory -->
 ```{r setwd, include=FALSE}
-#setwd("C:/Users/nick/Documents/work/intro-r-spatial-analysis/data-user")
-setwd("/home/nickbearman/work/intro-r-spatial-analysis/data-user")
+setwd("C:/Users/nick/Documents/work/intro-r-spatial-analysis/data-user")
+#setwd("/home/nickbearman/work/intro-r-spatial-analysis/data-user")
 ```
 
 As with most programs, there are multiple ways to do things. For instance, to set the working directory we could type: `setwd("C:/Users/<username>/Documents/r-work`. Your version might well have a longer title, depending on what you called the folder. Also note that slashes are indicated with a '*/*' not '\\'. 
@@ -373,6 +373,8 @@ tm_shape(LSOA) +
 ```
 
 This allows us to change the title, colours and legend title size. Try substituting in `Blues` and adjusting the title. 
+
+By the time you get to this section, we should have completed the ‘Classification’ discussion and talked about class boundaries and colours. If we haven’t yet, please let me know that you have reached this point. 
 
 ### Colours and Categories 
 
