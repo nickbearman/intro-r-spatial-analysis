@@ -242,7 +242,7 @@ Working with R often requires several lines of code to get an output. Rather tha
 
 Create a new script (**File > New File > R Script**) and enter the code in there. Then you can select the lines you want to run by highlighting them, and then pressing `Ctrl+Enter`, or using the **Run** button. 
 
-Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the https://www.nomisweb.co.uk/ website.
+Now we are going to use the same principle as we used before to create a map of some data from the 2021 Census. We need to download the data, and although there are other sources of these data, in this example we will use the https://www.nomisweb.co.uk/ website.
 
 - Navigate to **https://www.nomisweb.co.uk/**. 
 - Under **Census Statistics** (scroll down) click **2021 Data catalogue**. 
@@ -293,7 +293,7 @@ newcolnames <- c("Total","Age00to04","Age05to09","Age10to14","Age15to19",
                  "Age60to64","Age65to69","Age70to74","Age75to79",
                  "Age80to84","Age85andOver")
 
-#apply these to pop2011 data frame
+#apply these to pop2021 data frame
 colnames(pop2021)[4:22] <- newcolnames
 ```
 
