@@ -201,11 +201,23 @@
   colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
   #map using qtm
   qtm(LSOA_crimes_aggregated, fill = "count of crimes")
-  
   #map using tmap
   tm_shape(LSOA_crimes_aggregated) +
     tm_polygons("count of crimes", title = "Number of Crimes", palette = "Greens", style = "jenks")
   
+  #alternative using summarise
+  LSOA_crimes_summarised <- 
+    LSOA_crimes %>%
+    group_by(lsoa21cd) %>%
+    summarise(count = n()) 
+  
+  head(LSOA_crimes_summarised)
+  
+  #map using tmap
+  tm_shape(LSOA_crimes_summarised) +
+    tm_polygons("count", title = "Number of Crimes", palette = "Greens", style = "jenks")
+  
+
 ### Exporting Shapefiles
   #save as shapefile
   st_write(LSOA_crimes_aggregated, "LSOA-crime-count.shp")
