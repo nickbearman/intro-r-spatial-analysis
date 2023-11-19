@@ -1,0 +1,103 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=15mm,
+ right=15mm,
+ top=15mm,
+ bottom=10mm,
+ }  
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{siunitx} %for degree symbol
+\usepackage{multicol}
+\usepackage[ddmmyyyy,hhmmss]{datetime}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{datatool} % for pulling info from CSV file
+\usepackage{multicol} % for multiple columns
+
+\setlength{\parskip}{0.5em} %gap between paragraphs
+
+\setlength{\columnsep}{5mm} %column separation
+
+\title{R Glossary}
+\author{Nick Bearman}
+\date{March 2023}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\begin{multicols}{2}
+
+\textbf{ArcGIS} A commercial GIS software created by ESRI, consisting of \textit{ArcMap}, \textit{ArcCatalog} and \textit{ArcScene} 
+
+\textbf{ArcGIS} A commercial GIS software created by ESRI, consisting of \textit{ArcMap}, \textit{ArcCatalog} and \textit{ArcScene} 
+
+\textbf{ArcMap} Part of \textit{ArcGIS}, the main program for creating and editing spatial data and maps
+
+\textbf{ArcScene} Part of \textit{ArcGIS}, used for 3D data 
+
+\end{multicols}
+
+\section{Introduction 2}
+
+\DTLloadrawdb{list}{glossary-terms.csv} %use DTLloadrawdb rather than DTLloaddb to correctly intrepret $ character. see https://mirror.apps.cam.ac.uk/pub/tex-archive/macros/latex/contrib/datatool/datatool-user.pdf p57 
+
+
+\DTLforeach{list}{%
+\command=Command,\definition=Definition,\example=Example}{\\
+\textbf{\command{}} \definition, \texttt{\example{}}.}
+
+\begin{tabular}{|p{4cm}|p{12cm}|} % set width 
+% \begin{tabular}{ |c|c| } 
+
+ \hline
+ \textbf{Command} & \textbf{Definition} \\ 
+ \hline
+ cell4 & cell5 \\ 
+ \hline
+ cell7 & cell8 \\ 
+ \hline
+
+\DTLforeach{list}{%
+\command=Command,\definition=Definition,\example=Example}{\\
+\hline
+\texttt{\command{}} & \definition \\ & \texttt{\example{}}} \\
+\hline
+ 
+\end{tabular}
+
+New example
+
+\begin{tabular}{|p{4cm}|p{6cm}|p{6cm}|} % set width 
+% \begin{tabular}{ |c|c| } 
+
+
+ \hline
+ \textbf{Command} & \textbf{Definition} & \textbf{Exam[ple}\\ 
+ \hline
+ cell4 & cell5 & cell6 \\ 
+ \hline
+ cell7 & cell8 & cell9 \\ 
+ \hline
+
+ \hline
+ \textbf{Command} & \textbf{Definition} & \textbf{Example} \\ 
+ \hline
+ 
+\DTLforeach{list}{%
+\command=Command,\definition=Definition,\example=Example}{\\
+\hline
+\textbf{\command{}} & \definition & \texttt{\example{}}} \\
+\hline
+ 
+\end{tabular}
+
+
+\end{document}

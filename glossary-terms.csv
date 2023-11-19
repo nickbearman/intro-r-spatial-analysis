@@ -1,0 +1,54 @@
+Command,Information
+#,"used to precede a comment, #this is a comment"
+$,"used to refer to columns within a data frame, dataframe$column"
+?,"shows the help file for that command, for example, ?help or ?head"
+??,"will search through the help files for any reference to the word you type, ??dataframe  "
+"[,]","square brackets are used to refer to specific elements in a list or data frame.  pop2011[1,] will show the first row and pop2011[,1] will show the first column."
+<-,assigns a value or output from a function to a variable 
+abline(),"adds vertical lines to a histogram, used to show classification breaks abline(v = breaks$brks, col = “red”)"
+aggregate(),"aggregate the specified data set by a column, applying a function to the values, aggregate(x = LSOA_crimes, by = list(LSOA_crimes$lsoa21cd), FUN = length)"
+classIntervals(),"calculate the class invervals for the specified data, classIntervals(var, n = 6, style = ""fisher"")"
+"c(,)","used to create a list, either numbers c(1,2,3) or strings (text)
+c(""Thomas"",""Richard"",""Harriet"")"
+colnames(),"shows the names and numbers of the columns in the specified data set, colnames(hp.data)"
+display.brewer.all(),shows all the potential colour paletts from the RColorBrewer library
+download.file(),"download a file from the specificed URL: download.file(""http://www.nickbearman.me.uk/data/r/sthelens.zip"",""sthelens.zip"")"
+F / false,"used to specify we don't want something, e.g. frame = F means we don't want a frame"
+for () {},"begins a loop to make R repeat a command a set number of times, for (i in 1:length(mapvariables))"
+head(),"used to show the first six rows of the data frame, head(hp.data)"
+hist(),"shows a histogram of the specified data, hist(var)"
+library(),"load the specified library, library(sf)"
+mean(),"calculate the mean of the specified set of values, mean(house.prices)"
+merge(),"joins two data frames together using a specified attribute or ID, merge(LSOA, pop2021, by.x=""lsoa21cd"", by.y=""geography.code"")"
+qtm(),"a quick way of showing spatial data, either just the data itself, qtm(LSOA), or a quick choropleth map, qtm(LSOA_crimes_aggregated, fill = ""count of crimes"")"
+read.csv(),"read in a csv file from the specified path, read.csv(""police-uk-2020-04-merseyside-street.csv"")"
+"setwd("")","set the working directory to the specified folder, setwd(""C:/Users/nick/Documents/work/intro-r-spatial-analysis/data-user"")"
+st_as_sf(),"use to create a spatial data frame from a non spatial data frame, st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = 4326)"
+st_join(),"do a spatial join, st_join(LSOA, crimes_sf_bng)"
+st_read(),"read in a shapefile, st_read(""england_lsoa_2021.shp"")"
+st_transform(),"reproject the specified spatial data object to the specified crs, st_transform(crimes_sf, crs = 27700)"
+st_write(),"save the specified spatial data object as a shapefile, st_write(LSOA_crimes_aggregated, ""LSOA-crime-count.shp"")"
+T / true,"used to specify that we do want something, legend.hist = T meanse we want to show the legend histogram"
+table(),"count how many different values there are in the specificed column, and output as a table, table(crimes_sf_bng$Crime.type)"
+title.position,"specify the location of the title on a map, title.position = c(0.7, ""top"")"
+tm_borders(),specify the colour and thickness of a border around a map
+tm_compass(),"specify the location of the north arrow / compass on a map, tm_compass(position = c(0.3, 0.07))"
+tm_dots(),"specify the symbology of a point layer on a map, tm_dots(size = 0.1, shape = 19, col = ""darkred"", alpha = 0.5)"
+tm_layout(),"specify a range of options in the map layout, tm_layout(frame = F, title = ""Liverpool"", title.size = 2)"
+tm_polygons(),"specify the symbology and options of a polygon layer on a map, ttm_polygons(""Age00to04"", title = ""Aged 0 to 4"", palette = ""Greens"", n = 6, style = ""jenks"")"
+tm_scale_bar(),"specify the location and style of the scale bar on a map, tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +"
+tm_shape(),"specify the layer shown on a map, often used in conjunction with tm_polygons(), tm_shape(LSOA)"
+tmap_mode(),"change the tmap mode from plot (default) to view (slippy map with basemap) or back, tmap_mode(""view""),  tmap_mode(""plot"") "
+tmap_save(),"save the map to a specified output file, tmap_save(m, filename = paste0(""map-"",mapvariables[i],"".png""))"
+unzip(),"unzip the specificed file, unzip(""sthelens.zip"")"
+View(),"view the specified data in a new tab in Rstudio, View(hp.data)"
+, 
+, 
+, 
+, 
+, 
+, 
+, 
+, 
+, 
+, 
