@@ -1,4 +1,8 @@
 ##Script from the workbook
+  # updated version for tmap v4
+  # install using:
+  # install.packages("remotes")
+  # remotes::install_github('r-tmap/tmap')
 
 # This contains all the commands from the workbook
 
@@ -67,14 +71,15 @@
 ### Making Maps
   tm_shape(LSOA) +
     tm_polygons("Age00to04")
+  
   tm_shape(LSOA) +
-    tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "jenks")
-  #Deprecated tmap v3 code detected. Code translated to v4
-  #this is fine, but needs to be updated
+    tm_polygons(fill = "Age00to04",
+                fill.scale = tm_scale_intervals(values = "Greens", n = 6, style = "jenks"))
+  
   tm_shape(LSOA) +
-    tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", style = "jenks") +
-    tm_layout(legend.title.size = 0.8)
-  #this works, but needs to be updated
+    tm_polygons(fill = "Age00to04",
+                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.legend = tm_legend(title.size = 0.8))
 
 ### Colours and Categories
   #load the R Color Brewer library
@@ -82,13 +87,14 @@
   #display the palette
   display.brewer.all()
   tm_shape(LSOA) +
-    tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "jenks")
-  #this works, but needs to be updated
+    tm_polygons(fill = "Age00to04",
+                fill.scale = tm_scale_intervals(values = "Greens", n = 6, style = "jenks"),
+                fill.legend = tm_legend(title = "Aged 0 to 4"))
   tm_shape(LSOA) +
-    tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "fixed",
-    breaks=c(5, 25, 50, 100, 175, 275))
-  #this works, but needs to be updated
-  
+    tm_polygons(fill = "Age00to04",
+                fill.scale = tm_scale_intervals(values = "Greens", n = 6, style = "fixed", breaks=c(5, 25, 50, 100, 175, 275)),
+                fill.legend = tm_legend(title = "Aged 0 to 4"))
+
 ### Classification on a Histogram (optional exercise)
   #select the variable
   var <- LSOA$Age00to04
@@ -99,33 +105,28 @@
   hist(var)
   #add breaks to histogram
   abline(v = breaks$brks, col = "red")
-  
-### Histogram on the map
-  tm_shape(LSOA) +
-    tm_polygons("Total", title = "Total Population", palette = "Greens",
-                style = "equal", legend.hist = T)
-  #this works, but needs to be updated
-  
+
+### Histogram on the map (not currently possible in v4)
+  #tm_shape(LSOA) +
+  #  tm_polygons("Total", title = "Total Population", palette = "Greens",
+  #             style = "equal", legend.hist = T)
+
 ### Layout Options and Margins (optional exercise)
-  tm_shape(LSOA) +
-    tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", style = "jenks") +
-    tm_layout(legend.title.size = 0.8, inner.margins = c(.04, .03, .02, .01))
-  #this works, but needs to be updated
-  
+  # legends have been completely redone in v4, so this is no longer required
+  #tm_shape(LSOA) +
+  #  tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", style = "jenks") +
+  #  tm_layout(legend.title.size = 0.8, inner.margins = c(.04, .03, .02, .01))
+
 ### Scale Bar and North Arrow (optional exercise)
+  # scale bar and north arrow are not fully implemented in v4 yet in terms of layout, e.g. ?tm_lp_out()
   tm_shape(LSOA) +
-    #Set colours and classification methods
-    tm_polygons("Total", title = "Total Population", palette = "Greens",
-                style = "equal") +
-    #Add scale bar
-    tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
-    #Add compass
-    tm_compass(position = c(0.3, 0.07)) +
-    #Set layout details
-    tm_layout(frame = F, title = "Liverpool", title.size = 2,
-              title.position = c(0.7, "top"))
-  #this does NOT work and needs to be updated
-  
+    tm_polygons(fill = "Age00to04",
+                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.legend = tm_legend(title = "Aged 0 to 4", size = 0.8)) +
+    tm_scalebar() + 
+    ##north arrow
+    tm_compass(size = 1.5, position = c(1.1, 0.6))
+
 ### Interactive Maps (optional exercise)
   #set tmap to view mode
   tmap_mode("view")
@@ -134,44 +135,41 @@
   #plot using tm_shape
   tm_shape(LSOA) +
     #Set colours and classification methods
-    tm_polygons("Total", title = "Total Population", palette = "Greens",
-                style = "equal")
+    tm_polygons(fill = "Total",
+                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"))
   #return tmap to plot mode
   tmap_mode("plot")
-  #this works, but needs to be updated
 
 ### Exporting and Creating Multiple Maps
   #create map
   m <- tm_shape(LSOA) +
-    tm_polygons("Total", title = "Total Population", palette = "Greens",
-                style = "equal") +
-    tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
-    tm_layout(frame = F, title = "Liverpool", title.size = 2,
-              title.position = c(0.7, "top"))
+    tm_polygons(fill = "Total",
+                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.legend = tm_legend(title = "Liverpool", size = 0.8)) +
+    tm_scalebar() + 
+    ##north arrow
+    tm_compass(size = 1.5, position = c(1.1, 0.6))
   #save map
- tmap_save(m)
- #this does NOT work and needs to be updated
+  tmap_save(m)
 
- #set which variables will be mapped
- mapvariables <- c("Total", "Age00to04", "Age05to09")
- #loop through for each map
- for (i in 1:length(mapvariables)) {
-   #setup map
-   m <- tm_shape(LSOA) +
-     #set variable, colours and classes
-     tm_polygons(mapvariables[i], palette = "Greens", style = "equal") +
-     #set scale bar
-     tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
-     #set compass
-     tm_compass(position = c(0.3, 0.07)) +
-     #set layout
-     tm_layout(frame = F, title = "Liverpool", title.size = 2,
-               title.position = c(0.7, "top"))
-   #save map
-   tmap_save(m, filename = paste0("map-",mapvariables[i],".png"))
-   #end loop
- }
- #this does NOT work, and needs to be updated
+
+#set which variables will be mapped
+  mapvariables <- c("Total", "Age00to04", "Age05to09")
+  #loop through for each map
+  for (i in 1:length(mapvariables)) {
+    #setup map
+    m <- tm_shape(LSOA) +
+      tm_polygons(fill = mapvariables[i],
+                  fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                  fill.legend = tm_legend(title = "Liverpool", size = 0.8)) +
+      tm_scalebar() + 
+      ##north arrow
+      tm_compass(size = 1.5, position = c(1.1, 0.6))
+    
+    #save map
+    tmap_save(m, filename = paste0("map-",mapvariables[i],".png"))
+    #end loop
+  }
 
 ## Practical 3: Clustering of Crime Points
   #Read the data into a variable called crimes
@@ -184,18 +182,20 @@
   crimes_sf_bng <- st_transform(crimes_sf, crs = 27700)
   qtm(crimes_sf_bng)
   tm_shape(crimes_sf_bng) +
-    tm_dots(size = 0.1, shape = 19, col = "darkred", alpha = 0.5)
-  #this works, but needs to be updated
+    tm_symbols(size = 0.1,
+               col = "darkred", 
+               col_alpha = 0.5)  
   table(crimes_sf_bng$Crime.type)
   
 ### Point in Polygon
   #plot the crime data
   tm_shape(crimes_sf_bng) +
-    tm_dots(size = 0.1, shape = 19, col = "red", alpha = 0.5) +
-  #add LSOA on top
-  tm_shape(LSOA) +
+    tm_symbols(size = 0.1,
+               col = "red", 
+               col_alpha = 0.5) +
+    #add LSOA on top
+    tm_shape(LSOA) +
     tm_borders()
-  #this works, but needs to be updated
 
   #perform spatial join
   LSOA_crimes <- st_join(LSOA, crimes_sf_bng)
@@ -213,10 +213,12 @@
   colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
   #map using qtm
   qtm(LSOA_crimes_aggregated, fill = "count of crimes")
+  #not sure why this includes the dot layer by default as well, may be a bug
   #map using tmap
   tm_shape(LSOA_crimes_aggregated) +
-    tm_polygons("count of crimes", title = "Number of Crimes", palette = "Greens", style = "jenks")
-  #this works, but needs to be updated
+    tm_polygons(fill = "count of crimes",
+                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.legend = tm_legend(title = "Number of Crimes", size = 0.8))
   
   #alternative using summarise (from dplyr library)
   LSOA_crimes_summarised <- 
@@ -227,9 +229,10 @@
   head(LSOA_crimes_summarised)
   
   #map using tmap
-  tm_shape(LSOA_crimes_summarised) +
-    tm_polygons("count", title = "Number of Crimes", palette = "Greens", style = "jenks")
-  #this works, but needs to be updated
+  tm_shape(LSOA_crimes_aggregated) +
+    tm_polygons(fill = "count of crimes",
+                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.legend = tm_legend(title = "Number of Crimes", size = 0.8))
 
 ### Exporting Shapefiles
   #save as shapefile
