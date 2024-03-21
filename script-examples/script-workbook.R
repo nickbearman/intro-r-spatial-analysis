@@ -190,7 +190,7 @@
   #view output
   head(LSOA_crimes)
   
-  #Aggregate by LSOA
+  #Aggregate by LSOA, this takes ~20 seconds to run
   LSOA_crimes_aggregated <- aggregate(x = LSOA_crimes, by = list(LSOA_crimes$lsoa21cd), FUN = length)
   #gives us count of points in each polygon
   head(LSOA_crimes_aggregated)
@@ -205,7 +205,7 @@
   tm_shape(LSOA_crimes_aggregated) +
     tm_polygons("count of crimes", title = "Number of Crimes", palette = "Greens", style = "jenks")
   
-  #alternative using summarise
+  #alternative using summarise (from dplyr library)
   LSOA_crimes_summarised <- 
     LSOA_crimes %>%
     group_by(lsoa21cd) %>%
