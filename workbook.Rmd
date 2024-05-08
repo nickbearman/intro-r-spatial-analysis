@@ -5,7 +5,7 @@ output:
   pdf_document: default
   html_document:
     df_print: paged 
-date: "Wed 7th and Thu 8th June 2023"
+date: "Tue 25th and Wed 26th June 2024"
 ---
 
 ```{r setup, echo=FALSE}
