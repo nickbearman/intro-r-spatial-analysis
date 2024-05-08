@@ -19,12 +19,12 @@ format:
 -->
 
 
-![](images/Slide1.png)
+![](images/ncrm-welcome-slide1.png)
 
 ------------------------------------------------------------------------
 
 
-![](images/Slide2.png)
+![](images/ncrm-welcome-slide2.png)
 
 
 ------------------------------------------------------------------------
@@ -72,7 +72,7 @@ format:
     -   Ask questions as we go along
     -   Think about how you could use these techniques with your own data
 -   Presentations, handouts and data on OneDrive
--   Poll
+- 	WhatsApp group for discussion
 
 ```{=html}
 <!-- 
@@ -144,7 +144,7 @@ format:
 
 -   Nearly all human activities & decisions involve geography
     -   the "**where?**"
--   Working with geographic information is **different** to working with a **CSV** file
+-   Working with geographic information is **different** to working with a **CSV** or **Excel** file
 -   This is why we need specialized **GIS** software to:
     -   **organize** and **store**
     -   **access** and **retrieve**
@@ -167,23 +167,51 @@ format:
 
 <font size="2">Kenya Vegetation Figure 1 - http://pvanb.wordpress.com/2010/06/10/clickfu-in-qgis/</font>
 
-------------------------------------------------------------------------
+## Census 2021
 
-### Census 2011
+::: columns
+:::: {.column width="50%"}
 
 ![](images/census-2021.png)
 
-<font size="2">http://www.alex-singleton.com/r/2014/02/05/2011-census-open-atlas-project-version-two/</font>
+			
+										
+												  
+   
 
-------------------------------------------------------------------------
+<font size="2">https://www.ons.gov.uk/visualisations/censuspopulationchange/E08000012/</font>
+																			
+										 
+																		   
+   
 
-## Poverty prevlance in Africa
+::::
+																 
+   
+
+:::: {.column width="50%"}
+
+![](images/census-2021-liverpool.png)
+							   
+   
+
+<font size="2">https://www.ons.gov.uk/census/maps/choropleth/population/median-age/median-age/median-age?lad=E08000012</font>
+						   
+   
+
+::::
+	   
+:::
+
+---
+
+## Poverty in Africa
 
 ![](images/africa-poverty.png)
 
 <font size="2">http://pvanb.wordpress.com/2012/05/09/poverty-maps-on-harvestchoice/ </font>
 
-------------------------------------------------------------------------
+---
 
 ## GIS: Systems and Science
 
@@ -201,6 +229,8 @@ format:
 ::: fragment
 ![](images/ijgis.png){.absolute bottom="0" right="0" width="250"}
 :::
+
+## GIS: Systems and Science
 
 ::: fragment
 -   Geographic*al* / Geographic
@@ -274,7 +304,7 @@ format:
 
 ![](images/gis-software.png)\
 
--   R is very different to ArcGIS, but can do many of the same operations
+-   R is different to ArcGIS, but can do the same analysis
 -   R is free (as is QGIS)
 -   R is increasingly popular in the academic and commercial (data-science) sector
 -   Try data in QGIS / ArcGIS if you like
@@ -299,6 +329,8 @@ format:
 <font size="2">http://www.hdwallpapersos.com/orange-fruit-hd-wallpapers.html</font>
 
 ------------------------------------------------------------------------
+
+## Mercator Projection
 
 ![](images/mercator-1.png)
 
@@ -353,10 +385,7 @@ format:
 
 1.  The map(s) may not be as they appear
 2.  Data may appear in the wrong place
-
-::: fragment
 3.  Coordinate Systems
-:::
 
 ## Coordinate Systems
 
@@ -390,43 +419,69 @@ UTM (Universal Transverse Mercator)
 
 ![](images/utm-europe.png)
 
-## Geographic & Projected Coordinate Systems  {.smaller}
+## Geographic and Projected Coordinate Systems
 
--   Geographic Coordinate Systems (e.g. WGS 84)
-    -   Where on the Earth's surface something is
-    -   52.6250° N 1.2339° E
-    -   Usually in angular units (degrees)
--   Projected Coordinate Systems (e.g. BNG / UTM)
-    -   How we show this on a printed/flat map
-    -   Easting: 619301 Northing: 307416
-    -   621160.98, 3349893.53 meters, Zone 14 R
-    -   Usually in linear units (meters)
+We can split these coordinate systems into two groups:
 
+- Geographic Coordinate Systems
+- Projected Coordinate Systems
+
+## Geographic and Projected Coordinate Systems
+
+- **Geographic Coordinate Systems**
+  - Where on the Earth’s surface something is
+  - 52°N 37’ 30.32’’ (52.6250)	1°E 14’ 2.05’’ (1.2339) 
+  - Usually in angular units (degrees)
+
+## Geographic and Projected Coordinate Systems
+
+ ![](images/distance-lines-longitude.jfif){width="500"}  
+ 
+ <font size="2">Thanks to [@RickyAngueira](https://twitter.com/RickyAngueira) from [#30DayMapChallenge on Twitter](https://twitter.com/RickyAngueira/status/1594030866132410368?t=Mljsd9aPHr7IzLTrp3o45A&s=09). 
+</font>
+
+## Geographic and Projected Coordinate Systems
+
+- **Geographic Coordinate Systems**
+  - Where on the Earth’s surface something is
+  - 52°N 37’ 30.32’’ (52.6250)	1°E 14’ 2.05’’ (1.2339) 
+  - Usually in angular units (degrees)
+- **Projected Coordinate Systems**
+  - How we show this on a printed/flat map
+  - Easting: 619301	Northing: 307416
+  - Usually in linear units (meters)
+  
 ## Coordinate Systems
 
--   Latitude and Longitude (WGS 1984)
-    -   52°N 37' 30.32'' (52.6250) 1°E 14' 2.05'' (1.2339)
--   British National Grid (Eastings & Northings)
-    -   Easting: 619301 Northing: 307416
--   UTM (Universal Transverse Mercator)
-    -   621160.98, 3349893.53 meters, Zone 14 R
-
-## Coordinate Systems
-
--   Latitude and Longitude (WGS 1984) **EPSG = 4326**
-    -   52°N 37' 30.32'' (52.6250) 1°E 14' 2.05'' (1.2339)
--   British National Grid (Eastings & Northings) **EPSG = 27700**
-    -   Easting: 619301 Northing: 307416
--   UTM (Universal Transverse Mercator) **EPSG = by zone**
-    -   621160.98, 3349893.53 meters, Zone 14 R
+- **Geographic** : Latitude and Longitude (WGS 1984)
+  - 52.6250°	1.2339° **EPSG: 4326**
+- **Projected Coordinate Systems**
+  - British National Grid (Eastings & Northings)
+    - Easting: 619301	Northing: 307416 **EPSG: 27700**
+  - UTM (Universal Transverse Mercator)
+    - 621160.98, 3349893.53 meters, Zone 14 N **EPSG: depends on zone**
+- https://epsg.org/ | https://epsg.io/ 
 
 ## Coordinate Systems
 
 -   Why is it important?
     -   Some data uses WGS84, some BNG, UTM
-    -   LSOA use BNG (Eastings/Northings)
+    -   OS & Census data use BNG (Eastings/Northings)
     -   Need to convert between the two
 -   Some GIS convert automatically -- **R does not**
+
+## Which system to use?
+
+- For Global data, projections are key
+  - WGS 84 EPSG:4326
+  - Try WGS 84 / Equal Earth Greenwich EPSG:8857
+
+- For Local data, projections are less important
+  - We are using Projected Coordinate System
+  
+  
+- We can convert data between projection systems
+
 
 ------------------------------------------------------------------------
 
@@ -451,7 +506,6 @@ UTM (Universal Transverse Mercator)
     -   "Gambia, The" ≠ "The Gambia"
     -   "USA" ≠ "The United States"
     -   "UK" ≠ "Great Britain"
-    -   "UK" ≠ "UK"
 
 ## Attribute Join
 
@@ -625,7 +679,7 @@ Remember to show in the table which colours represent which countries!
 
 ## Classification
 
-- Go to www.colorbrewer2.org
+- Go to [www.colorbrewer2.org](http://www.colorbrewer2.org)
 
 ![](images/color-brewer-screenshot.png)
 
