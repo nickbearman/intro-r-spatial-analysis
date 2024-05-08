@@ -1,33 +1,33 @@
 ---
 title: "Introduction to Spatial Data & Using R as a GIS"
-subtitle: "Day 1 | Tue 23rd May 2023 | 10am - 4:30pm"
+subtitle: "Day 1 | Tue 25th June 2024 | 10am - 1pm"
 author: "Dr Nick Bearman"
 format: 
   revealjs
 ---
 
+<!--
 ## Welcome - GIS Course
 
 - Day 1 - Introduction to Spatial Data & Using R as a GIS 
 - Day 2 - Confident Spatial Analysis and Statistics in R & GeoDa 
 
 --
-
+ 
 - *Lunch 12:30pm - 1:30pm* 
 - *Afternoon break 3:15pm - 3:30pm* 
+-->
 
-<!-- 
-------------------------------------------------------------------------
 
 ![](images/Slide1.png)
 
 ------------------------------------------------------------------------
 
+
 ![](images/Slide2.png)
 
 
 ------------------------------------------------------------------------
--->
 
 
 
@@ -85,7 +85,7 @@ format:
 ```
 
 
-<!--
+
 ## Outline  {.smaller}
 
 -   **Day 1**:
@@ -99,7 +99,7 @@ format:
     -   11:30am - 11:45am -- break
     -   11:45am - 1pm -- Practical 4: Bring Your Own Data
 
--->
+<!--
 
 ## Outline  {.smaller}
 
@@ -113,12 +113,13 @@ format:
 - 3:15pm – 3:30pm: break
 - 4:00pm - 4:30pm: Practical 4: Bring Your Own Data
 
+--> 
 ## Any Questions?
 
-<!-- 
+
 -   Zoom?
 -   Matrix/Element?
--->
+
 -   Schedule?
 -   ?
 
@@ -576,7 +577,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 
 ## Let's start!
 
-## Outline
+## Outline {.smaller}
 
 -   **Day 1**:
     -   ~~10:00am - 10:45am -- What is GIS & R?~~
@@ -704,6 +705,8 @@ https://jcheshire.com/resources/different-maps-same-data/
 -   A bit like cookery
 -   But we have covered some 'rules of thumb'
 
+<!--
+
 ## Outline  {.smaller}
 
 - 10:00am – 10:45am: What is GIS, Spatial Data & R?
@@ -716,9 +719,9 @@ https://jcheshire.com/resources/different-maps-same-data/
 - 3:15pm – 3:30pm: break
 - 4:00pm - 4:30pm: Practical 4: Bring Your Own Data
 
-<!-- end
-
-## Outline
+-->
+<!--
+## Outline {.smaller}
 
 -   1345 - 1400 Introduction
 -   1400 - 1410 Colouring in exercise
@@ -727,6 +730,21 @@ https://jcheshire.com/resources/different-maps-same-data/
 -   1430 - 1450 Practical in QGIS
 -   1450 - 1500 Coordinate Systems & Next Steps
 -   1510 Finish
+-->
+
+## Outline {.smaller}
+
+-   **Day 1**:
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   ~~11:30am - 11:50am -- Classification~~
+    -   11:50am - 1:00pm -- Practical 2: Making a Map
+-   Day 2:
+    -   10:00am - 10:20am -- Recap and Making Maps
+    -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1pm -- Practical 4: Bring Your Own Data
+
 
 ## Adding Delimited Text Layers
 
