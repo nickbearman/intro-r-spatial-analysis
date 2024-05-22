@@ -1,5 +1,5 @@
-# Introduction to Spatial Data & Using R as a GIS
-This is the material for my 1 day course on **Introduction to Spatial Data & Using R as a GIS**. More details on my courses are available at http://www.geospatialtrainingsolutions.co.uk. 
+# Introduction to Spatial Data and Using R as a GIS
+This is the material for my 1 day course on **Introduction to Spatial Data and Using R as a GIS**. More details on my courses are available at http://www.geospatialtrainingsolutions.co.uk. 
 
 This course does not spend much time on the very basics of using R - if you want to find out more, there are some good tutorials at http://www.social-statistics.org/?p=764 or http://rpubs.com/nickbearman/gettingstartedwithr. 
 
