@@ -1,4 +1,0 @@
-Command,Definition,Example
-aggregate(),"aggregate the specified data set by a column, applying a function to the values","aggregate(x = LSOA_crimes, by = list(LSOA_crimes$lsoa21cd), FUN = length)"
-classIntervals(),calculate the class invervals for the specified data,"classIntervals(var, n = 6, style = ""fisher"")"
-View(),view the specified data in a new tab in Rstudio,View(hp.data)
