@@ -11,6 +11,7 @@ README.html
 outline.txt
 script-examples.zip
 *.lnk
+*.url
 raster-data-in-R/
 workbook.html
 workbook.pdf
@@ -20,3 +21,6 @@ presentation-day1-part1.pdf
 presentation-day1-part2+day2.pdf
 scan-r-glossary.pdf
 /videos
+glossary.synctex.gz
+glossary.log
+glossary.pdf
