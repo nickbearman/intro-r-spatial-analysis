@@ -118,7 +118,7 @@ format:
 
 
 -   Zoom?
--   Matrix/Element?
+-   WhatsApp Group?
 
 -   Schedule?
 -   ?
@@ -608,6 +608,19 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 ![](images/r-libraries.jpeg) 
 
 <font size="2">https://twitter.com/visnut/status/1248087845589274624</font>
+
+## `tmap` v4
+
+- `tmap` is the library we use for creating maps
+- v4 is still in development
+- When you load it: `library(tmap)`
+- The `tmap` library may give you this message:
+
+
+![](images/tmap-v4-testing.png)
+
+- We will stick with v3.3-4 (which is what you installed)
+- Will mention more about `tmap` v4 later on. 
 
 ## Practical 1: Intro to R & GIS 
 
