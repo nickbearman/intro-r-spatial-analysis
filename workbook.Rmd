@@ -169,6 +169,16 @@ library(sf)
 library(tmap)
 ```
 
+----
+
+**Note:** When you load the `tmap` library, you might get this message:
+
+![](images/tmap-v4-testing.png)
+
+This is saying that there is a new version of the `tmap` library - version 4. It is not out yet and RStudio will have installed version 3.3-4 for you. We will stick with using version 3 in this course, and I will talk more about this in the presentation. 
+
+----
+
 However, this just makes R *able* to handle geographical data, it doesn't actually load any specific data sets. To do this, we need to read in some data. We are going to use **shapefiles** - a well known GIS data format. We are going to be using LSOA (Lower layer Super Output Areas) data for St. Helens in Merseyside (Liverpool), UK. 
 
 R uses working folders to store information relevant to the current project you are working on. 
