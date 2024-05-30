@@ -3,6 +3,8 @@
   # install using:
   # install.packages("remotes")
   # remotes::install_github('r-tmap/tmap')
+  # if you don't want to change your main computer setup, you can try out on posit.cloud
+  # https://nickbearman.github.io/installing-software/r-rstudio.html#posit-cloud
 
 # This contains all the commands from the workbook
 
@@ -74,11 +76,11 @@
   
   tm_shape(LSOA) +
     tm_polygons(fill = "Age00to04",
-                fill.scale = tm_scale_intervals(values = "Greens", n = 6, style = "jenks"))
+                fill.scale = tm_scale_intervals(values = "greens", n = 6, style = "jenks"))
   
   tm_shape(LSOA) +
     tm_polygons(fill = "Age00to04",
-                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.scale = tm_scale_intervals(values = "greens", style = "jenks"),
                 fill.legend = tm_legend(title.size = 0.8))
 
 ### Colours and Categories
@@ -121,7 +123,7 @@
   # scale bar and north arrow are not fully implemented in v4 yet in terms of layout, e.g. ?tm_lp_out()
   tm_shape(LSOA) +
     tm_polygons(fill = "Age00to04",
-                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.scale = tm_scale_intervals(values = "greens", style = "jenks"),
                 fill.legend = tm_legend(title = "Aged 0 to 4", size = 0.8)) +
     tm_scalebar() + 
     ##north arrow
@@ -136,7 +138,7 @@
   tm_shape(LSOA) +
     #Set colours and classification methods
     tm_polygons(fill = "Total",
-                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"))
+                fill.scale = tm_scale_intervals(values = "greens", style = "jenks"))
   #return tmap to plot mode
   tmap_mode("plot")
 
@@ -144,7 +146,7 @@
   #create map
   m <- tm_shape(LSOA) +
     tm_polygons(fill = "Total",
-                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.scale = tm_scale_intervals(values = "greens", style = "jenks"),
                 fill.legend = tm_legend(title = "Liverpool", size = 0.8)) +
     tm_scalebar() + 
     ##north arrow
@@ -160,7 +162,7 @@
     #setup map
     m <- tm_shape(LSOA) +
       tm_polygons(fill = mapvariables[i],
-                  fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                  fill.scale = tm_scale_intervals(values = "greens", style = "jenks"),
                   fill.legend = tm_legend(title = "Liverpool", size = 0.8)) +
       tm_scalebar() + 
       ##north arrow
@@ -213,11 +215,10 @@
   colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
   #map using qtm
   qtm(LSOA_crimes_aggregated, fill = "count of crimes")
-  #not sure why this includes the dot layer by default as well, may be a bug
   #map using tmap
   tm_shape(LSOA_crimes_aggregated) +
     tm_polygons(fill = "count of crimes",
-                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.scale = tm_scale_intervals(values = "greens", style = "jenks"),
                 fill.legend = tm_legend(title = "Number of Crimes", size = 0.8))
   
   #alternative using summarise (from dplyr library)
@@ -231,7 +232,7 @@
   #map using tmap
   tm_shape(LSOA_crimes_aggregated) +
     tm_polygons(fill = "count of crimes",
-                fill.scale = tm_scale_intervals(values = "Greens", style = "jenks"),
+                fill.scale = tm_scale_intervals(values = "greens", style = "jenks"),
                 fill.legend = tm_legend(title = "Number of Crimes", size = 0.8))
 
 ### Exporting Shapefiles
