@@ -2,6 +2,7 @@
 
 %sudo /usr/bin/tlmgr install siunitx to install package
 %or install pandoc (download) and then TinyTex in RStudio, and compile in RStudio
+%alternativly can compile in Overleaf
 
 \documentclass[a4paper,10pt]{article}
    
@@ -21,6 +22,7 @@
 \usepackage{siunitx} %for degree symbol
 \usepackage{multicol}
 \usepackage[ddmmyyyy,hhmmss]{datetime}
+\newcommand{\q}[1]{``#1''} %quotes for "top", from https://tex.stackexchange.com/questions/531/what-is-the-best-way-to-use-quotation-mark-glyphs
 
 \setlength{\parskip}{0.5em} %gap between paragraphs
 
@@ -46,7 +48,7 @@ Terms in \textit{italics} are defined in the glossary, terms with \textbf{bracke
 
 \textbf{?} shows the help file for that command \texttt{?help} or \texttt{?head}
 
-\textbf{??} will search through the help files for any reference to the word you type: \texttt{??dataframe}
+\textbf{??} search through the help files for any reference to the word you type: \texttt{??dataframe}
 
 \textbf{\texttt{[,]}} square brackets are used to refer to specific elements in a list or data frame. \texttt{pop2011[1,]} will show the first row and \texttt{pop2011[,1]} will show the first column
 
@@ -54,25 +56,25 @@ Terms in \textit{italics} are defined in the glossary, terms with \textbf{bracke
 
 \textbf{\texttt{<-}} assigns a value or output from a function to a variable
 
-\textbf{abline()} adds vertical lines to a histogram, used to show classification breaks: \texttt{abline(v = breaks\$brks, col = "red")}
+\textbf{abline()} adds vertical lines to a histogram, used to show \textit{classification} breaks: \texttt{abline(v = breaks\$brks, col = "red")}
 
-\textbf{Acknowledgements} Information required on any map, including copyright (e.g. for OpenStreetMap or Ordnance Survey Open Data) or data sources 
+\textbf{Acknowledgements} Information required on any map, including copyright or data sources  (e.g. for OpenStreetMap or Ordnance Survey Open Data)
 
 \textbf{aggregate()} group the specified data set by a column, applying a function to the values: \texttt{aggregate(x = LSOA\_crimes, by = list(LSOA\_crimes\$lsoa21cd), FUN = length)}
 
 \textbf{BeiDou} Chinese version of \textit{GPS} (see also \textit{GNSS})
 
-\textbf{BNG} (British National Grid) A \textit{coordinate system} used to represent locations in Great Britain, consisting of \textit{eastings} and \textit{northings}, e.g. 603125, 112589 (see also \textit{UTM} and \textit{WGS1984}) 
+\textbf{BNG} (British National Grid) A \textit{projected coordinate system} used to represent locations in Great Britain, consisting of \textit{eastings} and \textit{northings}, e.g. 603125, 112589 (see also \textit{UTM} and \textit{WGS1984}) 
 
-\textbf{c(,)} used to create a list, either numbers \texttt{c(1,2,3)} or strings (text) \texttt{c("Thomas","Richard","Harriet")}
+\textbf{c(,)} used to create a list, either numbers \texttt{c(1,2,3)} or \textit{strings} (text) \texttt{c("Thomas","Richard","Harriet")}
 
-\textbf{Categorical} A variable that has a series of values with no inherent order, e.g. country names, also known as \textit{nominal} (see also \textit{variable type}, \textit{quantitative}) 
+\textbf{Categorical} A variable that has a series of values with no inherent order, e.g. country names, also known as \textit{nominal} (see also \textit{variable type}) 
 
 \textbf{Choropleth} A type of mapping where different colours are used to represent difference values; can use \textit{categorical} and \textit{ordinal} data
 
 \textbf{Classes} The groups data are put into for a \textit{choropleth} map
 
-\textbf{Classification} How the data are classified into different \textit{classes} for a choropleth map (see also \textit{jenks}, \textit{equal count}, \textit{equal interval} and \textit{standard deviation}
+\textbf{Classification} How data are classified into different \textit{classes} for a \textit{choropleth} map (see also \textit{jenks}, \textit{equal count}, \textit{equal interval} and \textit{standard deviation}
 
 \textbf{classIntervals()} calculate the class invervals for the specified data: \texttt{classIntervals(var, n = 6, style = "fisher")}
 
@@ -80,26 +82,26 @@ Terms in \textit{italics} are defined in the glossary, terms with \textbf{bracke
 
 \textbf{Coordinates} The numbers representing a specific location, usually presented in pairs (see also \textit{latitude}, \textit{longitude}, \textit{WGS1984}, \textit{BNG} and \textit{UTM})
 
-\textbf{CRS / Coordinate Reference System} The type of coordinates that are used to represent a specific location (see also \textit{WGS1984}, \textit{BNG} and \textit{projection})
+\textbf{CRS} (Coordinate Reference System) The type of coordinates that are used to represent a specific location (see also \textit{WGS1984}, \textit{BNG} and \textit{projection})
 
 \textbf{Correlation} A measure of how much two variables are related, measured using a \textit{R\textsuperscript{2}} value 
 
-\textbf{CSV} (Comma separated values) A standard format of \textit{tabular data}, can be opened in Excel  
+\textbf{CSV} (Comma Separated Values) A standard format of \textit{tabular data}, can be opened in Excel  
 
 \textbf{CSVT} An optional file for use with \textit{CSV} files which specifies the \textit{variable type} of each column % in the \textit{CSV} file 
 
 \textbf{Data type} How data is stored within the \textit{Attribute table}, can be \textit{integer} (whole numbers), \textit{real} (decimal numbers) and \textit{string} (text) 
 
-\textbf{DEM} Digital Elevation Model, a \textit{raster} representation of the height of the earth's surface
+\textbf{DEM} (Digital Elevation Model) a \textit{raster} representation of the height of the earth's surface
 
 \textbf{display.brewer.all()} shows all the potential colour palletts from the \texttt{RColorBrewer} library
 
 \textbf{download.file()} download a file from the specificed URL: \texttt{download.file("http://www.nickbearman.me.uk/
 data/r/sthelens.zip","sthelens.zip")}
 
-\textbf{Eastings} A \textit{coordinate} that specifies the distance east, in meters, from the coordinates 0,0 south-west of the Isles of Scilly (see also \textit{BNG} and \textit{northings})
+\textbf{Eastings} A \textit{coordinate} that specifies the distance east, in meters, from the coordinates 0, 0 south-west of the Isles of Scilly (see also \textit{BNG} and \textit{northings})
 
-\textbf{EPSG code} A 4 or 5 digit code used by GIS to define what \textit{CRS / Coordinate Reference System} a data set is stored in, for example \textit{WGS1984} is \texttt{4326} and \textit{BNG} is \texttt{27700})
+\textbf{EPSG code} A 4 or 5 digit code used by GIS to define what \textit{CRS} (Coordinate Reference System) a data set is stored in, for example \textit{WGS1984} is \texttt{4326} and \textit{BNG} is \texttt{27700})
 
 \textbf{Equal count} (Quantile) \textit{Classification} method where data are split into a number of groups by putting the same number of data items into each group, also known as \textit{quantile}, see also \textit{classification}
 
@@ -115,7 +117,7 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{Galileo} European Union version of \textit{GPS} (see also \textit{GNSS})
 
-\textbf{Geographic coordinate system} A coordinate system covering the whole world, usually using \textit{degrees} (see also \textit{WGS1984}, \textit{latitude}, \textit{longitude})
+\textbf{Geographic coordinate system} A coordinate system covering the whole world, usually using degrees (see also \textit{WGS1984}, \textit{latitude}, \textit{longitude})
 
 \textbf{Geographical Information Science} (GIS) The development of the tools, software and processes used in \textit{Geographical Information Systems} 
 
@@ -123,7 +125,7 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{GeoJSON} Vector spatial data file, consisting of \textit{points}, \textit{lines} and \textit{polygons}; all saved in one file
 
-\textbf{Geopackage} (GPKG) Open format for storing geospatial data, can store multiple \textit{layers} within one file, sometimes seen as a replacement for \textit{shapefiles}
+\textbf{Geopackage} (GPKG) Open format for storing geospatial data, can store multiple \textit{layers} within one file, both \textit{vector} and \textit{raster}, sometimes seen as a replacement for \textit{shapefiles}
 
 \textbf{GLONASS} Russian version of \textit{GPS} (see also \textit{GNSS})
 
@@ -141,6 +143,8 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{Inset Map} A small map included on the main map to aid orientation, e.g. a map of Ghana might include an \textit{inset map} of Africa to show where Ghana is
 
+\textbf{install.packages()} Install (download from the internet) new \textit{libraries} in R, you only need to do this once, remember to include the quotes \texttt{install.packages("sf")}
+
 \textbf{Integer} A whole number used to represent data, can be used in a \textit{choropleth} map (see also \textit{data type}) 
 
 \textbf{Jenks} (natural breaks) \textit{Classification} method based on the Jenks algorithm which groups similar data values together, also known as \textit{natural breaks}, see also \textit{classification}
@@ -151,13 +155,15 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{Layers} When you add data into a GIS each different file appears as a different \textit{layer}; this allows different datasets to be overlaid on one another (see also \textit{Contents})
 
-\textbf{layout} The term for where you create your final map, where you can add maps, \textit{legends}, \textit{scale bars}, \textit{north arrows}, etc. (see also \textit{Print Layout}, for QGIS)
+\textbf{Layout} The term for where you create your final map, where you can add maps, \textit{legends}, \textit{scale bars}, \textit{north arrows}, etc. (also known as \textit{Print Layout}, for QGIS)
 
 \textbf{Legend} An important part of any map, showing what the symbols or colours used on the map represent 
 
-\textbf{library()} load the specified library: \texttt{library(sf)}
+\textbf{library()} load the specified library: \texttt{library(sf)} you need to do this everytime you start \textit{RStudio}
 
-\textbf{Lines} Used in \textit{vector} data sets to indicate a linear feature, such as rivers, roads or railways; is a series of \textit{points} joined together with lines
+\textbf{Libraries} (or packages) A collection of R functions brought together to extend R's functionality, we use the \texttt{sf} and \texttt{tmap} libraries, installed with \texttt{install.packages("")} and loaded with \texttt{library()}
+
+\textbf{Lines} Used in \textit{vector} data sets to indicate a linear feature, such as rivers, roads or railways; is a series of \textit{points} joined together in a certain order
 
 \textbf{Longitude} A \textit{coordinate} that specifies the distance east or west, ranging from \ang{0} at the Prime Meridian (Greenwich, London, UK) to \ang{180} around the international data line (see also \textit{WGS1984} and \textit{latitude})
 
@@ -167,11 +173,13 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{merge()} joins two data frames together using a specified attribute or ID: \texttt{merge(LSOA, pop2021, by.x="lsoa21cd", by.y="geography.code")}
 
+\textbf{Natural breaks} (Jenks / Fisher) \textit{Classification} method based on the \textit{Jenks} algorithm which groups similar data values together, see also \textit{classification}
+
 \textbf{Nominal} A variable that has a series of values with no inherent order, e.g. country names, also known as \textit{categorical} (see also \textit{variable type}, \textit{ordinal} and \textit{quantitative})
 
 \textbf{North arrow} Used to show the direction of North on a map, used to aid orientation (see also \textit{inset map})
 
-\textbf{Northings} A coordinate that specifies the distance north, in meters, from the \textit{coordinates} 0,0 south-west of the Isles of Scilly (see also \textit{BNG} and \textit{eastings})
+\textbf{Northings} A coordinate that specifies the distance north, in meters, from the \textit{coordinates} 0, 0 south-west of the Isles of Scilly (see also \textit{BNG} and \textit{eastings})
 
 \textbf{Ordinal} Similar to a categorical variable, but with a clear order, e.g. high priority, medium priority, and low priority (see also \textit{variable type}, \textit{quantitative}) 
 
@@ -185,7 +193,9 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{print()} Command used to output some information to the console
 
-\textbf{project file} A file created by GIS to store the symbology, classification, layouts and a list of the data layers you are using. Project files do not store any spatial data. Examples include .qgz QGIS and .arpx ArcGISPro
+\textbf{Print Layout} The term for where you create your final map (see also as \textit{Layout})
+
+\textbf{project file} A file created by GIS to store the symbology, classification, layouts and a list of the data layers you are using. Project files do not store any spatial data. Examples include .qgz / .qgs (QGIS) and .arpx (ArcGIS Pro)
 
 \textbf{Projected coordinate system} A coordinate system covering a specific, small area, usually uses meters and can me used for measuring distances (see also \textit{BNG}, \textit{easting}, \textit{northing} and \textit{UTM})
 
@@ -193,7 +203,7 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{QGIS} An open source GIS free for anyone to download, use and improve
 
-\textbf{QGIS project file} (.qgs) (QGIS) A project file for \textit{QGIS} which contains links to all the data files (such as \textit{shapefiles} and/or \textit{GeoJSON} files) and information on how they are symbolised; the \textit{project file} does not contain the data itself (see also \textit{project file}, \textit{APRX project file})
+\textbf{QGIS project file} (.qgz / .qgs) (QGIS) A project file for \textit{QGIS} which contains links to all the data files (such as \textit{shapefiles} and/or \textit{GeoJSON} files) and information on how they are symbolised; the \textit{project file} does not contain the data itself
 
 \textbf{qtm()} a quick way of showing spatial data, either just the data itself, \texttt{qtm(LSOA)} or a quick choropleth map \texttt{qtm(LSOA\_crimes\_aggregated, fill = "count of crimes")}
 
@@ -201,7 +211,7 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{Quantitative} A numeric variable with an inherent order, e.g. GDP per capita, (see also \textit{variable type})
 
-\textbf{R}Scripting language designed initially for statistics, expanded with \textit{libraries} to include spatial analysis, usually used through  \textit{RStudio}
+\textbf{R} Scripting language designed initially for statistics, expanded with \textit{libraries} to include spatial analysis, usually used through  \textit{RStudio}
 
 \textbf{R\textsuperscript{2}} The \textit{correlation} coefficient of two different data sets, a value of 1 is a strong positive \textit{correlation}, -1 is a strong negative \textit{correlation}
 
@@ -217,7 +227,7 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{Resolution} The size of each \textit{pixel} in a \textit{raster} data set (e.g. 100 meters, 1km, 100km)
 
-\text{RStudio} easy to use interface for \textit{R}, allows easy access to \textit{variables}, plot window and use of \textit{scripts}, known as an IDE (intergrated development environment)
+\textbf{RStudio} easy to use interface for \textit{R}, allows easy access to \textit{variables}, plot window and use of \textit{scripts}, known as an IDE (integrated development environment)
 
 \textbf{Sat-nav} A navigation system in cars, which uses \textit{GPS} to direct the driver to their destination
 
@@ -229,23 +239,23 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{setwd()} set the working directory to the specified folder: \texttt{setwd("C:/Users/nick/Documents/GIS")}
 
-\textbf{Shapefile} A type vector of spatial data file, consisting of one of \textit{points}, \textit{lines} or \textit{polygons}; represented in \textit{GIS} as one file but in fact consisting of multiple files (between 4 and 6 files, with extensions of .shp, .dbf, .shx and  .prj)
+\textbf{Shapefile} A type vector of spatial data file, consisting of one of \textit{points}, \textit{lines} or \textit{polygons}; represented in \textit{GIS} as one file but in fact consisting of multiple files (between 4 and 6 files, with extensions of .shp, .shx, .dbf and .prj)
 
 \textbf{spatial autocorrelation} A measure of how much the location of spatial data is correlated with itself, a value of 1 is a strong positive autocorrelation meaning data are spatially clustered with low values near each other and high values near each other, 0 is no spatial autocorrelation meaning data are distirbuted at random and space is not important in this data set, -1 is a strong negative correlation with low and high values as mixed as possible
 
 \textbf{st\_as\_sf()} use to create a spatial data frame from a non spatial data frame: \texttt{st\_as\_sf(crimes, coords = c('Longitude', 'Latitude'), crs = 4326)}
 
-\textbf{st\_join()} do a spatial join: \texttt{st\_join(LSOA, crimes\_sf\_bng)}
+\textbf{st\_join()} spatial join, joining data by location: \texttt{st\_join(LSOA, crimes\_sf\_bng)}
 
 \textbf{st\_read()} read in a shapefile or other spatial data file: \texttt{st\_read("england\_lsoa\_2021.shp")}
 
 \textbf{st\_transform()} reproject the specified spatial data object to the specified \textit{crs}: \texttt{st\_transform(crimes\_sf, crs = 27700)}
 
-\textbf{st\_write()} save the specified spatial data object as a shapefile:  \texttt{st\_write(LSOA\_crimes\_aggregated, "LSOA-crime-count.shp")}
+\textbf{st\_write()} save the specified spatial data object, e.g. as a shapefile:  \texttt{st\_write(LSOA\_crimes\_aggregated, "LSOA-crime-count.shp")}
 
 \textbf{Standard deviation} \textit{Classification} method based on standard deviation and mean of the data set  
 
-\textbf{String} A piece of text (e.g. a name) used to represent data, cannot be used in a \textit{choropleth} map (see also \textit{data type}, \textit{real} and \textit{integer} 
+\textbf{String} A piece of text (e.g. a name) used to represent data, cannot be used to create a \textit{choropleth} map (see also \textit{data type}, \textit{real} and \textit{integer} 
 
 \textbf{Style} (QGIS) / \textbf{Symbology} (ArcGIS Pro) The options to choose the colours and/or symbols to represent data on the map; accessed through right-clicking on the layer and selecting properties and navigating to the Style tab)
 
@@ -257,11 +267,11 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{Tabular data} Data laid out in rows and columns, as used in Excel (see also \textit{CSV})
 
-\textbf{title.position} specify the location of the title on a map:\textit{title.position = c(0.7, "top")}
+\textbf{title.position} specify the location of the title on a map: \textit{title.position = c(0.7, \q{top})}
 
 \textbf{tm\_borders()} specify the colour and thickness of a border around a map
 
-\textbf{tm\_compass()} specify the location of the north arrow / compass on a map: \texttt{tm\_compass(position = c(0.3, 0.07))}
+\textbf{tm\_compass()} specify the location of the north arrow or compass on a map: \texttt{tm\_compass(position = c(0.3, 0.07))}
 
 \textbf{tm\_dots()} specify the symbology of a point layer on a map: \texttt{tm\_dots(size = 0.1, shape = 19, col = "darkred", alpha = 0.5)}
 
@@ -281,7 +291,7 @@ data/r/sthelens.zip","sthelens.zip")}
 
 \textbf{tmap\_save()} save the map to a specified output file: \texttt{tmap\_save(m, filename = paste0("map-",mapvariables[i],".png"))}
 
-\textbf{unzip()} unzip the specificed file: \texttt{unzip("sthelens.zip")}
+\textbf{unzip()} unzip a file: \texttt{unzip("sthelens.zip")}
 
 \textbf{UTM} (Universal Transverse Mercator) A type of \textit{projected coordinate system} used to represent any location in the world, consisting of a series of zones and a set of \textit{coordinates} for each zone, in meters (see also \textit{BNG} and \textit{WGS1984}) 
 
