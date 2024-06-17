@@ -307,8 +307,8 @@ format:
 -   R is different to ArcGIS, but can do the same analysis
 -   R is free (as is QGIS)
 -   R is increasingly popular in the academic and commercial (data-science) sector
--   Try data in QGIS / ArcGIS if you like
--   *All can be useful*
+-   Python is also another popular option
+-   *All can be useful - Try data in QGIS / ArcGIS if you like*
 
 ## Projections
 
@@ -473,7 +473,8 @@ We can split these coordinate systems into two groups:
 ## Which system to use?
 
 - For Global data, projections are key
-  - WGS 84 EPSG:4326
+  - WGS 84 EPSG:4326 Mercator 
+  - *ESPG: 3857 Web Mercator*
   - Try WGS 84 / Equal Earth Greenwich EPSG:8857
 
 - For Local data, projections are less important
@@ -812,6 +813,7 @@ https://jcheshire.com/resources/different-maps-same-data/
     -   11:30am - 11:45am -- break
     -   11:45am - 1pm -- Practical 4: Bring Your Own Data
 
+<!--
 
 ## Adding Delimited Text Layers
 
@@ -847,3 +849,23 @@ https://jcheshire.com/resources/different-maps-same-data/
     -   GIS: Research Methods, £13, available today
 
 -->
+
+## Next Session
+
+- Everyone post a question in WhatsApp that you have about today’s topics or working with R / RStudio
+
+## Next Session
+
+- Everyone post a question in WhatsApp that you have about today’s topics or working with R / RStudio
+
+- Next session tomorrow 10am
+
+- Experiment with your own data – questions 
+
+- Explore some more of the options
+
+- Find some data relevant to your work 
+
+- *Opt. ggplot2 tutorial, e.g. https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html*
+
+
