@@ -54,6 +54,7 @@ format:
     -   Ask in real time, or in the chat
 -   Recording -- only our group, available for 3 months
 -   Workbook, data and presentation all in OneDrive
+-   Poll
 
 
 <!-- in person course
