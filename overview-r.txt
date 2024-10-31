@@ -1,0 +1,32 @@
+
+Introduction to Spatial Data & Using R as a GIS
+
+In this one day course we will explore how to use R to import, manage and process spatial data. We will also cover the process of making choropleth maps, as well as some basic spatial analysis. Finally, we will cover the use of loops to make multiple maps quickly and easily, one of the major benefits of using a scripting language to make maps, rather than traditional graphic point-and-click interface.
+
+No previous experience of coding is required, although participants would benefit from some experience of using spatial data (e.g. Google Maps).
+
+Learning Outcomes:	
+- Be able to use R to read in CSV data
+- Be able to use R to read in spatial data
+- Know how to plot spatial data using R	
+- Know how to customize colour & classifications
+- Understand how to use loops for multiple maps	
+- Know how to re-project spatial data	
+- Be able to perform point in polygon analysis
+- Know how to save shape files
+
+Confident Spatial Analysis and Statistics in R & GeoDa
+
+In this two part course we will show you how to prepare and conduct spatial analysis on a variety of spatial data in R, including a range of spatial overlays and data processing techniques. We will also cover how to use GeoDa to perform exploratory spatial data analysis, including making use of linked displays and measures of spatial autocorrelation and clustering.
+
+This course can follow-on from the ‘Introduction to Spatial Data & Using R as a GIS’ course, or be run independently if participants have some previous knowledge of R / RStudio and spatial data.
+
+Learning Outcomes:
+- Understand linked displays in GeoDa 
+- Be able to interpret Spatial Autocorrelation (Moran’s I)
+- Perform Local Indicators of Spatial Association (LISA)
+- Calculate Moran’s I and LISA in R 
+- Perform Point in Polygon analysis 
+- Know how to reorder data 
+- Know how to use buffers within R 
+- Pros and cons using point or polygon data 
