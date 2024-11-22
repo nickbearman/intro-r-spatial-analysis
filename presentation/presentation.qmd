@@ -216,20 +216,24 @@ format:
 
 ## GIS: Systems and Science
 
-::: fragment
--   Geographical Information **Systems**
-    -   The methods, process and technology we use
+::: {.fragment}
+- Geographical Information **Systems** 
+  - The methods, process and technology we use
 :::
 
-::: fragment
--   Geographical Information **Science** <!-- .element: class="fragment" -->
-    -   The science behind the technology
-    -   Including development of new technology, <br> methods and processes
+::: {.fragment}
+- Geographical Information **Science** <!-- .element: class="fragment" -->
+  - The science behind the technology
+  - Including development of new technology, <br> methods and processes
 :::
 
-::: fragment
-![](images/ijgis.png){.absolute bottom="0" right="0" width="250"}
+::: {.fragment}
+ ![](images/ijgis-1987.jpg){.absolute bottom="0" right="250" width="250"} 
+ ![](images/ijgis.png){.absolute bottom="0" right="0" width="250"} 
+
+<font size="2">Thanks to Nick Tate for the IGJIS 1987 photo</font>
 :::
+ 
 
 ## GIS: Systems and Science
 
@@ -243,6 +247,8 @@ format:
 
 ::: {.fragment}
 - GeoAI
+  - Geographical Analysis
+  - LLM / ChatGPT / assistant
 :::
 
 ------------------------------------------------------------------------
