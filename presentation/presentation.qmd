@@ -50,8 +50,7 @@ format:
     -   We can discuss things as we go along.
 -   Mute yourself (unless asking a question)
 -   Video on (if possible)
--   Questions
-    -   Ask in real time, or in the chat
+-   Questions - ask in real time, or in the chat
 -   Recording -- only our group, available for 3 months
 -   Workbook, data and presentation all in OneDrive
 -   Poll
@@ -647,7 +646,17 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 - Make you think about what the code does
 - *(but you can copy/paste long bits)*
 - Optional exercises
-- Ask for Help
+
+## Housekeeping - Practicals
+
+- Work through the workbook (questions, optional exercises)
+- Will split into groups of ~2-3 people (breakout rooms)
+- Ask your group colleagues questions
+<!-- - Post in WhatsApp -->
+
+- Use the ‘Ask for help’ button in the Breakout room
+- I will ‘walk around’ and see how people are getting on
+- Can share screens – in groups, or individually
 - Breaks
 
 ## Let's start!
