@@ -1,11 +1,11 @@
 ---
 title: "Introduction to Spatial Data and Using R as a GIS"
-author: "Nick Bearman - Geospatial Training Solutions"
+author: "Nick Bearman"
 output:
-  pdf_document: default
   html_document:
     df_print: paged 
-date: "Tue 25th and Wed 26th June 2024"
+  pdf_document: default
+date: "Mon 25th and Wed 27th Nov 2024"
 ---
 
 ```{r setup, echo=FALSE}
@@ -252,7 +252,7 @@ Working with R often requires several lines of code to get an output. Rather tha
 
 Create a new script (**File > New File > R Script**) and enter the code in there. Then you can select the lines you want to run by highlighting them, and then pressing `Ctrl+Enter`, or using the **Run** button. 
 
-Now we are going to use the same principle as we used before to create a map of some data from the 2011 Census. We need to download the data, and although there are other sources of these data, in this example we will use the https://www.nomisweb.co.uk/ website.
+Now we are going to use the same principle as we used before to create a map of some data from the 2021 Census. We need to download the data, and although there are other sources of these data, in this example we will use the https://www.nomisweb.co.uk/ website.
 
 - Navigate to **https://www.nomisweb.co.uk/**. 
 - Under **Census Statistics** (scroll down) click **2021 Data catalogue**. 
