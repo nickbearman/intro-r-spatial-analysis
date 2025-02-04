@@ -1,15 +1,25 @@
 ---
 title: "Introduction to Spatial Data & Using R as a GIS"
-subtitle: "Day 1 | Tue 25th June 2024 | 10am - 1pm"
+subtitle: "Day 1 |Tue 4th March 2025 | 10am - 1pm"
 author: "Dr Nick Bearman"
 format: 
   revealjs
 ---
 
-<!--
+![](images/WelcomeToInStats.png)
+
+![](images/InStatsStart.png)
+
+## <!-- Blank slide -->
+
+
 ## Welcome - GIS Course
 
-- Day 1 - Introduction to Spatial Data & Using R as a GIS 
+- Day 1 - Introduction to Spatial Data & Using R as a GIS
+
+- Session 1 - Introduction to R and Spatial Data Basics
+
+<!--
 - Day 2 - Confident Spatial Analysis and Statistics in R & GeoDa 
 
 --
@@ -18,18 +28,25 @@ format:
 - *Afternoon break 3:15pm - 3:30pm* 
 -->
 
-
+<!--
 ![](images/ncrm-welcome-slide1.png)
 
 ------------------------------------------------------------------------
 
 
 ![](images/ncrm-welcome-slide2.png)
+-->
 
+<!--
 
-------------------------------------------------------------------------
+## Recording
 
+- I will record the session on Zoom
+- Share the recording with you
+- Feel free to download and use for your reference
+- But please don't pass on to other people
 
+-->
 
 ## What are we covering?
 
@@ -41,7 +58,7 @@ format:
 
 ![](images/rstudio-map.png){.absolute bottom="0" right="0" width="500"}
 
-<!-- online course -->
+<!-- online course 
 
 ## Housekeeping
 
@@ -54,7 +71,20 @@ format:
 -   Recording -- only our group, available for 3 months
 -   Workbook, data and presentation all in OneDrive
 -   Poll
+-->
 
+<!-- InStats course -->
+
+## Housekeeping
+
+-   Zoom etiquette
+-   We're a small group,
+    -   We can discuss things as we go along.
+-   Mute yourself (unless asking a question)
+-   Video on (if possible)
+-   Questions - ask in real time, or in the chat
+-   Workbook, data and presentation all on InStats
+-   Poll
 
 <!-- in person course
 
@@ -71,8 +101,8 @@ format:
 -   Have presentation and practical sessions
     -   Ask questions as we go along
     -   Think about how you could use these techniques with your own data
--   Presentations, handouts and data on OneDrive
-- 	WhatsApp group for discussion
+-   Presentations, handouts and data on <!-- OneDrive --> InStats
+<!-- - WhatsApp group for discussion -->
 
 ```{=html}
 <!-- 
@@ -84,21 +114,63 @@ format:
 -->
 ```
 
-
+<!-- Online
 
 ## Outline  {.smaller}
 
 -   **Day 1**:
     -   10:00am - 10:45am -- What is GIS & R?
     -   10:45am - 11:30am -- Practical 1: Intro to R & GIS
-    -   11:30am - 11:50am -- Classification
-    -   11:50am - 1:00pm -- Practical 2: Making a Map
--   Day 2:
-    -   10:00am - 10:20am -- Recap and Making Maps
-    -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
     -   11:30am - 11:45am -- break
-    -   11:45am - 1pm -- Practical 4: Bring Your Own Data
+    -   11:45am - 12:05pm -- Classification
+    -   12:05pm - 1:00pm -- Practical 2: Making a Map
+-   Day 2:
+    -   1:00pm - 1:20pm -- Recap and Making Maps
+    -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
+    -   2:30pm - 2:45pm -- break
+    -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
 
+-->
+
+<!-- InStats -->
+
+## Outline  {.smaller}
+
+-   **Day 1** - Session 1: Introduction to R and Spatial Data Basics
+-   **Day 1** - Session 2: Classification and Creating a Choropleth Map
+-   Day 2 - Session 3: Map Customisation and Automation in R
+-   Day 2 - Session 4: Clustering Crime Points and Working with Your Own Data
+
+
+## Outline  {.smaller}
+
+-   **Day 1** - Session 1: Introduction to R and Spatial Dat Basics
+    -   10:00am - 10:45am -- What is GIS & R?
+    -   10:45am - 11:30am -- Practical 1: Intro to R & GIS
+    -   *11:30am - 11:45am -- break*
+-   **Day 1** Session 2: Classification and Creating a Choropleth Map
+    -   11:45am - 12:05pm -- Classification
+    -   12:05pm - 1:00pm -- Practical 2: Making a Map
+
+    
+<!-- InStats
+
+## Outline  {.smaller}
+
+-   **Day 1** - Session 1: Introduction to R and Spatial Dat Basics
+    -   10:00am - 10:45am -- What is GIS & R?
+    -   10:45am - 11:30am -- Practical 1: Intro to R & GIS
+    -   *11:30am - 11:45am -- break*
+-   **Day 1** Session 2: Classification and Creating a Choropleth Map
+    -   11:45am - 12:05pm -- Classification
+    -   12:05pm - 1:00pm -- Practical 2: Making a Map
+-   Day 2 - Session 3: Map Customisation and Automation in R
+    -   1:00pm - 1:20pm -- Recap and Making Maps
+    -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
+    -   *2:30pm - 2:45pm -- break*
+-   Day 2 - Session 4: Clustering Crime Points and Working with Your Own Data
+    -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
+-->
 <!--
 
 ## Outline  {.smaller}
@@ -114,14 +186,31 @@ format:
 - 4:00pm - 4:30pm: Practical 4: Bring Your Own Data
 
 --> 
+
+## Introductions
+
+- Name
+- Background
+- Have you done any GIS or R before? *No is fine!*
+- What would you like from this course?
+
 ## Any Questions?
 
 
 -   Zoom?
--   WhatsApp Group?
+-   OneDrive?
+<!-- -   WhatsApp Group? -->
 
 -   Schedule?
 -   ?
+
+## 
+
+<center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
+
+<p> <center>--</center>
+
+<center> <h3>Session 1: Introduction to R and Spatial Data Basics</h3></center>
 
 ## What is GIS?
 
@@ -669,11 +758,11 @@ https://twitter.com/zevross/status/1118967279864242176</font>
     -   11:30am - 11:50am -- Classification
     -   11:50am - 1:00pm -- Practical 2: Making a Map
 -   Day 2:
-    -   10:00am - 10:20am -- Recap and Making Maps
-    -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
-    -   11:30am - 11:45am -- break
-    -   11:45am - 1pm -- Practical 4: Bring Your Own Data
-
+    -   1:00pm - 1:20pm -- Recap and Making Maps
+    -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
+    -   2:30pm - 2:45pm -- break
+    -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
+    
 
 <!-- offline 
 ## Classification
@@ -702,6 +791,14 @@ Remember to show in the table which colours represent which countries!
 -->
 
 <!-- end -->
+
+## 
+
+<center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
+
+<p> <center>--</center>
+
+<center> <h3>Session 2: Classification and Creating a Choropleth Map</h3></center>
 
 ## Classification
 
@@ -824,10 +921,531 @@ https://jcheshire.com/resources/different-maps-same-data/
     -   ~~11:30am - 11:50am -- Classification~~
     -   11:50am - 1:00pm -- Practical 2: Making a Map
 -   Day 2:
-    -   10:00am - 10:20am -- Recap and Making Maps
-    -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
-    -   11:30am - 11:45am -- break
-    -   11:45am - 1pm -- Practical 4: Bring Your Own Data
+    -   1:00pm - 1:20pm -- Recap and Making Maps
+    -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
+    -   2:30pm - 2:45pm -- break
+    -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
+
+## 
+
+<center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
+
+<p> <center>--</center>
+
+<center> <h3>Session 3: Map Customisation and Automation in R</h3></center>
+
+## Outline
+
+- GIS Data Types
+- Scale
+- Map Automation in R
+
+## Data Types: Vector & Raster
+
+::: columns
+::: {.column width="50%"}
+  Points, Lines and Polygons
+  
+  ![](images\vector.png){width="60%"}
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+  Raster
+  
+  ![](images\raster.png)
+:::
+:::
+
+:::
+
+## Data Types: Vector & Raster {.smaller}
+
+::: columns
+::: {.column width="50%"}
+  <b>Points, Lines and Polygons</b>
+
+  ![](images\vector.png){width="60%"}
+:::
+
+::: {.column width="50%"}
+
+- Points
+  - GPS Points
+  - Points of Interest (POI)
+- Lines
+  - Roads
+  - Rivers
+  - Railways
+- Polygons
+  - Building footprints
+  - Lakes
+  - Administrative areas
+  - Counties
+  - Countries
+
+:::
+:::
+
+:::
+
+## Data Types: Vector & Raster {.smaller}
+
+::: columns
+::: {.column width="50%"}
+  <b>Raster</b>
+  
+  ![](images\raster.png)
+:::
+
+::: {.column width="50%"}
+- Elevation
+- Temperature
+- Population density
+- Land cover
+- Light reflectance (satellite / aerial imagery)
+
+
+:::
+
+:::
+
+## Data Types: Vector & Raster
+
+::: columns
+::: {.column width="50%"}
+  Points, Lines and Polygons
+  
+  ![](images\vector.png){width="60%"}
+:::
+
+::: {.column width="50%"}
+  Raster
+  
+  ![](images\raster.png)
+:::
+:::
+
+:::
+
+## File Types
+
+
+|                      | Vector | Raster |
+|----------------------|--------|--------|
+| Shapefile *`.shp`*   | X      |        |
+| GeoPackage *`.gpkg`* | X      | X      |  
+| ASCII Grid           |        | X      |  
+| GeoJSON              | X      |        |  
+| ....                 |        |        |  
+
+
+## Spatial Data
+
+- Data is crucial to GIS
+- ~50% of time doing a GIS project is spent finding data or getting data into the right format!
+- Finding data can be a real pain
+- Previous work **should** reference where they get data from 
+  - If not, it’s a reasonable question to ask the author
+- There is no one list of data, but some useful sources
+
+## Spatial Data 
+
+- Great Britain*
+  - Ordnance Survey / OS Open Data
+  - Census & Boundaries - [borders.ukdataservice.ac.uk](https://borders.ukdataservice.ac.uk/)
+- Europe* - EuroStat
+- Global
+  - Free GIS Data, Robin Wilson - [freegisdata.rtwilson.com](http://freegisdata.rtwilson.com/)
+  - National and sub-national - [GeoBoundaries.org](http://GeoBoundaries.org)
+- Google Search – shapefile / geopackage / GIS data
+
+
+## Spatial Data
+
+Is the data any use?
+
+- Location (where does it cover?)
+- Variables / columns (what does it cover?)
+- How old is the data? (when does it cover?)
+- What projection & coordinate system is the data in?
+- What scale is the data at?
+
+
+## Scale {.smaller}
+
+::: columns
+:::: {.column width="33%"}
+![](images/lego-bus-1.png)
+
+- Small number of bricks
+- Low level of detail
+
+<font size="2">*https://www.youtube.com/watch?v=TcGIL21yqS4&list=PLwLYQ8o7Is3R3-6hTWzg2CK_iaxg5tsoZ&index=5&t=0s*</font>
+
+::::
+:::: {.column width="33%"}
+![](images/lego-bus-2.png)
+
+- Medium number of bricks
+- Medium level of detail
+
+<font size="2">*https://www.amazon.co.uk/LEGO-Creator-London-40220-361329/*</font>
+::::
+:::: {.column width="33%"}
+![](images/lego-bus-3.png)
+
+- Large number of bricks
+- Large level of detail
+
+<font size="2">*https://www.lego.com/en-gb/product/london-bus-10258*</font>
+::::
+:::
+
+## Worldwide {.smaller}
+
+::: columns
+:::: {.column width="30%"}
+
+1:100,000,000  
+1:100m    
+
+ (1cm = 1000km)
+
+unit on map*
+:
+units in real world
+
+*usually printed map, adapted for screen, some variation depending on monitor size, resolution…*
+
+::::
+
+:::: {.column width="70%"}
+
+![](images/world.png)
+
+::::
+:::
+
+## Large Country/Continent {.smaller}
+
+::: columns
+:::: {.column width="30%"}
+
+Brazil / South America
+
+1:30,000,000	  1:30m    
+
+(1cm = 300km)
+
+::::
+
+:::: {.column width="70%"}
+
+![](images/south-america.png)
+
+::::
+:::
+
+## Small Country {.smaller}
+
+::: columns
+:::: {.column width="30%"}
+
+UK
+
+1:8,000,000	  1:8m    
+
+(1cm = 80km)
+
+
+::::
+
+:::: {.column width="70%"}
+
+![](images/uk.png)
+
+::::
+:::
+
+## Local / City {.smaller}
+
+::: columns
+:::: {.column width="30%"}
+
+Hull	
+
+1: 100,000	1:100k    
+
+1cm = 1 km
+
+
+
+::::
+
+:::: {.column width="70%"}
+
+![](images/hull.png)
+
+::::
+:::
+
+## Local / City {.smaller}
+
+::: columns
+:::: {.column width="30%"}
+
+Hull	
+
+1: 50,000	1:50k    
+
+1cm = 0.5 km
+
+![](images/landranger.png)
+
+
+::::
+
+:::: {.column width="70%"}
+
+![](images/hull2.png)
+
+::::
+:::
+
+## Scale
+
+![](images/world.png){ width="20%" }
+![](images/south-america.png){ width="20%" }
+![](images/uk.png){ width="20%" }
+![](images/hull.png){ width="20%" }
+
+![](images/scale-range.png)
+
+## Level of Detail
+
+![](images/lod-range.png)
+
+
+![](images/lego-bus-1.png){ width="30%" }
+![](images/lego-bus-2.png){ width="30%" }
+![](images/lego-bus-3.png){ width="30%" }
+
+## Scale & Level of Detail {.smaller}
+
+![](images/world.png){ width="20%" }
+![](images/south-america.png){ width="20%" }
+![](images/uk.png){ width="20%" }
+![](images/hull.png){ width="20%" }
+
+![](images/scale-range.png){ width="80%" }
+
+![](images/lod-range.png){ width="80%" }
+
+
+![](images/lego-bus-1.png){ width="15%" }
+![](images/lego-bus-2.png){ width="15%" }
+![](images/lego-bus-3.png){ width="15%" }
+
+Depends on size
+
+## File Size
+
+::: columns
+:::: {.column width="50%"}
+
+- More bricks = more data
+- More data = bigger file
+- In GIS, this is how much 
+detail there is
+- More detail means we can 
+use it as a larger scale
+- Generalisation
+
+::::
+:::: {.column width="50%"}
+
+![](images/ch10-simplification.png){ width="80%"}
+
+::::
+:::
+
+## 
+
+::: columns
+:::: {.column width="50%"}
+
+![](images/ch10-simplification.png)
+
+::::
+:::: {.column width="50%"}
+
+::: {.fragment}
+
+- Is the detail important?
+
+- Depends what you are going todo with the data
+
+:::
+
+::::
+:::
+
+## Static Data
+
+::: columns
+:::: {.column width="70%"}
+
+![](images/ch2-scale.png)
+
+::::
+:::: {.column width="30%"}
+
+- Static data
+- No extra detail
+
+:::
+
+::::
+:::
+
+## Dynamic Data
+
+![](images/world.png){ width="20%" }
+![](images/south-america.png){ width="20%" }
+![](images/uk.png){ width="20%" }
+![](images/hull.png){ width="20%" }
+
+![](images/scale-range.png)
+
+- Dynamic data
+- Extra detail on demand
+
+## Static vs Dynamic
+
+- Dynamic data
+  - Dynamic scale - pulls in additional data (from internet)
+  - Not editable / usable for analysis (no attribute table)
+  - Useful if data changes
+- Static data
+  - Fixed scale - can’t get additional data (need another file)
+  - Editable and usable for analysis (attribute table)
+  - Does not update
+
+## `tmap` Static vs Dynamic
+
+::: columns
+::: {.column width="50%"}
+Static data `tmap_mode("plot")`
+![](images/tmap_mode_plot.png)
+:::
+
+::: {.column width="50%"}
+Dynamic basemap `tmap_mode("view")`
+![](images/tmap_mode_view.png)
+:::
+
+:::
+
+## R code in loops 
+
+
+
+
+## Outline {.smaller}
+
+-   **Day 1**:
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   ~~11:30am - 11:50am -- Classification~~
+    -   11:50am - 1:00pm -- Practical 2: Making a Map
+-   Day 2:
+    -   1:00pm - 1:20pm -- Recap and Making Maps
+    -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
+    -   2:30pm - 2:45pm -- break
+    -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
+
+## 
+
+<center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
+
+<p> <center>--</center>
+
+<center> <h3>Session 4: Clustering Crime Points and Working with your Own Data</h3></center>
+
+## Spatial Data in R: sf and sp
+
+- So far we have used `sf` library for all our code
+- `sp` is a much older spatial library,  now depreciated (end 2023)
+- Uses `@data` to access attribute table
+- May still come across it online / Stack Exchange
+- Be aware!
+- *Lots of gory details in [four part blog post](https://r-spatial.org/r/2023/05/15/evolution4.html) on [r-spatial.org](https://r-spatial.org/)*
+
+## `tmap` and `ggplot`
+
+- Many different mapping libraries
+
+-  `tmap` and `ggplot` are the most common
+
+- `tmap` a bit simpler to use
+
+- `ggplot` more flexible but also more complex
+
+## Joining
+
+::: columns
+::: {.column width="50%"}
+- *Left / Right / Full / Inner*
+
+- Which data is kept (or dropped)
+
+- GIS is usually on the left
+
+- `var1` would be spatial data
+
+- [cghlewis.com/blog/joins
+](https://cghlewis.com/blog/joins
+)
+
+:::
+
+::: {.column width="50%"}
+![](images/joins.png)
+:::
+
+:::
+
+## Point in Polygon
+
+![](images/point-in-polygon.png)
+
+Points = crimes
+
+Polygons = LSOA
+
+## Point in Polygon
+
+::: columns
+::: {.column width="50%"}
+![](images/pip1.png)
+:::
+
+::: {.column width="50%"}
+![](images/pip2.png)
+:::
+
+:::
+
+## Reprojection
+
+(code to add)
+
+## Break 
+
+## Working with your own data
+
+## Wrap up slide 326 onwards
 
 <!--
 
@@ -868,13 +1486,19 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 ## Next Session
 
-- Everyone post a question in WhatsApp that you have about today’s topics or working with R / RStudio
+- Save your work 
+  - **script** (everyone) 
+  - **workspace/environment** (if you want to)
+
+- Two stars, one wish poll
+
+<!-- - Everyone post a question in Zoom that you have about today’s topics or working with R / RStudio -->
 
 ## Next Session
 
-- Everyone post a question in WhatsApp that you have about today’s topics or working with R / RStudio
+<!-- - Everyone post a question in Zoom that you have about today’s topics or working with R / RStudio -->
 
-- Next session tomorrow 10am
+- Next session **Wednesday 1pm**
 
 - Experiment with your own data – questions 
 
@@ -882,6 +1506,6 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 - Find some data relevant to your work 
 
-- *Opt. ggplot2 tutorial, e.g. https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html*
+<!-- -  *Opt. ggplot2 tutorial, e.g. https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html* -->
 
 
