@@ -30,7 +30,7 @@ knitr::opts_knit$set(root.dir = 'C:/Users/nick/Documents/work/intro-r-spatial-an
 
 ### R Basics
 
-R began as a statistics program and is still used as one by many users. We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio website"), which works on top of R and provides a good user interface. I'll talk a little bit about RStudio in the presentation, and the key areas of the window are highlighted overleaf.
+R began as a statistics program and is still used as one by many users. We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio website"), which works on top of R and provides a good user interface. I'll talk a little bit about RStudio in the presentation, and the key areas of the window are highlighted below.
 
 *If you need to install RStudio, please check [here](https://nickbearman.github.io/installing-software/r-rstudio) or if you can't install it, an alternative option is to use [RStudio.cloud](https://rstudio.cloud).*
 
@@ -175,7 +175,9 @@ library(tmap)
 
 ![](images/tmap-v4-testing.png)
 
-This is saying that there is a new version of the `tmap` library - version 4. It is not out yet and RStudio will have installed version 3.3-4 for you. We will stick with using version 3 in this course, and I will talk more about this in the presentation. 
+If you do not get this message, then all is fine and you can carry on. 
+
+If you do get this message, let me know immediately. Version 3 is now an old version of `tmap`. These instructions are designed for version 4 of `tmap`. To check which version you have, load the library `library(tmap)` and then run `packageVersion("tmap")`.
 
 ----
 
@@ -279,14 +281,14 @@ Add the command below to your script, and run it to read in the CSV file. The `h
 pop2021 <- read.csv("census2021-ts007a-lsoa.csv", header = TRUE)
 ```
 
-Then run `head` to see that the data has been read in correctly. *R will show all 22 variables, where as I've only shown the first 6 in the handout*. 
+Then run `head` to see that the data has been read in correctly. *R will show all 22 variables, where as I've only shown the first 5 in the handout*. 
 
 ```{r, eval=F}
 head(pop2021)
 ```
 
 ```{r, echo=F, comment=NA}
-head(pop2021[,1:6])
+head(pop2021[,1:5])
 ```
 
 Some of the variable names are not displayed very clearly. We can rename the columns, so that when we run the `head()` command, R lists the correct names. This will also help us refer to the columns later on. 
@@ -377,12 +379,12 @@ tm_shape(LSOA) +
 ```
 
 ```{r echo=TRUE, eval=FALSE}
-tm_shape(LSOA) +
-  tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", style = "jenks") +
-  tm_layout(legend.title.size = 0.8)
+  tm_shape(LSOA) +
+    tm_polygons(fill = "Age00to04",
+                fill.scale = tm_scale_intervals(values = "brewer.greens", n = 6, style = "jenks"))
 ```
 
-This allows us to change the title, colours and legend title size. Try substituting in `Blues` and adjusting the title. 
+This allows us to change the title, colours and legend title size. Try substituting in `brewer.blues` and adjusting the title. 
 
 ### Colours and Categories 
 
@@ -395,11 +397,14 @@ We can choose lots of different colours from ColorBrewer, and different classifi
   display.brewer.all()
 ```
 
+Note how that when we use different colours with `tmap`, the name is pre-fixed with `brewer.` and all lower case. E.g. `Blues` from above becomes `brewer.blues`. All of the options are managed by the `cols4all` package, which has many many more options. Have a look at [https://cols4all.github.io/cols4all-R/index.html](https://cols4all.github.io/cols4all-R/index.html) for details. You can use the command  `cols4all::c4a_gui()` to see all the different options, but you will also have to install some other libraries to do this. 
+
 We can also choose which classification method to use and how many classes. We can set `n = 6` to set the number of classes
 
 ```{r echo=TRUE}
-tm_shape(LSOA) +
-  tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "jenks")
+  tm_shape(LSOA) +
+    tm_polygons(fill = "Age00to04",
+                fill.scale = tm_scale_intervals(values = "brewer.greens", n = 6, style = "jenks"))
 ```
 
 We can also set the `style` which is the classification method. Standard options are: 
@@ -414,10 +419,15 @@ We can also set the `style` which is the classification method. Standard options
 
 **Fixed Breaks example:**
 
+<!-- See issue at https://github.com/r-tmap/tmap/issues/1030 -->
+
 ```{r echo=TRUE}
 tm_shape(LSOA) +
-  tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", n = 6, style = "fixed",
-    breaks=c(5, 25, 50, 100, 175, 275))
+    tm_polygons(fill = "Age00to04",
+                fill.scale = tm_scale_intervals(values = "brewer.greens", 
+                                n = 6, 
+                                style = "fixed", 
+                                breaks = c(0, 50, 100, 150, 250, 300, 350)))
 ```
 
 ### Classification on a Histogram (optional exercise)
@@ -442,41 +452,35 @@ We can also add a histogram of the data to the map:
 
 ```{r,eval=FALSE}
 tm_shape(LSOA) +
-  tm_polygons("Total", title = "Total", palette = "Greens", 
-      style = "equal", legend.hist = T)
+    tm_polygons(fill = "Total",
+                fill.scale = tm_scale_intervals(values = "brewer.greens", n = 6, style = "jenks"),
+                fill.legend = tm_legend(title = "Aged 0 to 4"),
+                fill.chart = tm_chart_histogram())
 ```
 
 ### Layout Options and Margins (optional exercise)
 
-`tmap` has a huge number of options to customise the layout - have a look at https://rdrr.io/cran/tmap/man/tm_layout.html as a starting point. You can also try the help, e.g. run `?tm_layout` which will show the help file for `tm_layout`, which is quite good. 
-
-You may often have to adjust the margins to make your map look good. Adjusting the `inner.margins` is a good starting point. It is a vector (list) of four values specifying the bottom, left, top, and right margins, in that order. For example:
-
-```{r,eval=FALSE}
-tm_shape(LSOA) +
-  tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", style = "jenks") +
-  tm_layout(legend.title.size = 0.8, inner.margins = c(.04, .03, .02, .01))
-```
+`tmap` has a huge number of options to customise the layout - have a look at https://r-tmap.github.io/tmap/articles/basics_layout as a starting point. The help is also quite comprehensive, so try `?tm_polygons` for some useful information. 
 
 ### Scale Bar and North Arrow (optional exercise)
 
 It is also good practice to add a scale bar and a north arrow to each of the maps you produce. Running this code will add these to the map:
 
 ```{r, eval=FALSE}
-tm_shape(LSOA) +
-  #Set colours and classification methods
-  tm_polygons("Total", title = "Total Population", palette = "Greens", 
-      style = "equal") +
-  #Add scale bar
-  tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
-  #Add compass
-  tm_compass(position = c(0.3, 0.07)) + 
-  #Set layout details
-  tm_layout(frame = F, title = "Liverpool", title.size = 2, 
-            title.position = c(0.7, "top"))
+  tm_shape(LSOA) +
+    #set column, colours and classification method
+	tm_polygons(fill = "Age00to04",
+                fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
+                fill.legend = tm_legend(title = "Aged 0 to 4", size = 0.8)) +
+    ##add scale bar
+	tm_scalebar(position = c(0.1, 0.1)) + 
+    ##north arrow
+    tm_compass(size = 1.5, position = c(0.1, 0.3)) + 
+  #Set title details
+  tm_title("Total Population of Liverpool, 2021")
 ```
 
-You may well need to adjust the position of the items on the map. Try Googling `"tm_scale_bar position"` for information on how to do this. 
+`tmap` has some advanced positioning options as well. I would recommend having a look at this [vignette about positioning](https://r-tmap.github.io/tmap/articles/adv_positions). 
 
 Remember that any line starting with a `#` is a comment, and will be ignored by R. Comments are very useful for us to note what the code is doing, particularly when you come back to it 6 months later and can't remember what it is supposed to do!
 
@@ -485,16 +489,16 @@ Remember that any line starting with a `#` is a comment, and will be ignored by 
 The `tmap` library has two different viewing options - `plot` which is what we have been using so far, and `view` which provides a basemap and the ability to zoom in and out. Try this code:
 
 ```{r, comment=NA, eval=FALSE}
-#set tmap to view mode
+  #set tmap to view mode
   tmap_mode("view")
-#plot using qtm
+  #plot using qtm
   qtm(sthelens)
-#plot using tm_shape
+  #plot using tm_shape
   tm_shape(LSOA) +
-  #Set colours and classification methods
-  tm_polygons("Total", title = "Total Population", palette = "Greens", 
-      style = "equal")
-#return tmap to plot mode
+    #Set colours and classification methods
+    tm_polygons(fill = "Total",
+                fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"))
+  #return tmap to plot mode
   tmap_mode("plot")
 ```
 
@@ -505,41 +509,36 @@ The `tmap` library has two different viewing options - `plot` which is what we h
 We can automatically save the map as a file by creating the map object as a new variable (`m`) and then save it using `tmap_save(m)`. 
 
 ```{r, comment=NA, eval=FALSE}
-#create map
-m <- tm_shape(LSOA) +
-  tm_polygons("Total", title = "Total Population", palette = "Greens", 
-              style = "equal") +
-  tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
-  tm_compass(position = c(0.3, 0.07)) + 
-  tm_layout(frame = F, title = "Liverpool", title.size = 2, 
-            title.position = c(0.7, "top"))
-#save map
-tmap_save(m)
+  #create map
+  m <- tm_shape(LSOA) +
+    tm_polygons(fill = "Total",
+                fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
+                fill.legend = tm_legend(title = "Liverpool", size = 0.8)) +
+    tm_scalebar(position = c(0.1, 0.1)) + 
+    ##north arrow
+    tm_compass(size = 1.5, position = c(0.1, 0.3))
+  #save map
+  tmap_save(m)
 ```
 
 Saving the map using code allows us to create multiple maps very easily. A variable (`mapvariables`) is used to list which variables should be mapped, and then the line starting `for` starts a loop. Try running the code, and then change the variables it maps.
  
   
 ```{r message=FALSE, warning=FALSE, comment=NA}
-#set which variables will be mapped
   mapvariables <- c("Total", "Age00to04", "Age05to09")
-
-#loop through for each map
+  #loop through for each map
   for (i in 1:length(mapvariables)) {
-  #setup map
+    #setup map
     m <- tm_shape(LSOA) +
-      #set variable, colours and classes
-      tm_polygons(mapvariables[i], palette = "Greens", style = "equal") +
-      #set scale bar
-      tm_scale_bar(width = 0.22, position = c(0.05, 0.18)) +
-      #set compass
-      tm_compass(position = c(0.3, 0.07)) + 
-      #set layout
-      tm_layout(frame = F, title = "Liverpool", title.size = 2, 
-                title.position = c(0.7, "top"))
+      tm_polygons(fill = mapvariables[i],
+                  fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
+                  fill.legend = tm_legend(title = "Liverpool", size = 0.8)) +
+      tm_scalebar(position = c(0.1, 0.1)) + 
+      ##north arrow
+      tm_compass(size = 1.5, position = c(0.1, 0.3))
     #save map
     tmap_save(m, filename = paste0("map-",mapvariables[i],".png"))
-  #end loop
+    #end loop
   }
 ```
 
@@ -591,8 +590,10 @@ crimes_sf_bng <- st_transform(crimes_sf, crs = 27700)
 To see the geographical pattern of these crimes, enter:
 
 ```{r,eval=FALSE}
-tm_shape(crimes_sf_bng) +
-  tm_dots(size = 0.1, shape = 19, col = "darkred", alpha = 0.5)
+  tm_shape(crimes_sf_bng) +
+    tm_symbols(size = 0.1,
+               col = "darkred", 
+               col_alpha = 0.5)  
 ```
 
 We can see the rough outline of the Merseyside Police area, as well as the path of the River Mersey. 
@@ -610,11 +611,13 @@ To start with, we can overlay the LSOA we used earlier on the crimes. We can plo
 
 ```{r message=FALSE}
 #plot the crime data
-tm_shape(crimes_sf_bng) +
-  tm_dots(size = 0.1, shape = 19, col = "red", alpha = 0.5) +
-#add LSOA on top
-tm_shape(LSOA) +
-  tm_borders()
+  tm_shape(crimes_sf_bng) +
+    tm_symbols(size = 0.1,
+               col = "red", 
+               col_alpha = 0.5) +
+    #add LSOA on top
+    tm_shape(LSOA) +
+    tm_borders()
 ```
 
 This doesn't really help much, as R sets the window to the first data set plotted. Try plotting the LSOA first, then the crimes layer.
@@ -660,8 +663,10 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 qtm(LSOA_crimes_aggregated, fill = "count of crimes")
 
 #map using tmap
-tm_shape(LSOA_crimes_aggregated) +
-  tm_polygons("count of crimes", title = "Number of Crimes", palette = "Greens", style = "jenks")
+  tm_shape(LSOA_crimes_aggregated) +
+    tm_polygons(fill = "count of crimes",
+                fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
+                fill.legend = tm_legend(title = "Number of Crimes", size = 0.8))
 ```
 
 There are many different ways of doing the aggregation - if you have used the `tidyverse` approach in R, you can use `group_by` from the `dplyr` library.
@@ -693,7 +698,7 @@ This is the opportunity to use some of the techniques we have covered on your ow
 
 ----
 
-This practical was written using R 4.3.0 (2023-04-21) and RStudio 2023.06.0 by Dr. Nick Bearman (nick@geospatialtrainingsolutions.co.uk). It has also been tested in RStudio Cloud, with R 4.4.0 (2024-04-24) and RStudio 2023.12.1. 
+This practical was written using R 4.3.0 (2023-04-21), RStudio 2023.06.0 and `tmap` 4.0 by Dr. Nick Bearman (nick@nickbearman.com). It has also been tested in RStudio Cloud, with R 4.4.0 (2024-04-24) and RStudio 2023.12.1. 
 
 This work (Introduction to Spatial Data and Using R as a GIS by Nick Bearman) is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
 

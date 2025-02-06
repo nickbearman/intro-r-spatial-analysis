@@ -23,7 +23,8 @@ LSOA <- st_read("england_lsoa_2021.shp")
 #join attribute data to LSOA
 LSOA <- merge(LSOA, pop2021, by.x="lsoa21cd", by.y="geography.code")
 #map 
-  tm_shape(LSOA) +
-    tm_polygons("Age00to04", title = "Aged 0 to 4", palette = "Greens", style = "jenks") +
-    tm_layout(legend.title.size = 0.8)
+tm_shape(LSOA) +
+  tm_polygons(fill = "Age00to04",
+              fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
+              fill.legend = tm_legend(title.size = 0.8))
  

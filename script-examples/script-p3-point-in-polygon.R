@@ -16,7 +16,9 @@ table(crimes_sf_bng$Crime.type)
 ### Point in Polygon
 #plot the crime data
 tm_shape(crimes_sf_bng) +
-  tm_dots(size = 0.1, shape = 19, col = "red", alpha = 0.5) +
+  tm_symbols(size = 0.1,
+             col = "red", 
+             col_alpha = 0.5) +
   #add LSOA on top
   tm_shape(LSOA) +
   tm_borders()
@@ -38,7 +40,9 @@ qtm(LSOA_crimes_aggregated, fill = "count of crimes")
 
 #map using tmap
 tm_shape(LSOA_crimes_aggregated) +
-  tm_polygons("count of crimes", title = "Number of Crimes", palette = "Greens", style = "jenks")
+  tm_polygons(fill = "count of crimes",
+              fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
+              fill.legend = tm_legend(title = "Number of Crimes", size = 0.8))
 
 ### Exporting Shapefiles
 #save as shapefile

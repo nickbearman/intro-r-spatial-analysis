@@ -28,19 +28,21 @@ mapvariables <- c("Total", "Age00to04", "Age05to09")
 #set titles
 maptitles <- c("Total Population", "Age 0 to 4", "Age 5 to 9")
 
+#set which variables will be mapped
+mapvariables <- c("Total", "Age00to04", "Age05to09")
 #loop through for each map
 for (i in 1:length(mapvariables)) {
   #setup map
   m <- tm_shape(LSOA) +
-    #set variable, colours and classes
-    tm_polygons(mapvariables[i], palette = "Greens", style = "equal") +
-    #set scale bar
-    tm_scale_bar(width = 0.22, position = c(0.05, 0.19)) +
-    #set compass
-    tm_compass(position = c(0.3, 0.08)) + 
-    #set layout
-    tm_layout(frame = F, title = maptitles[i], title.size = 1.5, 
-              title.position = c(0.65, "top"))
+    tm_polygons(fill = mapvariables[i],
+                fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
+                fill.legend = tm_legend(title = "Liverpool", size = 0.8)) +
+    tm_scalebar(position = c(0.1, 0.1)) + 
+    ##north arrow
+    tm_compass(size = 1.5, position = c(0.1, 0.3)) +
+    #add title
+    tm_title(maptitles[i])
+  
   #save map
   tmap_save(m, filename = paste0("map-",mapvariables[i],".png"))
   #end loop
