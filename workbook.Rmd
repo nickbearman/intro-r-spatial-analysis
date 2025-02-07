@@ -544,6 +544,8 @@ Saving the map using code allows us to create multiple maps very easily. A varia
 
 You can replace `.png` with `.jpg` or `.pdf` for different file formats. 
 
+I will go through the loop in the presentation. You can also view a recording of this video on [YouTube](https://youtu.be/eQuO92xiG4Y). 
+
 ### Creating a Tidy Map Title (optional exercise)
 
 As you may have spotted, the map and legend titles aren't great. Just using the field name does give us the information we require, but it doesn't make a good looking map. 
