@@ -8,6 +8,9 @@ format:
 
 ![](images/WelcomeToInStats.png)
 
+## 
+
+
 ![](images/InStatsStart.png)
 
 ## <!-- Blank slide -->
@@ -792,6 +795,18 @@ Remember to show in the table which colours represent which countries!
 
 <!-- end -->
 
+##
+
+![](images/InStatsStop.png)
+
+## <!-- Blank slide -->
+
+![](images/InStatsStart.png)
+
+## <!-- Blank slide -->
+
+![](images/WelcomeToInStats.png)
+
 ## 
 
 <center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
@@ -925,6 +940,18 @@ https://jcheshire.com/resources/different-maps-same-data/
     -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
     -   2:30pm - 2:45pm -- break
     -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
+
+## 
+
+![](images/InStatsStop.png)
+
+## <!-- Blank slide -->
+
+![](images/InStatsStart.png)
+
+## <!-- Blank slide -->
+
+![](images/WelcomeToInStats.png)
 
 ## 
 
@@ -1907,6 +1934,18 @@ Questions?
     -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
     -   2:30pm - 2:45pm -- break
     -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
+
+##
+
+![](images/InStatsStop.png)
+
+## <!-- Blank slide -->
+
+![](images/InStatsStart.png)
+
+## <!-- Blank slide -->
+
+![](images/WelcomeToInStats.png)
 
 ## 
 
