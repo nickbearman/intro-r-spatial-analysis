@@ -22,6 +22,8 @@ format:
 
 - Session 1 - Introduction to R and Spatial Data Basics
 
+- Dr Nick Bearman
+
 <!--
 - Day 2 - Confident Spatial Analysis and Statistics in R & GeoDa 
 
@@ -81,13 +83,12 @@ format:
 ## Housekeeping
 
 -   Zoom etiquette
--   We're a small group,
-    -   We can discuss things as we go along.
+-   We're a small group - we can discuss things as we go along.
 -   Mute yourself (unless asking a question)
 -   Video on (if possible)
 -   Questions - ask in real time, or in the chat
--   Workbook, data and presentation all on InStats
--   Poll
+-   Recording - any questions you ask will be in the recording (audio), your video will not be in the recording. 
+
 
 <!-- in person course
 
@@ -106,6 +107,7 @@ format:
     -   Think about how you could use these techniques with your own data
 -   Presentations, handouts and data on <!-- OneDrive --> InStats
 <!-- - WhatsApp group for discussion -->
+-   Poll
 
 ```{=html}
 <!-- 
@@ -139,7 +141,7 @@ format:
 
 ## Outline  {.smaller}
 
--   **Day 1** - Session 1: Introduction to R and Spatial Data Basics
+-   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
 -   **Day 1** - Session 2: Classification and Creating a Choropleth Map
 -   Day 2 - Session 3: Map Customisation and Automation in R
 -   Day 2 - Session 4: Clustering Crime Points and Working with Your Own Data
@@ -147,7 +149,7 @@ format:
 
 ## Outline  {.smaller}
 
--   **Day 1** - Session 1: Introduction to R and Spatial Dat Basics
+-   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
     -   10:00am - 10:45am -- What is GIS & R?
     -   10:45am - 11:30am -- Practical 1: Intro to R & GIS
     -   *11:30am - 11:45am -- break*
@@ -201,7 +203,8 @@ format:
 
 
 -   Zoom?
--   OneDrive?
+-   Accessing files?
+<!-- -   OneDrive? -->
 <!-- -   WhatsApp Group? -->
 
 -   Schedule?
@@ -340,6 +343,7 @@ format:
 - GeoAI
   - Geographical Analysis
   - LLM / ChatGPT / assistant
+    - [Kue: AI Chatbot for QGIS](https://www.linkedin.com/feed/update/urn:li:activity:7292210014490951683/)
 :::
 
 ------------------------------------------------------------------------
@@ -354,7 +358,7 @@ format:
     -   Glossary
     -   Steeper learning curve
 
-    ![](images/r-glossary.png){.absolute bottom="0" right="0" width="300"}
+    ![](images/r-glossary.png){.absolute bottom="0" right="0" width="500"}
 
 ## R as a GIS
 
@@ -753,6 +757,19 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 
 ## Let's start!
 
+## Outline  {.smaller}
+
+-   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   10:45am - 11:30am -- Practical 1: Intro to R & GIS
+    -   *11:30am - 11:45am -- break*
+-   **Day 1** Session 2: Classification and Creating a Choropleth Map
+    -   11:45am - 12:05pm -- Classification
+    -   12:05pm - 1:00pm -- Practical 2: Making a Map
+
+    
+
+<!--  NCRM
 ## Outline {.smaller}
 
 -   **Day 1**:
@@ -765,7 +782,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
     -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
     -   2:30pm - 2:45pm -- break
     -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
-    
+-->    
 
 <!-- offline 
 ## Classification
@@ -800,6 +817,8 @@ Remember to show in the table which colours represent which countries!
 ![](images/InStatsStop.png)
 
 ## <!-- Blank slide -->
+
+##
 
 ![](images/InStatsStart.png)
 
@@ -928,6 +947,19 @@ https://jcheshire.com/resources/different-maps-same-data/
 -   1510 Finish
 -->
 
+## Outline  {.smaller}
+
+-   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   ~~*11:30am - 11:45am -- break*~~
+-   **Day 1** Session 2: Classification and Creating a Choropleth Map
+    -   11:45am - 12:05pm -- Classification
+    -   12:05pm - 1:00pm -- Practical 2: Making a Map
+
+    
+<!-- NCRM
+
 ## Outline {.smaller}
 
 -   **Day 1**:
@@ -941,13 +973,59 @@ https://jcheshire.com/resources/different-maps-same-data/
     -   2:30pm - 2:45pm -- break
     -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
 
+-->
+
 ## 
 
 ![](images/InStatsStop.png)
 
 ## <!-- Blank slide -->
 
+## Any Questions?
+
+## Next session
+
+- Tomorrow - Wed 5th March
+
+- 10am - 1pm (UK/London time)
+
+- Do post any further questions on the forum
+
+- Recording should be available soon
+
+## <!-- Blank slide -->
+
+##
+
+## Welcome Back - Day 2! {.smaller}
+
+Outline
+
+-   Day 1 - Session 1: Introduction to R and Spatial Data Basics
+-   Day 1 - Session 2: Classification and Creating a Choropleth Map
+-   **Day 2** - **Session 3: Map Customisation and Automation in R**
+-   **Day 2** - Session 4: Clustering Crime Points and Working with Your Own Data
+
+
+## Outline  {.smaller}
+
+-   Day 1 - Session 1: Introduction to R and Spatial Data Basics
+-   Day 1 - Session 2: Classification and Creating a Choropleth Map
+-   **Day 2** - **Session 3: Map Customisation and Automation in R**
+    -   10:00am - 10:15am -- GIS Data Types, Scale
+    -   10:15am - 10:40am -- Map Automation in R: Loops
+    -   10:30am - 11:30am -- Practical 2 ctd: Loops in R
+    -   *11:30am - 11:45am -- break*
+-   **Day 2** - Session 4: Clustering Crime Points and Working with Your Own Data
+    - 11:45am - 12:00pm -- Point in Polygon & Reprojection
+    - 12:00pm - 1:00pm -- Working with your Own Data
+
+
+
+##
+
 ![](images/InStatsStart.png)
+
 
 ## <!-- Blank slide -->
 
@@ -960,6 +1038,10 @@ https://jcheshire.com/resources/different-maps-same-data/
 <p> <center>--</center>
 
 <center> <h3>Session 3: Map Customisation and Automation in R</h3></center>
+
+<!-- InStats -->
+
+
 
 ## Outline
 
@@ -1922,6 +2004,7 @@ for (i in 1:length(mapvariables)) {
 
 Questions?
 
+<!-- one day
 ## Outline {.smaller}
 
 -   **Day 1**:
@@ -1934,10 +2017,38 @@ Questions?
     -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
     -   2:30pm - 2:45pm -- break
     -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
+-->
 
 ##
 
 ![](images/InStatsStop.png)
+
+##
+
+## Outline  {.smaller}
+
+-   **Day 2** - **Session 3: Map Customisation and Automation in R**
+    -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
+    -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
+    -   ~~10:30am - 11:30am -- Practical 2 ctd: Loops in R~~
+    -   *11:30am - 11:45am -- break*
+-   **Day 2** - Session 4: Clustering Crime Points and Working with Your Own Data
+    - 11:45am - 12:00pm -- Point in Polygon & Reprojection
+    - 12:00pm - 1:00pm -- Working with your Own Data
+
+##
+
+## Outline  {.smaller}
+
+-   ~~**Day 2** - Session 3: Map Customisation and Automation in R~~
+    -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
+    -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
+    -   ~~10:30am - 11:30am -- Practical 2 ctd: Loops in R~~
+    -   ~~*11:30am - 11:45am -- break*~~
+-   **Day 2** - **Session 4: Clustering Crime Points and Working with Your Own Data**
+    - 11:45am - 12:00pm -- Point in Polygon & Reprojection
+    - 12:00pm - 1:00pm -- Working with your Own Data
+
 
 ## <!-- Blank slide -->
 
@@ -2021,7 +2132,79 @@ Polygons = LSOA
 
 ## Reprojection
 
-(code to add)
+1. Read in data
+
+``` {.r}
+#Read the data into a variable called crimes
+crimes <- read.csv("police-uk-2020-04-merseyside-street.csv")
+```
+
+2. Turn into spatial data
+
+``` {.r}
+#create crimes data 
+crimes_sf <- st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = 4326)
+```
+
+3. Reproject to BNG
+
+``` {.r}
+#reproject to British National Grid, from Latitude/Longitude
+crimes_sf_bng <- st_transform(crimes_sf, crs = 27700)
+```
+
+## Point in Polygon
+
+::: columns
+::: {.column width="50%"}
+![](images/pip1.png)
+:::
+
+::: {.column width="50%"}
+
+:::
+
+:::
+
+## Point in Polygon
+
+4. Spatial join
+
+```{.r}
+#perform spatial join
+LSOA_crimes <- st_join(LSOA, crimes_sf_bng)
+```
+
+5. Aggregate by LSOA
+
+```{.r}
+#Aggregate by LSOA #might take a few seconds to run
+LSOA_crimes_aggregated <- aggregate(x = LSOA_crimes, 
+  by = list(LSOA_crimes$lsoa21cd), FUN = length)
+```
+
+6. Tidy up
+
+```{.r}
+#remove additional columns
+LSOA_crimes_aggregated <- LSOA_crimes_aggregated[,1:2]
+
+#rename columns
+colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
+```
+
+## Point in Polygon
+
+::: columns
+::: {.column width="50%"}
+![](images/pip1.png)
+:::
+
+::: {.column width="50%"}
+![](images/pip2.png)
+:::
+
+:::
 
 ## Break 
 
