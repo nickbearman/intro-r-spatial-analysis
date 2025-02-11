@@ -6,15 +6,6 @@ format:
   revealjs
 ---
 
-![](images/WelcomeToInStats.png)
-
-## 
-
-
-![](images/InStatsStart.png)
-
-## <!-- Blank slide -->
-
 
 ## Welcome - GIS Course
 
@@ -209,6 +200,17 @@ format:
 
 -   Schedule?
 -   ?
+
+##
+
+![](images/WelcomeToInStats.png)
+
+## 
+
+
+![](images/InStatsStart.png)
+
+## <!-- Blank slide -->
 
 ## 
 
@@ -712,6 +714,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 
 <font size="2">https://twitter.com/visnut/status/1248087845589274624</font>
 
+<!-- 
 ## `tmap` v4
 
 - `tmap` is the library we use for creating maps
@@ -724,6 +727,8 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 
 - We will stick with v3.3-4 (which is what you installed)
 - Will mention more about `tmap` v4 later on. 
+
+--> 
 
 ## Practical 1: Intro to R & GIS 
 
@@ -742,6 +747,16 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 - Make you think about what the code does
 - *(but you can copy/paste long bits)*
 - Optional exercises
+
+## Files
+
+![](images/instats-download.png)
+
+- Slides - slides for session 1 ;-)
+- Program Files - `script-examples.zip`
+- Readings - `glossary.pdf`
+- Workbook - `workbook.pdf` & `workbook.html`
+
 
 ## Housekeeping - Practicals
 
@@ -949,12 +964,12 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 ## Outline  {.smaller}
 
--   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
+-   ~~**Day 1** - **Session 1: Introduction to R and Spatial Data Basics**~~
     -   ~~10:00am - 10:45am -- What is GIS & R?~~
     -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
     -   ~~*11:30am - 11:45am -- break*~~
 -   **Day 1** Session 2: Classification and Creating a Choropleth Map
-    -   11:45am - 12:05pm -- Classification
+    -   ~~11:45am - 12:05pm -- Classification~~
     -   12:05pm - 1:00pm -- Practical 2: Making a Map
 
     
@@ -975,13 +990,13 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 -->
 
+## Any Questions?
+
 ## 
 
 ![](images/InStatsStop.png)
 
 ## <!-- Blank slide -->
-
-## Any Questions?
 
 ## Next session
 
@@ -1020,7 +1035,7 @@ Outline
     - 11:45am - 12:00pm -- Point in Polygon & Reprojection
     - 12:00pm - 1:00pm -- Working with your Own Data
 
-
+## Recap Quiz
 
 ##
 
@@ -1079,24 +1094,31 @@ Outline
 
 ::: {.column width="50%"}
 
+::: {.fragment}
 - Points
   - GPS Points
   - Points of Interest (POI)
+:::
+
+::: {.fragment}
 - Lines
   - Roads
   - Rivers
   - Railways
+:::
+
+::: {.fragment}
 - Polygons
   - Building footprints
   - Lakes
-  - Administrative areas
-  - Counties
+  - Administrative areas / counties
   - Countries
-
-:::
 :::
 
 :::
+:::
+
+
 
 ## Data Types: Vector & Raster {.smaller}
 
@@ -1108,11 +1130,20 @@ Outline
 :::
 
 ::: {.column width="50%"}
+
+::: {.fragment}
 - Elevation
 - Temperature
+:::
+::: {.fragment}
 - Population density
+:::
+::: {.fragment}
 - Land cover
+:::
+::: {.fragment}
 - Light reflectance (satellite / aerial imagery)
+:::
 
 
 :::
@@ -1135,7 +1166,7 @@ Outline
 :::
 :::
 
-:::
+
 
 ## File Types
 
@@ -1160,7 +1191,7 @@ Outline
 
 ## Spatial Data 
 
-- Great Britain*
+- Great Britain[*](https://commons.wikimedia.org/wiki/File:British_Isles_Venn_Diagram-en_(3).png)
   - Ordnance Survey / OS Open Data
   - Census & Boundaries - [borders.ukdataservice.ac.uk](https://borders.ukdataservice.ac.uk/)
 - Europe* - EuroStat
@@ -2206,11 +2237,130 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 
 :::
 
-## Break 
+## Outline  {.smaller}
+
+-   ~~**Day 2** - Session 3: Map Customisation and Automation in R~~
+    -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
+    -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
+    -   ~~10:30am - 11:30am -- Practical 2 ctd: Loops in R~~
+    -   ~~*11:30am - 11:45am -- break*~~
+-   **Day 2** - **Session 4: Clustering Crime Points and Working with Your Own Data**
+    - **11:45am - 12:00pm -- Point in Polygon & Reprojection**
+    - 12:00pm - 1:00pm -- Working with your Own Data
 
 ## Working with your own data
 
-## Wrap up slide 326 onwards
+## Well Done!
+
+- We have covered a lot over the last 2 x 3 hour sessions
+
+-   Day 1 - Session 1: Introduction to R and Spatial Data Basics
+-   Day 1 - Session 2: Classification and Creating a Choropleth Map
+-   Day 2 - Session 3: Map Customisation and Automation in R
+-   Day 2 - Session 4: Clustering Crime Points and Working with Your Own Data
+
+## Useful Tips {.smaller}
+
+::: columns
+::: {.column width="50%"}
+
+![](images/tips1.png)
+
+:::
+::: {.column width="50%"}
+
+:::: {.fragment}
+
+- If you get stuck on trying to work out how to code something, have a break and talk to someone. 
+
+- Explain what you are trying to do (even if they don’t do programming*)
+
+- It will help you organise your thoughts, and find the bit you are missing
+
+- *You don’t even have to find a person – a cat/dog/parrot/plant will do!
+
+::::
+
+:::
+:::
+
+## Useful Tips
+
+- There is usually >1 way of doing anything in R
+- Find a way that works for you
+- There is no one “right” way
+- Lots of libraries 
+  - `plot`, `ggplot`, `tmap`, …
+- Try `ggplot` if you haven’t already
+- `tidyverse` (more of an approach than a package, sf is part of this)
+
+
+## Books
+
+::: columns
+::: {.column width="60%"}
+
+Using R as a GIS
+
+- Part 1: What is GIS & Spatial Data?
+- Part 2: Spatial Data
+- Part 3: Advanced Concepts
+- Part 4: Project Management
+- Part 5: Next Steps
+
+[https://locatepress.com/book/rgis](https://locatepress.com/book/rgis)
+
+
+:::
+::: {.column width="40%"}
+
+![](images/rgis-front-cover.png)
+
+:::
+:::
+
+
+## Books
+
+::: columns
+::: {.column width="60%"}
+
+An Introduction to R for Spatial Analysis and Mapping
+
+[https://uk.sagepub.com](https://uk.sagepub.com/en-gb/eur/an-introduction-to-r-for-spatial-analysis-and-mapping/book258267)
+
+[https://www.amazon.co.uk](https://www.amazon.co.uk/dp/1526428504)
+
+
+:::
+::: {.column width="40%"}
+
+![](images/brunsdon_comber.jpg)
+
+:::
+:::
+
+## Books
+
+
+::: columns
+::: {.column width="60%"}
+
+Geocomputation with R
+
+Free at [https://r.geocompx.org/](https://r.geocompx.org/)
+
+
+
+:::
+::: {.column width="40%"}
+
+![](images/geocomputation-r.png)
+
+:::
+:::
+
+
 
 <!--
 
@@ -2248,6 +2398,17 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
     -   GIS: Research Methods, £13, available today
 
 -->
+
+## Thank You 
+
+- Questions?
+
+
+## <!-- Blank slide -->
+
+##
+
+![](images/InStatsStop.png)
 
 ## Next Session
 

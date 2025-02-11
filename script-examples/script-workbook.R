@@ -121,9 +121,9 @@
 	tm_polygons(fill = "Age00to04",
                 fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
                 fill.legend = tm_legend(title = "Aged 0 to 4", size = 0.8)) +
-    ##add scale bar
+    #add scale bar
 	tm_scalebar(position = c(0.1, 0.1)) + 
-    ##north arrow
+    #north arrow
     tm_compass(size = 1.5, position = c(0.1, 0.3)) +
 	#Set title details
 	tm_title("Total Population of Liverpool, 2021")
