@@ -1,0 +1,74 @@
+===
+
+Welcome Poll
+
+Have you installed R and RStudio ok?
+Yes
+No
+
+Have you installed the libraries ok (sf and tmap)
+Yes
+No
+
+Is your computer Windows or Mac?
+Windows
+Mac / OSX
+Something else
+
+===
+
+Choropleth Maps
+
+How many classes would you use to categorise the data?
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+What colour scheme would you use?
+Greens
+Purples
+Blues
+Oranges
+Different colours
+Something else
+
+===
+
+Two Stars One Wish
+
+===
+
+Session 2: Recap Quiz
+
+Which is better?
+The Mercator projection
+The Gall-Peters projection
+The Polar projection
+None are best, it depends what you are trying to show on the map
+
+What is most important to remember when performing an attribute join?
+There must be the same number of columns in both data sets
+The attributes must be similar
+The attributes must be exactly the same
+The data must be in the same language
+
+What do we need to remember when looking at a map:
+The map is the best representation of the data
+We need to critically analyse the map to see whether it is representing the data fairly
+QGIS will only allow us to create the best choropleth map
+There is no way to misrepresent spatial data
+
+What coordinate system are these coordinates likely to be in? 
+52°N 37’ 30.32’’ 1°E 14’ 2.05’’
+British National Grid (Eastings & Northings) EPSG = 27700
+UTM (Universal Transverse Mercator) Zone 37 N EPSG = 32630
+Latitude and Longitude (WGS 1984) EPSG = 4326
+
+===
