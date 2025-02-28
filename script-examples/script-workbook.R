@@ -24,7 +24,7 @@
   mean(house.prices)
 
 ### The Data Frame
-  hp.data <- read.csv("http://nickbearman.me.uk/data/r/hpdata.csv")
+  hp.data <- read.csv("https://nickbearman.com/files/hpdata.csv")
   head(hp.data)
   View(hp.data)
   #rename a column
@@ -37,7 +37,7 @@
   library(sf)
   library(tmap)
   setwd("C:/Users/nick/Documents/work/intro-r-spatial-analysis/data-user")
-  download.file("http://www.nickbearman.me.uk/data/r/sthelens.zip","sthelens.zip")
+  download.file("https://www.nickbearman.com/files/sthelens.zip","sthelens.zip")
   unzip("sthelens.zip")
   sthelens <- st_read("sthelens.shp")
   qtm(sthelens)
@@ -174,7 +174,7 @@
 
 ## Practical 3: Clustering of Crime Points
   #Read the data into a variable called crimes
-  crimes <- read.csv("http://nickbearman.me.uk/data/r/police-uk-2020-04-merseyside-street.csv")
+  crimes <- read.csv("https://nickbearman.com/files/police-uk-2020-04-merseyside-street.csv")
   head(crimes)
   #create crimes data
   crimes_sf <- st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = 4326)

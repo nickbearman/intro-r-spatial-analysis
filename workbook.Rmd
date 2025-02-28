@@ -96,7 +96,7 @@ We have a CSV file of house prices and burglary rates, which we can load into R.
 <!-- Update hp.data <- read.csv("https://raw.githubusercontent.com/nickbearman/intro-r-spatial-analysis/master/data/hpdata.csv") does work but the URL is much longer, which is annoying -->
 
 ```{r}
-hp.data <- read.csv("http://nickbearman.me.uk/data/r/hpdata.csv")
+hp.data <- read.csv("https://nickbearman.com/files/hpdata.csv")
 ```
 
 *This loads in data from a website. We will look at reading in data from your own computer later on.*
@@ -200,7 +200,7 @@ There is a set of shapefiles for the St. Helens neighbourhoods at the same locat
  
  
 ```{r, comment=NA}
-download.file("http://www.nickbearman.me.uk/data/r/sthelens.zip","sthelens.zip")
+download.file("http://www.nickbearman.com/files/sthelens.zip","sthelens.zip")
 unzip("sthelens.zip")
 ```
 
@@ -562,7 +562,7 @@ In this section we will look at some point data, and how we can analyse it in R.
 
 ```{r, comment=NA, warning=FALSE, message=FALSE}
 #Read the data into a variable called crimes
-crimes <- read.csv("http://nickbearman.me.uk/data/r/police-uk-2020-04-merseyside-street.csv")
+crimes <- read.csv("http://nickbearman.com/files/police-uk-2020-04-merseyside-street.csv")
 ```
 
 Now the CSV data has been read in, take a quick look at it using the  `head()` function. You will see that the data consists of a number of columns, each with a heading. Two of these are called *Longitude* and *Latitude* - these are the column headers that give the coordinates of each incident in the data you have just downloaded. Another is headed *Crime.Type* and tells you which type of crime occurred. 
