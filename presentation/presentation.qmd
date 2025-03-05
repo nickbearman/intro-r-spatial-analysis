@@ -1029,7 +1029,7 @@ Outline
 -   **Day 2** - **Session 3: Map Customisation and Automation in R**
     -   10:00am - 10:15am -- GIS Data Types, Scale
     -   10:15am - 10:40am -- Map Automation in R: Loops
-    -   10:30am - 11:30am -- Practical 2 ctd: Loops in R
+    -   10:40am - 11:30am -- Practical 2 ctd: Loops in R
     -   *11:30am - 11:45am -- break*
 -   **Day 2** - Session 4: Clustering Crime Points and Working with Your Own Data
     - 11:45am - 12:00pm -- Point in Polygon & Reprojection
@@ -1062,6 +1062,7 @@ Outline
 
 - GIS Data Types
 - Scale
+- Map Customisation
 - Map Automation in R
 
 ## Data Types: Vector & Raster

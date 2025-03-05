@@ -65,6 +65,8 @@
   head(pop2021[,1:9])
   #download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2021.zip","england_lsoa_2021.zip")
   #unzip("england_lsoa_2021.zip")
+  download.file("https://nickbearman.com/files/liverpool_england_lsoa_2021.zip","liverpool_england_lsoa_2021.zip")
+  unzip("liverpool_england_lsoa_2021.zip")
   #read in shapefile
   LSOA <- st_read("england_lsoa_2021.shp")
   #join attribute data to LSOA
@@ -233,7 +235,20 @@
     tm_polygons(fill = "count of crimes",
                 fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
                 fill.legend = tm_legend(title = "Number of Crimes", size = 0.8))
-
+  
+  #calculate crime rate
+    #join population on to LSOA_crimes
+    LSOA_crimes_aggregated_rate <- merge(LSOA_crimes_aggregated, pop2021, by.x="lsoa21cd", by.y="geography.code")
+    head(LSOA_crimes_aggregated_rate)
+    LSOA_crimes_aggregated_rate$rate <- LSOA_crimes_aggregated_rate$`count of crimes`/LSOA_crimes_aggregated_rate$Total*10000
+    head(LSOA_crimes_aggregated_rate)
+    
+    #map using tmap
+    tm_shape(LSOA_crimes_aggregated_rate) +
+      tm_polygons(fill = "rate",
+                  fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
+                  fill.legend = tm_legend(title = "Rate of Crimes per 10,000 population", size = 0.8))
+    
 ### Exporting Shapefiles
   #save as shapefile
   st_write(LSOA_crimes_aggregated, "LSOA-crime-count.shp")
