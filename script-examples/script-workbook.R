@@ -1,11 +1,4 @@
 ##Script from the workbook
-  # for tmap v4
-  # to install, run: install.packages("tmap")
-  # to check which version you have, load tmap: library(tmap)
-  # and run: packageVersion("tmap")
-  # if you can't install version 4, but want to use it, you can try out on posit.cloud
-  # https://nickbearman.github.io/installing-software/r-rstudio.html#posit-cloud
-
 # This contains all the commands from the workbook
 
 ## Practical 1: Intro to R & GIS
@@ -111,6 +104,7 @@
   abline(v = breaks$brks, col = "red")
 
 ### Histogram on the map
+  #this needs the ggplot2 library installed
   tm_shape(LSOA) +
     tm_polygons(fill = "Total",
                 fill.scale = tm_scale_intervals(values = "brewer.greens", n = 6, style = "jenks"),
