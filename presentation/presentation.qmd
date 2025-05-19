@@ -895,15 +895,15 @@ Remember to show in the table which colours represent which countries!
   - Unique
 
 
-## Classification
+## 
 
 ![](images/classification-options.png)
 
 ::: footer
-Figure 11 https://gistbok.ucgis.org/bok-topics/statistical-mapping-enumeration-normalization-classification
+Figure 11 https://gistbok-ltb.ucgis.org/page/27/concept/8047
 :::
 
-## Classification
+## 
 
 ![](images/data-distribution.png)
 
