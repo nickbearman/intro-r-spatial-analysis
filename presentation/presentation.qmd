@@ -1,12 +1,12 @@
 ---
 title: "Introduction to Spatial Data & Using R as a GIS"
-subtitle: "Day 1 |Tue 4th March 2025 | 10am - 1pm"
+subtitle: "Day 1 | Tue 27th May 2025 | 10am - 1pm"
 author: "Dr Nick Bearman"
 format: 
   revealjs
 ---
 
-
+<!-- InStats
 ## Welcome - GIS Course
 
 - Day 1 - Introduction to Spatial Data & Using R as a GIS
@@ -14,6 +14,8 @@ format:
 - Session 1 - Introduction to R and Spatial Data Basics
 
 - Dr Nick Bearman
+
+-->
 
 <!--
 - Day 2 - Confident Spatial Analysis and Statistics in R & GeoDa 
@@ -24,14 +26,14 @@ format:
 - *Afternoon break 3:15pm - 3:30pm* 
 -->
 
-<!--
+
 ![](images/ncrm-welcome-slide1.png)
 
 ------------------------------------------------------------------------
 
 
 ![](images/ncrm-welcome-slide2.png)
--->
+
 
 <!--
 
@@ -54,7 +56,7 @@ format:
 
 ![](images/rstudio-map.png){.absolute bottom="0" right="0" width="500"}
 
-<!-- online course 
+<!-- online course -->
 
 ## Housekeeping
 
@@ -67,9 +69,9 @@ format:
 -   Recording -- only our group, available for 3 months
 -   Workbook, data and presentation all in OneDrive
 -   Poll
--->
 
-<!-- InStats course -->
+
+<!-- InStats course
 
 ## Housekeeping
 
@@ -79,7 +81,7 @@ format:
 -   Video on (if possible)
 -   Questions - ask in real time, or in the chat
 -   Recording - any questions you ask will be in the recording (audio), your video will not be in the recording. 
-
+-->
 
 <!-- in person course
 
@@ -97,8 +99,8 @@ format:
     -   Ask questions as we go along
     -   Think about how you could use these techniques with your own data
 -   Presentations, handouts and data on <!-- OneDrive --> InStats
-<!-- - WhatsApp group for discussion -->
--   Poll
+- WhatsApp group for discussion
+- Welcome Poll
 
 ```{=html}
 <!-- 
@@ -110,7 +112,7 @@ format:
 -->
 ```
 
-<!-- Online
+<!-- Online NCRM -->
 
 ## Outline  {.smaller}
 
@@ -121,14 +123,14 @@ format:
     -   11:45am - 12:05pm -- Classification
     -   12:05pm - 1:00pm -- Practical 2: Making a Map
 -   Day 2:
-    -   1:00pm - 1:20pm -- Recap and Making Maps
-    -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
-    -   2:30pm - 2:45pm -- break
-    -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
+    -   10:00am - 10:20am -- Recap and Making Maps
+    -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1:00pm -- Practical 4: Bring Your Own Data
 
--->
 
-<!-- InStats -->
+
+<!-- InStats 
 
 ## Outline  {.smaller}
 
@@ -136,8 +138,8 @@ format:
 -   **Day 1** - Session 2: Classification and Creating a Choropleth Map
 -   Day 2 - Session 3: Map Customisation and Automation in R
 -   Day 2 - Session 4: Clustering Crime Points and Working with Your Own Data
-
-
+-->
+<!--
 ## Outline  {.smaller}
 
 -   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
@@ -147,7 +149,7 @@ format:
 -   **Day 1** Session 2: Classification and Creating a Choropleth Map
     -   11:45am - 12:05pm -- Classification
     -   12:05pm - 1:00pm -- Practical 2: Making a Map
-
+-->
     
 <!-- InStats
 
@@ -195,12 +197,13 @@ format:
 
 -   Zoom?
 -   Accessing files?
-<!-- -   OneDrive? -->
-<!-- -   WhatsApp Group? -->
+-   OneDrive? 
+-   WhatsApp Group?
 
 -   Schedule?
 -   ?
 
+<!-- 
 ##
 
 ![](images/WelcomeToInStats.png)
@@ -211,7 +214,7 @@ format:
 ![](images/InStatsStart.png)
 
 ## <!-- Blank slide -->
-
+<!--
 ## 
 
 <center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
@@ -219,6 +222,8 @@ format:
 <p> <center>--</center>
 
 <center> <h3>Session 1: Introduction to R and Spatial Data Basics</h3></center>
+
+-->
 
 ## What is GIS?
 
@@ -346,6 +351,7 @@ format:
   - Geographical Analysis
   - LLM / ChatGPT / assistant
     - [Kue: AI Chatbot for QGIS](https://www.linkedin.com/feed/update/urn:li:activity:7292210014490951683/)
+    - Using (any) chatbot for coding
 :::
 
 ------------------------------------------------------------------------
@@ -748,6 +754,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 - *(but you can copy/paste long bits)*
 - Optional exercises
 
+<!--
 ## Files
 
 ![](images/instats-download.png)
@@ -756,14 +763,14 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 - Program Files - `script-examples.zip`
 - Readings - `glossary.pdf`
 - Workbook - `workbook.pdf` & `workbook.html`
-
+-->
 
 ## Housekeeping - Practicals
 
 - Work through the workbook (questions, optional exercises)
-- Will split into groups of ~2-3 people (breakout rooms)
+- Will split into groups of ~3 people (breakout rooms)
 - Ask your group colleagues questions
-<!-- - Post in WhatsApp -->
+- Post in WhatsApp
 
 - Use the ‘Ask for help’ button in the Breakout room
 - I will ‘walk around’ and see how people are getting on
@@ -772,6 +779,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 
 ## Let's start!
 
+<!-- InStats
 ## Outline  {.smaller}
 
 -   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
@@ -781,10 +789,10 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 -   **Day 1** Session 2: Classification and Creating a Choropleth Map
     -   11:45am - 12:05pm -- Classification
     -   12:05pm - 1:00pm -- Practical 2: Making a Map
-
+-->
     
 
-<!--  NCRM
+<!--  NCRM -->
 ## Outline {.smaller}
 
 -   **Day 1**:
@@ -793,11 +801,11 @@ https://twitter.com/zevross/status/1118967279864242176</font>
     -   11:30am - 11:50am -- Classification
     -   11:50am - 1:00pm -- Practical 2: Making a Map
 -   Day 2:
-    -   1:00pm - 1:20pm -- Recap and Making Maps
-    -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
-    -   2:30pm - 2:45pm -- break
-    -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
--->    
+    -   10:00am - 10:20am -- Recap and Making Maps
+    -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1:00pm -- Practical 4: Bring Your Own Data
+
 
 <!-- offline 
 ## Classification
@@ -827,18 +835,19 @@ Remember to show in the table which colours represent which countries!
 
 <!-- end -->
 
+<!-- InStats
 ##
 
 ![](images/InStatsStop.png)
 
 ## <!-- Blank slide -->
-
+<!--
 ##
 
 ![](images/InStatsStart.png)
 
 ## <!-- Blank slide -->
-
+<!--
 ![](images/WelcomeToInStats.png)
 
 ## 
@@ -848,6 +857,8 @@ Remember to show in the table which colours represent which countries!
 <p> <center>--</center>
 
 <center> <h3>Session 2: Classification and Creating a Choropleth Map</h3></center>
+
+-->
 
 ## Classification
 
@@ -970,7 +981,7 @@ https://jcheshire.com/resources/different-maps-same-data/
 -   1450 - 1500 Coordinate Systems & Next Steps
 -   1510 Finish
 -->
-
+<!-- InStats
 ## Outline  {.smaller}
 
 -   ~~**Day 1** - **Session 1: Introduction to R and Spatial Data Basics**~~
@@ -980,9 +991,9 @@ https://jcheshire.com/resources/different-maps-same-data/
 -   **Day 1** Session 2: Classification and Creating a Choropleth Map
     -   ~~11:45am - 12:05pm -- Classification~~
     -   12:05pm - 1:00pm -- Practical 2: Making a Map
-
+-->
     
-<!-- NCRM
+<!-- NCRM -->
 
 ## Outline {.smaller}
 
@@ -992,12 +1003,13 @@ https://jcheshire.com/resources/different-maps-same-data/
     -   ~~11:30am - 11:50am -- Classification~~
     -   11:50am - 1:00pm -- Practical 2: Making a Map
 -   Day 2:
-    -   1:00pm - 1:20pm -- Recap and Making Maps
-    -   1:20pm - 2:30pm -- Practical 3: Clustering of Crime Points
-    -   2:30pm - 2:45pm -- break
-    -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
+    -   10:00am - 10:20am -- Recap and Making Maps
+    -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1:00pm -- Practical 4: Bring Your Own Data
 
--->
+
+<!--
 
 ## Any Questions?
 
@@ -1009,16 +1021,48 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 ## Next session
 
-- Tomorrow - Wed 5th March
+- Tomorrow - Wed 28th May
 
 - 10am - 1pm (UK/London time)
 
-- Do post any further questions on the forum
+<!-- - Do post any further questions on the forum -->
 
 - Recording should be available soon (<24 hrs)
 
 ## <!-- Blank slide -->
 
+## Day 2
+
+##
+
+![](images/ncrm-welcome-slide1.png)
+
+------------------------------------------------------------------------
+
+
+![](images/ncrm-welcome-slide2.png)
+
+## Recap Quiz
+
+<!-- NCRM -->
+
+## Outline {.smaller}
+
+-   ~~Day 1:~~
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   ~~11:30am - 11:50am -- Classification~~
+    -   ~~11:50am - 1:00pm -- Practical 2: Making a Map~~
+-   **Day 2**:
+    -   10:00am - 10:15am -- GIS Data Types, Scale
+    -   10:15am - 10:40am -- Map Automation in R: Loops
+    -   10:20am - 11:30am -- Practical 2 ctd: Loops in R
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
+    - & Working with Your Own Data
+
+
+<!--
 ##
 
 ## Welcome Back - Day 2! {.smaller}
@@ -1052,7 +1096,7 @@ Outline
 
 
 ## <!-- Blank slide -->
-
+<!--
 ![](images/WelcomeToInStats.png)
 
 ## 
@@ -1062,7 +1106,7 @@ Outline
 <p> <center>--</center>
 
 <center> <h3>Session 3: Map Customisation and Automation in R</h3></center>
-
+-->
 <!-- InStats -->
 
 
@@ -1182,7 +1226,7 @@ Outline
 
 
 |                      | Vector | Raster |
-|----------------------|--------|--------|
+|----------------------|:------:|:------:|
 | Shapefile *`.shp`*   | X      |        |
 | GeoPackage *`.gpkg`* | X      | X      |  
 | ASCII Grid           |        | X      |  
@@ -1496,6 +1540,21 @@ Dynamic basemap `tmap_mode("view")`
 :::
 
 :::
+
+## Outline {.smaller}
+
+-   ~~Day 1:~~
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   ~~11:30am - 11:50am -- Classification~~
+    -   ~~11:50am - 1:00pm -- Practical 2: Making a Map~~
+-   **Day 2**:
+    -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
+    -   10:15am - 10:40am -- Map Automation in R: Loops
+    -   10:20am - 11:30am -- Practical 2 ctd: Loops in R
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
+    - & Working with Your Own Data
 
 ## R code in loops {auto-animate="true"}
 
@@ -2045,6 +2104,22 @@ for (i in 1:length(mapvariables)) {
 
 Questions?
 
+<!-- NCRM -->
+## Outline {.smaller}
+
+-   ~~Day 1:~~
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   ~~11:30am - 11:50am -- Classification~~
+    -   ~~11:50am - 1:00pm -- Practical 2: Making a Map~~
+-   **Day 2**:
+    -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
+    -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
+    -   10:20am - 11:30am -- Practical 2 ctd: Loops in R
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
+    - & Working with Your Own Data
+
 <!-- one day
 ## Outline {.smaller}
 
@@ -2059,7 +2134,7 @@ Questions?
     -   2:30pm - 2:45pm -- break
     -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
 -->
-
+<!--
 ##
 
 ![](images/InStatsStop.png)
@@ -2091,12 +2166,12 @@ Questions?
     - 12:00pm - 1:00pm -- Working with your Own Data
 
 
-## <!-- Blank slide -->
+## <!-- Blank slide 
 
 ![](images/InStatsStart.png)
 
 ## <!-- Blank slide -->
-
+<!--
 ![](images/WelcomeToInStats.png)
 
 ## 
@@ -2106,6 +2181,40 @@ Questions?
 <p> <center>--</center>
 
 <center> <h3>Session 4: Clustering Crime Points and Working with your Own Data</h3></center>
+
+-->
+
+## Outline {.smaller}
+
+-   ~~Day 1:~~
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   ~~11:30am - 11:50am -- Classification~~
+    -   ~~11:50am - 1:00pm -- Practical 2: Making a Map~~
+-   **Day 2**:
+    -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
+    -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
+    -   ~~10:20am - 11:30am -- Practical 2 ctd: Loops in R~~
+    -   11:30am - 11:45am -- break
+    -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
+    - & Working with Your Own Data
+    
+## Break
+
+## Outline {.smaller}
+
+-   ~~Day 1:~~
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   ~~11:30am - 11:50am -- Classification~~
+    -   ~~11:50am - 1:00pm -- Practical 2: Making a Map~~
+-   **Day 2**:
+    -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
+    -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
+    -   ~~10:20am - 11:30am -- Practical 2 ctd: Loops in R~~
+    -   ~~11:30am - 11:45am -- break~~
+    -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
+    - & Working with Your Own Data
 
 ## Spatial Data in R: sf and sp
 
@@ -2247,6 +2356,7 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 
 :::
 
+<!-- InStats
 ## Outline  {.smaller}
 
 -   ~~**Day 2** - Session 3: Map Customisation and Automation in R~~
@@ -2257,9 +2367,26 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 -   **Day 2** - **Session 4: Clustering Crime Points and Working with Your Own Data**
     - **11:45am - 12:00pm -- Point in Polygon & Reprojection**
     - 12:00pm - 1:00pm -- Working with your Own Data
+-->
+
+## Outline {.smaller}
+
+-   ~~Day 1:~~
+    -   ~~10:00am - 10:45am -- What is GIS & R?~~
+    -   ~~10:45am - 11:30am -- Practical 1: Intro to R & GIS~~
+    -   ~~11:30am - 11:50am -- Classification~~
+    -   ~~11:50am - 1:00pm -- Practical 2: Making a Map~~
+-   **Day 2**:
+    -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
+    -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
+    -   ~~10:20am - 11:30am -- Practical 2 ctd: Loops in R~~
+    -   ~~11:30am - 11:45am -- break~~
+    -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
+    - & Working with Your Own Data
 
 ## Working with your own data
 
+<!-- InStats
 ## Well Done!
 
 - We have covered a lot over the last 2 x 3 hour sessions
@@ -2268,6 +2395,7 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 -   Day 1 - Session 2: Classification and Creating a Choropleth Map
 -   Day 2 - Session 3: Map Customisation and Automation in R
 -   Day 2 - Session 4: Clustering Crime Points and Working with Your Own Data
+-->
 
 ## Useful Tips {.smaller}
 
@@ -2409,13 +2537,35 @@ Free at [https://r.geocompx.org/](https://r.geocompx.org/)
 
 -->
 
+## Feedback
+
+- Form only takes a few min to fill in
+- Really valuable – for me, and for NCRM
+- What worked, what didn’t work
+
+- Feedback - [https://www.ncrm.ac.uk/surveys/hub](https://www.ncrm.ac.uk/surveys/hub)
+- Course Name: Introduction to Spatial Data and Using R as a GIS
+- Start Date: 27th May 2025
+
+## Next Steps
+
+-   Repeat this material in 2-3 weeks / 2-3 months
+-   Lots of free tutorials available online
+-   GIS Training Courses -   [www.nickbearman.com](https://www.nickbearman.com)
+- Advanced R as a GIS: Spatial Analysis and Statistics 
+  - *next week*
+  - Be able to interpret Spatial Autocorrelation
+  - Perform Local Indicators of Spatial Autocorrelation
+  - Know how to use buffers within R
+  - Pros and cons of using point or polygon data
+
 ## Thank You 
 
 - Questions?
 
 
 ## <!-- Blank slide -->
-
+<!--
 ##
 
 ![](images/InStatsStop.png)
@@ -2429,11 +2579,11 @@ Free at [https://r.geocompx.org/](https://r.geocompx.org/)
 - Two stars, one wish poll
 
 <!-- - Everyone post a question in Zoom that you have about today’s topics or working with R / RStudio -->
-
+<!--
 ## Next Session
 
 <!-- - Everyone post a question in Zoom that you have about today’s topics or working with R / RStudio -->
-
+<!--
 - Next session **Wednesday 1pm**
 
 - Experiment with your own data – questions 
@@ -2441,7 +2591,7 @@ Free at [https://r.geocompx.org/](https://r.geocompx.org/)
 - Explore some more of the options
 
 - Find some data relevant to your work 
-
+-->
 <!-- -  *Opt. ggplot2 tutorial, e.g. https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html* -->
 
 
