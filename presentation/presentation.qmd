@@ -880,11 +880,20 @@ Remember to show in the table which colours represent which countries!
 - How many classes we choose is important
   - Max of 5-7
 - What those classes are is important as well 
-  - Equal Interval: 0-10, 10-20, 20-30, ….
-  - Quantiles: first 10 data points, second 10 data points, ….
-  - Natural Breaks / Jenks / Fisher
-  - Standard Deviation: mean-1SD to mean, mean to mean+1SD, mean+1SD to mean+2SD, …
+
+## Classification - Classes
+
+|  | 1st cl | 2nd cl | 3rd cl | ... |
+|---------|:-----:|:------:|:------:|:------:|
+| Equal Interval      | 0 to 10   |    10 to 20 |   20 to 30   | ... |
+| Quantiles      | 1st x    |    2nd x  |   3rd x    | ... |
+| Standard Deviation     | μ - 1σ *to* μ  |   μ *to* μ&nbsp;+&nbsp;1σ  |  μ&nbsp;+&nbsp;1σ to μ&nbsp;+&nbsp;2σ   | ... |
+
+*μ = mean, σ = standard deviation*
+
+  - Natural Breaks *(Jenks / Fisher)*
   - Unique
+
 
 ## Classification
 
