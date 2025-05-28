@@ -353,7 +353,7 @@ The next stage is to join the attribute data to the spatial data, like we did in
 LSOA <- merge(LSOA, pop2021, by.x="lsoa21cd", by.y="geography.code")
 ```
 
-And use the `head` command to check it has joined correctly. Your data should contain correctly labelled Age data in the 7th to 26th columns. 
+And use the `head` command to check it has joined correctly. Your data should contain correctly labelled Age data in the 7th to 27th columns. 
 
 ```{r, eval=F}
 head(LSOA)
@@ -679,7 +679,7 @@ This just tells us how many crimes there were in each LSOA - nothing about the r
 
 You can calculate the rate by calculating `(number of crimes / population) * 10000`. See the beginning of the handout for help on calculating values. Remember you will need to refer explicitly to the data frame and variable (`LSOA_crimes_aggregated$count of crimes`) each time you mention a column, i.e. `LSOA_crimes_aggregated$count of crimes / LSOA_crimes_aggregated$AllUsualResidents * 10000`.
 
-*There is an "answer" script in `script-examples/script-p3-point-in-polygon.R` but try not to look at it straight away!*
+*There is an "answer" script in `script-examples/script-workbook.R` but try not to look at it straight away!*
 
 ### Exporting Shapefiles
 

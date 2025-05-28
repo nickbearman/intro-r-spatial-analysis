@@ -185,12 +185,14 @@ format:
 
 --> 
 
+<!-- 
 ## Introductions
 
 - Name
 - Background
 - Have you done any GIS or R before? *No is fine!*
 - What would you like from this course?
+-->
 
 ## Any Questions?
 
