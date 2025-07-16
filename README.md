@@ -4,8 +4,8 @@ This is the material for my 1 day course on **Introduction to Spatial Data and U
 This course does not spend much time on the very basics of using R - if you want to find out more, there are some good tutorials at http://www.social-statistics.org/?p=764 or http://rpubs.com/nickbearman/gettingstartedwithr. 
 
 The material for this workshop is available here:  
-- [The HTML of the handout with the practical instructions (HTML, 1.7 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/v9.2/workbook.html)  
-- [The PDF of the handout with the practical instructions (PDF, 4.9 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/v9.2/workbook.pdf)  
+- [The HTML of the handout with the practical instructions (HTML, 1.9 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/v10/workbook.html)  
+- [The PDF of the handout with the practical instructions (PDF, 5.3 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/v10/workbook.pdf)  
 <!-- - [Software requirements](https://github.com/nickbearman/intro-r-spatial-analysis/blob/master/software-requirements.txt)  -->
 <!-- - [The R Glossary and Helpsheet (PDF, 122 KB)](https://github.com/nickbearman/intro-r-spatial-analysis/releases/download/8.3/glossary-helpsheet.pdf) -->
 - [The data used in the workshop (folder, total: 8.1 MB)](https://github.com/nickbearman/intro-r-spatial-analysis/tree/master/data)  
