@@ -891,7 +891,8 @@ Remember to show in the table which colours represent which countries!
 ## Classification - Classes
 
 - How many classes we choose is important
-  - Max of 5-7
+  - Max of 5-7 
+    - <font size= "5">[**Miller, 1956**](https://psycnet.apa.org/doi/10.1037/h0043158) The magical number seven, plus or minus two: Some limits on our capacity for processing information. Psychological Review</font>
 - What those classes are is important as well 
 
 ## Classification - Classes
