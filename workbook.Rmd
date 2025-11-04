@@ -32,7 +32,7 @@ knitr::opts_knit$set(root.dir = 'C:/Users/nick/Documents/work/intro-r-spatial-an
 
 R began as a statistics program and is still used as one by many users. We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio website"), which works on top of R and provides a good user interface. I'll talk a little bit about RStudio in the presentation, and the key areas of the window are highlighted below.
 
-*If you need to install RStudio, please check [here](https://nickbearman.github.io/installing-software/r-rstudio) or if you can't install it, an alternative option is to use [RStudio.cloud](https://rstudio.cloud).*
+*If you need to install RStudio, please check [here](https://nickbearman.github.io/installing-software/r-rstudio) or if you can't install it, an alternative option is to use [Posit.cloud](https://posit.cloud) to run RStudio in a web browser.*
 
 ![Screenshot of RStudio](images/rstudio-labelled.png){ width=80% }
 
@@ -49,7 +49,9 @@ Don't worry about the `[1]` for the moment - just note that R printed out `14` s
 ```{r, comment=NA}
 5 * 4
 ```
+
 Also note that `*` is the symbol for multiplication here - the last command asked R to perform the calculation '5 times 4'.  Other symbols are `-` for subtraction and `/` for division:
+
 ```{r, comment=NA}
 12 - 14
 6 / 17
@@ -258,7 +260,7 @@ Now we are going to use the same principle as we used before to create a map of 
 
 - Navigate to **https://www.nomisweb.co.uk/**. 
 - Under **Census Statistics** (scroll down) click **2021 Data catalogue**. 
-- Select **Bulk Data Downloads**. 
+- Select **Bulk Data Downloads** (near the bottom of the page). 
 - Scroll down to **TS007A	Age by five-year age bands**. 
 - Download the **census2021-ts007a.zip** zip file. 
 - Open up the zip file - you will see a csv file for each geography - LSOA, MSOA, OA and various others. 
@@ -321,8 +323,13 @@ head(pop2021[,1:12])
 
 Now we have the attribute data (the number of people in each age group in each LSOA in this case) we need to join this attribute data to the spatial data. Therefore, first, we need to download the spatial data. 
 
-- Go to **https://borders.ukdataservice.ac.uk/** and select **Boundary Data Selector**. 
-- Then set **Country** to **England**, **Geography** to **Statistical Building Block**, **Dates** to **2021 and later**, and click **Find**.
+- Go to **https://borders.ukdataservice.ac.uk/** 
+- Select **Boundary Data Selector**. 
+- Then set: 
+  - **Country** to **England**
+  - **Geography** to **Statistical Building Block**
+  - **Dates** to **2021 and later**
+  - click **Find**.
 - Select **English Lower Layer Super Output Areas, 2021** and click **List Areas**. 
 - Select **England** from the list and choose **Expand Selection**.
 - Select **North West [England]** from the list and choose **Expand Selection**.
