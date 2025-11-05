@@ -254,7 +254,7 @@ Now we are going to use the same principle as we used before to create a map of 
 - Open up the zip file - you will see a csv file for each geography - LSOA, MSOA, OA and various others. 
 - Extract the file `census2021-ts007a-lsoa.csv`
 
-<!-- Last checked 2024-05-22 -->
+<!-- Last checked 2025-11-05 -->
   
 Open this file up in Excel, and you can see there are a number of different columns, covering different data. We are interested in the age data - scroll across and see the different values we have. 
 
@@ -324,7 +324,7 @@ Now we have the attribute data (the number of people in each age group in each L
 - Select **Liverpool [North West]** from the list and click **Extract Boundary Data**. 
 - After a 5 to 20 second wait, click `BoundaryData.zip` to download the files. 
 
-<!-- Last checked 2024-05-22 -->
+<!-- Last checked 2025-11-05 -->
   
 Extract the files, and move all the files starting with the name `england_lsoa_2021` to your working folder. Then read in the data:
   
