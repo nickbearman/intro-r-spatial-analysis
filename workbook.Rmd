@@ -190,14 +190,14 @@ There is a set of shapefiles for the St. Helens neighbourhoods at the same locat
  
  
 ```{r, comment=NA}
-download.file("http://www.nickbearman.com/files/sthelens.zip","sthelens.zip")
-unzip("sthelens.zip")
+download.file("http://www.nickbearman.com/files/sthelens_lsoa_2021.zip","sthelens_lsoa_2021.zip")
+unzip("sthelens_lsoa_2021.zip")
 ```
 
 The first function actually downloads the zip file into your working folder, the second one unzips it. Now, we can read these into R. 
 
 ```{r, comment=NA, message=FALSE, results='hide'}
-sthelens <- st_read("sthelens.shp")
+sthelens <- st_read("sthelens_lsoa_2021.shp")
 ```
  
 The `st_read` function does this and stores them as a Simple Features (or `sf`) object. You can use the `qtm` function to draw the polygons (i.e. the map of the LSOA).
