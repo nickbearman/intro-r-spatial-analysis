@@ -170,7 +170,7 @@
 
 ## Practical 3: Clustering of Crime Points
   #Read the data into a variable called crimes
-  crimes <- read.csv("https://nickbearman.com/files/police-uk-2020-04-merseyside-street.csv")
+  crimes <- read.csv("https://nickbearman.com/files/police-uk-2025-08-merseyside-street.csv")
   head(crimes)
   #create crimes data
   crimes_sf <- st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = 4326)
