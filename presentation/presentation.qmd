@@ -1,10 +1,50 @@
 ---
-title: "Introduction to Spatial Data & Using R as a GIS"
-subtitle: "Day 1 | Tue 27th May 2025 | 10am - 1pm"
+title: "Introduction to Spatial Data and R as a GIS"
+subtitle: "Tue 11th and Wed 12th Nov 2025 | 10am - 1pm"
 author: "Dr Nick Bearman"
 format: 
-  revealjs
+  revealjs:
+    embed-resources: true
 ---
+
+
+## Intro to Spatial Data and R as a GIS
+
+### InStats
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Dr Nick Bearman
+
+[nick@nickbearman.com]{style="text-decoration: underline;"}
+
+<font size = 6>
+*GIS Trainer & Consultant (freelance) 
+<br>UCL Geography*
+</font>
+
+11th November 2025
+
+Starting 1pm (UK/London)
+
+:::
+
+::: {.column width="50%"}
+
+While we wait, please introduce yourself in the chat:
+
+- Name / where are you?
+
+- What subject / area do you work in?
+
+- What would you like to know after this workshop?
+
+:::
+
+::::
+
 
 <!-- InStats
 ## Welcome - GIS Course
@@ -26,6 +66,7 @@ format:
 - *Afternoon break 3:15pm - 3:30pm* 
 -->
 
+<!--
 
 ![](images/ncrm-welcome-slide1.png)
 
@@ -33,7 +74,7 @@ format:
 
 
 ![](images/ncrm-welcome-slide2.png)
-
+-->
 
 <!--
 
@@ -56,7 +97,7 @@ format:
 
 ![](images/rstudio-map.png){.absolute bottom="0" right="0" width="500"}
 
-<!-- online course -->
+<!-- online course
 
 ## Housekeeping
 
@@ -69,9 +110,9 @@ format:
 -   Recording -- only our group, available for 3 months
 -   Workbook, data and presentation all in OneDrive
 -   Poll
+-->
 
-
-<!-- InStats course
+<!-- InStats course -->
 
 ## Housekeeping
 
@@ -81,7 +122,7 @@ format:
 -   Video on (if possible)
 -   Questions - ask in real time, or in the chat
 -   Recording - any questions you ask will be in the recording (audio), your video will not be in the recording. 
--->
+
 
 <!-- in person course
 
@@ -99,10 +140,10 @@ format:
     -   Ask questions as we go along
     -   Think about how you could use these techniques with your own data
 -   Presentations, handouts and data on <!-- OneDrive --> InStats
-- WhatsApp group for discussion
-- Welcome Poll
+<!-- WhatsApp group for discussion -->
+<!-- Welcome Poll -->
 
-```{=html}
+
 <!-- 
 
 -   Be aware of trailing wires
@@ -110,9 +151,9 @@ format:
 -   Presentations, handouts and data on OneDrive
     -   tinyurl.com/methodsconqgis
 -->
-```
 
-<!-- Online NCRM -->
+
+<!-- Online NCRM 
 
 ## Outline  {.smaller}
 
@@ -129,16 +170,8 @@ format:
     -   11:45am - 1:00pm -- Practical 4: Bring Your Own Data
 
 
-
-<!-- InStats 
-
-## Outline  {.smaller}
-
--   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
--   **Day 1** - Session 2: Classification and Creating a Choropleth Map
--   Day 2 - Session 3: Map Customisation and Automation in R
--   Day 2 - Session 4: Clustering Crime Points and Working with Your Own Data
 -->
+
 <!--
 ## Outline  {.smaller}
 
@@ -185,6 +218,14 @@ format:
 
 --> 
 
+## Outline
+
+- 1:00pm – 1:45pm: What is GIS, Spatial Data & R?
+- 1:45pm – 2:30pm: Practical 1: Intro to R & GIS
+- 2:30pm – 2:45pm: break
+- 2:45pm – 3:05pm: Classification discussion
+- 3:05pm – 4:00pm: Practical 2b & Working with your own data
+
 <!-- 
 ## Introductions
 
@@ -199,13 +240,13 @@ format:
 
 -   Zoom?
 -   Accessing files?
--   OneDrive? 
--   WhatsApp Group?
+<!-- -   OneDrive? 
+-   WhatsApp Group? -->
 
 -   Schedule?
 -   ?
 
-<!-- 
+
 ##
 
 ![](images/WelcomeToInStats.png)
@@ -216,16 +257,28 @@ format:
 ![](images/InStatsStart.png)
 
 ## <!-- Blank slide -->
-<!--
+
 ## 
 
 <center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
 
+<p> <center>Dr Nick Bearman</center>
+
 <p> <center>--</center>
 
-<center> <h3>Session 1: Introduction to R and Spatial Data Basics</h3></center>
+<center> <h3>Session 1: <br>Introduction to R and Spatial Data Basics</h3></center>
 
--->
+
+
+<!-- InStats -->
+
+## Outline  {.smaller}
+
+-   **Session 1: Introduction to R and Spatial Data Basics**
+-   Session 2: Classification and Creating a Choropleth Map
+-   Session 3: Map Customisation and Automation in R
+-    Session 4: Clustering Crime Points and Working with Your Own Data
+
 
 ## What is GIS?
 
@@ -233,6 +286,7 @@ format:
 -   Turning (spatial) data into information ![](images/turning-data-into-information.png)
 -   Using this information to answer (research) questions
     -   *"How have housing conditions changed in the past ten years?"*
+    -   *"Where are groups of patients more likely to be suffering from obesity?"*
 
 ## What can a GIS can answer?
 
@@ -352,7 +406,7 @@ format:
 - GeoAI
   - Geographical Analysis
   - LLM / ChatGPT / assistant
-    - [Kue: AI Chatbot for QGIS](https://www.linkedin.com/feed/update/urn:li:activity:7292210014490951683/)
+    - [Kue Plugin: An AI Chatbot for QGIS, LinkedIn Post Feb 2025](https://www.linkedin.com/posts/jvdkwast_exploring-the-kue-plugin-an-ai-chatbot-for-activity-7286496279147237377-9KpP/)
     - Using (any) chatbot for coding
 :::
 
@@ -422,178 +476,7 @@ format:
 -   Python is also another popular option
 -   *All can be useful - Try data in QGIS / ArcGIS if you like*
 
-## Projections
 
--   Projection - going from a sphere to a flat surface
-
-![](images/globe-flat-surface.png)
-
-<font size="2">http://www.primap.com/wsen/Maps/MapCollection/WorldMaps/Globe-(Europe-centered)-Vegetation-4000x4000.html</font>
-
-------------------------------------------------------------------------
-
-## Projections
-
--   Projection - going from a sphere to a flat surface
-
-![](images/orange.png)
-
-<font size="2">http://www.hdwallpapersos.com/orange-fruit-hd-wallpapers.html</font>
-
-------------------------------------------------------------------------
-
-## Mercator Projection
-
-![](images/mercator-1.png)
-
-------------------------------------------------------------------------
-
-![](images/mercator-peters.png)
-
-------------------------------------------------------------------------
-
-![](images/mercator-globe.png)
-
-------------------------------------------------------------------------
-
-![](images/mercator-peters.png)
-
-------------------------------------------------------------------------
-
-![](images/mercator-peters-2.png)
-
-------------------------------------------------------------------------
-
-![](images/mercator-2.png)
-
-------------------------------------------------------------------------
-
-##
-
-![](images/ch2-projections.png)
-
-
-## Why are Projections important?
-
-::: fragment
-1.  The map(s) may not be as they appear
-:::
-
-::: fragment
-2.  Data may appear in the wrong place
-:::
-
-------------------------------------------------------------------------
-
-![](images/base-map.png)
-
-------------------------------------------------------------------------
-
-![](images/base-map-uk-data.png)
-
-------------------------------------------------------------------------
-
-## Why are Projections important?
-
-1.  The map(s) may not be as they appear
-2.  Data may appear in the wrong place
-3.  Coordinate Systems
-
-## Coordinate Systems
-
-Latitude and Longitude (WGS 1984)
-
-*52°N 37' 30.32'' (52.6250) 1°E 14' 2.05'' (1.2339)*
-
-![](images/lat-lng.png)
-
-## Coordinate Systems
-
-British National Grid
-
-*Easting: 619301 Northing: 307416*
-
-![](images/bng.png)
-
-## Coordinate Systems
-
-UTM (Universal Transverse Mercator)
-
-*621160.98, 3349893.53 meters, Zone 31 N*
-
-![](images/utm.png)
-
-## Coordinate Systems
-
-UTM (Universal Transverse Mercator)
-
-*621160.98, 3349893.53 meters, Zone 31 N*
-
-![](images/utm-europe.png)
-
-## Geographic and Projected Coordinate Systems
-
-We can split these coordinate systems into two groups:
-
-- Geographic Coordinate Systems
-- Projected Coordinate Systems
-
-## Geographic and Projected Coordinate Systems
-
-- **Geographic Coordinate Systems**
-  - Where on the Earth’s surface something is
-  - 52°N 37’ 30.32’’ (52.6250)	1°E 14’ 2.05’’ (1.2339) 
-  - Usually in angular units (degrees)
-
-## Geographic and Projected Coordinate Systems
-
- ![](images/distance-lines-longitude.jfif){width="500"}  
- 
- <font size="2">Thanks to [@RickyAngueira](https://twitter.com/RickyAngueira) from [#30DayMapChallenge on Twitter](https://twitter.com/RickyAngueira/status/1594030866132410368?t=Mljsd9aPHr7IzLTrp3o45A&s=09). 
-</font>
-
-## Geographic and Projected Coordinate Systems
-
-- **Geographic Coordinate Systems**
-  - Where on the Earth’s surface something is
-  - 52°N 37’ 30.32’’ (52.6250)	1°E 14’ 2.05’’ (1.2339) 
-  - Usually in angular units (degrees)
-- **Projected Coordinate Systems**
-  - How we show this on a printed/flat map
-  - Easting: 619301	Northing: 307416
-  - Usually in linear units (meters)
-  
-## Coordinate Systems
-
-- **Geographic** : Latitude and Longitude (WGS 1984)
-  - 52.6250°	1.2339° **EPSG: 4326**
-- **Projected Coordinate Systems**
-  - British National Grid (Eastings & Northings)
-    - Easting: 619301	Northing: 307416 **EPSG: 27700**
-  - UTM (Universal Transverse Mercator)
-    - 621160.98, 3349893.53 meters, Zone 14 N **EPSG: depends on zone**
-- https://epsg.org/ | https://epsg.io/ 
-
-## Coordinate Systems
-
--   Why is it important?
-    -   Some data uses WGS84, some BNG, UTM
-    -   OS & Census data use BNG (Eastings/Northings)
-    -   Need to convert between the two
--   Some GIS convert automatically -- **R does not**
-
-## Which system to use?
-
-- For Global data, projections are key
-  - WGS 84 EPSG:4326 Mercator 
-  - *ESPG: 3857 Web Mercator*
-  - Try WGS 84 / Equal Earth Greenwich EPSG:8857
-
-- For Local data, projections are less important
-  - We are using Projected Coordinate System
-  
-  
-- We can convert data between projection systems
 
 
 ------------------------------------------------------------------------
@@ -756,32 +639,51 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 - *(but you can copy/paste long bits)*
 - Optional exercises
 
-<!--
+
 ## Files
 
-![](images/instats-download.png)
-
 - Slides - slides for session 1 ;-)
-- Program Files - `script-examples.zip`
+- Data Files - `script-examples.zip`
 - Readings - `glossary.pdf`
-- Workbook - `workbook.pdf` & `workbook.html`
--->
+- Other - `workbook.pdf` & `workbook.html`
+
+<!-- end -->
+
+<!-- InStats -->
+##
+
+![](images/InStatsStop.png)
+
+## <!-- Blank slide -->
+
+##
 
 ## Housekeeping - Practicals
 
 - Work through the workbook (questions, optional exercises)
 - Will split into groups of ~3 people (breakout rooms)
 - Ask your group colleagues questions
-- Post in WhatsApp
+- <!-- Post in WhatsApp -->
 
 - Use the ‘Ask for help’ button in the Breakout room
 - I will ‘walk around’ and see how people are getting on
 - Can share screens – in groups, or individually
 - Breaks
 
-## Let's start!
 
-<!-- InStats
+## Outline
+
+- ~~1:00pm – 1:45pm: What is GIS, Spatial Data & R?~~
+- 1:45pm – 2:30pm: Practical 1: Intro to R & GIS
+- 2:30pm – 2:45pm: break
+- 2:45pm – 3:05pm: Classification discussion
+- 3:05pm – 4:00pm: Practical 2: Making a Map
+
+<!-- ## Let's start! -->
+
+## Break
+
+<!-- InStats 
 ## Outline  {.smaller}
 
 -   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
@@ -794,7 +696,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 -->
     
 
-<!--  NCRM -->
+<!--  NCRM  
 ## Outline {.smaller}
 
 -   **Day 1**:
@@ -807,7 +709,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
     -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
     -   11:30am - 11:45am -- break
     -   11:45am - 1:00pm -- Practical 4: Bring Your Own Data
-
+-->
 
 <!-- offline 
 ## Classification
@@ -835,21 +737,12 @@ Remember to show in the table which colours represent which countries!
 
 -->
 
-<!-- end -->
-
-<!-- InStats
-##
-
-![](images/InStatsStop.png)
-
-## <!-- Blank slide -->
-<!--
 ##
 
 ![](images/InStatsStart.png)
 
 ## <!-- Blank slide -->
-<!--
+
 ![](images/WelcomeToInStats.png)
 
 ## 
@@ -860,7 +753,16 @@ Remember to show in the table which colours represent which countries!
 
 <center> <h3>Session 2: Classification and Creating a Choropleth Map</h3></center>
 
--->
+
+
+## Outline  {.smaller}
+
+-   Session 1: Introduction to R and Spatial Data Basics
+-   **Session 2: Classification and Creating a Choropleth Map**
+-   Session 3: Map Customisation and Automation in R
+-    Session 4: Clustering Crime Points and Working with Your Own Data
+
+
 
 ## Classification
 
@@ -958,6 +860,16 @@ https://jcheshire.com/resources/different-maps-same-data/
 -   A bit like cookery
 -   But we have covered some 'rules of thumb'
 
+## 
+
+Continue with the Practical
+
+##
+
+![](images/InStatsStop.png)
+
+## <!-- Blank slide -->
+
 <!--
 
 ## Outline  {.smaller}
@@ -996,7 +908,7 @@ https://jcheshire.com/resources/different-maps-same-data/
     -   12:05pm - 1:00pm -- Practical 2: Making a Map
 -->
     
-<!-- NCRM -->
+<!-- NCRM 
 
 ## Outline {.smaller}
 
@@ -1010,25 +922,33 @@ https://jcheshire.com/resources/different-maps-same-data/
     -   10:20am - 11:30am -- Practical 3: Clustering of Crime Points
     -   11:30am - 11:45am -- break
     -   11:45am - 1:00pm -- Practical 4: Bring Your Own Data
+-->
 
 
-<!--
+## Outline
+
+- ~~1:00pm – 1:45pm: What is GIS, Spatial Data & R?~~
+- ~~1:45pm – 2:30pm: Practical 1: Intro to R & GIS~~
+- ~~2:30pm – 2:45pm: break~~
+- ~~2:45pm – 3:05pm: Classification discussion~~
+- 3:05pm – 4:00pm: Practical 2: Making a Map
+
+##
+
+Continue with the Practical
+
+
 
 ## Any Questions?
 
-## 
-
-![](images/InStatsStop.png)
-
-## <!-- Blank slide -->
 
 ## Next session
 
-- Tomorrow - Wed 28th May
+- Tomorrow
 
-- 10am - 1pm (UK/London time)
+- 1pm - 4pm (UK/London time)
 
-<!-- - Do post any further questions on the forum -->
+- Do post any further questions on the forum
 
 - Recording should be available soon (<24 hrs)
 
@@ -1036,6 +956,7 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 ## Day 2
 
+<!-- 
 ##
 
 ![](images/ncrm-welcome-slide1.png)
@@ -1044,10 +965,11 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 
 ![](images/ncrm-welcome-slide2.png)
-
+-->
+<!--
 ## Recap Quiz
-
-<!-- NCRM -->
+-->
+<!-- NCRM 
 
 ## Outline {.smaller}
 
@@ -1064,6 +986,46 @@ https://jcheshire.com/resources/different-maps-same-data/
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
 
+-->
+
+## Intro to Spatial Data and R as a GIS
+
+### InStats
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Dr Nick Bearman
+
+[nick@nickbearman.com]{style="text-decoration: underline;"}
+
+<font size = 6>
+*GIS Trainer & Consultant (freelance) 
+<br>UCL Geography*
+</font>
+
+12th November 2025
+
+Starting 1pm (UK/London)
+
+:::
+
+::: {.column width="50%"}
+
+While we wait, please say Hi in the chat, and ask any questions you have from yesterday.
+
+:::
+
+::::
+
+## Outline 
+
+- 1:00pm – 1:15pm: GIS Data Types, Scale
+- 1:15pm – 1:40pm: Map Automation in R: Loops
+- 1:40pm - 2:30pm: Practical 2 ctd.: Loops in R 
+- 2:30pm – 2:45pm: break
+- 2:45pm – 4:00pm: Practical 3: Clustering of Crime Points & Working with your own data
 
 <!--
 ##
@@ -1092,6 +1054,7 @@ Outline
     - 12:00pm - 1:00pm -- Working with your Own Data
 
 ## Recap Quiz
+-->
 
 ##
 
@@ -1099,7 +1062,7 @@ Outline
 
 
 ## <!-- Blank slide -->
-<!--
+
 ![](images/WelcomeToInStats.png)
 
 ## 
@@ -1109,9 +1072,15 @@ Outline
 <p> <center>--</center>
 
 <center> <h3>Session 3: Map Customisation and Automation in R</h3></center>
--->
+
 <!-- InStats -->
 
+## Outline  {.smaller}
+
+-   Session 1: Introduction to R and Spatial Data Basics
+-   Session 2: Classification and Creating a Choropleth Map
+-   **Session 3: Map Customisation and Automation in R**
+-    Session 4: Clustering Crime Points and Working with Your Own Data
 
 
 ## Outline
@@ -1523,7 +1492,7 @@ use it as a larger scale
 - Dynamic data
   - Dynamic scale - pulls in additional data (from internet)
   - Not editable / usable for analysis (no attribute table)
-  - Useful if data changes
+  - Useful if data changes - Can sometimes access via an API
 - Static data
   - Fixed scale - can’t get additional data (need another file)
   - Editable and usable for analysis (attribute table)
@@ -1544,6 +1513,8 @@ Dynamic basemap `tmap_mode("view")`
 
 :::
 
+<!--
+
 ## Outline {.smaller}
 
 -   ~~Day 1:~~
@@ -1558,6 +1529,15 @@ Dynamic basemap `tmap_mode("view")`
     -   11:30am - 11:45am -- break
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
+    
+-->
+
+## Outline 
+
+- ~~GIS Data Types, Scale~~
+- Map Automation in R: Loops
+- Practical 2 ctd.: Loops in R 
+- Practical 3: Clustering of Crime Points & Working with your own data
 
 ## R code in loops {auto-animate="true"}
 
@@ -1737,7 +1717,7 @@ for (i in 1:3) {
 #set which variables will be mapped
 mapvariables <- c("Total", "Age00to04", "Age05to09")
 #loop through for each map
-for (i in 1:length(4)) {
+for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
   	tm_polygons(fill = mapvariables[i],
@@ -1760,7 +1740,7 @@ for (i in 1:length(4)) {
 #set which variables will be mapped
 mapvariables <- c("Total", "Age00to04", "Age05to09")
 #loop through for each map
-for (i in 1:length(4)) {
+for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
   	tm_polygons(fill = mapvariables[1],
@@ -1783,7 +1763,7 @@ for (i in 1:length(4)) {
 #set which variables will be mapped
 mapvariables <- c("Total", "Age00to04", "Age05to09")
 #loop through for each map
-for (i in 1:length(4)) {
+for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
   	tm_polygons(fill = "Total",
@@ -1806,7 +1786,7 @@ for (i in 1:length(4)) {
 #set which variables will be mapped
 mapvariables <- c("Total", "Age00to04", "Age05to09")
 #loop through for each map
-for (i in 1:length(4)) {
+for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
   	tm_polygons(fill = "Total",
@@ -1829,7 +1809,7 @@ for (i in 1:length(4)) {
 #set which variables will be mapped
 mapvariables <- c("Total", "Age00to04", "Age05to09")
 #loop through for each map
-for (i in 1:length(4)) {
+for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
   	tm_polygons(fill = "Total",
@@ -1852,7 +1832,7 @@ for (i in 1:length(4)) {
 #set which variables will be mapped
 mapvariables <- c("Total", "Age00to04", "Age05to09")
 #loop through for each map
-for (i in 1:length(4)) {
+for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
   	tm_polygons(fill = "Total",
@@ -1875,7 +1855,7 @@ for (i in 1:length(4)) {
 #set which variables will be mapped
 mapvariables <- c("Total", "Age00to04", "Age05to09")
 #loop through for each map
-for (i in 1:length(4)) {
+for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
   	tm_polygons(fill = "Total",
@@ -1898,7 +1878,7 @@ for (i in 1:length(4)) {
 #set which variables will be mapped
 mapvariables <- c("Total", "Age00to04", "Age05to09")
 #loop through for each map
-for (i in 1:length(4)) {
+for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
   	tm_polygons(fill = "Total",
@@ -2107,7 +2087,7 @@ for (i in 1:length(mapvariables)) {
 
 Questions?
 
-<!-- NCRM -->
+<!-- NCRM 
 ## Outline {.smaller}
 
 -   ~~Day 1:~~
@@ -2122,7 +2102,7 @@ Questions?
     -   11:30am - 11:45am -- break
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
-
+-->
 <!-- one day
 ## Outline {.smaller}
 
@@ -2137,12 +2117,30 @@ Questions?
     -   2:30pm - 2:45pm -- break
     -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
 -->
-<!--
+
+##
+
+Continue with the practical
+
+
 ##
 
 ![](images/InStatsStop.png)
 
+
+## Outline 
+
+- ~~1:00pm – 1:15pm: GIS Data Types, Scale~~
+- ~~1:15pm – 1:40pm: Map Automation in R: Loops~~
+- 1:40pm - 2:30pm: Practical 2 ctd.: Loops in R 
+- 2:30pm – 2:45pm: break
+- 2:45pm – 4:00pm: Practical 3: Clustering of Crime Points & Working with your own data
+
+
+
 ##
+
+<!--
 
 ## Outline  {.smaller}
 
@@ -2155,6 +2153,8 @@ Questions?
     - 11:45am - 12:00pm -- Point in Polygon & Reprojection
     - 12:00pm - 1:00pm -- Working with your Own Data
 
+-->
+<!--
 ##
 
 ## Outline  {.smaller}
@@ -2168,25 +2168,18 @@ Questions?
     - 11:45am - 12:00pm -- Point in Polygon & Reprojection
     - 12:00pm - 1:00pm -- Working with your Own Data
 
+-->
 
 ## <!-- Blank slide 
 
 ![](images/InStatsStart.png)
 
-## <!-- Blank slide -->
+
+
+
+
+
 <!--
-![](images/WelcomeToInStats.png)
-
-## 
-
-<center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
-
-<p> <center>--</center>
-
-<center> <h3>Session 4: Clustering Crime Points and Working with your Own Data</h3></center>
-
--->
-
 ## Outline {.smaller}
 
 -   ~~Day 1:~~
@@ -2202,7 +2195,11 @@ Questions?
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
     
+-->
+
 ## Break
+
+<!--
 
 ## Outline {.smaller}
 
@@ -2219,6 +2216,26 @@ Questions?
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
 
+-->
+## <!-- Blank slide -->
+
+![](images/WelcomeToInStats.png)
+
+##
+
+<center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
+
+<p> <center>--</center>
+
+<center> <h3>Session 4: Clustering Crime Points and Working with Your Own Data</h3></center>
+
+## Outline  {.smaller}
+
+-   Session 1: Introduction to R and Spatial Data Basics**
+-   Session 2: Classification and Creating a Choropleth Map
+-   Session 3: Map Customisation and Automation in R
+-   **Session 4: Clustering Crime Points and Working with Your Own Data**
+
 ## Spatial Data in R: sf and sp
 
 - So far we have used `sf` library for all our code
@@ -2227,6 +2244,7 @@ Questions?
 - May still come across it online / Stack Exchange
 - Be aware!
 - *Lots of gory details in [four part blog post](https://r-spatial.org/r/2023/05/15/evolution4.html) on [r-spatial.org](https://r-spatial.org/)*
+- Example in `\script-examples\script-SP-*`
 
 ## `tmap` and `ggplot`
 
@@ -2282,6 +2300,226 @@ Polygons = LSOA
 :::
 
 :::
+
+## Reprojection
+
+We can work with the two layers of data
+
+- But LSOA are in British National Grid coordinates
+
+- Crime data are in latitude / longitude coordinates
+
+We need the data to be in the same coordinate system
+
+So let's talk about projections and coordinate systems
+
+## Projections
+
+-   Projection - going from a sphere to a flat surface
+
+![](images/globe-flat-surface.png)
+
+<font size="2">http://www.primap.com/wsen/Maps/MapCollection/WorldMaps/Globe-(Europe-centered)-Vegetation-4000x4000.html</font>
+
+------------------------------------------------------------------------
+
+## Projections
+
+-   Projection - going from a sphere to a flat surface
+
+![](images/orange.png)
+
+<font size="2">http://www.hdwallpapersos.com/orange-fruit-hd-wallpapers.html</font>
+
+------------------------------------------------------------------------
+
+## Mercator Projection
+
+![](images/mercator-1.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-peters.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-globe.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-peters.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-peters-2.png)
+
+------------------------------------------------------------------------
+
+![](images/mercator-2.png)
+
+------------------------------------------------------------------------
+
+##
+
+![](images/reuters-mercator.png)
+
+<font size = "2">[https://www.reuters.com/graphics/AFRICA-MAP/lgpdaqrdyvo](https://www.reuters.com/graphics/AFRICA-MAP/lgpdaqrdyvo)</font>
+
+##
+
+![](images/ch2-projections.png)
+
+[YouTube - Why all world maps are wrong](https://www.youtube.com/watch?v=kIID5FDi2JQ)
+
+
+## Why are Projections important?
+
+::: fragment
+1.  The map(s) may not be as they appear
+:::
+
+::: fragment
+2.  Data may appear in the wrong place
+:::
+
+------------------------------------------------------------------------
+
+![](images/base-map.png)
+
+------------------------------------------------------------------------
+
+![](images/base-map-uk-data.png)
+
+------------------------------------------------------------------------
+
+## Why are Projections important?
+
+1.  The map(s) may not be as they appear
+2.  Data may appear in the wrong place
+3.  Coordinate Systems
+
+## Coordinate Systems
+
+Latitude and Longitude (WGS 1984)
+
+*52°N 37' 30.32'' (52.6250) 1°E 14' 2.05'' (1.2339)*
+
+![](images/lat-lng.png)
+
+## Coordinate Systems
+
+British National Grid
+
+*Easting: 619301 Northing: 307416*
+
+![](images/bng.png)
+
+## Coordinate Systems
+
+UTM (Universal Transverse Mercator)
+
+*621160.98, 3349893.53 meters, Zone 31 N*
+
+![](images/utm.png)
+
+## Coordinate Systems
+
+UTM (Universal Transverse Mercator)
+
+*621160.98, 3349893.53 meters, Zone 31 N*
+
+![](images/utm-europe.png)
+
+## Geographic and Projected Coordinate Systems
+
+We can split these coordinate systems into two groups:
+
+- Geographic Coordinate Systems
+- Projected Coordinate Systems
+
+## Geographic and Projected Coordinate Systems
+
+- **Geographic Coordinate Systems**
+  - Where on the Earth’s surface something is
+  - 52°N 37’ 30.32’’ (52.6250)	1°E 14’ 2.05’’ (1.2339) 
+  - Usually in angular units (degrees)
+
+## Geographic and Projected Coordinate Systems
+
+ ![](images/distance-lines-longitude.jfif){width="500"}  
+ 
+ <font size="2">Thanks to [@RickyAngueira](https://twitter.com/RickyAngueira) from [#30DayMapChallenge on Twitter](https://twitter.com/RickyAngueira/status/1594030866132410368?t=Mljsd9aPHr7IzLTrp3o45A&s=09). 
+</font>
+
+## Geographic and Projected Coordinate Systems
+
+- **Geographic Coordinate Systems**
+  - Where on the Earth’s surface something is
+  - 52°N 37’ 30.32’’ (52.6250)	1°E 14’ 2.05’’ (1.2339) 
+  - Usually in angular units (degrees)
+- **Projected Coordinate Systems**
+  - How we show this on a printed/flat map
+  - Easting: 619301	Northing: 307416
+  - Usually in linear units (meters)
+  
+## Coordinate Systems
+
+- **Geographic** : Latitude and Longitude (WGS 1984)
+  - 52.6250°	1.2339° **EPSG: 4326**
+- **Projected Coordinate Systems**
+  - British National Grid (Eastings & Northings)
+    - Easting: 619301	Northing: 307416 **EPSG: 27700**
+  - UTM (Universal Transverse Mercator)
+    - 621160.98, 3349893.53 meters, Zone 14 N **EPSG: depends on zone**
+- https://epsg.org/ | https://epsg.io/ 
+
+## Coordinate Systems
+
+-   Why is it important?
+    -   Some data uses WGS84, some BNG, UTM
+    -   OS & Census data use BNG (Eastings/Northings)
+    -   Need to convert between the two
+-   Some GIS convert automatically -- **R does not**
+
+## Which system to use?
+
+- For Global data, projections are key
+  - WGS 84 EPSG:4326 Mercator 
+  - *ESPG: 3857 Web Mercator*
+  - Try WGS 84 / Equal Earth Greenwich EPSG:8857
+
+- For Local data, projections are less important
+  - We are using Projected Coordinate System
+  
+  
+- We can convert data between projection systems
+
+## Reprojection
+
+::: columns
+::: {.column width="50%"}
+![](images/pip1.png)
+:::
+
+::: {.column width="50%"}
+![](images/pip2.png)
+:::
+
+:::
+
+## Reprojection
+
+We can work with the two layers of data
+
+- But LSOA are in British National Grid coordinates
+
+- Crime data are in latitude / longitude coordinates
+
+We need the data to be in the same coordinate system
+
+So we need to reproject one dataset to another
+
+We are going to reproject crime data from lat/long to BNG
 
 ## Reprojection
 
@@ -2372,6 +2610,7 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
     - 12:00pm - 1:00pm -- Working with your Own Data
 -->
 
+<!--
 ## Outline {.smaller}
 
 -   ~~Day 1:~~
@@ -2386,8 +2625,15 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
     -   ~~11:30am - 11:45am -- break~~
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
+-->
 
-## Working with your own data
+## Continue with the practical
+
+and/or Working with your own data
+
+- *Bonus exercise* Police Data API
+
+- See if you can apply the techniques to your own data
 
 <!-- InStats
 ## Well Done!
@@ -2399,6 +2645,10 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 -   Day 2 - Session 3: Map Customisation and Automation in R
 -   Day 2 - Session 4: Clustering Crime Points and Working with Your Own Data
 -->
+
+##
+
+## Wrap-up
 
 ## Useful Tips {.smaller}
 
@@ -2539,7 +2789,7 @@ Free at [https://r.geocompx.org/](https://r.geocompx.org/)
     -   GIS: Research Methods, £13, available today
 
 -->
-
+<!--
 ## Feedback
 
 - Form only takes a few min to fill in
@@ -2549,18 +2799,31 @@ Free at [https://r.geocompx.org/](https://r.geocompx.org/)
 - Feedback - [https://www.ncrm.ac.uk/surveys/hub](https://www.ncrm.ac.uk/surveys/hub)
 - Course Name: Introduction to Spatial Data and Using R as a GIS
 - Start Date: 27th May 2025
+-->
 
 ## Next Steps
+<!--
 
 -   Repeat this material in 2-3 weeks / 2-3 months
 -   Lots of free tutorials available online
 -   GIS Training Courses -   [www.nickbearman.com](https://www.nickbearman.com)
-- Advanced R as a GIS: Spatial Analysis and Statistics 
+- Advanced R as a GIS: Spatial Analysis
   - *next week*
   - Be able to interpret Spatial Autocorrelation
   - Perform Local Indicators of Spatial Autocorrelation
   - Know how to use buffers within R
   - Pros and cons of using point or polygon data
+-->
+
+-   Repeat this material in 2-3 weeks / 2-3 months
+-   Lots of free tutorials available online
+-   GIS Training Courses -   [www.nickbearman.com](https://www.nickbearman.com)
+- *Advanced R as a GIS: Spatial Analysis*: 19th - 20th Nov
+  - Know how to use buffers within R
+  - Pros and cons of using point or polygon data
+- *Spatial Statistics in R*: 2nd Dec
+  - Be able to interpret Spatial Autocorrelation
+  - Perform Local Indicators of Spatial Autocorrelation
 
 ## Thank You 
 
