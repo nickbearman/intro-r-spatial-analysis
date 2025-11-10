@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Spatial Data and R as a GIS"
-subtitle: "Tue 11th and Wed 12th Nov 2025 | 10am - 1pm"
+subtitle: "Tue 11th and Wed 12th Nov 2025 | 1pm - 4pm"
 author: "Dr Nick Bearman"
 format: 
   revealjs:
@@ -2635,6 +2635,14 @@ and/or Working with your own data
 
 - See if you can apply the techniques to your own data
 
+<!-- InStats -->
+##
+
+![](images/InStatsStop.png)
+
+## <!-- Blank slide -->
+
+
 <!-- InStats
 ## Well Done!
 
@@ -2647,6 +2655,21 @@ and/or Working with your own data
 -->
 
 ##
+
+## <!-- Blank slide 
+
+![](images/InStatsStart.png)
+
+
+## 
+
+<!-- Blank slide -->
+
+<!-- InStats -->
+##
+
+![](images/InStatsStart.png)
+
 
 ## Wrap-up
 
@@ -2824,6 +2847,13 @@ Free at [https://r.geocompx.org/](https://r.geocompx.org/)
 - *Spatial Statistics in R*: 2nd Dec
   - Be able to interpret Spatial Autocorrelation
   - Perform Local Indicators of Spatial Autocorrelation
+
+<!-- InStats -->
+##
+
+![](images/InStatsStop.png)
+
+## <!-- Blank slide -->
 
 ## Thank You 
 
