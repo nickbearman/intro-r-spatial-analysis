@@ -91,8 +91,8 @@ mean(house.prices)
 
 If the house prices are in thousands of pounds, then this tells us that the mean house price is 176,900 GBP.  Note that on your display, the answer may be displayed to more significant digits, so you may have something like `r mean(house.prices)` as the mean value.
 
-The Data Frame
-------------
+### The Data Frame
+
 R has a way of storing data in an object called a **data frame**. This is rather like an internal spreadsheet where all the relevant data items are stored together as a set of columns. 
 
 We have a CSV file of house prices and burglary rates, which we can load into R. We can use a function called `read.csv` which, as you might guess, reads CSV files. Run the line of code below, which loads the CSV file into a variable called `hp.data`. 
@@ -329,7 +329,7 @@ Now we have the attribute data (the number of people in each age group in each L
 
 <!-- Last checked 2025-11-05 -->
   
-Extract the files, and move all the files starting with the name `england_lsoa_2021` to your working folder. Then read in the data:
+Extract the files, and move **all** the files starting with the name `england_lsoa_2021` to your working folder. Then read in the data:
   
 ```{r, echo=FALSE, comment=NA}
 #download.file("http://www.nickbearman.me.uk/data/r/england_lsoa_2011.zip","england_lsoa_2011.zip")
