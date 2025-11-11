@@ -835,9 +835,143 @@ https://theconversation.com/next-slide-please-data-visualisation-expert-on-whats
 https://jcheshire.com/resources/different-maps-same-data/
 :::
 
-------------------------------------------------------------------------
+
+## Histogram
 
 ![](images/qgis-symbology-histogram.png)
+
+## Histogram {auto-animate="true"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+
+
+:::
+::: {.column width="50%"}
+
+```{.r code-line-numbers="1-2"}
+#select the variable
+  var <- LSOA$Age00to04
+#calculate the breaks
+  library(classInt)
+  breaks <- classIntervals(var, 
+    n = 6, style = "fisher")
+#draw histogram
+  hist(var)
+#add breaks to histogram
+  abline(v = breaks$brks, 
+    col = "red")
+```
+
+:::
+::::
+
+## Histogram {auto-animate="true"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+
+
+:::
+::: {.column width="50%"}
+
+```{.r code-line-numbers="3-6"}
+#select the variable
+  var <- LSOA$Age00to04
+#calculate the breaks
+  library(classInt)
+  breaks <- classIntervals(var, 
+    n = 6, style = "fisher")
+#draw histogram
+  hist(var)
+#add breaks to histogram
+  abline(v = breaks$brks, 
+    col = "red")
+```
+
+:::
+::::
+
+## Histogram {auto-animate="true"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+![](images/hist-var.png)
+
+:::
+::: {.column width="50%"}
+
+```{.r code-line-numbers="7-8"}
+#select the variable
+  var <- LSOA$Age00to04
+#calculate the breaks
+  library(classInt)
+  breaks <- classIntervals(var, 
+    n = 6, style = "fisher")
+#draw histogram
+  hist(var)
+#add breaks to histogram
+  abline(v = breaks$brks, 
+    col = "red")
+```
+
+:::
+::::
+
+## Histogram {auto-animate="true"}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+![](images/hist-var-breaks.png)
+
+:::
+::: {.column width="50%"}
+
+```{.r code-line-numbers="9-11"}
+#select the variable
+  var <- LSOA$Age00to04
+#calculate the breaks
+  library(classInt)
+  breaks <- classIntervals(var, 
+    n = 6, style = "fisher")
+#draw histogram
+  hist(var)
+#add breaks to histogram
+  abline(v = breaks$brks, 
+    col = "red")
+```
+
+:::
+::::
+
+## Histogram
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+![](images/hist-var-breaks.png)
+
+:::
+::: {.column width="50%"}
+
+![](images/hist-var-breaks-map.png)
+
+:::
+::::
 
 ## Classification - Colours
 
@@ -859,6 +993,71 @@ https://jcheshire.com/resources/different-maps-same-data/
 -   There is no 'right' answer
 -   A bit like cookery
 -   But we have covered some 'rules of thumb'
+
+## Useful Tips
+
+- Up arrow in the **Console** shows you the previous command
+- **Plot** window has a back arrow
+- and an **Export** function
+- **Tab Completion** is really useful
+
+## Code Debugging
+
+- R error messages can be cryptic
+- Remember
+  - case sensitive
+  - picky about `, [ ] ( )`
+  - typos
+
+## Common Errors
+
+`Error: could not find function "st_read"`
+
+- Try re-loading the library `library(sf)`
+
+`Error: Cannot open "england_lsoa_2021.shps";`
+
+`The file doesn't seem to exist.`
+
+- Check typos and working directory
+
+## Waiting for commands
+
+```{.r}
+> 1+4
+[1] 5
+```
+
+```{.r}
+> 5*90
+[1] 450
+```
+
+```{.r}
+> 5*
++
+```
+
+
+## Why use R Scripts?
+
+- Easier to correct code
+- Can easily re run sections of code, or all code if you need to start again
+- Means you don't need to save your workspace
+
+-----------------
+
+![](images/rstudio-script.png)
+
+## Why use R Scripts?
+
+- Can run one line at a line
+
+- Can run a block of lines at ones
+
+- Select > **Run**
+
+- Select > **Ctrl-Enter**
 
 ## 
 
