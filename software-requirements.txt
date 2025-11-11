@@ -1,17 +1,8 @@
 software-requirements
 
-R (3.5 or above)
-RStudio (1.1.456 or above)
+R (4.5 or above) (4.2.2 is too old, 4.5.2 is fine)
+RStudio (2025.09.2 or above)
 
 Libraries:
 sf
 tmap
-rgdal
-GISTools
-maptools
-rgdal
-classInt
-RColorBrewer
-rgeos
-spatstat
-sp
