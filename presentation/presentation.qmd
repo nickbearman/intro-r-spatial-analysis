@@ -1405,6 +1405,35 @@ Outline
 | ....                 |        |        |  
 
 
+## Shapefiles {.smaller}
+
+![](images/shapefiles.png)
+
+- `.shp` the geometry (polygons) themselves 
+- `.shx` extra geometry information
+- `.dbf` attribute information (dBase IV format)
+- `.prj` projection & coordinate system info
+- `.qpj` QGIS version of projection & coordinate system information *[(more gory details)](https://gis.stackexchange.com/questions/55545/qpj-files-on-esri-software)*
+
+- *[https://en.wikipedia.org/wiki/Shapefile](https://en.wikipedia.org/wiki/Shapefile)*
+
+## Shapefiles
+
+- (One of) the most common spatial data file formats
+- ESRI 1990s, closed
+- → [spec opened July 1998](https://www.esri.com/content/dam/esrisites/sitecore-archive/Files/Pdfs/library/whitepapers/pdfs/shapefile.pdf)
+
+## Geopackage
+
+![](images/geopackage.png){.absolute right="0" top="0"}
+
+- Everything is contained in a single file
+- Easier file management with GeoPackage 
+- No multiple files! 
+- Many layers in one file
+- Faster work-flow than with shapefiles
+- There are nearly no limitations on field names (10 char in shapefile)
+
 ## Spatial Data
 
 - Data is crucial to GIS
@@ -2246,7 +2275,7 @@ mapvariables <- c("Total", "Age00to04", "Age05to09")
 for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
-  	tm_polygons(fill = "Age05to05",
+  	tm_polygons(fill = "Age05to09",
                   fill.scale = tm_scale_intervals(
                     values = "brewer.greens", 
                     style = "jenks"),
@@ -2270,7 +2299,7 @@ mapvariables <- c("Total", "Age00to04", "Age05to09")
 for (i in 1:length(mapvariables)) {
   m <- tm_shape(LSOA) +
       # set column, colours and classification method
-  	tm_polygons(fill = "Age05to05",
+  	tm_polygons(fill = "Age05to09",
                   fill.scale = tm_scale_intervals(
                     values = "brewer.greens", 
                     style = "jenks"),

@@ -298,7 +298,7 @@ newcolnames <- c("Total","Age00to04","Age05to09","Age10to14","Age15to19",
                  "Age60to64","Age65to69","Age70to74","Age75to79",
                  "Age80to84","Age85andOver")
 
-#apply these to pop2011 data frame
+#apply these to pop2021 data frame
 colnames(pop2021)[4:22] <- newcolnames
 ```
 
@@ -679,7 +679,7 @@ There are many different ways of doing the aggregation - if you have used the `t
 
 This just tells us how many crimes there were in each LSOA - nothing about the rate. Try calculating the rate of the crimes per 10,000 people using the population data from earlier. *You will need to join the population data, `pop2021`.*
 
-You can calculate the rate by calculating `(number of crimes / population) * 10000`. See the beginning of the handout for help on calculating values. Remember you will need to refer explicitly to the data frame and variable (`LSOA_crimes_aggregated$count of crimes`) each time you mention a column, i.e. `LSOA_crimes_aggregated$count of crimes / LSOA_crimes_aggregated$AllUsualResidents * 10000`.
+You can calculate the rate by calculating `(number of crimes / population) * 10000`. See the beginning of the handout for help on calculating values. Remember you will need to refer explicitly to the data frame and variable (`LSOA_crimes_aggregated$count of crimes`) each time you mention a column, i.e. `LSOA_crimes_aggregated$count of crimes / LSOA_crimes_aggregated$Total * 10000`.
 
 *There is an "answer" script in `script-examples/script-workbook.R` but try not to look at it straight away!*
 
