@@ -2859,8 +2859,6 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 
 and/or Working with your own data
 
-- *Bonus exercise* Police Data API
-
 - See if you can apply the techniques to your own data
 
 <!-- InStats -->

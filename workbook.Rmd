@@ -2,12 +2,12 @@
 title: "Introduction to Spatial Data and Using R as a GIS"
 author: "Nick Bearman"
 output:
+  pdf_document: default
   html_document:
     df_print: default 
     toc: TRUE
     toc_float: TRUE
     self_containted: TRUE
-  pdf_document: default
 date: "Tue 11th and Wed 12th Nov 2025"
 ---
 
@@ -691,14 +691,6 @@ We used `st_read` to read in a shape file, and we can use `st_write` to export a
 #save as shapefile
 st_write(LSOA_crimes_aggregated, "LSOA-crime-count.shp")
 ```
-
-### Police API Example (optional exercise)
-
-The crime data is available through an API as well, so instead of downloading a `csv` file, you can access the data programmatically. This is useful when data updates, although in this case it is worth noting that the Crime data is updated monthly, and can often take 2-3 months to be processed before it is available. 
-
-If you have time, and want to experiment, see if you can access the Crime data via an API. 
-
-How do you do this? I will let you figure this out. But as a starting point, try consulting a LLM of your choice (e.g. [Claude.ai](Claude.ai)) and ask something like: "How do I use Police API with R? https://data.police.uk/docs/".
 
 ### `sp` library
 
