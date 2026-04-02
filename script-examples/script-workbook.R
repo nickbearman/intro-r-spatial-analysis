@@ -20,8 +20,8 @@
   hp.data <- read.csv("https://nickbearman.com/files/hpdata.csv")
   head(hp.data)
   View(hp.data)
-  #rename a column
-  colnames(hp.data)[3] <- "Price-thousands"
+  #create a new column
+  hp.data$counciltax <- NA
   #see what has happened
   head(hp.data)
   
@@ -128,7 +128,7 @@
   #set tmap to view mode
   tmap_mode("view")
   #plot using qtm
-  qtm(sthelens)
+  qtm(LSOA)
   #plot using tm_shape
   tm_shape(LSOA) +
     #Set colours and classification methods
