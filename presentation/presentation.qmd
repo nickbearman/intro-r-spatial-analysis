@@ -408,6 +408,8 @@ While we wait, please introduce yourself in the chat:
   - LLM / ChatGPT / assistant
     - [Kue Plugin: An AI Chatbot for QGIS, LinkedIn Post Feb 2025](https://www.linkedin.com/posts/jvdkwast_exploring-the-kue-plugin-an-ai-chatbot-for-activity-7286496279147237377-9KpP/)
     - Using (any) chatbot for coding
+    - [Posit AI in RStudio - subscription](https://posit.co/blog/introducing-ai-in-rstudio/)
+    - [Generative AI Tools for Quantitative Research: A Practical Guide, David Bann and Liam Wright - PAYG Positron Claude](https://repository.ncrm.ac.uk/resources/online/all/ai_tools_quantitative_research)
 :::
 
 ------------------------------------------------------------------------
