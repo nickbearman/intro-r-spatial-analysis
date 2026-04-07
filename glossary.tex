@@ -52,7 +52,9 @@ Terms in \textit{italics} are defined in the glossary, terms with \textbf{bracke
 
 \textbf{\texttt{[,]}} square brackets are used to refer to specific elements in a list or data frame. \texttt{pop2011[1,]} will show the first row and \texttt{pop2011[,1]} will show the first column
 
-\textbf{\{\}} Used in a \texttt{for} loop or a \texttt{if} statement
+\textbf{\{\}} used in a \texttt{for} loop or a \texttt{if} statement
+
+\textbf{\texttt{\%>\%}} a pipe, used by packages from the tidyverse
 
 \textbf{\texttt{<-}} assigns a value or output from a function to a variable
 
@@ -60,7 +62,8 @@ Terms in \textit{italics} are defined in the glossary, terms with \textbf{bracke
 
 \textbf{Acknowledgements} Information required on any map, including copyright or data sources  (e.g. for OpenStreetMap or Ordnance Survey Open Data)
 
-\textbf{aggregate()} group the specified data set by a column, applying a function to the values: \texttt{aggregate(x = LSOA\_crimes, by = list(LSOA\_crimes\$lsoa21cd), FUN = length)}
+\textbf{aggregate()} group the specified data set by a column, applying a function to the values:\\\texttt{aggregate(x = LSOA\_crimes,\\
+by = list(LSOA\_crimes\$lsoa21cd), FUN = length)}
 
 \textbf{BeiDou} Chinese version of \textit{GPS} (see also \textit{GNSS})
 
@@ -96,8 +99,8 @@ Terms in \textit{italics} are defined in the glossary, terms with \textbf{bracke
 
 \textbf{display.brewer.all()} shows all the potential colour palletts from the \texttt{RColorBrewer} library
 
-\textbf{download.file()} download a file from the specificed URL: \texttt{download.file("http://www.nickbearman.com/}
-\texttt{files/sthelens_lsoa_2021.zip","sthelens_lsoa_2021.zip")}}
+\textbf{download.file()} download a file from a URL: \texttt{download.file("http://www.nickbearman.com/files/
+sthelens\_lsoa\_2021.zip","sthelens\_lsoa\_2021.zip")}
 
 \textbf{Eastings} A \textit{coordinate} that specifies the distance east, in meters, from the coordinates 0, 0 south-west of the Isles of Scilly (see also \textit{BNG} and \textit{northings})
 
@@ -111,9 +114,17 @@ Terms in \textit{italics} are defined in the glossary, terms with \textbf{bracke
 
 \textbf{Field calculator} Used to calculate new values (e.g. differences) from existing values for all rows in a vector layer, accessed from the \textit{Attribute table} 
 
+\textbf{fill.chart()} Add items to the map (e.g. 
+histogram): \texttt{fill.chart = tm\_chart\_histogram()}
+
+\textbf{fill.legend()} Add items to the legend (e.g. title): \texttt{fill.legend = tm\_legend(title = "Aged 0 to 4", size = 0.8)}
+
+\textbf{fill.scale()} Specify the colours and classification: \texttt{fill.scale = tm\_scale\_intervals(values = "brewer.greens", n = 6, style = "jenks")}
+
 \textbf{Fisher} \textit{Classification} method very similar to \textit{Jenks} 
 
-\textbf{for () \{\}} begins a loop to make R repeat a command a set number of times: \texttt {for (i in 1:length(mapvariables))}
+\textbf{for () \{\}} begins a loop to make R repeat a command a set number of times:\\
+\texttt{for (i in 1:length(mapvariables))}
 
 \textbf{Galileo} European Union version of \textit{GPS} (see also \textit{GNSS})
 
@@ -261,19 +272,21 @@ Terms in \textit{italics} are defined in the glossary, terms with \textbf{bracke
 
 \textbf{style} (R) Parameter used to specify which classification method to use for a choropleth map: \texttt{style = "equal"}
 
+\textbf{summarise()} an alternative to \textit{aggregate}, from the dplyr library
+
 \textbf{T / TRUE} used to specify that we do want something: \texttt{legend.hist = T} means we want to show the legend histogram
 
-\textbf{table()} count how many different values there are in the specificed column, and output as a table: \texttt{table(crimes\_sf\_bng\$Crime.type)}
+\textbf{table()} count how many different values there are in the specified column, and output as a table: \texttt{table(crimes\_sf\_bng\$Crime.type)}
 
 \textbf{Tabular data} Data laid out in rows and columns, as used in Excel (see also \textit{CSV})
 
 \textbf{title.position} specify the location of the title on a map: \textit{title.position = c(0.7, \q{top})}
 
+tmap
+
 \textbf{tm\_borders()} specify the colour and thickness of a border around a map
 
 \textbf{tm\_compass()} specify the location of the north arrow or compass on a map: \texttt{tm\_compass(position = c(0.3, 0.07))}
-
-\textbf{tm\_dots()} specify the symbology of a point layer on a map: \texttt{tm\_dots(size = 0.1, shape = 19, col = "darkred", alpha = 0.5)}
 
 \textbf{tm\_layout()} specify a range of options in the map layout: \texttt{tm\_layout(frame = F, title = "Liverpool", title.size = 2)}
 
@@ -286,6 +299,10 @@ Terms in \textit{italics} are defined in the glossary, terms with \textbf{bracke
 \textbf{tm\_scale\_bar()} specify the location and style of the scale bar on a map \texttt{tm\_scale\_bar(width = 0.22, position = c(0.05, 0.18))}
 
 \textbf{tm\_shape()} specify the layer shown on a map, often used in conjunction with \textit{tm\_polygons()}: \texttt{tm\_shape(LSOA)}
+
+\textbf{tm\_symbols()} specify the symbology of a point layer on a map: \texttt{tm\_symbols(size = 0.1, col = "darkred", col\_alpha = 0.5)}
+
+\textbf{tm\_title()} specify the title of a map: \texttt{tm\_title("Total Population of Liverpool, 2021")}
 
 \textbf{tmap\_mode()} change the tmap mode from plot (default) to view (slippy map with basemap) or back: \texttt{tmap\_mode("view"),  tmap\_mode("plot")}
 
