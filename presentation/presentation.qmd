@@ -476,7 +476,7 @@ While we wait, please introduce yourself in the chat:
 
 -   R is different to ArcGIS, but can do the same analysis
 -   R is free (as is QGIS)
--   R is increasingly popular in the academic and commercial (data-science) sector
+-   R is increasingly popular in the academic and commercial (data-science) sector | Positron also an option
 -   Python is also another popular option
 -   *All can be useful - Try data in QGIS / ArcGIS if you like*
 
@@ -2485,7 +2485,7 @@ Continue with the practical
 - May still come across it online / Stack Exchange
 - Be aware!
 - *Lots of gory details in [four part blog post](https://r-spatial.org/r/2023/05/15/evolution4.html) on [r-spatial.org](https://r-spatial.org/)*
-- Example in `\script-examples\script-SP-*`
+- Example in `\script-examples\script-SP-single-map.R`
 
 ## `tmap` and `ggplot`
 
@@ -2496,6 +2496,8 @@ Continue with the practical
 - `tmap` a bit simpler to use
 
 - `ggplot` more flexible but also more complex
+
+- David O'Sullivan [tmap vs. ggplot2 for Mapping](https://geospatialstuff.com/posts/2024/11/16/tmap-vs-ggplot/index.html)
 
 ## Joining
 
@@ -3068,8 +3070,8 @@ Free at [https://r.geocompx.org/](https://r.geocompx.org/)
 -   Repeat this material in 2-3 weeks / 2-3 months
 -   Lots of free tutorials available online
 -   GIS Training Courses -   [www.nickbearman.com](https://www.nickbearman.com)
-- Advanced R as a GIS: Spatial Analysis
-  - *19th & 20th May*
+- [Advanced R as a GIS: Spatial Analysis](https://www.ncrm.ac.uk/training/show.php?article=14377)
+  - *19th & 20th May 2026*
   - Be able to interpret Spatial Autocorrelation
   - Perform Local Indicators of Spatial Autocorrelation
   - Know how to use buffers within R
