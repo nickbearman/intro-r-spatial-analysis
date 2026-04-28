@@ -430,7 +430,7 @@ tm_shape(LSOA) +
 
 ### Classification on a Histogram (optional exercise)
 
-You can also show a histogram with the classification breaks using this code:
+You can also show a histogram with the classification breaks using this code. *This needs the `ggplot2` library installed to work.*
 
 ```{r, eval=FALSE}
 #select the variable
@@ -452,7 +452,7 @@ We can also add a histogram of the data to the map:
 tm_shape(LSOA) +
     tm_polygons(fill = "Total",
                 fill.scale = tm_scale_intervals(values = "brewer.greens", n = 6, style = "jenks"),
-                fill.legend = tm_legend(title = "Aged 0 to 4"),
+                fill.legend = tm_legend(title = "Total Population"),
                 fill.chart = tm_chart_histogram())
 ```
 

@@ -108,7 +108,7 @@
   tm_shape(LSOA) +
     tm_polygons(fill = "Total",
                 fill.scale = tm_scale_intervals(values = "brewer.greens", n = 6, style = "jenks"),
-                fill.legend = tm_legend(title = "Aged 0 to 4"),
+                fill.legend = tm_legend(title = "Total Population"),
                 fill.chart = tm_chart_histogram())
 
 ### Scale Bar and North Arrow (optional exercise)
