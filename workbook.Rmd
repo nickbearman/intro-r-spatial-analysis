@@ -573,7 +573,7 @@ At the moment, the data is just in a data frame object - not any kind of spatial
 
 ```{r, comment=NA, warning=FALSE, message=FALSE}
 #create crimes data 
-crimes_sf <- st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = 4326)
+crimes_sf <- st_as_sf(crimes, coords = c("Longitude", "Latitude"), crs = 4326)
 ```
 
 We are taking the `crimes` data, telling R which columns have coordinates (`coords = c('Longitude', 'Latitude')`), and saying that they are in WGS 1984 (`crs = 4326`).

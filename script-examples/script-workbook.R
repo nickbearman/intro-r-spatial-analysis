@@ -173,7 +173,7 @@
   crimes <- read.csv("https://nickbearman.com/files/police-uk-2025-08-merseyside-street.csv")
   head(crimes)
   #create crimes data
-  crimes_sf <- st_as_sf(crimes, coords = c('Longitude', 'Latitude'), crs = 4326)
+  crimes_sf <- st_as_sf(crimes, coords = c("Longitude", "Latitude"), crs = 4326)
   qtm(crimes_sf)
   #reproject to British National Grid, from Latitude/Longitude
   crimes_sf_bng <- st_transform(crimes_sf, crs = 27700)
