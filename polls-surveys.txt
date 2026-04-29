@@ -51,16 +51,12 @@ One Wish - What do you wish we could have covered or done differently?
 
 Session 2: Recap Quiz
 
-Which is better?
-The Mercator projection
-The Gall-Peters projection
-The Polar projection
-None are best, it depends what you are trying to show on the map
+
 
 What is most important to remember when performing an attribute join?
 There must be the same number of columns in both data sets
-The attributes must be similar
-The attributes must be exactly the same
+The attribute must be similar
+The attribute must be exactly the same
 The data must be in the same language
 
 What do we need to remember when looking at a map:
@@ -68,6 +64,26 @@ The map is the best representation of the data
 We need to critically analyse the map to see whether it is representing the data fairly
 QGIS will only allow us to create the best choropleth map
 There is no way to misrepresent spatial data
+
+Why can attribute joins sometimes go wrong?
+Shapefiles don't support joining to external tables
+R doesn't have a built-in join function
+The joining attribute must match exactly — small differences like "The Gambia" vs "Gambia, The" will cause a failed join
+Joins only work if both datasets were created by the same person
+
+Which classification system is recommended as a 'first choice' when creating a choropleth map?
+Quantiles
+Natural Breaks / Jenks / Fisher
+Standard Deviation
+Equal Interval
+
+
+
+Which is better?
+The Mercator projection
+The Gall-Peters projection
+The Polar projection
+None are best, it depends what you are trying to show on the map
 
 What coordinate system are these coordinates likely to be in? 
 52°N 37’ 30.32’’ 1°E 14’ 2.05’’
