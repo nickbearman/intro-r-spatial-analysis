@@ -1207,7 +1207,7 @@ Continue with the Practical
 -   **Day 2**:
     -   10:00am - 10:15am -- GIS Data Types, Scale
     -   10:15am - 10:40am -- Map Automation in R: Loops
-    -   10:20am - 11:30am -- Practical 2 ctd: Loops in R
+    -   10:40am - 11:30am -- Practical 2 ctd: Loops in R
     -   11:30am - 11:45am -- break
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
@@ -1780,7 +1780,7 @@ Dynamic basemap `tmap_mode("view")`
 -   **Day 2**:
     -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
     -   10:15am - 10:40am -- Map Automation in R: Loops
-    -   10:20am - 11:30am -- Practical 2 ctd: Loops in R
+    -   10:40am - 11:30am -- Practical 2 ctd: Loops in R
     -   11:30am - 11:45am -- break
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
@@ -2342,7 +2342,11 @@ for (i in 1:length(mapvariables)) {
 } 
 ```
 
-Questions?
+## Loops for Multiple Maps
+
+- Troubleshooting tips - step through loop
+
+- Questions?
 
 <!-- NCRM -->
 ## Outline {.smaller}
@@ -2355,7 +2359,7 @@ Questions?
 -   **Day 2**:
     -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
     -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
-    -   10:20am - 11:30am -- Practical 2 ctd: Loops in R
+    -   10:40am - 11:30am -- Practical 2 ctd: Loops in R
     -   11:30am - 11:45am -- break
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
@@ -2468,7 +2472,7 @@ Continue with the practical
 -   **Day 2**:
     -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
     -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
-    -   ~~10:20am - 11:30am -- Practical 2 ctd: Loops in R~~
+    -   ~~10:40am - 11:30am -- Practical 2 ctd: Loops in R~~
     -   ~~11:30am - 11:45am -- break~~
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
@@ -2882,7 +2886,7 @@ colnames(LSOA_crimes_aggregated) <- c("lsoa21cd", "count of crimes","geometry")
 -   **Day 2**:
     -   ~~10:00am - 10:15am -- GIS Data Types, Scale~~
     -   ~~10:15am - 10:40am -- Map Automation in R: Loops~~
-    -   ~~10:20am - 11:30am -- Practical 2 ctd: Loops in R~~
+    -   ~~10:40am - 11:30am -- Practical 2 ctd: Loops in R~~
     -   ~~11:30am - 11:45am -- break~~
     -   11:45am - 1:00pm -- Practical 3: Clustering of Crime Points 
     - & Working with Your Own Data
