@@ -2,13 +2,13 @@
 title: "Introduction to Spatial Data and Using R as a GIS"
 author: "Nick Bearman"
 output:
-  pdf_document: default
   html_document:
     df_print: default 
     toc: TRUE
     toc_float: TRUE
     self_containted: TRUE
-date: "Tue 28th and Wed 29th April 2026"
+  pdf_document: default
+date: "Tue 18th and Wed 19th August 2026"
 ---
 
 ```{r setup, echo=FALSE}
@@ -694,7 +694,7 @@ st_write(LSOA_crimes_aggregated, "LSOA-crime-count.shp")
 
 ### `sp` library
 
-As I mentioned in the presentation, there is a `sp` library for R, an older library, which handles spatial data in a different way. See the presentation for details, and there are some example files in `\script-examples` called `script-SP-*` to show you how `sp` works. 
+As I mentioned in the presentation, there is a `sp` library for R, an older library, which handles spatial data in a different way. See the presentation for details, and there is an example file in `\script-examples` called `script-SP-single-map.R` to show you how `sp` works. 
 
 # Practical 4: Bring Your Own Data
 
@@ -702,7 +702,7 @@ This is the opportunity to use some of the techniques we have covered on your ow
 
 ----
 
-This practical was written using R 4.5.3 (2026-03-11), RStudio 2026.01.1+403 and `tmap` 4.2 by Dr. Nick Bearman (nick@nickbearman.com). It has also been tested in Posit Cloud, with R 4.5.3 (2026-03-11), RStudio 2026.01.1+403 and `tmap` 4.2. 
+This practical was written using R 4.5.3 (2026-03-11), RStudio 2026.01.1+403 and `tmap` 4.2, last updated on 14/07/2026 by Dr. Nick Bearman (nick@nickbearman.com). It has also been tested in Posit Cloud, with R 4.5.3 (2026-03-11), RStudio 2026.01.1+403 and `tmap` 4.2. 
 
 This work (Introduction to Spatial Data and Using R as a GIS by Nick Bearman) is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
 
