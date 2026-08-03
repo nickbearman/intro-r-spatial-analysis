@@ -1014,6 +1014,13 @@ https://jcheshire.com/resources/different-maps-same-data/
 -   A bit like cookery
 -   But we have covered some 'rules of thumb'
 
+## Extras
+
+- `tmap` is always developing, updates on [website](https://r-tmap.github.io/tmap/) or [GitHub](https://github.com/r-tmap/tmap/)
+- This includes bivariate maps: [blog post](https://geospatialstuff.com/posts/2026/01/21/bivariate-choropleths/index.html)
+
+![](images/bivariate-map.png)
+
 ## Useful Tips
 
 - Up arrow in the **Console** shows you the previous command
