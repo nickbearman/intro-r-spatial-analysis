@@ -121,7 +121,7 @@ While we wait, please introduce yourself in the chat:
 -   Video on (if possible)
 -   Questions - ask in real time, or in the chat
 -   Recording - any questions you ask will be in the recording (audio), your video will not be in the recording. 
--->
+
 
 <!-- in person course
 
