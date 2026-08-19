@@ -60,9 +60,9 @@ The attribute must be exactly the same
 The data must be in the same language
 
 What do we need to remember when looking at a map:
-The map is the best representation of the data
+The map is automatically the best representation of the data
 We need to critically analyse the map to see whether it is representing the data fairly
-QGIS will only allow us to create the best choropleth map
+R and tmap will only allow us to create the best choropleth map
 There is no way to misrepresent spatial data
 
 Why can attribute joins sometimes go wrong?
