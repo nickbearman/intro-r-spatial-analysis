@@ -8,7 +8,7 @@ output:
     toc_float: TRUE
     self_containted: TRUE
   pdf_document: default
-date: "Tue 18th and Wed 19th August 2026"
+date: "Sun 30th August 2026"
 ---
 
 ```{r setup, echo=FALSE}
@@ -35,7 +35,7 @@ knitr::opts_knit$set(root.dir = 'C:/Users/nick/Documents/work/intro-r-spatial-an
 
 R began as a statistics program and is still used as one by many users. We are going to use a program called [RStudio](http://www.rstudio.com/ "R Studio website"), which works on top of R and provides a good user interface. I'll talk a little bit about RStudio in the presentation, and the key areas of the window are highlighted below.
 
-*If you need to install RStudio, please check [here](https://nickbearman.github.io/installing-software/r-rstudio) or if you can't install it, an alternative option is to use [Posit.cloud](https://posit.cloud) to run RStudio in a web browser.*
+*If you need to install RStudio, please check [here](https://nickbearman.com/installing-software/r-rstudio) or if you can't install it, an alternative option is to use [Posit.cloud](https://posit.cloud) to run RStudio in a web browser.*
 
 ![Screenshot of RStudio](images/rstudio-labelled.png){ width=80% }
 
@@ -702,7 +702,7 @@ This is the opportunity to use some of the techniques we have covered on your ow
 
 ----
 
-This practical was written using R 4.5.3 (2026-03-11), RStudio 2026.01.1+403 and `tmap` 4.2, last updated on 14/07/2026 by Dr. Nick Bearman (nick@nickbearman.com). It has also been tested in Posit Cloud, with R 4.5.3 (2026-03-11), RStudio 2026.01.1+403 and `tmap` 4.2. 
+This practical was written using R 4.5.3 (2026-03-11), RStudio 2026.01.1+403 and `tmap` 4.2, last updated on 24/08/2026 by Dr. Nick Bearman (nick@nickbearman.com). It has also been tested in Posit Cloud, with R 4.6.1 (2026-06-24), RStudio 2026.07.1+147, `sf` 1.1-2 and `tmap` 4.4-1. 
 
 This work (Introduction to Spatial Data and Using R as a GIS by Nick Bearman) is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1">
 

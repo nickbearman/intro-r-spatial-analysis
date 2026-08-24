@@ -76,7 +76,7 @@
   tm_shape(LSOA) +
     tm_polygons(fill = "Age00to04",
                 fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"),
-                fill.legend = tm_legend(title.size = 0.8))
+                fill.legend = tm_legend(title = "Age 0 to 4", title.size = 0.8))
 
 ### Colours and Categories
   #load the R Color Brewer library
