@@ -8,7 +8,7 @@ output:
     toc_float: TRUE
     self_containted: TRUE
   pdf_document: default
-date: "Sun 30th August 2026"
+date: "Fri 11th September 2026"
 ---
 
 ```{r setup, echo=FALSE}
