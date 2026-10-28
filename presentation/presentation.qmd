@@ -1,6 +1,6 @@
 ---
-title: "Introduction to Spatial Data and R as a GIS"
-subtitle: "Fri 11th September 2026 | 9am - 12pm"
+title: "Introduction to Spatial Data analysis and GIS Workflows in R (IRGI01)"
+subtitle: "Tue 17th and Wed 18th November 2026"
 author: "Dr Nick Bearman"
 format: 
   revealjs:
@@ -8,9 +8,13 @@ format:
 ---
 
 <!-- 
+title: "Introduction to Spatial Data and R as a GIS"
+-->
+
+<!-- -->
 ## Intro to Spatial Data and R as a GIS
 
-### InStats
+<!-- ### InStats -->
 
 :::: {.columns}
 
@@ -25,7 +29,7 @@ Dr Nick Bearman
 <br>UCL Geography*
 </font>
 
-18th August 2026
+Tue 17th November 2026
 
 Starting 2pm (UK/London)
 
@@ -44,9 +48,9 @@ While we wait, please introduce yourself in the chat:
 :::
 
 ::::
--->
 
-<!-- InStats 
+
+<!-- InStats -->
 ## Welcome - GIS Course
 
 - Day 1 - Introduction to Spatial Data & Using R as a GIS
@@ -55,7 +59,7 @@ While we wait, please introduce yourself in the chat:
 
 - Dr Nick Bearman
 
--->
+
 
 <!--
 - Day 2 - Confident Spatial Analysis and Statistics in R & GeoDa 
@@ -86,7 +90,7 @@ While we wait, please introduce yourself in the chat:
 - But please don't pass on to other people
 
 -->
-
+<!--
 ## Introduction to Using R as a GIS
 
 ### CaGIS
@@ -104,6 +108,8 @@ Dr Nick Bearman
 Files at [tinyurl.com/R-CaGIS](https://tinyurl.com/R-CaGIS)
 
 Install R, RStudio | Instructions in `readme.txt`
+
+-->
 
 ## What are we covering?
 
@@ -129,7 +135,7 @@ Install R, RStudio | Instructions in `readme.txt`
 -   Workbook, data and presentation all in OneDrive
 -->
 
-<!-- InStats course 
+<!-- InStats course -->
 
 ## Housekeeping
 
@@ -138,10 +144,10 @@ Install R, RStudio | Instructions in `readme.txt`
 -   Mute yourself (unless asking a question)
 -   Video on (if possible)
 -   Questions - ask in real time, or in the chat
--   Recording - any questions you ask will be in the recording (audio), your video will not be in the recording. 
--->
+-   Recording - any questions you ask will be in the recording (audio & screenshare), your video will not be in the recording. 
 
-<!-- in person course -->
+
+<!-- in person course 
 
 ## Housekeeping
 
@@ -161,13 +167,13 @@ Install R, RStudio | Instructions in `readme.txt`
 <!-- - Welcome Poll -->
 
 
-<!-- -->
+<!-- 
 
 -   Be aware of trailing wires
 -   Photos for social media
 -   Presentations, handouts and data on OneDrive
     -   [tinyurl.com/R-CaGIS](https://tinyurl.com/R-CaGIS)
-<!-- -->
+<!-- 
 
 ## Outline
 
@@ -176,7 +182,7 @@ Install R, RStudio | Instructions in `readme.txt`
 - 10:15am - 10:35am - Classification
 - 10:35am - 11:00am - Practical: Making a Map
 - 11:00am - 12:00pm - Demo & Practical: Loops for Automated Map Production
-
+-->
 <!-- Online NCRM
 
 ## Outline  {.smaller}
@@ -196,7 +202,7 @@ Install R, RStudio | Instructions in `readme.txt`
 
 
 
-<!--
+<!-- 
 ## Outline  {.smaller}
 
 -   **Day 1** - **Session 1: Introduction to R and Spatial Data Basics**
@@ -208,7 +214,7 @@ Install R, RStudio | Instructions in `readme.txt`
     -   12:05pm - 1:00pm -- Practical 2: Making a Map
 -->
     
-<!-- InStats
+<!-- InStats -->
 
 ## Outline  {.smaller}
 
@@ -275,12 +281,13 @@ Install R, RStudio | Instructions in `readme.txt`
 ##
 
 ![](images/WelcomeToInStats.png)
+-->
 
 ## 
 
 
 ![](images/InStatsStart.png)
--->
+<!-- -->
 
 ## <!-- Blank slide 
 
@@ -681,7 +688,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 
 <!-- end -->
 
-<!--
+<!-- -->
 
 ## Housekeeping - Practicals
 
@@ -689,12 +696,12 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 - Will split into groups of ~3 people (breakout rooms)
 - Ask your group colleagues questions
 - <!-- Post in WhatsApp -->
-<!--
+<!-- -->
 - Use the ‘Ask for help’ button in the Breakout room
 - I will ‘walk around’ and see how people are getting on
 - Can share screens – in groups, or individually
 - Breaks
--->
+
 
 <!--
 ## Outline
@@ -708,6 +715,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 
 ## Let's start! 
 
+<!-- 
 ## Outline
 
 - ~~9:00am – 9:30am – What is GIS & R?~~
@@ -715,8 +723,8 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 - 10:15am - 10:35am - Classification
 - 10:35am - 11:00am - Practical: Making a Map
 - 11:00am - 12:00pm - Demo & Practical: Loops for Automated Map Production
-
-<!-- 
+-->
+<!-- -->
 
 ## Outline  {.smaller}
 
@@ -730,9 +738,9 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 
 ![](images/InStatsStop.png)
 
+-->
 
-
-<!-- InStats
+<!-- InStats -->
 ## Outline  {.smaller}
 
 -   **Day 1** - Session 1: Introduction to R and Spatial Data Basics
@@ -755,7 +763,8 @@ https://twitter.com/zevross/status/1118967279864242176</font>
 -   **Day 1** Session 2: Classification and Creating a Choropleth Map
     -   3:45pm - 4:05pm -- Classification
     -   4:05pm - 5:00pm -- Practical 2: Making a Map
--->
+
+
 <!--  NCRM  
 ## Outline {.smaller}
 
@@ -772,7 +781,7 @@ https://twitter.com/zevross/status/1118967279864242176</font>
     -   11:45am - 1:00pm -- Practical 4: Bring Your Own Data
 -->
 
-<!-- offline -->
+<!-- offline 
 ## Classification
 
 -   Colour in the map 
@@ -795,14 +804,15 @@ Remember to show in the table which colours represent which countries!
     -   Colours
     -   Classification (how you grouped the data)
 
+-->
 
-<!-- InStats
+<!-- InStats -->
 ##
 
 ![](images/InStatsStart.png)
 
 
-<!-- 
+
 ## 
 
 <center><h1>Introduction to Spatial Data and R as a GIS</h1></center>
@@ -820,9 +830,9 @@ Remember to show in the table which colours represent which countries!
 -   Session 3: Map Customisation and Automation in R
 -    Session 4: Clustering Crime Points and Working with Your Own Data
 
--->
 
-<!-- online 
+
+<!-- online -->
 
 ## Classification
 
@@ -843,7 +853,7 @@ Remember to show in the table which colours represent which countries!
 - What are those classes? What colour scheme would you use? Why?
 - Share your link / URL from ColorBrewer in the chat.
 
-end online -->
+<!-- end online -->
 
 ## Classification
 
@@ -1133,6 +1143,8 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 Continue with the Practical
 
+<!-- 
+
 ## Outline
 
 - ~~9:00am – 9:30am – What is GIS & R?~~
@@ -1140,8 +1152,8 @@ Continue with the Practical
 - ~~10:15am - 10:35am - Classification~~
 - 10:35am - 11:00am - Practical: Making a Map
 - 11:00am - 12:00pm - Demo & Practical: Loops for Automated Map Production
-
-<!-- 
+-->
+<!-- -->
 
 ## Outline  {.smaller}
 
@@ -1182,7 +1194,7 @@ Continue with the Practical
 -   1450 - 1500 Coordinate Systems & Next Steps
 -   1510 Finish
 -->
-<!-- InStats
+<!-- InStats 
 ## Outline  {.smaller}
 
 -   ~~**Day 1** - **Session 1: Introduction to R and Spatial Data Basics**~~
@@ -1207,7 +1219,7 @@ Continue with the Practical
     -   ~~4:05pm - 5:00pm -- Practical 2: Making a Map~~
 -->
 
-<!-- InStats
+<!-- InStats -->
 ## Outline
 
 - ~~1:00pm – 1:45pm: What is GIS, Spatial Data & R?~~
@@ -1215,7 +1227,7 @@ Continue with the Practical
 - ~~2:30pm – 2:45pm: break~~
 - ~~2:45pm – 3:05pm: Classification discussion~~
 - 3:05pm – 4:00pm: Practical 2: Making a Map
--->
+
 <!-- 
 Continue with the Practical -->
 
@@ -1236,7 +1248,7 @@ Continue with the Practical -->
     -   11:45am - 1:00pm -- Practical 4: Bring Your Own Data
 -->
 
-<!-- End of day 1 
+<!-- End of day 1 -->
 
 ## Any Questions?
 
@@ -1255,6 +1267,7 @@ Continue with the Practical -->
 
 
 ##
+-->
 
 ## Day 2
 
@@ -1269,9 +1282,9 @@ Continue with the Practical -->
 ![](images/ncrm-welcome-slide2.png)
 
  -->
-<!--
+<!-- -->
 ## Recap Quiz
--->
+
 <!-- NCRM 
 
 ## Outline {.smaller}
@@ -1290,11 +1303,11 @@ Continue with the Practical -->
     - & Working with Your Own Data
 -->
 
-<!--InStats 
+<!--InStats -->
 
 ## Intro to Spatial Data and R as a GIS
 
-### InStats
+<!-- ### InStats -->
 
 :::: {.columns}
 
@@ -1309,7 +1322,7 @@ Dr Nick Bearman
 <br>UCL Geography*
 </font>
 
-19th August 2026
+Wed 18th November 2026
 
 Starting 2pm (UK/London)
 
@@ -1362,14 +1375,17 @@ Outline
 <!--
 ## Recap Quiz
 
-
+-->
 ##
 
 ![](images/InStatsStart.png)
 
+<!-- 
 ## 
 
 ![](images/WelcomeToInStats.png)
+
+-->
 
 ## 
 
@@ -1379,7 +1395,7 @@ Outline
 
 <center> <h3>Session 3: Map Customisation and Automation in R</h3></center>
 
-<!-- InStats  
+<!-- InStats  -->
 
 ## Outline  {.smaller}
 
@@ -1388,7 +1404,7 @@ Outline
 -   **Session 3: Map Customisation and Automation in R**
 -    Session 4: Clustering Crime Points and Working with Your Own Data
 
---> 
+<!--
 
 ## Outline
 
@@ -1397,7 +1413,8 @@ Outline
 - ~~10:15am - 10:35am - Classification~~
 - ~~10:35am - 11:00am - Practical: Making a Map~~
 - 11:00am - 12:00pm - Demo & Practical: Loops for Automated Map Production
-
+ 
+ -->
 
 ## Outline
 
@@ -2469,8 +2486,9 @@ for (i in 1:length(mapvariables)) {
     -   2:45pm - 4:00pm -- Practical 4: Bring Your Own Data
 -->
 
+<!--
 ## End of session 
-<!-- FOSS4G -->
+<!-- FOSS4G 
 
 - Thanks!
 
@@ -2480,6 +2498,7 @@ for (i in 1:length(mapvariables)) {
 
 - Chat with me :-D
 
+-->
 
 ## Outline
 
@@ -2520,7 +2539,7 @@ Continue with the practical
 
 ##
 
-<!-- InStats
+<!-- InStats 
 
 ## Outline  {.smaller}
 
@@ -2532,7 +2551,7 @@ Continue with the practical
 -   **Day 2** - Session 4: Clustering Crime Points and Working with Your Own Data
     - 11:45am - 12:00pm -- Point in Polygon & Reprojection
     - 12:00pm - 1:00pm -- Working with your Own Data
--->
+
 
 <!--
 ##
@@ -2549,7 +2568,7 @@ Continue with the practical
     - 12:00pm - 1:00pm -- Working with your Own Data
 
 -->
-<!--
+<!-- 
 ## <!-- Blank slide 
 
 ![](images/InStatsStart.png)
@@ -2576,7 +2595,7 @@ Continue with the practical
     - & Working with Your Own Data
   -->  
 
-<!--
+<!-- -->
 
 -   Day 2 - Session 3: Map Customisation and Automation in R
     -   2:00pm - 2:20pm -- Recap and Making Maps
@@ -2611,7 +2630,7 @@ Continue with the practical
 <!-- -->
 ##
 
-![](images/WelcomeToInStats.png)
+<!-- ![](images/WelcomeToInStats.png) -->
 
 ##
 
@@ -3209,8 +3228,8 @@ Free at [https://r.geocompx.org/](https://r.geocompx.org/)
 -   Repeat this material in 2-3 weeks / 2-3 months
 -   Lots of free tutorials available online
 -   GIS Training Courses -   [www.nickbearman.com](https://www.nickbearman.com)
-- [Advanced R as a GIS: Spatial Analysis](https://www.ncrm.ac.uk/training/show.php?article=14377)
-  - *25th & 26th August 2026*
+- [Advanced R as a GIS: Spatial Analysis](https://prstats.org/course/advanced-r-for-spatial-analysis-argi01/)
+  - *8th and 9th December 2026*
   - Be able to interpret Spatial Autocorrelation
   - Perform Local Indicators of Spatial Autocorrelation
   - Know how to use buffers within R
