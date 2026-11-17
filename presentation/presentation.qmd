@@ -426,16 +426,6 @@ Install R, RStudio | Instructions in `readme.txt`
 :::
  
 
-## GIS: Systems and Science
-
-::: fragment
--   Geographic*al* / Geographic
-:::
-
-::: fragment
--   Geographic Data Science
-:::
-
 ## GeoAI
 
 ::: {.fragment}
@@ -539,7 +529,7 @@ Install R, RStudio | Instructions in `readme.txt`
 -   It must match **exactly**
     -   "Gambia, The" ≠ "The Gambia"
     -   "USA" ≠ "The United States"
-    -   "UK" ≠ "Great Britain"
+    -   "UK" ≠ "United Kingdom"
 
 ## Attribute Join
 
@@ -1060,7 +1050,7 @@ https://jcheshire.com/resources/different-maps-same-data/
 
 ## Classification
 
--   Cartography is a Science and an Art
+-   Classification is a Science and an Art
 -   Be creative
 -   Try the different options in the practical
 -   There is no 'right' answer
@@ -1102,6 +1092,11 @@ https://jcheshire.com/resources/different-maps-same-data/
 - Check typos and working directory
 
 ## Waiting for commands
+
+```{.r}
+> 
+```
+
 
 ```{.r}
 > 1+4

@@ -136,6 +136,10 @@
                 fill.scale = tm_scale_intervals(values = "brewer.greens", style = "jenks"))
   #return tmap to plot mode
   tmap_mode("plot")
+  
+  #you can save interactive maps using 
+  #tmap_save(m, filename = "map.html")
+  #see https://r-tmap.github.io/tmap-book/save.html#interactive-format for info
 
 ### Exporting and Creating Multiple Maps
   #create map

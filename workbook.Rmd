@@ -506,7 +506,7 @@ The `tmap` library has two different viewing options - `plot` which is what we h
 
 *Shiny is a tool developed by RStudio we can use to create interactive maps on the web, with many different options. Have a look at https://shiny.rstudio.com/.*
 
-### Exporting and Creating Multiple Maps
+### Exporting and Creating Multiple Maps using Loops
 
 We can automatically save the map as a file by creating the map object as a new variable (`m`) and then save it using `tmap_save(m)`. 
 
