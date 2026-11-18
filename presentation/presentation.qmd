@@ -1367,10 +1367,10 @@ Outline
     - 12:00pm - 1:00pm -- Working with your Own Data
 --> 
 
-<!--
+<!-- -->
 ## Recap Quiz
 
--->
+
 ##
 
 ![](images/InStatsStart.png)
